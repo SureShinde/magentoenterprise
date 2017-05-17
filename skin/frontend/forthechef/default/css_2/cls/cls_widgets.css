@@ -1,0 +1,269 @@
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+/*
+// ----------------------------------------------
+// Usage example:
+// For IE set $mq-support to false.
+// Set the fixed value.
+// Then use mixins to test whether styles should be applied.
+// ----------------------------------------------
+
+$mq-support: false;
+$mq-fixed-value: 1024;
+
+// Renders at fixed value
+@include bp (min-width, 300px) { 
+    div { color:#000; }
+}
+
+// Doesn't render without MQ support
+@include bp (min-width, 1200px) { 
+    div { color:#FFF; }
+}
+
+// Doesn't render without MQ support
+@include bp (max-width, 300px) { 
+    div { color:#444; }
+}
+
+// Renders at fixed value
+@include bp (max-width, 1200px) { 
+    div { color:#888; }
+}
+
+// ----------------------------------------------
+*/
+/* ============================================ *
+ * Carousel and Slideshow
+ * ============================================ */
+.widget-carousel,
+.widget-slideshow {
+  margin-bottom: 10px;
+}
+
+.owl-item.loading {
+  min-height: 150px;
+  background: url(../../images/ajax-loader.gif) no-repeat center center;
+}
+
+.owl-item img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.grabbing {
+  cursor: pointer;
+}
+
+/* -------------------------------------------- *
+ * Pagination
+ */
+.lcp-theme .owl-wrapper-outer + .owl-controls {
+  text-align: center;
+}
+
+.lcp-theme .owl-wrapper-outer .owl-controls {
+  text-align: center;
+}
+.lcp-theme .owl-wrapper-outer .owl-controls .owl-pagination {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 70;
+}
+
+.lcp-theme .owl-controls .owl-page {
+  display: inline-block;
+  zoom: 1;
+  /* If PaginationNumbers is true */
+}
+.lcp-theme .owl-controls .owl-page span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 5px 7px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  background: #A0A0A0;
+}
+.lcp-theme .owl-controls .owl-page span.owl-numbers {
+  height: auto;
+  width: auto;
+  color: #FFF;
+  padding: 2px 10px;
+  font-size: 12px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+}
+
+.lcp-theme .owl-controls .owl-page.active span,
+.lcp-theme .owl-controls.clickable .owl-page:hover span {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  background: #46647e;
+}
+
+/* -------------------------------------------- *
+ * Prev / Next Buttons
+ */
+html.no-touch .hide-prev-next .owl-carousel .owl-prev,
+html.no-touch .hide-prev-next .owl-carousel .owl-next {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  -moz-transition: opacity 300ms 0;
+  -o-transition: opacity 300ms 0;
+  -webkit-transition: opacity 300ms 0;
+  transition: opacity 300ms 0;
+}
+html.no-touch .hide-prev-next .owl-carousel:hover .owl-prev, html.no-touch .hide-prev-next .owl-carousel:hover .owl-next {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+}
+
+.owl-buttons .owl-prev span.slide-arrow, .owl-buttons .owl-next span.slide-arrow {
+  width: 32px;
+  height: 64px;
+  margin-top: -32px;
+}
+.owl-buttons .owl-prev span.slide-arrow:after, .owl-buttons .owl-next span.slide-arrow:after {
+  width: 15px;
+  height: 28px;
+  margin-top: -14px;
+}
+.owl-buttons .owl-prev span.slide-arrow:after {
+  background-position: 0 -900px;
+}
+.owl-buttons .owl-next span.slide-arrow:after {
+  background-position: -50px -900px;
+}
+.owl-buttons .owl-prev,
+.owl-buttons .owl-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  min-width: 50px;
+  cursor: pointer;
+  z-index: 60;
+}
+.owl-buttons .owl-prev span.slide-arrow,
+.owl-buttons .owl-next span.slide-arrow {
+  position: absolute;
+  top: 50%;
+  background: white;
+}
+.owl-buttons .owl-prev span.slide-arrow:after,
+.owl-buttons .owl-next span.slide-arrow:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+}
+.owl-buttons .owl-prev {
+  left: 0;
+}
+.owl-buttons .owl-prev span.slide-arrow {
+  left: 0;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+.owl-buttons .owl-prev span.slide-arrow:after {
+  left: 0;
+}
+.owl-buttons .owl-next {
+  right: 0;
+}
+.owl-buttons .owl-next span.slide-arrow {
+  right: 0;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+.owl-buttons .owl-next span.slide-arrow:after {
+  right: 0;
+}
+.owl-buttons .owl-prev span:not(.slide-arrow),
+.owl-buttons .owl-next span:not(.slide-arrow) {
+  color: #FFF;
+  display: inline-block;
+  zoom: 1;
+  padding: 3px 10px;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -8px;
+  margin-right: 10%;
+  margin-left: 10%;
+  text-align: center;
+  background: #46647e;
+}
+.owl-buttons .owl-next span:not(.slide-arrow) {
+  left: auto;
+  right: 0;
+}
+
+/* ============================================ *
+ * Carousel-only Styles
+ * ============================================ */
+.widget-carousel .owl-item {
+  padding: 0 10px;
+}
+.widget-carousel .product-image {
+  border: none;
+}
+.widget-carousel .product-image .product-badges {
+  margin: 6px;
+}
+.widget-carousel h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.widget-carousel .owl-carousel {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* ============================================ *
+ * Slideshow-only Styles
+ * ============================================ */
+.widget-slideshow .copy {
+  width: 35%;
+  padding: 10px;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  text-align: left;
+  background-color: #999899;
+  background-color: rgba(153, 153, 153, 0.5);
+  font-size: 13px;
+  color: #fff;
+}
+
+.widget-slideshow .copy h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 650px) {
+  .widget-slideshow .owl-buttons .owl-prev span.slide-arrow, .widget-slideshow .owl-buttons .owl-next span.slide-arrow {
+    width: 50px;
+    height: 100px;
+    margin-top: -50px;
+  }
+  .widget-slideshow .owl-buttons .owl-prev span.slide-arrow:after, .widget-slideshow .owl-buttons .owl-next span.slide-arrow:after {
+    width: 21px;
+    height: 40px;
+    margin-top: -20px;
+  }
+  .widget-slideshow .owl-buttons .owl-prev span.slide-arrow:after {
+    background-position: 0 -250px;
+  }
+  .widget-slideshow .owl-buttons .owl-next span.slide-arrow:after {
+    background-position: -50px -250px;
+  }
+}

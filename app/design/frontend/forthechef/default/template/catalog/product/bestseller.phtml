@@ -1,0 +1,68 @@
+<?php
+$_products = $this->getProductCollection();
+if (count($_products) > 0)
+{
+  ?>
+    <hr>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            $j('.responsive').slick({
+                infinite: false,
+                speed: 300,
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3,
+                            slidesToScroll: 3,
+                            infinite: true,
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                    // You can unslick at a given breakpoint now by adding:
+                    // settings: "unslick"
+                    // instead of a settings object
+                ]
+            });
+        });
+    </script>
+    <div class="block-also-bought">
+        <h2>Customers Also Bought</h2>
+        <div class="responsive">
+            <?php
+                foreach($_products->getItems() as $_product)
+                {
+                   ?>
+                    <div>
+                    <a class="product-image" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>">
+                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(122, 109); ?>" width="122" height="109" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+                    </a>
+                    <h3 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h3>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    </div>
+                    <?php
+                }
+            ?>
+        </div>
+    </div>
+    <?php
+}
+?>

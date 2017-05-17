@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    CustomerAdvanced
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <sections>
+        <customer>
+            <groups>
+                <quick_access translate="label">
+                    <label>Quick Login/Register Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>95</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable_register translate="label" module="cls_customeradvanced">
+                            <label>Enable &quot;Quick Register&quot; Interface</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_register>
+                        <enable_login translate="label">
+                            <label>Enable &quot;Quick Login&quot; Interface</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enable_login>
+                        <restricted_urls translate="label comment">
+                            <label>Login-restricted URL Patterns</label>
+                            <comment>Regular expressions to match URL paths that are restricted to logged in customers. Links to matching URLs will result in the &quot;Quick Login&quot; Slide-Down being triggered.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </restricted_urls>
+                    </fields>
+                </quick_access>
+            </groups>
+        </customer>
+    </sections>
+</config>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Crius
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt
+ *
+ * @category   Crius
+ * @package    Crius_Rac
+ * @copyright  Copyright (c) 2011 Crius (http://www.criuscommerce.com)
+ * @license    http://www.criuscommerce.com/CRIUS-LICENSE.txt
+ */ 
+-->
+<config>
+    <modules>
+        <Crius_Rac>
+            <version>1.0.1</version>
+        </Crius_Rac>
+    </modules>
+    <global>
+        <models>
+            <rac>
+                <class>Crius_Rac_Model</class>
+            </rac>
+        </models>
+        <helpers>
+            <rac>
+                <class>Crius_Rac_Helper</class>
+            </rac>
+        </helpers>
+        <blocks>
+            <rac>
+                <class>Crius_Rac_Block</class>
+            </rac>
+        </blocks>
+    </global>
+    <frontend>
+        <routers>
+            <rac>
+                <use>standard</use>
+                <args>
+                    <module>Crius_Rac</module>
+                    <frontName>rac</frontName>
+                </args>
+            </rac>
+        </routers>
+        <layout>
+            <updates>
+                <rac>
+                    <file>rac.xml</file>
+                </rac>
+            </updates>
+        </layout>
+    </frontend>
+</config>

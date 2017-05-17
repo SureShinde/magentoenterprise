@@ -1,0 +1,276 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+
+// =============================================
+// Compass Defaults
+// =============================================
+
+// Border Radius
+
+$default-border-radius: 5px;
+
+// Transition
+
+$default-transition-property: all;
+$default-transition-duration: 200ms;
+$default-transition-function: linear;
+$default-transition-delay: 0;
+
+
+
+// =============================================
+// Primary Break Points
+// =============================================
+
+// These should be used with the bp (max-width, xx) mixin
+// where a min-width is used, remember to +1 to break correctly.
+// If these are changed, they must also be updated in app.js
+
+$bp-xsmall: 479px;
+$bp-small: 599px;
+$bp-medium: 770px;
+$bp-large: 979px;
+$bp-xlarge: 1199px;
+
+
+
+// =============================================
+// Base Values
+// =============================================
+
+// Spacing
+$gap: 10px;
+$gap-tall: 40px;
+
+$trim: 30px;
+
+// This will get applied on viewports smaller than 480px
+$trim-small: 15px;
+
+// Padding that will get applied to content areas
+$box-spacing-large: 20px;
+
+// Standard padding around box elements such as banner messages, etc
+$box-spacing: 10px;
+
+// Standard spacing between elements within a box, such as "Add to cart", "Price box", etc
+$element-spacing: 7px;
+
+// Dimensions
+$max-content-width: 1200px;
+$max-container-width: $trim + $max-content-width + $trim;
+$max-std-formatted-width: 50em;
+
+// Nav
+$nav-primary-height: 50px;
+
+
+
+// =============================================
+// Brand Colors
+// =============================================
+
+// Usually not used directly in Sass partials.
+// Only used to define context-based color vars in this file.
+
+$c-blue: #3399CC;
+$c-green: #11B400;
+$c-pink: #D85378;
+$c-orange: #eb4800;
+$c-red: #CF5050;
+$c-yellow: #FFDD15;
+$c-black: #000000;
+$c-gray: #333333;
+
+
+
+// =============================================
+// Base Colors
+// =============================================
+
+// Text
+
+$c-text: #636363;
+$c-text-gray: #A0A0A0;
+$c-text-white: #E6E6E6;
+// Primary font color for headings and other non-link text
+$c-text-primary: $c-blue;
+// Secondary font color for headings and other non-link text
+$c-text-secondary: $c-orange;
+
+// Interaction
+
+$c-action: $c-blue;
+$c-stimulus: darken($c-blue, 15%);
+$c-subtle: #A0A0A0;
+
+// Notifications
+
+$c-danger: #DF280A;
+$c-danger-background: #FAEBE7;
+
+$c-success: $c-green;
+$c-success-background: #EFF5EA;
+
+$c-warn: #E26703;
+$c-warn-background: #F9EBE6;
+
+$c-dark: #676157;
+
+// Global Elements
+
+$c-divider-border: #ECECEC;
+
+
+
+// =============================================
+// Element Colors
+// =============================================
+
+// Badge
+
+$c-badge:            #888;
+$c-badge-low-stock:  #F00;
+$c-badge-new:        #EB4800;
+$c-badge-sale:       #C3D62D;
+$c-badge-top-seller: #73B8F8;
+
+// Buttons
+
+$c-button:        #7A9AAC;
+$c-button-hover:  #73B8F8;
+$c-button-active: #637F8F;
+
+$c-button-secondary:        #C3D62D;
+$c-button-secondary-hover:  #9DB089;
+$c-button-secondary-active: #76797D;
+
+$c-button-subtle:        #F3F3F3;
+$c-button-subtle-hover:  #FFF;
+$c-button-subtle-active: #F3F3F3;
+
+// Email
+
+$c-email-background: #EBEBEB;
+$c-email-background-secondary: #E1F0F8;
+$c-email-border: #C3CED4;
+$c-email-action: #3696C2;
+$c-email-cell: #F1F1F1;
+$c-email-highlighted-background: #FFFDD9;
+$c-email-highlighted-border: #FFF74C;
+
+// Forms
+
+$c-input-border: #767676;
+$c-input-border-focus: $c-blue;
+
+$c-input-placeholder: $c-text-gray;
+$c-input-text: $c-text;
+
+$c-fieldset-border: #CCCCCC;
+$c-fieldset-border-light: #EDEDED;
+
+// Headings
+
+$c-h1: $c-blue;
+$c-h2: $c-text;
+$c-h3: $c-text;
+$c-h4: $c-text;
+$c-h5: $c-text;
+$c-h6: $c-text;
+
+// Link
+
+$c-link: $c-action;
+$c-link-hover: darken($c-action, 5%);
+$c-link-focus: $c-action;
+$c-link-active: darken($c-action, (5% / 2));
+
+// Module (generic)
+
+$c-module-background: #F4F4F4;
+$c-module-background-hover: shade($c-module-background, 3%);
+$c-module-background-secondary: #EAF8FF;
+$c-module-background-dark: #AAAAAA;
+// This should be applied whenever the border is surrounding a white element and/or is directly showing on white.
+$c-module-border: #CCCCCC;
+// This should be applied whenever the border is wrapping an element with $c-module-background
+$c-module-border-light: #EDEDED;
+$c-module-border-dark: #777777;
+$c-module-border-highlight: $c-blue;
+
+// Nav
+
+$c-nav-primary-background: #7A9AAC;
+
+// Table
+
+$c-table-background: #73B8F8;
+$c-table-border: #C0C0C0;
+
+$c-table-zebra-odd: #F8F7F5;
+$c-table-zebra-even: #EEEDED;
+
+// Tabs
+
+$c-tabs-background: #F0F0F0;
+$c-tabs-border: #CCC;
+
+// Tooltip
+
+$c-tooltip-background: #303030;
+
+
+
+// =============================================
+// Typography
+// =============================================
+
+// Google Web Font stylesheet is included via layout XML
+
+// Font Stacks
+
+$f-stack-sans: 'Roboto', 'Helvetica Neue', Verdana, Arial, sans-serif;
+$f-stack-serif: Georgia, Times, 'Times New Roman', serif;
+$f-stack-special: 'Ubuntu', 'Helvetica Neue', Verdana, Arial, sans-serif;
+
+$f-stack-default: $f-stack-sans;
+
+// Font Sizes
+
+$f-size-xxl: 18px;
+$f-size-xl: 16px;
+$f-size-l: 15px;
+
+$f-size: 14px;
+
+$f-size-s: 13px;
+$f-size-xs: 12px;
+$f-size-xxs: 11px;
+
+// Base Measures
+
+$b-line-height: 1.5;
+$b-margin-bottom: 1.5em;

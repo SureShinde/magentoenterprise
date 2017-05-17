@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * CedCommerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * @category    Ced
+ * @package     Ced_Walmart
+ * @author      CedCommerce Core Team <connect@cedcommerce.com>
+ * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<layout>
+	<default>
+		<reference name="notifications">
+			<block type="adminhtml/notification_window" name="notification.walmart.vendor" as="notification_walmart_vendor"  template="ced/walmart/notification.phtml" />
+		</reference>
+	</default>
+	<adminhtml_sales_order_view>
+		<reference name="sales_order_tabs">
+			<action method="addTab">
+				<name>order_view_tab_cedwalmarttab</name>
+				<block>walmart/adminhtml_sales_order_view_tabs</block>
+			</action>
+		</reference>
+	</adminhtml_sales_order_view>
+	<adminhtml_adminhtml_walmartrequest_uploadproduct>
+		<reference name="head">
+			<action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+			<action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+			<!-- <action method="addJs"><script>ced/walmart/walmartProduct.js</script></action> -->
+		</reference>
+		<reference name="content">
+			<block type="walmart/adminhtml_prod" name="jrequest" />
+		</reference>
+	</adminhtml_adminhtml_walmartrequest_uploadproduct>
+	
+	<adminhtml_system_config_edit>
+		<reference name="head">
+			<action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+			<action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+		</reference>		
+	</adminhtml_system_config_edit>
+
+	<!-- <adminhtml_adminhtml_walmartrequest_uploadproductgrid>
+
+		<block type="core/text_list" name="root" output="toHtml" />
+		<block type="walmart/adminhtml_prod_grid" name="jrequest" />
+
+	</adminhtml_adminhtml_walmartrequest_uploadproductgrid> -->
+
+	<adminhtml_adminhtml_walmartrequest_uploadproductgrid2>
+
+		<block type="core/text_list" name="root" output="toHtml" />
+		<block type="walmart/adminhtml_prod_grid" name="jrequest" />
+
+	</adminhtml_adminhtml_walmartrequest_uploadproductgrid2>
+
+	<adminhtml_adminhtml_walmartorder_return>
+		<reference name="content">
+			<block type="walmart/adminhtml_return" name="return" />
+		</reference>
+	</adminhtml_adminhtml_walmartorder_return>
+
+	<adminhtml_adminhtml_walmartattrlist_walmartattribute>
+		<reference name="content">
+			<block type="walmart/adminhtml_walmartattribute" name="walmartattribute" />
+		</reference>
+	</adminhtml_adminhtml_walmartattrlist_walmartattribute>
+
+	<adminhtml_adminhtml_walmartrefundsettlement_refund>
+		<reference name="content">
+			<block type="walmart/adminhtml_refund" name="refund" />
+		</reference>
+	</adminhtml_adminhtml_walmartrefundsettlement_refund>
+
+	<!-- <adminhtml_catalog_product_attribute_edit>
+		<reference name="attribute_edit_tabs">
+			<action method="addTab">
+				<name>walmart_attribute_relation</name>
+				<block type="almart/adminhtml_attribute_edit_tab_walmartattr"></block>
+				<action method="addJs">
+					<script>ced/walmart/product_script.js</script>
+				</action>
+
+			</action>
+		</reference>
+	</adminhtml_catalog_product_attribute_edit> -->
+
+	<adminhtml_adminhtml_walmartproduct_taxcodes>
+		<reference name="content">
+			<block type="walmart/adminhtml_taxcodes" name="walmarttaxcodes" />
+		</reference>
+	</adminhtml_adminhtml_walmartproduct_taxcodes>
+
+	<adminhtml_adminhtml_walmartproduct_jerrordetails>
+		<reference name="content">
+			<block type="walmart/adminhtml_rejected_edit" name="walmart_errordetail" />
+			<block type="walmart/adminhtml_rejected_product_list" name="error_product_grid" template="ced/walmart/rejected/productlist.phtml" />
+
+		</reference>
+	</adminhtml_adminhtml_walmartproduct_jerrordetails>
+
+
+	<adminhtml_adminhtml_walmartcategory_index>
+		<reference name="content">
+			<block type="walmart/adminhtml_walmartcategory" name="walmartcategory" />
+		</reference>
+	</adminhtml_adminhtml_walmartcategory_index>
+
+	<adminhtml_adminhtml_walmartorder_failedorders>
+		<reference name="content">
+			<block type="walmart/adminhtml_failedorders" name="failedorders" />
+		</reference>
+	</adminhtml_adminhtml_walmartorder_failedorders>
+
+	<adminhtml_adminhtml_walmartorder_rejectreason>
+		<reference name="content">
+			<block type="walmart/adminhtml_rejectorder_form_edit" name="rejectreason" />
+		</reference>
+	</adminhtml_adminhtml_walmartorder_rejectreason>
+
+	<adminhtml_adminhtml_walmartorder_walmartorder>
+		<reference name="content" >
+			<block type="walmart/adminhtml_walmartorder" name="walmartorder"/>
+		</reference>
+	</adminhtml_adminhtml_walmartorder_walmartorder>
+
+	<adminhtml_adminhtml_walmartajax_massimport>
+		<reference name="content">
+			<block type="walmart/adminhtml_ajaximport" name="walmart_ajaximport" />
+		</reference>
+	</adminhtml_adminhtml_walmartajax_massimport>
+
+	<adminhtml_adminhtml_walmartajax_massarchived>
+		<reference name="content">
+			<block type="walmart/adminhtml_ajaxarchieve" name="walmart_ajaxarchieve" />
+		</reference>
+	</adminhtml_adminhtml_walmartajax_massarchived>
+
+	<adminhtml_adminhtml_walmartajax_massunarchived>
+		<reference name="content">
+			<block type="walmart/adminhtml_ajaxunarchieve" name="walmart_ajaxunarchieve" />
+		</reference>
+	</adminhtml_adminhtml_walmartajax_massunarchived>
+
+	<adminhtml_adminhtml_walmartajax_sync>
+		<reference name="content">
+			<block type="walmart/adminhtml_ajaxsync" name="walmart_ajaxsync" />
+		</reference>
+	</adminhtml_adminhtml_walmartajax_sync>
+
+	<adminhtml_adminhtml_walmartattrlist_categorylist>
+		<reference name="content">
+			<block type="walmart/adminhtml_categorylist" name="categorylist"/>
+		</reference>
+	</adminhtml_adminhtml_walmartattrlist_categorylist>
+	<adminhtml_adminhtml_walmartattrlist_edit>
+		<reference name="content">
+			<block type="walmart/adminhtml_attrlist" name="attrlist"  />
+		</reference>
+	</adminhtml_adminhtml_walmartattrlist_edit>
+	<adminhtml_adminhtml_walmartrequest_help>
+		<reference name="content">
+			<block type="adminhtml/template" name="jrequest_help" template="ced/walmart/help.phtml"/>
+		</reference>
+	</adminhtml_adminhtml_walmartrequest_help>
+
+	<adminhtml_adminhtml_walmartorder_autoship>
+		<reference name="content">
+			<block type="walmart/adminhtml_autoship" name="autoship" />
+		</reference>
+	</adminhtml_adminhtml_walmartorder_autoship>
+	<adminhtml_adminhtml_walmartfeed_walmartfeed>
+		<reference name="head">
+			<action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+			<action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+		</reference>
+		<reference name="content" >
+			<block type="walmart/adminhtml_walmartfeed" name="walmartfeed"/>
+		</reference>
+	</adminhtml_adminhtml_walmartfeed_walmartfeed>
+	<adminhtml_adminhtml_walmartcron_cron>
+		<reference name="content">
+			<block type="walmart/adminhtml_cron" name="cron" />
+		</reference>
+	</adminhtml_adminhtml_walmartcron_cron>
+
+</layout>

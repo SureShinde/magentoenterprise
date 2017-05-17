@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    AdminEnhance
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><css>cls/adminenhance/cls_support_banners.css</css></action>
+            <action method="addJs"><js>mage/adminhtml/cls/adminenhance/cls_support_banners.js</js></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="cls_adminenhance/adminhtml_support_banner_js" name="support_banners_js" template="cls/adminenhance/support/banners-js.phtml"/>
+        </reference>
+    </default>
+
+    <adminhtml_video_vimeo>
+        <remove name="root"/>
+        <block type="adminhtml/page" name="video_root" output="toHtml" template="cls/adminenhance/video/vimeo.phtml"/>
+    </adminhtml_video_vimeo>
+</layout>

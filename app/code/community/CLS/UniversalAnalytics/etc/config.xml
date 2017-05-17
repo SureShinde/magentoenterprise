@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    UniversalAnalytics
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_UniversalAnalytics>
+            <version>1.0.6</version>
+        </CLS_UniversalAnalytics>
+    </modules>
+
+    <global>
+        <blocks>
+            <cls_universalanalytics>
+                <class>CLS_UniversalAnalytics_Block</class>
+            </cls_universalanalytics>
+            <googleanalytics>
+                <rewrite>
+                    <ga>CLS_UniversalAnalytics_Block_Googleanalytics_Ga</ga>
+                </rewrite>
+            </googleanalytics>
+        </blocks>
+        <helpers>
+            <cls_universalanalytics>
+                <class>CLS_UniversalAnalytics_Helper</class>
+            </cls_universalanalytics>
+        </helpers>
+        <models>
+            <cls_universalanalytics>
+                <class>CLS_UniversalAnalytics_Model</class>
+            </cls_universalanalytics>
+        </models>
+    </global>
+    
+    <frontend>
+        <layout>
+            <updates>
+                <cls_universalanalytics>
+                    <file>cls_universalanalytics.xml</file>
+                </cls_universalanalytics>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <CLS_UniversalAnalytics>
+                    <files>
+                        <default>CLS_UniversalAnalytics.csv</default>
+                    </files>
+                </CLS_UniversalAnalytics>
+            </modules>
+        </translate>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <cls_universalanalytics>
+                        <class>cls_universalanalytics/observer</class>
+                        <method>setUniversalAnalyticsOnOrderSuccessPageView</method>
+                    </cls_universalanalytics>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <cls_universalanalytics>
+                        <class>cls_universalanalytics/observer</class>
+                        <method>setUniversalAnalyticsOnOrderSuccessPageView</method>
+                    </cls_universalanalytics>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+        </events>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <CLS_UniversalAnalytics>
+                    <files>
+                        <default>CLS_UniversalAnalytics.csv</default>
+                    </files>
+                </CLS_UniversalAnalytics>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>

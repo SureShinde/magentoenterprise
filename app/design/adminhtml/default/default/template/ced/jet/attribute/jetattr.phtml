@@ -1,0 +1,165 @@
+<?php
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+
+ 
+$jetAttId = "";
+$show_note = false; 
+
+if($attr = $this->getJetAttr()){
+	$jetAttId = $attr->getJetAttrId();	
+	$jetattribute = Mage::getModel('jet/jetattribute');
+	$collection = $jetattribute->getCollection()->addFieldToFilter('jet_attr_id', $jetAttId)->getData();
+
+        $updated_data = json_decode($collection[0]['jet_attr_val'],true);
+}
+$mattrid =$this->getRequest()->getParam('attribute_id');
+	if(isset($mattrid)){ 
+		$resource = Mage::getSingleton('core/resource');
+		$table = $resource->getTableName('jet/jetattribute');
+		$readconnection = $resource->getConnection('core_read');
+		$query = 'SELECT * FROM ' . $table . ' WHERE `magento_attr_id`='.$mattrid.'';
+		$row = $readconnection->fetchRow($query);	
+		
+		$options_array = array();
+		if(count($row)>0){
+			$show_note = true;
+			if($row['freetext'] ==2){
+				if($row['unit']!=null){
+					$options_array = explode(",",$row['unit']);
+				}
+			}else if($row['freetext'] ==0){ 
+				if($row['list_option']!=null){
+					$options_array = explode(",",$row['list_option']);
+				}
+			}
+		}
+}
+?>
+<div class="entry-edit">
+   <div class="entry-edit-head">
+      <h4 class="icon-head head-edit-form fieldset-legend">Jet Attribute Relation</h4>
+      <div class="form-buttons"></div>
+   </div>
+   <div id="base_fieldset" class="fieldset ">
+   	 <!--<p>Pick up <strong>Jet Attribute id</strong> From the <b>Id</b> column of <strong>Jet_Taxonomy_attribute.csv which you tink it should be mapped from your magneto Attribute & then select "Yes" for Map to Jet Attibute dropdown.</strong></p> -->
+      <div class="hor-scroll">
+         <table cellspacing="0" class="form-list">
+            <tbody>
+               <tr>
+                  <td class="label"><label for="jet_attribute_code">Jet Attribute Id</label></td>
+                  <td class="value">
+                  
+                  	<input type="text" class="validate-not-negative-number input-text" title="Attribute Code" value="<?php echo $jetAttId; ?>" name="jet_attribute_id" id="jet_attribute_id"> 
+                  	
+                      <button style="" onclick ="callController()" id ="fetch_attr_val" class="scalable " type="button" title="Validate"><span><span><span>Validate</span></span></span></button>
+                 
+                      <p>
+                          Can't find jet atrribute id? <a target="_blank" href="<?php echo $this->getUrl('adminhtml/adminhtml_jetattrlist/categorylist') ?>">Click here</a> and check 'view attribute details' column against each category.
+
+                       </p>
+					 
+					 
+                  </td>
+			   </tr>  
+			   <tr>
+            </tbody>
+         </table>
+	  </div>
+	  
+	 
+	  <div class="appended_div" id="appended_div"> &nbsp;</div>
+	  <div id="saved_jet_mapp"> 
+	  
+	  
+	 
+	  <?php 
+    if(count($updated_data)>0)
+    {
+     ?>
+     <table border="2px">
+   <th>Magento Attribute Value</th>
+    <th>Jet Attribute Value</th>
+    <th>Action</th>
+     <?php foreach($updated_data as $keyy=>$vall)
+    { ?>
+    <tr>
+    <td><?php echo $keyy;?> </td>
+    <td><?php echo $vall;?> </td>
+    <td><button onclick ="deleteMapping('<?php echo $keyy ?>')" class="scalable" id ="delete_attr_val" type="button" title="Delete"><span><span><span>Delete</span></span></span></button></td>
+    </tr>
+    <?php }
+    ?></table>
+    <?php }
+    ?>
+    
+	 </div>
+   </div>
+   
+</div>
+
+<script type="text/javascript">
+//var k = "<?php echo Mage::getSingleton('core/session')->getFormKey() ?>";
+var url = "<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetfetchattrval/fetch') ?>";
+var url1 = "<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetfetchattrval/map') ?>";
+var url2 = "<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetfetchattrval/delete') ?>";
+ function callController(){
+ 	var jetattrid = document.getElementById("jet_attribute_id").value;
+ 	var magento_att_code = document.getElementById("attribute_code").value;
+	new Ajax.Request(url, {
+               method: 'post',
+              parameters: { form_key: FORM_KEY,  jet_id: jetattrid , mag_att_code:magento_att_code},
+               onComplete: function(transport) {
+               		//document.getElementById("appended_div").appendChild(transport);
+                   //$(#appended_div).html(transport);
+                   //var html = new Element('div');
+       // html.update(transport.responseText);
+        // There may be many .SOME-CLASS so use `invoke` to iterate through them
+        document.getElementById('appended_div').innerHTML=transport.responseText;//.responseText
+        //$$('.appended_div').update(transport.responseText);
+               }
+           });
+
+}
+function saveMapping()
+{
+	var jetattrid = document.getElementById("jet_attribute_id").value;
+	var jetattrval = document.getElementById("jet_attr_vals").value;
+ 	var magattrval = document.getElementById("mag_attr_vals").value;
+ 	
+ 	new Ajax.Request(url1, {
+               method: 'post',
+              parameters: { form_key: FORM_KEY,  jet_id: jetattrid, jetattrval: jetattrval , magattrval:magattrval},
+               onComplete: function(transport) {
+               		document.getElementById('saved_jet_mapp').innerHTML=transport.responseText;
+               }
+           });
+}
+function deleteMapping(value)
+{
+  var jetattrid = document.getElementById("jet_attribute_id").value;
+  var jet_val = value;
+  new Ajax.Request(url2, {
+               method: 'post',
+              parameters: { form_key: FORM_KEY,  jet_id: jetattrid, jet_val: jet_val},
+               onComplete: function(transport) {
+                  document.getElementById('saved_jet_mapp').innerHTML=transport.responseText;
+               }
+           });
+  
+}
+</script>

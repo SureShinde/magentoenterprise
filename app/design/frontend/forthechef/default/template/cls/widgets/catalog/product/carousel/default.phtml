@@ -1,0 +1,89 @@
+<?php
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+/**
+ * Sub-category list template
+ *
+ * @see CLS_Widgets_Block_Widget_Catalog_Product_Carousel
+ */
+
+// By default is a percentage of item width, but stored here so it can be arbitrarily changed
+$_itemImgSize = 334;
+$_index = $this->helper('cls_widgets')->getWidgetIndex();
+$_productCollection = $this->getProductCollection();
+if ($_productCollection && count($_productCollection) > 0):
+?>
+
+<div class="widget widget-carousel" id="widget_carousel_<?php echo $_index ?>">
+    <?php if ($_title = $this->getDisplayTitle()): ?>
+        <h3><?php echo $this->__($_title) ?></h3>
+    <?php endif; ?>
+        <div class="owl-carousel">
+            <?php foreach ($_productCollection as $_product): ?>
+                <?php $_product->setDoNotUseCategoryId($this->getDoNotUseCategoryId()); ?>
+                <div>
+                    <div class="product-img-outer">
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->keepFrame(false)->resize($_itemImgSize); ?>" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="item-image" />
+                        <?php if ($this->getBadgesBlock()) {
+                            echo $this->getBadgesBlock()->setProduct($_product)->toHtml();
+                        } ?>
+                        </a>
+                    </div>
+                    <h4 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getName(), 'name') ?></a></h4>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+</div>
+    <script type="text/javascript">
+        if (bp === undefined) {
+            var bp = {
+                xsmall: 479,
+                medium: 770,
+                large: 979
+            };
+        }
+
+//        jQuery(document).ready(function (jQ) {
+            console.log('next');
+            jQuery('#widget_carousel_<?php echo $_index ?> .owl-carousel').owlCarousel({
+                theme: 'lcp-theme',
+                autoPlay: <?php echo ($this->getAutostart()) ? $this->getTimeout() : 'false' ?>,
+                stopOnHover: <?php echo ($this->getHoverPause()) ? 'true' : 'false' ?>,
+                navigation: <?php echo ($this->getIncludePrevNext()) ? 'true' : 'false' ?>,
+                navigationText: ['<span class="slide-arrow"></span>', '<span class="slide-arrow"></span>'],
+                pagination: <?php echo ($this->getIncludePager()) ? 'true' : 'false' ?>,
+                paginationNumbers: <?php echo ($this->getNumbersInPager()) ? 'true' : 'false' ?>,
+                items: <?php echo $this->getItemsPerSlide() ?>,
+                itemsDesktop: false, // Don't set a value for desktop as it will inherit from "items"
+                <?php if ((int) $this->getItemsPerSlideLarge()): ?>
+                itemsDesktopSmall: [bp.large, <?php echo (int) $this->getItemsPerSlideLarge() ?>],
+                <?php else: ?>
+                itemsDesktopSmall: [bp.large, 4],
+                <?php endif; ?>
+                <?php //if ((int) $this->getItemsPerSlideMedium()): ?>
+//            itemsTablet: [bp.medium, <?php //echo (int) $this->getItemsPerSlideMedium() ?>//],
+                <?php //else: ?>
+                itemsTablet: [bp.medium, 3],
+                <?php //endif; ?>
+                <?php //if ((int) $this->getItemsPerSlideSmall()): ?>
+//            itemsMobile: [bp.xsmall, <?php ////echo (int) $this->getItemsPerSlideSmall() ?>//],
+                <?php //else: ?>
+                itemsMobile: [bp.xsmall,3],
+                <?php //endif; ?>
+                scrollPerPage: <?php echo ($this->getScrollPerPage()) ? 'true' : 'false' ?>,
+                afterInit : function(){
+                    var that = this;
+
+                    // Move next/previous buttons
+                    that.owlControls.find('.owl-buttons').prependTo(jQ('#widget_carousel_<?php echo $_index ?> .owl-carousel'))
+                }
+            });
+//        });
+    </script>
+<?php endif; ?>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * PHP version 5
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category  FME
+ * @package   FME_Fmebase
+ * @author    Altaf Ahmed <support@fmeextension.com>
+ * @copyright 2016 XFME Extensions (https://www.fmeextensions.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  
+ * Open Software License (OSL 3.0)
+ * @link      https://www.fmeextensions.com
+ */
+  -->
+<config>
+	<tabs translate="label" module="fmebase" >
+		<fmebase>
+		<label><![CDATA[<div style="position: absolute;"><img id="fme_block" src="" alt="" border="0" /></div>&nbsp;<script>
+            var n = SKIN_URL.indexOf("adminhtml");
+            $('fme_block').src = SKIN_URL.substring(0, n) + "adminhtml/default/default/images/fme/logo.png";
+            </script>]]></label>
+		<sort_order>123</sort_order>
+	</fmebase>
+	</tabs>
+	<sections>
+		 <basesec translate="label" module="fmebase">
+            <label>Extension's Info and Support</label>
+            <tab>fmebase</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+            	<info translate="label">
+                    <label>Extensions Information</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>fmebase/system_config_form_fme_info</frontend_model>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </info>
+                <contact translate="label">
+                    <label>Contact FME Support</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>fmebase/system_config_form_fme_contact</frontend_model>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </contact>
+                <social translate="label">
+                    <label>FME Social</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>fmebase/system_config_form_fme_social</frontend_model>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </social>
+            </groups>
+        </basesec>
+	</sections>
+</config>

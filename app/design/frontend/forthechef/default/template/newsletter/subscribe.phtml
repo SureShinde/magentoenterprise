@@ -1,0 +1,58 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition End User License Agreement
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magento.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license http://www.magento.com/license/enterprise-edition
+ */
+?>
+<div class="block block-subscribe">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Newsletter') ?></span></strong>
+    </div>
+    <form action="//forthechef.us13.list-manage.com/subscribe/post?u=5d599ccb7c2526a09ad4f4a45&id=97ce1cdeca&WHYOPTIN=manualsub" method="POST">
+        <div class="block-content">
+            <div class="form-subscribe-header">
+                <label for="newsletter"><?php echo $this->__('Sign Up for Our Newsletter:') ?></label>
+            </div>
+            <div class="form-subcribe-helper-text">
+                <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('content_copy_newsletter')->toHtml();?>
+            </div>
+            <div class="input-box">
+                <input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" class="input-text required-entry validate-email" size="25" value="" placeholder = "Enter your e-mail address" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>">
+            </div>
+            <div class="actions">
+                <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Subscribe')) ?>" class="button"><span><span><?php echo $this->__('Subscribe') ?></span></span></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //<![CDATA[
+        var newsletterSubscriberFormDetail = new VarienForm('newsletter-validate-detail');
+        //]]>
+    </script>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>
+        (function($)
+        {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[13]='MANUALSUB';ftypes[13]='text';fnames[4]='MMERGE4';ftypes[4]='zip';fnames[3]='LSTORDDATE';ftypes[3]='date';fnames[6]='OSTORENAME';ftypes[6]='text';fnames[7]='OCITY';ftypes[7]='text';fnames[8]='OZIP';ftypes[8]='text';fnames[9]='OSTATE';ftypes[9]='text';fnames[10]='OCOUNTRY';ftypes[10]='text';fnames[5]='LSTORDAMT';ftypes[5]='number';fnames[11]='CGROUP';ftypes[11]='dropdown';}
+        (jQuery));var $mcj = jQuery.noConflict(true);
+    </script>
+</div>

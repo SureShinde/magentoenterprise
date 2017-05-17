@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Cart
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<config>
+    <modules>
+        <Nucleus_Cart>
+            <version>1.0.2</version>
+        </Nucleus_Cart>
+    </modules>
+
+    <global>
+        <helpers>
+            <nucleus_cart>
+                <class>Nucleus_Cart_Helper</class>
+            </nucleus_cart>
+        </helpers>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Nucleus_Cart>
+                    <files>
+                        <default>Nucleus_Cart.csv</default>
+                    </files>
+                </Nucleus_Cart>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <nucleus_cart>
+                    <file>nucleus_cart.xml</file>
+                </nucleus_cart>
+            </updates>
+        </layout>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <nucleus_cart before="Mage_Checkout">Nucleus_Cart_Checkout</nucleus_cart>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+        <translate>
+            <modules>
+                <Nucleus_Cart>
+                    <files>
+                        <default>Nucleus_Cart.csv</default>
+                    </files>
+                </Nucleus_Cart>
+            </modules>
+        </translate>
+    </frontend>
+
+    <default>
+        <checkout>
+            <ajax_cart>
+                <enable>1</enable>
+            </ajax_cart>
+        </checkout>
+    </default>
+</config>

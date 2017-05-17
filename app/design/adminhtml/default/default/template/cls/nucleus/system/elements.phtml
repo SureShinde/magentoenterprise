@@ -1,0 +1,88 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+$_helper = Mage::helper('cls_nucleuscore');
+$_elementsHelper = Mage::helper('cls_nucleuscore/elements');
+
+$_installed = $_elementsHelper->elementsInstalled();
+$_upToDate = Mage::getSingleton('cls_nucleuscore/elements_installer')->versionUpToDate();
+$_installedVersion = $_elementsHelper->getCurrentElementsVersion();
+$_versionAvailable = Mage::getSingleton('cls_nucleuscore/elements_installer')->getAvailableVersion();
+?>
+<div class="nucleus-elements form-list">
+    <p>
+        <?php echo $_helper->__('Nucleus Elements provides a library of content patterns, supported by the Nucleus theme, that give you a quick way to format your static content in appealing ways, including custom pages.') ?>
+        <?php echo $_helper->__('With Elements installed, your site contains a library of CMS static blocks representing different content configurations.') ?>
+        <?php echo $_helper->__('Implementing an Element is as easy as copying and pasting the HTML snippet from one of these blocks, and then replacing its content with your own.') ?>
+    </p>
+
+    <hr />
+    <?php
+    $_installNoticeClass = ($_elementsHelper->elementsInstalled()) ? 'notice' : 'warning';
+    $_installText = ($_elementsHelper->elementsInstalled()) ? 'Installed' : 'Not Installed';
+    ?>
+    <p><strong><?php echo $_helper->__('Nucleus Elements is: <span class="%s">%s</span>', $_installNoticeClass, $_installText) ?></strong></p>
+    <?php if ($_startPageUrl = $_elementsHelper->getStartPageUrl()): ?>
+    <p><?php echo $_helper->__('Get started by visiting this page to view Nucleus Elements examples:') ?><br />
+        <a href="<?php echo $_startPageUrl ?>" target="_blank"><?php echo $_helper->__('Preview Page') ?></a></p>
+    <?php endif; ?>
+
+    <?php
+    $_installText = $_helper->__('Install');
+    if ($_installed):
+        $_installText = ($_upToDate) ? $_helper->__('Re-install') : $_helper->__('Update');
+    endif;
+    $_installButton = '<button onclick="window.location=\'' . $this->getInstallUrl() . '\'; return false;"><span>' . $_installText . '</span></button>';
+    ?>
+
+    <hr />
+    <?php if (!$_installed): ?>
+
+    <p><strong><?php echo $_helper->__('Version %s ready to install', $_versionAvailable) ?></strong></p>
+    <p><?php echo $_helper->__('Add the library of example CMS pages and blocks to your site.') ?></p>
+    <p><?php echo $_installButton ?></p>
+
+    <?php elseif (!$_upToDate): ?>
+
+    <p><strong><?php echo $_helper->__('Installed version: <span class="warning">%s</span>', $_installedVersion) ?> <?php echo $_helper->__('(Version %s ready to install)', $_versionAvailable) ?></strong></p>
+    <p><?php echo $_helper->__('Update your library with the latest example CMS pages and blocks.') ?></p>
+    <p><?php echo $_installButton ?></p>
+    <p class="note"><?php echo $_helper->__('If your site has a custom theme that extends the Nucleus theme, you should re-compile CSS with Compass after updating.') ?></p>
+
+    <?php else: ?>
+
+    <p><strong><?php echo $_helper->__('Installed version: <span class="notice">%s</span>', $_installedVersion) ?> <?php echo $_helper->__('(Up to date)') ?></strong></p>
+    <p><?php echo $_installButton ?></p>
+    <p class="note"><?php echo $_helper->__('Re-install if you have modified the Elements example pages or blocks and want a fresh copy.') ?></p>
+
+    <?php endif; ?>
+
+    <?php if ($_installed): ?>
+    <hr />
+    <p><?php echo $_helper->__('Remove the library of example CMS pages and blocks from your site.') ?></p>
+    <p><button onclick="window.location='<?php echo $this->getUninstallUrl() ?>'; return false;"><span><?php echo $this->__('Uninstall') ?></span></button></p>
+    <p class="note"><?php echo $_helper->__('Uninstalling the example content will have no effect on any content you have created by copying the blocks\' HTML.') ?></p>
+    <?php endif; ?>
+</div>

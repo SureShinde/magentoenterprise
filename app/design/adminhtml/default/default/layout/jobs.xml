@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+
+ /**
+ * Jobs extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   FME
+ * @package    FME_Jobs
+ * @author     Malik Tahir Mehmood<malik.tahir786@gmail.com>
+ * @copyright  Copyright 2010 © free-magentoextensions.com All right reserved
+ */
+-->
+<layout version="0.1.0">
+
+    <adminhtml_fme_jobs_index>
+        <reference name="content">
+            <block type="jobs/adminhtml_jobs" name="jobs" />
+        </reference>
+    </adminhtml_fme_jobs_index>
+    
+    <cms_wysiwyg_images_index>
+        <remove name="footer" />
+        <remove name="head" />
+        <reference name="left">
+        <block name="wysiwyg_images.js" type="adminhtml/cms_wysiwyg_images_content" template="cms/browser/js.phtml" />
+        <block name="wysiwyg_images.tree" type="adminhtml/cms_wysiwyg_images_tree" template="cms/browser/tree.phtml" />
+        </reference>
+        <reference name="content">
+        <block name="wysiwyg_images.content"  type="adminhtml/cms_wysiwyg_images_content" template="cms/browser/content.phtml">
+            <block name="wysiwyg_images.uploader" type="adminhtml/cms_wysiwyg_images_content_uploader" template="cms/browser/content/uploader.phtml" />
+            <block name="wysiwyg_images.newfolder" type="adminhtml/cms_wysiwyg_images_content_newfolder" template="cms/browser/content/newfolder.phtml" />
+        </block>
+        </reference>
+
+    </cms_wysiwyg_images_index>
+  
+    
+    <adminhtml_fme_jobs_edit>
+        <update handle="editor"/>
+        <reference name="head">
+            <action method="addJs"><script>fmejobs/jquery-1.6.1.min.js</script></action>
+        </reference>
+    </adminhtml_fme_jobs_edit>
+    
+    <adminhtml_fme_jobs_store_index>
+        <reference name="content">
+            <block type="jobs/adminhtml_store" name="store" />
+        </reference>
+    </adminhtml_fme_jobs_store_index>
+
+    <adminhtml_fme_jobs_jobtype_index>
+        <reference name="content">
+            <block type="jobs/adminhtml_jobtype" name="jobtype" />
+        </reference>
+    </adminhtml_fme_jobs_jobtype_index>
+
+    <adminhtml_fme_jobs_department_index>
+        <reference name="content">
+            <block type="jobs/adminhtml_department" name="department" />
+        </reference>
+    </adminhtml_fme_jobs_department_index>
+
+    <adminhtml_fme_jobs_applications_index>
+        <reference name="content">
+            <block type="jobs/adminhtml_applications" name="applications" />
+        </reference>
+    </adminhtml_fme_jobs_applications_index>
+    
+    <adminhtml_fme_jobs_applicants>
+        <block type="core/text_list" name="root">
+            <block type="jobs/adminhtml_jobs_edit_tab_applicants" name="jobs.edit.tab.applicants"/>
+            <!--<block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+                <reference name="related_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>jobs.edit.tab.applicants</grid_block_name>
+                        <data_callback>getApplicants</data_callback>
+                        <hidden_input_name>links[related]</hidden_input_name>
+                        <reload_param_name>applicants</reload_param_name>
+                    </action>
+                </reference>
+            </block>-->
+        </block>
+    </adminhtml_fme_jobs_applicants>
+    
+</layout>

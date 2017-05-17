@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <modules>
+        <SmartOsc_Sales>
+            <version>1.0</version>
+        </SmartOsc_Sales>
+    </modules>
+
+    <global>
+        <models>
+            <sales>
+                <rewrite>
+                    <quote_address_total_shipping>SmartOsc_Sales_Model_Quote_Address_Total_Shipping</quote_address_total_shipping>
+                </rewrite>
+            </sales>
+        </models>
+    </global>
+</config>

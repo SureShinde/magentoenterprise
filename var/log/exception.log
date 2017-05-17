@@ -1,0 +1,80 @@
+2017-03-18T10:20:09+00:00 ERR (3): 
+exception 'Mage_Core_Exception' with message 'Invalid block type: Mage_Cls_Custom_Block_Blog_Last' in H:\Working\Gary\magento\app\Mage.php:595
+Stack trace:
+#0 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('cls_custom/blog...', Array)
+#2 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('cls_custom/blog...', 'blog_related_co...')
+#3 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('cls_custom/blog...', 'blog_related_co...')
+#4 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#7 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(73): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#8 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(144): Mage_Catalog_Helper_Product_View->initProductLayout(Object(Mage_Catalog_Model_Product), Object(Mage_Catalog_ProductController))
+#9 H:\Working\Gary\magento\app\code\core\Mage\Catalog\controllers\ProductController.php(132): Mage_Catalog_Helper_Product_View->prepareAndRender(2623, Object(Mage_Catalog_ProductController), Object(Varien_Object))
+#10 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(418): Mage_Catalog_ProductController->viewAction()
+#11 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#12 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 H:\Working\Gary\magento\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#15 H:\Working\Gary\magento\index.php(85): Mage::run('', 'store')
+#16 {main}
+2017-03-18T10:20:09+00:00 ERR (3): 
+exception 'Mage_Core_Exception' with message 'Invalid block type: Mage_Cls_Custom_Block_Catalog_Product_List_Upsell_Scroller' in H:\Working\Gary\magento\app\Mage.php:595
+Stack trace:
+#0 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('cls_custom/cata...', Array)
+#2 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('cls_custom/cata...', 'product.info.up...')
+#3 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('cls_custom/cata...', 'product.info.up...')
+#4 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#7 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(73): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#8 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(144): Mage_Catalog_Helper_Product_View->initProductLayout(Object(Mage_Catalog_Model_Product), Object(Mage_Catalog_ProductController))
+#9 H:\Working\Gary\magento\app\code\core\Mage\Catalog\controllers\ProductController.php(132): Mage_Catalog_Helper_Product_View->prepareAndRender(2623, Object(Mage_Catalog_ProductController), Object(Varien_Object))
+#10 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(418): Mage_Catalog_ProductController->viewAction()
+#11 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#12 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 H:\Working\Gary\magento\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#15 H:\Working\Gary\magento\index.php(85): Mage::run('', 'store')
+#16 {main}
+2017-03-18T10:20:09+00:00 ERR (3): 
+exception 'Mage_Core_Exception' with message 'Invalid block type: Mage_Cls_Custom_Block_Relatedproducts_Relatedproducts_Scroller' in H:\Working\Gary\magento\app\Mage.php:595
+Stack trace:
+#0 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('cls_custom/rela...', Array)
+#2 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('cls_custom/rela...', 'product.info.al...')
+#3 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('cls_custom/rela...', 'product.info.al...')
+#4 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#7 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(73): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#8 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(144): Mage_Catalog_Helper_Product_View->initProductLayout(Object(Mage_Catalog_Model_Product), Object(Mage_Catalog_ProductController))
+#9 H:\Working\Gary\magento\app\code\core\Mage\Catalog\controllers\ProductController.php(132): Mage_Catalog_Helper_Product_View->prepareAndRender(2623, Object(Mage_Catalog_ProductController), Object(Varien_Object))
+#10 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(418): Mage_Catalog_ProductController->viewAction()
+#11 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#12 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 H:\Working\Gary\magento\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#15 H:\Working\Gary\magento\index.php(85): Mage::run('', 'store')
+#16 {main}
+2017-03-18T10:20:09+00:00 ERR (3): 
+exception 'Mage_Core_Exception' with message 'Invalid block type: Mage_Cls_Custom_Block_Alsoviewed_Products_Scroller' in H:\Working\Gary\magento\app\Mage.php:595
+Stack trace:
+#0 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(495): Mage::throwException('Invalid block t...')
+#1 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(437): Mage_Core_Model_Layout->_getBlockInstance('cls_custom/also...', Array)
+#2 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(472): Mage_Core_Model_Layout->createBlock('cls_custom/also...', 'product.info.al...')
+#3 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(239): Mage_Core_Model_Layout->addBlock('cls_custom/also...', 'product.info.al...')
+#4 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(205): Mage_Core_Model_Layout->_generateBlock(Object(Mage_Core_Model_Layout_Element), Object(Mage_Core_Model_Layout_Element))
+#5 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\Layout.php(210): Mage_Core_Model_Layout->generateBlocks(Object(Mage_Core_Model_Layout_Element))
+#6 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(344): Mage_Core_Model_Layout->generateBlocks()
+#7 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(73): Mage_Core_Controller_Varien_Action->generateLayoutBlocks()
+#8 H:\Working\Gary\magento\app\code\core\Mage\Catalog\Helper\Product\View.php(144): Mage_Catalog_Helper_Product_View->initProductLayout(Object(Mage_Catalog_Model_Product), Object(Mage_Catalog_ProductController))
+#9 H:\Working\Gary\magento\app\code\core\Mage\Catalog\controllers\ProductController.php(132): Mage_Catalog_Helper_Product_View->prepareAndRender(2623, Object(Mage_Catalog_ProductController), Object(Varien_Object))
+#10 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Action.php(418): Mage_Catalog_ProductController->viewAction()
+#11 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Router\Standard.php(254): Mage_Core_Controller_Varien_Action->dispatch('view')
+#12 H:\Working\Gary\magento\app\code\core\Mage\Core\Controller\Varien\Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#13 H:\Working\Gary\magento\app\code\core\Mage\Core\Model\App.php(365): Mage_Core_Controller_Varien_Front->dispatch()
+#14 H:\Working\Gary\magento\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#15 H:\Working\Gary\magento\index.php(85): Mage::run('', 'store')
+#16 {main}

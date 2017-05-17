@@ -1,0 +1,37 @@
+<?php
+/**
+ * @category   CLS
+ * @package    ProductCompare
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+
+/* @var $this Mage_Catalog_Block_Product_Compare_Sidebar */
+?>
+<?php
+$_helper = $this->helper('catalog/product_compare');
+$_items = $_helper->getItemCount() > 0 ? $_helper->getItemCollection() : null;
+?>
+<?php if($_helper->getItemCount() > 0): ?>
+    <div class="actions">
+        <button type="button" title="<?php echo $this->__('Compare') ?>" class="button" onclick="popWin('<?php echo $_helper->getListUrl() ?>','compare','top:0,left:0,width=820,height=600,resizable=yes,scrollbars=yes')"><span><span><?php echo $this->__('Compare') ?> <?php echo $this->__('(%d)', $_helper->getItemCount()) ?></span></span></button>
+        <div class="loading no-display">Removing...</div>
+        <div class="error error-lite no-display">Error...</div>
+    </div>
+    <?php foreach($_items as $_index => $_item): ?>
+        <?php $_productName = $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name'); ?>
+        <span class="compare-item">
+            <a href="<?php echo $this->getProductUrl($_item) ?>" title="<?php echo $this->__('View %s', htmlspecialchars($_productName)) ?>"
+               class="compare-product-name button button-secondary secondary-action"><span><?php echo $this->helper('cls_productcompare')->truncateProductName($_productName) ?></span></a>
+            <a href="<?php echo $_helper->getRemoveUrl($_item) ?>" title="<?php echo $this->__('Remove This Item') ?>" class="compare-remove" rel="<?php echo $_item->getId() ?>">
+                <span class="btn-remove">
+                    <?php echo $this->__('Remove This Item') ?>
+                </span>
+            </a>
+        </span>
+    <?php endforeach; ?>
+<?php endif; ?>
+<script type="text/javascript">
+    var clsProductCompareAddBaseUrl = "<?php echo $this->getUrl('catalog/product_compare/ajaxadd/') ?>product/";
+    var clsProductCompareRemoveBaseUrl = "<?php echo $this->getUrl('catalog/product_compare/ajaxremove/') ?>product/";
+</script>

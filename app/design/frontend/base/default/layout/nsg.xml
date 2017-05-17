@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+
+/**
+ * Frontend layout configuration.
+ * 
+ * PHP Version 5
+ * 
+ * @category  Configuration
+ * @package   Symantec_NortonShoppingGuarantee
+ * @author    Symantec Corporation
+ * @copyright 2016 Symantec Corporation, All Rights Reserved.
+ */
+
+-->
+<layout>
+
+    <default>
+        <reference name="before_body_end">
+            <block type="nsg/seals" name="nsg.seal.corner" template="nsg/cornerseal.phtml" />
+            <block type="nsg/seals" name="nsg.seal.guarantee" template="nsg/guarantee.phtml" />
+        </reference>
+    </default>
+    
+</layout>

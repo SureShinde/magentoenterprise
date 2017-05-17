@@ -1,0 +1,37 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+$_urlHelper = Mage::helper('cls_nucleuscore/url');
+?>
+<div class="cls-nucleus-systeminfo">
+    <h4><?php echo $this->__('User Guides') ?></h4>
+    <ul>
+        <ul>
+            <li><a href="<?php echo $_urlHelper->getMagentoGuideUrl() ?>" target="_blank"><?php echo $this->__('Magento User Guide') ?></a></li>
+            <li><a href="<?php echo $_urlHelper->getNucleusGuideUrl() ?>" target="_blank"><?php echo $this->__('Nucleus User Guide') ?></a></li>
+        </ul>
+    </ul>
+    <?php echo $this->getChildHtml() ?>
+</div>

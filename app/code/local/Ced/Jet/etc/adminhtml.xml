@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<!--
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+ -->
+<config>
+     <menu>
+		<jet translate="title" module="jet">
+			<title>Jet</title>
+			<sort_order>80</sort_order>
+			<depends><config>jet_options/ced_jet/active</config></depends>
+			<children>
+				<categorylist translate="title" module="jet">
+					<title>Jet Category List</title>
+					<sort_order>3</sort_order>
+					<action>adminhtml/adminhtml_jetattrlist/categorylist</action>
+				</categorylist>
+			</children>
+			<children>
+				<createattribute translate="title" module="jet">
+					<title>Manage Jet Attribute</title>
+					<sort_order>3</sort_order>
+					<action>adminhtml/adminhtml_jetattrlist/jetattribute</action>
+				</createattribute>
+			</children>
+			<children>
+				<manageproduct translate="title" module="jet">
+					<title>Manage Product</title>
+					<sort_order>4</sort_order>
+					<children>
+						<uploadproduct translate="title" module="jet">
+							<title>Upload Product</title>
+							<sort_order>4</sort_order>
+							<action>adminhtml/adminhtml_jetrequest/uploadproduct</action>
+						</uploadproduct>
+					</children>
+					<children>
+						<rejectedfiles translate="title" module="jet">
+							<title>Rejected Files</title>
+							<sort_order>6</sort_order>
+							<action>adminhtml/adminhtml_jetproduct/rejected</action>
+						</rejectedfiles>
+					</children>
+				</manageproduct>
+			</children>
+			<children>
+				<jetorders translate="title" module="jet">
+					<title>Jet Orders</title>
+					<sort_order>5</sort_order>
+					<children>
+						<jetorder translate="title" module="jet">
+							<title>View Jet Orders</title>
+							<sort_order>1</sort_order>
+							<action>adminhtml/adminhtml_jetorder/jetorder</action>
+						</jetorder>
+						<failedorders translate="title" module="jet">
+							<title>View Failed Import Jet Orders Log</title>
+							<sort_order>2</sort_order>
+							<action>adminhtml/adminhtml_jetorder/failedorders</action>
+						</failedorders>
+						<return translate="title" module="jet">
+							<title>Return</title>
+							<sort_order>3</sort_order>
+							<action>adminhtml/adminhtml_jetorder/return</action>
+						</return>
+						<refund translate="title" module="jet">
+							<title>Refund</title>
+							<sort_order>4</sort_order>
+							<action>adminhtml/adminhtml_jetrefundsettlement/refund</action>
+						</refund>
+						<auto translate="title" module="jet">
+							<depends><config>jet_options/ced_jet/auto</config></depends>
+							<title>Automated Shipment Error Panel</title>
+							<sort_order>5</sort_order>
+							<action>adminhtml/adminhtml_jetorder/autoship</action>
+						</auto>
+					</children>
+				</jetorders>
+			</children>
+			<children>
+				<configuration translate="title" module="jet">
+					<title>Configuration</title>
+					<sort_order>12</sort_order>
+					<action>adminhtml/system_config/edit/section/jet_options</action>
+				</configuration>
+			</children>
+			<children>
+				<jetknowledgebase translate="title" module="jet">
+					<title>Jet Knowledge base</title>
+					<sort_order>13</sort_order>
+					<action>adminhtml/adminhtml_jetrequest/help</action>
+				</jetknowledgebase>
+			</children>
+		</jet>
+    </menu>
+	 <acl>
+        <resources>
+			<all>
+				<title>Allow Everything</title>
+			</all> 
+            <admin>
+				<children>
+					<system>
+						<children>
+							<config>
+								<children>
+								  <cedcore>
+									<title>CedCommerce Extensions</title> 
+								  </cedcore>
+								 <jet_options>
+	                                <title>Jet Configuration</title>
+	                             </jet_options>
+								</children>
+							</config>
+						</children>
+					</system>
+					<jet translate="title" module="jet">
+						<title>Jet</title>
+						<sort_order>110</sort_order>
+						<depends><config>jet_options/ced_jet/active</config></depends>
+						<children>
+							<categorylist translate="title" module="jet">
+								<title>Jet Category Listing</title>
+								<sort_order>3</sort_order>
+								<action>adminhtml/adminhtml_jetattrlist/categorylist</action>
+							</categorylist>
+						</children>
+						<children>
+							<createattribute translate="title" module="jet">
+								<title>Manage Jet Attribute</title>
+								<sort_order>3</sort_order>
+								<action>adminhtml/adminhtml_jetattr/jetattribute</action>
+							</createattribute>
+						</children>
+						<children>
+							<manageproduct translate="title" module="jet">
+								<title>Manage Product</title>
+								<sort_order>4</sort_order>
+								<children>
+									<uploadproduct translate="title" module="jet">
+										<title>Upload Product</title>
+										<sort_order>4</sort_order>
+										<action>adminhtml/adminhtml_jetrequest/uploadproduct</action>
+									</uploadproduct>
+								</children>
+								<children>
+									<rejectedfiles translate="title" module="jet">
+										<title>Rejected Files</title>
+										<sort_order>6</sort_order>
+										<action>adminhtml/adminhtml_jetproduct/rejected</action>
+									</rejectedfiles>
+								</children>
+							</manageproduct>
+						</children>
+						<children>
+							<jetorders translate="title" module="jet">
+								<title>Jet Orders</title>
+								<sort_order>5</sort_order>
+								<children>
+									<jetorder translate="title" module="jet">
+										<title>View Jet Orders</title>
+										<sort_order>1</sort_order>
+										<action>adminhtml/adminhtml_jetorder/jetorder</action>
+									</jetorder>
+									<failedorders translate="title" module="jet">
+										<title>Import Jet Orders</title>
+										<sort_order>2</sort_order>
+										<action>adminhtml/adminhtml_jetorder/failedorders</action>
+									</failedorders>
+									<return translate="title" module="jet">
+										<title>Return</title>
+										<sort_order>3</sort_order>
+										<action>adminhtml/adminhtml_jetorder/return</action>
+									</return>
+									<refund translate="title" module="jet">
+										<title>Refund</title>
+										<sort_order>4</sort_order>
+										<action>adminhtml/adminhtml_jetrefundsettlement/refund</action>
+									</refund>
+								</children>
+							</jetorders>
+						</children>
+						<children>
+							<configuration translate="title" module="jet">
+								<title>Configuration</title>
+								<sort_order>12</sort_order>
+								<action>adminhtml/system_config/edit/section/jet_options</action>
+							</configuration>
+						</children>
+						<children>
+							<jetknowledgebase translate="title" module="jet">
+								<title>Jet Knowledge base</title>
+								<sort_order>13</sort_order>
+								<action>adminhtml/adminhtml_jetrequest/help</action>
+							</jetknowledgebase>
+						</children>
+					</jet>
+				</children>
+		    </admin>
+        </resources>
+    </acl>
+</config>
+

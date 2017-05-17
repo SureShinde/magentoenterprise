@@ -1,0 +1,220 @@
+<?php
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+?>
+
+<?php 
+
+$getSession =Mage::getSingleton('core/session')->getGlobalnotice();
+if($getSession!='read')
+{ 
+	$resource = Mage::getSingleton('core/resource');
+	$readConnection = $resource->getConnection('core_read');
+?>
+<!-- Show Return Notifications -->
+<?php
+	 $tableName = $resource->getTableName('jet/jetreturn');	
+	 $query = 'SELECT count(*) as `totalcount` FROM '. $tableName  .' where status ="created"'; 
+	 $retun_count = $readConnection->fetchCol($query);
+	 
+ ?>
+<?php if(count($retun_count)>0 && $retun_count[0]!='' && ($retun_count[0] > 0)){?>
+	<div class="notification-global">
+		<strong class="label">Latest Message:</strong> You have <?php echo $retun_count[0]; ?>  New  <a href="<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetorder/return'); ?>">Returns</a> from  <a target="_blank" href="http://jet.com/"><b>Jet.com</b></a>. Kindly Acknwoledge.
+		<a class="jet_global_message_read" onclick ="callController()" style="display: block" title="<?php echo $this->__('Mark as a read') ?>"style="font-family: wingdings; font-size: 200%;">&#10004;</a>
+		<a href="javascript:void(1)" class="jet_global_messages_close" style="display: block" title="<?php echo $this->__('Hide messages') ?>">&times;</a>
+
+	</div>
+<?php }?>
+
+<!-- Show Refund Notifications -->
+
+<?php $tableName = $resource->getTableName('jet/jetrefund');	
+	 $query = 'SELECT count(*) as `totalcount` FROM '. $tableName .' where refund_status ="rejected"'; 
+	 $refund_count = $readConnection->fetchCol($query);
+?>
+<?php if(count($refund_count)>0 && $refund_count[0]!='' && ($refund_count[0] > 0)){?>
+	<div class="notification-global">
+		<strong class="label">Latest Message:</strong> Your  <?php echo $refund_count[0]; ?>  refunds <a href="<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetrefundsettlement/refund'); ?>">Rejected</a> from  <a target="_blank" href="http://jet.com/"><b>Jet.com</b></a>. Kindly review.
+		<a class="jet_global_message_read" onclick ="callController()" style="display: block" title="<?php echo $this->__('Mark as a read') ?>"style="font-family: wingdings; font-size: 200%;">&#10004;</a>
+
+		<a href="javascript:void(1)" class="jet_global_messages_close" style="display: block" title="<?php echo $this->__('Hide messages') ?>">&times;</a>
+
+	</div>
+<?php } ?>
+
+<!-- Show jet file error Notifications -->
+
+<?php $tableName = $resource->getTableName('jet/errorfile');	
+	 $query = 'SELECT count(*) as `totalcount` FROM '. $tableName; 
+	 $error_count = $readConnection->fetchCol($query);
+?>
+<?php if(count($error_count)>0 && $error_count[0]!='' && ($error_count[0] > 0)){?>
+	<div class="notification-global">
+		<strong class="label">Latest Message:</strong> Yours  <?php echo $error_count[0]; ?> Products upload batch file failed & rejected by <a target="_blank" href="http://jet.com/"><b>Jet.com</b></a>. Kindly review the error & resubmit  Product batch file  from  <a href="<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetproduct/rejected'); ?>">Rejected Jet Files Manager</a>.
+		<a class="jet_global_message_read" onclick ="callController()" style="display: block" title="<?php echo $this->__('Mark as a read') ?>"style="font-family: wingdings; font-size: 200%;">&#10004;</a>
+
+		<a href="javascript:void(1)" class="jet_global_messages_close" style="display: block" title="<?php echo $this->__('Hide messages') ?>">&times;</a>
+	</div>
+	
+<?php } ?>
+
+<!-- Show jet orders Notifications -->
+
+<?php $tableName = $resource->getTableName('jet/jetorder');	
+	  $tableimport_order = $resource->getTableName('jet/orderimport'); // import failed order table	 	
+	 
+	 $query = 'SELECT count(*) as `countdata` FROM '. $tableName .' where status = "acknowledged"';
+	 $Order_ack_array = $readConnection->fetchCol($query);
+	 
+	 $query_ready = 'SELECT count(*) FROM '. $tableName .' where status = "ready"';	
+	 $Order_ready_array = $readConnection->fetchCol($query_ready);
+	 
+	 
+	 // fetch count for failed orders
+	 $query_2 = 'SELECT count(*) as `counterror` FROM '.$tableimport_order;
+	 $Order_error = $readConnection->fetchCol($query_2);
+	 
+?>
+<!-- Show jet acknowledge orders Notifications -->
+<?php if(count($Order_ack_array)>0 && $Order_ack_array[0]!='' && $Order_ack_array[0]>0 ){?>
+	<div class="notification-global">
+		<strong class="label">Latest Message:</strong>   <b><?php echo $Order_ack_array[0]; ?></b> new order imported from  <a target="_blank" href="http://jet.com/"><b>Jet.com</b></a> & <b>Auto Acknowledged</b>  into your site. Kindly ship them.<a href="<?php echo  Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetorder/jetorder'); ?>">View</a> 
+		<a class="jet_global_message_read" onclick ="callController()" style="display: block" title="<?php echo $this->__('Mark as a read') ?>"style="font-family: wingdings; font-size: 200%;">&#10004;</a>
+
+		<a href="javascript:void(1)" class="jet_global_messages_close" style="display: block" title="<?php echo $this->__('Hide messages') ?>">&times;</a>
+	</div>
+<?php } ?>
+
+
+<!-- Show jet ready orders Notifications -->
+<?php if(count($Order_ready_array)>0 && $Order_ready_array[0]!='' && $Order_ready_array[0]>0 ){?>
+	<div class="notification-global">
+		<strong class="label">Latest Message:</strong>   <b><?php echo $Order_ready_array[0]; ?></b> order imported from  <a target="_blank" href="http://jet.com/"><b>Jet.com</b></a> & still in <b>Ready</b> state kindly Acknowledge them or reject them according to your inventory.<a href="<?php echo  Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetorder/jetorder'); ?>">View</a>
+		<a class="jet_global_message_read" onclick ="callController()" style="display: block" title="<?php echo $this->__('Mark as a read') ?>"style="font-family: wingdings; font-size: 200%;">&#10004;</a>
+
+		<a href="javascript:void(1)" class="jet_global_messages_close" style="display: block" title="<?php echo $this->__('Hide messages') ?>">&times;</a>
+	</div>
+<?php } ?>
+
+
+<!-- Show jet orders import failed Notifications -->
+<?php if(count($Order_error)>0 && $Order_error[0]!='' && ($Order_error[0] > 0)){?>
+	<div class="notification-global">
+			<strong class="label">Latest Message:</strong>   <b><?php echo $Order_error[0]; ?></b> Order failed to imported from  <a target="_blank" href="http://jet.com/"><b>Jet.com</b></a> Kindly <a href="<?php echo  Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetorder/failedorders'); ?>">Review</a>  the error.
+			<a class="jet_global_message_read" onclick ="callController()" style="display: block" title="<?php echo $this->__('Mark as a read') ?>"style="font-family: wingdings; font-size: 200%;">&#10004;</a>
+
+			<a href="javascript:void(1)" class="jet_global_messages_close" style="display: block" title="<?php echo $this->__('Hide messages') ?>">&times;</a>
+		</div>
+<?php } ?> 
+<!-- Show Shipstation Notifications -->
+
+<?php 
+$tableName = $resource->getTableName('jet/autoship');	
+	 $query = 'SELECT count(*) as `totalcount` FROM '. $tableName .' where jet_shipment_status ="unshipped"'; 
+	 $unshipped_count = $readConnection->fetchCol($query);
+?>
+<?php if(count($unshipped_count)>0 && $unshipped_count[0]!='' && ($unshipped_count[0] > 0)){?>
+	 <div class="notification-global">
+		<strong class="label">Latest Message:</strong> You have <?php echo $unshipped_count[0]; ?>  failed unshipped <a target="_blank" href="http://jet.com/"><b>Jet.com</b></a> order , kindly shipped them.<a href="<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetorder/autoship'); ?>"> Review here.
+		<a class="jet_global_message_read" onclick ="callController()" style="display: block" title="<?php echo $this->__('Mark as a read') ?>"style="font-family: wingdings; font-size: 200%;">&#10004;</a>
+
+		<a href="javascript:void(1)" class="jet_global_messages_close" style="display: block" title="<?php echo $this->__('Hide messages') ?>">&times;</a>
+
+	</div> 
+<?php } ?>
+<?php }?>
+
+
+<script>
+$$('.jet_global_messages_close').each(function(element) {
+    element.observe('click', respond);
+})
+function respond(event) {
+   this.parentNode.style.display = 'none';
+}
+</script>
+<script>
+var url = "<?php echo Mage::helper('adminhtml')->getUrl('adminhtml/adminhtml_jetfetchattrval/notice') ?>";
+
+ function callController(){
+ 	new Ajax.Request(url, {
+               method: 'post',
+              parameters: { form_key: FORM_KEY},
+               onComplete: function(transport) {
+               		
+               		var elem1 = document.getElementsByClassName('loader');
+               		 for (var i = 0; i < elem1.length; i++)
+               		 {
+        				elem1[i].style.display = 'none';
+    					}
+               		var elem2 = document.getElementsByClassName('notification-global');
+               		 for (var i = 0; i < elem2.length; i++)
+               		 {
+        				elem2[i].style.display = 'none';
+    					}
+               }
+           });
+
+}
+</script>
+	<style>
+	.jet_global_messages {
+	position: relative;
+	z-index: 9999;
+}
+.jet_global_messages_close {
+	position: absolute;
+	top: 5px;
+	right: 13px;
+	z-index: 10000;
+	display: block;
+	width: 15px;
+	height: 15px;
+	background: #666;
+	text-align: center;
+	color: #fff;
+	font-size: 15px;
+	line-height: 15px;
+	text-decoration: none;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.jet_global_message_read{
+	text-decoration: none;
+	position: absolute;
+	bottom: 6px;
+	cursor: pointer;
+	font-size: 15px;
+	right: 35px;
+	width: 15px;
+	height: 15px;
+	color: #01DF01;
+}
+	</style>
+
+	
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <!-- Remove sample theme stuff -->
+            <action method="removeItem"><type>skin_js</type><name>js/lib/jquery.cycle2.min.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/lib/jquery.cycle2.swipe.min.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/slideshow.js</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/madisonisland.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/madisonisland-ie8.css</name></action>
+            <action method="removeItem"><type>link_rel</type><name>//fonts.googleapis.com/css?family=Raleway:300,400,500,700,600</name></action>
+
+            <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Ubuntu:300</href></action>
+            <action method="addLinkRel"><rel>stylesheet</rel><href>//fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic</href></action>
+
+            <!-- Add Nucleus JS -->
+            <action method="addItem"><type>skin_js</type><name>js/cls/nucleus/app-nucleus.js</name></action>
+        </reference>
+
+        <reference name="left">
+            <remove name="tags_popular" />
+        </reference>
+
+        <reference name="right">
+            <remove name="right.poll" />
+        </reference>
+
+        <!-- Remove redundant "cart" + "checkout" links -->
+        <remove name="checkout_cart_link" />
+    </default>
+
+    <catalog_product_view>
+        <reference name="right">
+            <remove name="paypal.partner.right.logo" />
+        </reference>
+        <reference name="product.info">
+            <!-- Add AheadWorks Product Questions block to this parent -->
+            <action method="insert"><block>aw_pq2_question_list</block><sibling /><after>1</after><alias>aw_pq2_question_list</alias></action>
+        </reference>
+        <reference name="product.info.additional">
+            <remove name="product_tag_list" />
+            <!-- Remove AheadWorks Product Questions block from this area -->
+            <action method="unsetChild"><alias>aw_pq2_question_list</alias></action>
+        </reference>
+        <!-- Move AheadWorks Product Questions block to tab -->
+        <reference name="aw_pq2_question_list">
+            <action method="addToParentGroup"><group>detailed_info</group></action>
+            <action method="setTitle" translate="value"><value>Product Questions</value></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="cls_nucleuscore/review_helper_productjs" name="review_js_helper" template="cls/nucleus/review/helper/js-helper.phtml" />
+        </reference>
+        <reference name="footer_js">
+            <!-- Scrolling to reviews tab relies on AW Advanced Reviews -->
+            <action method="addItem"><type>skin_js</type><script>js/cls/nucleus/nucleus_product_view.js</script></action>
+        </reference>
+    </catalog_product_view>
+
+    <nucleus_catalog_category>
+        <reference name="product_list">
+            <action method="setColumnCount"><count>4</count></action>
+        </reference>
+        <reference name="right">
+            <remove name="paypal.partner.right.logo" />
+        </reference>
+    </nucleus_catalog_category>
+
+    <catalog_category_default>
+        <update handle="nucleus_catalog_category" />
+    </catalog_category_default>
+
+    <catalog_category_layered>
+        <update handle="nucleus_catalog_category" />
+    </catalog_category_layered>
+
+    <cms_index_index>
+        <reference name="right">
+            <remove name="paypal.partner.right.logo" />
+        </reference>
+    </cms_index_index>
+
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="removeLinkByName"><name>tags</name></action>
+        </reference>
+    </customer_account>
+
+    <customer_account_index>
+        <!-- This block is the recently added tags block -->
+        <remove name="customer_account_dashboard_info2" />
+    </customer_account_index>
+
+    <checkout_onepage_success>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="checkout.success">
+            <block type="cls_nucleuscore/checkout_success_leadtimenotice" name="checkout_success.lead_time_notice" />
+            <block type="cls_nucleuscore/checkout_success_policy" name="checkout_success.policy" />
+            <block type="cls_nucleuscore/checkout_success_crosssell" name="checkout.cart.crosssell" as="crosssell" template="checkout/cart/crosssell.phtml" />
+        </reference>
+        <reference name="right">
+            <action method="unsetChildren" />
+            <remove name="sale.reorder.sidebar" />
+        </reference>
+    </checkout_onepage_success>
+</layout>

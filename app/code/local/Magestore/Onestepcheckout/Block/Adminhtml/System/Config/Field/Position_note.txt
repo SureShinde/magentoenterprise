@@ -1,0 +1,4 @@
+- To add new field "Address Type" to the onstep checkout page:
++ Go [Admin] >> [System Configuration] >> [MAGESTORE EXTENSION] >> [One Step Checkout] >> [Field Position Management]
++ Select [Address Type] in the position which you want
++ [Save]

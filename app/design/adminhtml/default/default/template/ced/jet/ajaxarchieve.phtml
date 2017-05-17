@@ -1,0 +1,169 @@
+<?php
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+?>
+
+<?php
+$helper = Mage::helper('jet');
+$archeive_url=$this->getUrl('*/adminhtml_jetrequest/uploadproduct');
+//Mage::helper("adminhtml")->getUrl("acompany_mymodule/index/index");
+//$ipmort_url = Mage::getUrl('adminhtml/adminhtml_jetrequest/uploadproduct',array('key'=>Mage::getSingleton('adminhtml/url')->getSecretKey()));
+$total = $this->totalcount();
+$succes_img = $this->getSkinUrl('images/ced/jet/fam_bullet_success.gif');
+$error_img = $this->getSkinUrl('images/ced/jet/error_msg_icon.gif');
+$loader_img = $this->getSkinUrl('images/ced/jet/rule-ajax-loader.gif');
+?>
+<style type="text/css" >
+    .shopify-api ul { list-style-type:none; padding:0; margin:0; }
+    .shopify-api ul li { margin-left:0; border:1px solid #ccc; margin:2px; padding:2px 2px 2px 2px; font:normal 12px sans-serif; }
+    .shopify-api img { margin-right:5px; }
+</style>
+<div class="row">
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+</div>
+
+<div class="row">
+    <div class="col-md-12" style="margin-top: 10px;">
+        <div class="panel panel-default">
+            <div class="content-header panel-heading col-md-12 uptransform">
+                <div class="col-md-6" style="font-size:17px;line-height:31px; margin-top:0px; float: left;">
+                    <?php echo $helper->__('Archieving Status'); ?>
+                </div>
+                <div class="col-md-6 buttons_scb" style="text-align:right; float: right;">
+                    <button onclick="setLocation('<?php echo $archeive_url; ?>')" class="btn btn-info uptransform" type="button" title="<?php echo $helper->__('Back'); ?>">
+                        <span><?php echo $helper->__('Back'); ?></span>
+                    </button>
+                </div>
+                <div style="clear:both"></div>
+            </div>
+            <div class="block-content panel-body shopify-api">
+                <ul>
+                    <li style="background-color:#Fff;">
+                        <img src="<?php echo $this->getSkinUrl('images/ced/jet/note_msg_icon.gif')?>" class="v-middle" style="margin-right:5px"/>
+                        <?php echo $this->__("Products are archieved now , please wait...");?>
+                    </li>
+                    <li style="background-color:#FFD;">
+                        <img src="<?php echo $this->getSkinUrl('images/ced/jet/fam_bullet_error.gif');?>" class="v-middle" style="margin-right:5px"/>
+                        <?php echo $this->__("Warning: Please do not close the window while data is archieved");?>
+                    </li>
+                </ul>
+
+                <ul id="profileRows">
+                    <li style="background-color:#DDF; ">
+                        <img class="v-middle" src="<?php echo $succes_img ?>">
+                        <?php echo 'Total '.$total.' Batch(s) Found.'; ?>
+                    </li>
+                    <li style="background-color:#DDF;" id="update_row">
+                        <img class="v-middle" id="status_image" src="<?php echo $loader_img ?>">
+                        <span id="update_status" class="text">Updating...</span>
+                    </li>
+                    <li id="liFinished" style="display:none;background-color:#Fff;">
+                        <img src="<?php echo $this->getSkinUrl('images/ced/jet/note_msg_icon.gif');?>" class="v-middle" style="margin-right:5px"/>
+                        <?php echo $this->__("Finished product Archieve execution.");?>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var totalRecords = parseInt("<?php echo $total; ?>");
+    var countOfSuccess = 0;
+    var id = 0;
+    var my_id = document.getElementById('liFinished');
+    var update_status = document.getElementById('update_status');
+    var update_row = document.getElementById('update_row');
+    var status_image = document.getElementById('status_image');
+    uploaddata();
+
+    function uploaddata(){
+
+        percent = getPercent();
+        update_status.innerHTML = percent+'% '+(id+1)+' Of '+totalRecords+' Processing';
+
+        new Ajax.Request("<?php echo $this->getUrl('*/*/startArchieve');?>"+'index/'+id, {
+            method: "post",
+            onSuccess: function(transport) {
+                var json = transport.responseText.evalJSON();
+                id++;
+                //alert(json.error);
+                //alert(json.success);
+                //var str=transport.responseText;
+                //var res = str.match(/success/i);
+                if(json.success){
+                    countOfSuccess++;
+                    var span = document.createElement('li');
+                    span.innerHTML = '<img class="v-middle" src="<?php echo $succes_img ?>"><span class="text">'+json.success+'</span>';
+                    span.id = 'id-'+id;
+                    span.style = 'background-color:#DDF';
+                    update_row.parentNode.insertBefore(span, update_row);
+                }
+                if(json.error){
+                    var span = document.createElement('li');
+                    span.innerHTML = '<img class="v-middle" src="<?php echo $error_img ?>"><span class="text">'+json.error+'</span>';
+                    span.id = 'id-'+id;
+                    span.style = 'background-color:#FDD';
+                    update_row.parentNode.insertBefore(span, update_row);
+
+
+                }
+
+                if(id < totalRecords){
+                    uploaddata();
+                }else{
+                    status_image.src = '<?php echo $succes_img ?>';
+                    var span = document.createElement('li');
+                    span.innerHTML = '<img class="v-middle" src="<?php echo $succes_img ?>"><span id="update_status" class="text">'+countOfSuccess+' Batch(s) Successfully Uploaded.'+'</span>';
+                    span.style = 'background-color:#DDF';
+                    my_id.parentNode.insertBefore(span, my_id);
+                    //$('liFinished').show();
+                    document.getElementById("liFinished").style.display="block";
+                    update_status.innerHTML = percent+'% '+(id)+' Of '+totalRecords+' Processed.';
+                }
+
+            },
+            onFailure: function(){
+                id++;
+                var span = document.createElement('li');
+                span.innerHTML = '<img class="v-middle" src="<?php echo $error_img ?>"><span class="text">Something Went Wrong </span>';
+                span.id = 'id-'+id;
+                span.style = 'background-color:#FDD';
+                update_row.parentNode.insertBefore(span, update_row);
+
+                if(id < totalRecords){
+                    uploaddata();
+                }else{
+                    status_image.src = '<?php echo $succes_img ?>';
+                    var span = document.createElement('li');
+                    span.innerHTML = '<img class="v-middle" src="<?php echo $succes_img ?>"><span id="update_status" class="text">'+countOfSuccess+' Batch(s) Successfully Archieved.'+'</span>';
+                    span.style = 'background-color:#DDF';
+                    my_id.parentNode.insertBefore(span, my_id);
+                    //$('liFinished').show();
+                    document.getElementById("liFinished").style.display="block";
+                }
+            }
+        });
+
+    }
+
+    function getPercent() {
+
+        return Math.ceil(((id+1)/totalRecords)*1000)/10;
+    }
+
+</script>

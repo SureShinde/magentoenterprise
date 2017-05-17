@@ -1,0 +1,41 @@
+<?php
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+?>
+<?php
+/**
+ * Sub-category list template
+ *
+ * @see CLS_Widgets_Block_Widget_Catalog_Product_Carousel
+ */
+
+// By default is a percentage of item width, but stored here so it can be arbitrarily changed
+$_itemImgSize = $this->getItemImgSize();
+$_index = $this->helper('cls_widgets')->getWidgetIndex();
+$_productCollection = $this->getProductCollection();
+$_mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . "banner/image";
+$_baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_LINK);
+?>
+<div class="feature-box">
+    <?php if ($_title = $this->getDisplayTitle()): ?>
+        <h2><?php echo $this->__($_title) ?></h2>
+    <?php endif; ?>
+    <?php if ($_productCollection && $_productCollection->count() > 0): ?>
+        <ul>
+        <?php foreach ($_productCollection as $_product): ?>
+            <li>
+                <div class="link-feature">
+                    <a href="<?php echo $_baseUrl . $_product['category'] ?>" class="product-image">
+                        <img src="<?php echo $_mediaUrl . $_product['image'] ?>" class="item-image"/>
+                        <h4 class=""><span><?php echo $_product['title'] ?></span></h4>
+                    </a>
+                </div>                
+            </li>
+        <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</div>

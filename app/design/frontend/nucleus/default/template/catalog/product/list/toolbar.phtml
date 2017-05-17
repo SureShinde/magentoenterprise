@@ -1,0 +1,93 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php if($this->getCollection()->getSize()): ?>
+    <div class="toolbar">
+        <div class="pager">
+            <?php if($this->getLastPageNum()>1): ?>
+                <p class="amount amount--has-pages">
+                    <?php echo $this->__('%s-%s of %s', $this->getFirstNum(), $this->getLastNum(), $this->getTotalNum()) ?>
+                </p>
+            <?php else: ?>
+                <p class="amount amount--no-pages">
+                    <strong><?php echo $this->__('%s Item(s)', $this->getTotalNum()) ?></strong>
+                </p>
+            <?php endif; ?>
+
+            <?php echo $this->getPagerHtml() ?>
+        </div>
+        <div class="options-container">
+            <?php if( $this->isExpanded() ): ?>
+                <div class="sorter">
+                    <?php /* Removing view switcher, as it is not a supported feature */ ?>
+
+                    <div class="sort-by">
+                        <label><?php echo $this->__('Sort By') ?></label>
+                        <select onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sort By')) ?>">
+                            <?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+                                <option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+                                    <?php echo $this->__($_order) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <?php if($this->getCurrentDirection() == 'desc'): ?>
+                            <a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" class="sort-by-switcher sort-by-switcher--desc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Ascending Direction')) ?>"><?php echo $this->__('Set Ascending Direction') ?></a>
+                        <?php else: ?>
+                            <a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" class="sort-by-switcher sort-by-switcher--asc" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Set Descending Direction')) ?>"><?php echo $this->__('Set Descending Direction') ?></a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="limiter">
+                <label><?php echo $this->__('Show') ?></label>
+                <ul>
+                    <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                        <li<?php if($this->isLimitCurrent($_key)): ?> class="current"<?php endif; ?>>
+                            <?php if ($this->isLimitCurrent($_key)): ?>
+                                <span><?php echo $_limit ?></span>
+                            <?php else: ?>
+                                <a href="<?php echo $this->getLimitUrl($_key); ?>" title="<?php echo $_limit; ?>"><?php echo $_limit; ?></a>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <select onchange="setLocation(this.value)" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Results per page')); ?>">
+                    <?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+                        <option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+                            <?php echo $_limit ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

@@ -1,0 +1,95 @@
+<?php
+/**
+ * @category   CLS
+ * @package    CustomerAdvanced
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+?>
+<?php
+/**
+ * Create account form template
+ *
+ * @see Mage_Customer_Block_Form_Register
+ */
+?>
+
+<?php if (Mage::helper('cls_customeradvanced/quickaccess')->quickRegisterEnabled()): ?>
+
+<div class="quick-account-create quick-user-access" id="quick_account_create" style="display:none">
+    <div class="inner-wrapper">
+    <h2><?php echo $this->__('Create an Account') ?></h2>
+    <div class="quick-access-alert"></div>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="quick-register-form" enctype="multipart/form-data">
+        <div class="fieldset">
+            <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+            <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+            <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+            <ul class="form-list">
+                <li class="fields">
+                    <?php echo Mage::helper('cls_customeradvanced/quickaccess')->addPrefixToHtmlIds($this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->setForceUseCustomerAttributes(true)->toHtml()) ?>
+                </li>
+                <li>
+                    <label for="quick_email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                    <div class="input-box">
+                        <input type="text" name="email" id="quick_email_address" value="<?php echo $this->escapeHtml($this->getFormData()->getEmail()) ?>" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" class="input-text validate-email required-entry" />
+                    </div>
+                </li>
+                <?php if ($this->isNewsletterEnabled()): ?>
+                    <li class="control">
+                        <div class="input-box">
+                            <input type="checkbox" name="is_subscribed" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign Up for Newsletter')) ?>" value="1" id="quick_is_subscribed"<?php if($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                        </div>
+                        <label for="quick_is_subscribed"><?php echo $this->__('Sign Up for Newsletter') ?></label>
+                        <?php /* Extensions placeholder */ ?>
+                        <?php echo $this->getChildHtml('customer.form.register.newsletter')?>
+                    </li>
+                <?php endif ?>
+                <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+                <?php if ($_dob->isEnabled()): ?>
+                    <li><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></li>
+                <?php endif ?>
+                <?php $_taxvat = $this->getLayout()->createBlock('customer/widget_taxvat') ?>
+                <?php if ($_taxvat->isEnabled()): ?>
+                    <li><?php echo $_taxvat->setTaxvat($this->getFormData()->getTaxvat())->toHtml() ?></li>
+                <?php endif ?>
+                <?php $_gender = $this->getLayout()->createBlock('customer/widget_gender') ?>
+                <?php if ($_gender->isEnabled()): ?>
+                    <li><?php echo $_gender->setGender($this->getFormData()->getGender())->toHtml() ?></li>
+                <?php endif ?>
+                <li class="fields create_pwd_fields">
+                    <div class="field pwd_field">
+                        <label for="quick_password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="password" id="quick_password" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" class="input-text required-entry validate-password" />
+                        </div>
+                    </div>
+                    <div class="field confirm_field">
+                        <label for="quick_confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                        <div class="input-box">
+                            <input type="password" name="confirmation" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Confirm Password')) ?>" id="quick_confirmation" class="input-text required-entry validate-cpassword" />
+                        </div>
+                    </div>
+                </li>
+                <?php echo $this->getChildHtml('register.additional.info'); ?>
+            </ul>
+        </div>
+        <div class="buttons-set form-buttons">
+            <button type="submit" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit')) ?>"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+        </div>
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+    </form>
+    <a href="javascript:void(0)" class="alt-access-link" data-show-section="login"><?php echo $this->__('Already have an account?') ?></a>
+    <script type="text/javascript">
+        //<![CDATA[
+        var quickRegisterForm = new VarienForm('quick-register-form', true);
+
+        Form.getElements('quick-register-form').each(function(element) {
+            element.setAttribute('autocomplete', 'off');
+        });
+        //]]>
+    </script>
+    </div>
+</div>
+
+<?php endif; ?>

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    UniversalAnalyticsEnterprise
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_UniversalAnalyticsEnterprise>
+            <version>1.0.1</version>
+        </CLS_UniversalAnalyticsEnterprise>
+    </modules>
+
+    <global>
+        <blocks>
+            <cls_universalanalytics_ee>
+                <class>CLS_UniversalAnalyticsEnterprise_Block</class>
+            </cls_universalanalytics_ee>
+            <enterprise_googleanalyticsuniversal>
+                <rewrite>
+                    <ga>CLS_UniversalAnalyticsEnterprise_Block_Googleanalyticsuniversal_Ga</ga>
+                </rewrite>
+            </enterprise_googleanalyticsuniversal>
+        </blocks>
+        <helpers>
+            <cls_universalanalytics_ee>
+                <class>CLS_UniveralAnalyticsEnterprise_Helper</class>
+            </cls_universalanalytics_ee>
+        </helpers>
+        <models>
+            <cls_universalanalytics_ee>
+                <class>CLS_UniversalAnalyticsEnterprise_Model</class>
+            </cls_universalanalytics_ee>
+        </models>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <cls_universalanalytics_ee>
+                    <file>cls_universalanalytics_ee.xml</file>
+                </cls_universalanalytics_ee>
+            </updates>
+        </layout>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <cls_universalanalytics_ee>
+                        <class>cls_universalanalytics_ee/observer</class>
+                        <method>setUniversalAnalyticsOnOrderSuccessPageView</method>
+                    </cls_universalanalytics_ee>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <cls_universalanalytics_ee>
+                        <class>cls_universalanalytics_ee/observer</class>
+                        <method>setUniversalAnalyticsOnOrderSuccessPageView</method>
+                    </cls_universalanalytics_ee>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+        </events>
+    </frontend>
+</config>

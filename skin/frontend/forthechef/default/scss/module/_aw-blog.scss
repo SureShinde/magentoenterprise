@@ -1,0 +1,144 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+.block-blog {
+
+    .block-title {
+
+        strong {
+            font-family: $f-stack-crave;
+            font-size: 32px;
+            color: $c-text;
+            text-transform: none;
+        }
+
+    }
+
+    .menu-recent, .menu-categories, .menu-tags {
+        margin: 15px 0;
+        text-transform: uppercase;
+
+        p {
+            font-size: 18px;
+        }
+
+        ul {
+            li {
+                margin: 8px 0;
+            }
+        }
+
+    }
+
+}
+
+.blog-title.first-page {
+    margin-bottom: 15px;
+    border-bottom: 1px solid $c-module-border-light;
+    padding-bottom: 2px;
+
+    img {
+        width: 74px;
+    }
+
+    h1 {
+        display: none;
+    }
+}
+
+.postTitle {
+    border-bottom: none;
+
+    h2 {
+        font-family: $f-stack-crave;
+        font-size: 32px;
+        color: $c-text-primary;
+    }
+}
+
+.postWrapper {
+    border-bottom: solid 1px $c-module-border;
+    margin-bottom: 20px;
+
+    .aw-blog-read-more {
+        margin-left: 5px;
+    }
+
+    + .toolbar {
+        border-top: none;
+    }
+}
+
+.tags {
+
+    h4 {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+}
+
+.postBookmarks {
+    a {
+        display: inline-block;
+        font-size: 11px;
+
+        img {
+            display: inline-block;
+        }
+    }
+}
+
+.postContent {
+
+    ul, ol {
+        margin: 20px 0 20px 20px;
+    }
+
+    ul {
+        list-style: disc;
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+}
+
+.recaptcha_area {
+
+    td {
+        line-height: 0;
+    }
+
+}
+
+.recaptcha_only_if_privacy {
+    position: absolute !important;
+    bottom: -15px;
+}

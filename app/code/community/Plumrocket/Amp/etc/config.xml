@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!--
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ -->
+<config>
+    <modules>
+        <Plumrocket_Amp>
+            <version>1.0.4</version>
+        </Plumrocket_Amp>
+    </modules>
+    <global>
+        <models>
+            <pramp>
+                <class>Plumrocket_Amp_Model</class>
+            </pramp>
+            <core>
+                <rewrite>
+                    <!-- Rewrite models -->
+                    <!-- <url_rewrite_request>Plumrocket_Amp_Model_Url_Rewrite_Request</url_rewrite_request> -->
+                    <url>Plumrocket_Amp_Model_Url</url>
+                </rewrite>
+            </core>
+            <bss_deferjs>
+                <rewrite>
+                    <observer>Plumrocket_Amp_Model_Bss_DeferJS_Observer</observer>
+                </rewrite>
+            </bss_deferjs>
+            <meanbee_footerjs>
+                <rewrite>
+                    <observer>Plumrocket_Amp_Model_Meanbee_Footerjs_Observer</observer>
+                </rewrite>
+            </meanbee_footerjs>
+            <amshopby>
+                <rewrite>
+                    <observer>Plumrocket_Amp_Model_Amasty_Shopby_Observer</observer>
+                </rewrite>
+            </amshopby>
+            <creareseocore>
+                <rewrite>
+                    <observer>Plumrocket_Amp_Model_Creare_CreareSeoCore_Observer</observer>
+                </rewrite>
+            </creareseocore>
+        </models>
+        <helpers>
+            <pramp>
+                <!-- Amp Helper -->
+                <class>Plumrocket_Amp_Helper</class>
+            </pramp>
+        </helpers>
+        <blocks>
+            <pramp>
+                <!-- Amp Blocks -->
+                <class>Plumrocket_Amp_Block</class>
+            </pramp>
+        </blocks>
+        <resources>
+            <pramp_setup>
+                <setup>
+                    <!-- Amp installer -->
+                    <module>Plumrocket_Amp</module>
+                </setup>
+            </pramp_setup>
+        </resources>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <pramp>
+                    <!-- Amp layout updates -->
+                    <file>pramp.xml</file>
+                </pramp>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <!-- Amp translate module -->
+                <Plumrocket_Amp>
+                    <files>
+                        <default>Plumrocket_Amp.csv</default>
+                    </files>
+                </Plumrocket_Amp>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <!-- Rewrite cms_index_index for displaying custom amp home page -->
+            <cms>
+                <args>
+                    <modules>
+                        <Plumrocket_Amp before="Mage_Cms">Plumrocket_Amp</Plumrocket_Amp>
+                    </modules>
+                </args>
+            </cms>
+            <!-- Add router for pramp cart controller -->
+            <pramp>
+                <use>standard</use>
+                <args>
+                    <module>Plumrocket_Amp</module>
+                    <frontName>pramp</frontName>
+                </args>
+            </pramp>
+        </routers>
+        <events>
+            <!-- Amp observers -->
+            <controller_action_layout_load_before>
+                <observers>
+                    <pramp_controller_action_layout_load_before>
+                        <type>singleton</type>
+                        <class>pramp/observer</class>
+                        <method>controllerActionLayoutLoadBefore</method>
+                    </pramp_controller_action_layout_load_before>
+                </observers>
+            </controller_action_layout_load_before>
+            <controller_action_layout_render_before_catalog_category_view>
+                <observers>
+                    <pramp_controller_action_layout_render_before_catalog_category_view>
+                        <type>singleton</type>
+                        <class>pramp/observer</class>
+                        <method>controllerActionLayoutRenderBefore</method>
+                    </pramp_controller_action_layout_render_before_catalog_category_view>
+                </observers>
+            </controller_action_layout_render_before_catalog_category_view>
+            <controller_action_layout_render_before_catalog_product_view>
+                <observers>
+                    <pramp_controller_action_layout_render_before_catalog_product_view>
+                        <type>singleton</type>
+                        <class>pramp/observer</class>
+                        <method>controllerActionLayoutRenderBefore</method>
+                    </pramp_controller_action_layout_render_before_catalog_product_view>
+                </observers>
+            </controller_action_layout_render_before_catalog_product_view>
+            <controller_action_layout_render_before_cms_index_index>
+                <observers>
+                    <pramp_controller_action_layout_render_before_cms_index_index>
+                        <type>singleton</type>
+                        <class>pramp/observer</class>
+                        <method>controllerActionLayoutRenderBefore</method>
+                    </pramp_controller_action_layout_render_before_cms_index_index>
+                </observers>
+            </controller_action_layout_render_before_cms_index_index>
+            <controller_action_layout_render_before_cms_page_view>
+                <observers>
+                    <pramp_controller_action_layout_render_before_cms_page_view>
+                        <type>singleton</type>
+                        <class>pramp/observer</class>
+                        <method>controllerActionLayoutRenderBefore</method>
+                    </pramp_controller_action_layout_render_before_cms_page_view>
+                </observers>
+            </controller_action_layout_render_before_cms_page_view>
+            <http_response_send_before>
+                <observers>
+                    <pramp_http_response_send_before>
+                        <class>pramp/observer</class>
+                        <method>responseSendBefore</method>
+                    </pramp_http_response_send_before>
+                </observers>
+            </http_response_send_before>
+        </events>
+        <layout>
+            <updates>
+                <!-- Amp layout -->
+                <pramp>
+                    <file>pramp.xml</file>
+                </pramp>
+            </updates>
+        </layout>
+    </frontend>
+    <default>
+        <pramp>
+            <general>
+                <pages>catalog_category_view,catalog_product_view,cms_index_index,cms_page_view</pages>
+            </general>
+        </pramp>
+    </default>
+</config>

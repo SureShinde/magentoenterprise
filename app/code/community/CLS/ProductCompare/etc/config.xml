@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    ProductCompare
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_ProductCompare>
+            <version>1.2.3</version>
+        </CLS_ProductCompare>
+    </modules>
+    <global>
+        <models>
+            <cls_productcompare>
+                <class>CLS_ProductCompare_Model</class>
+            </cls_productcompare>
+            <catalog_resource>
+                <rewrite>
+                    <product_compare_item_collection>CLS_ProductCompare_Model_Resource_Catalog_Product_Compare_Item_Collection</product_compare_item_collection>
+                </rewrite>
+            </catalog_resource>
+        </models>
+        <helpers>
+            <cls_productcompare>
+                <class>CLS_ProductCompare_Helper</class>
+            </cls_productcompare>
+        </helpers>
+        <blocks>
+            <cls_productcompare>
+                <class>CLS_ProductCompare_Block</class>
+            </cls_productcompare>
+            <catalog>
+                <rewrite>
+                    <product_compare_list>CLS_ProductCompare_Block_Catalog_Product_Compare_List</product_compare_list>
+                </rewrite>
+            </catalog>
+        </blocks>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <cls_productcompare>
+                    <file>cls_productcompare.xml</file>
+                </cls_productcompare>
+            </updates>
+        </layout>
+        <routers>
+            <catalog>
+                <args>
+                    <modules><cls_productcompare before="Mage_Catalog">CLS_ProductCompare_Catalog</cls_productcompare></modules>
+                </args>
+            </catalog>
+        </routers>
+        <events>
+            <catalog_product_compare_add_product>
+                <observers>
+                    <cls_productcompare>
+                        <class>cls_productcompare/observer</class>
+                        <method>updateCustomCookie</method>
+                    </cls_productcompare>
+                </observers>
+            </catalog_product_compare_add_product>
+            <catalog_product_compare_remove_product>
+                <observers>
+                    <cls_productcompare>
+                        <class>cls_productcompare/observer</class>
+                        <method>updateCustomCookie</method>
+                    </cls_productcompare>
+                </observers>
+            </catalog_product_compare_remove_product>
+        </events>
+    </frontend>
+</config>

@@ -1,0 +1,230 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+/* ============================================ *
+ * Toolbar and Pager
+ * ============================================ */
+
+.toolbar {
+    background: transparent;
+    margin: 0 0 $box-spacing-large;
+    padding: 10px 0 0;
+}
+
+.pages strong,
+.toolbar label,
+.toolbar .label,
+.pager-no-toolbar label,
+.pager-no-toolbar .label {
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.sorter label,
+.limiter .label,
+.pages .label {
+    float: left;
+    margin-right: 5px;
+    line-height: 30px + 2px; // Account for the border around pager elements
+}
+
+.pages .label:after,
+.limiter .label:after {
+    content: ':';
+}
+
+.pager {
+    float: left;
+    margin-right: 10px;
+
+    .amount,
+    .limiter,
+    .pages {
+        margin-bottom: 10px;
+    }
+}
+
+.pages {
+    margin-left: 0;
+
+    ol {
+        vertical-align: top;
+    }
+
+    strong {
+        display: inline-block;
+        float: left;
+    }
+}
+
+.limiter {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+}
+
+.options-container .limiter select {
+    // Important that this remain specific to .options-container!
+    display: none;
+}
+
+.options-container,
+.limiter,
+.limiter ul,
+.limiter ul > li,
+.limiter ul > li > a,
+.pages,
+.pages ol,
+.pages li {
+    display: inline-block;
+}
+
+.limiter ul > li,
+.pages li {
+    margin-right: 3px;
+}
+
+.pages li {
+    float: none;
+}
+
+.limiter ul > li > a,
+.limiter ul > li > span,
+.pages a,
+.pages .current {
+    display: inline-block;
+    border: 0;
+    font-size: $f-size-s;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+    line-height: 34px;
+    min-width: 34px;
+    height: 34px;
+    color: $c-text;
+    background-color: #FFFFFF;
+    border: 2px solid $c-module-border;
+    font-family: $f-stack-sans;
+}
+
+.limiter ul > li > a,
+.pages a, {
+    &:hover {
+        border-color: $c-action;
+        text-decoration: none;
+        background-color: $c-module-border-light;
+    }
+}
+
+.limiter li.current > span,
+.limiter li.current:hover > span,
+.pages .current,
+.pages .current:hover {
+    background-color: $c-module-background;
+    cursor: default;
+}
+
+.options-container {
+    float: right;
+}
+
+.pager-no-toolbar .options-container {
+    float: right;
+}
+
+// Redundant selector to increase specificity
+.pager.pager-no-toolbar {
+    float: none;
+
+    .pages {
+        float: left;
+    }
+
+    .limiter {
+        margin-bottom: 1px;
+    }
+}
+
+@include bp(max-width, $bp-xsmall) {
+    .pages {
+        float: right;
+    }
+
+    .limiter {
+        ul {
+            display: none;
+        }
+
+        select {
+            display: inline-block;
+        }
+    }
+    .pager .amount--has-pages {
+        display: block;
+    }
+}
+
+@include bp(max-width, $bp-small) {
+    .options-container {
+        float: left;
+    }
+}
+
+@include bp(max-width, $bp-medium) {
+    .col1-layout {
+        .options-container,
+        .pager {
+            width: auto;
+        }
+
+        .pager {
+            .pages {
+                float: right;
+            }
+        }
+    }
+}
+
+@include bp(max-width, $bp-large) {
+
+    .col2-left-layout,
+    .col2-right-layout,
+    .col3-layout {
+        .sorter {
+            width: auto;
+        }
+
+        .options-container,
+        .pager {
+            width: auto;
+        }
+
+        .pager {
+            .pages {
+                float: left;
+            }
+        }
+    }
+}

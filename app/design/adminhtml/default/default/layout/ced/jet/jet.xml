@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * CedCommerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ *
+ * @category    Ced
+ * @package     Ced_Jet
+ * @author      CedCommerce Core Team <connect@cedcommerce.com>
+ * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<layout>
+	<default>
+		<reference name="notifications">
+			<block type="adminhtml/notification_window" name="notification.jet.vendor" as="notification_jet_vendor"  template="ced/jet/notification.phtml" />
+		</reference>
+
+	</default>
+	<adminhtml_adminhtml_jetrequest_uploadproduct>
+		<reference name="head">
+			<action method="addItem"><type>js_css</type><name>prototype/windows/themes/default.css</name></action>
+			<action method="addCss"><name>lib/prototype/windows/themes/magento.css</name></action>
+			<action method="addJs"><script>ced/jet/jetProduct.js</script></action>
+		</reference>
+		<reference name="content">
+			<block type="jet/adminhtml_prod" name="jrequest" />
+		</reference>
+	</adminhtml_adminhtml_jetrequest_uploadproduct>
+	<adminhtml_adminhtml_jetrequest_uploadproductgrid>
+
+		<block type="core/text_list" name="root" output="toHtml" >
+			<block type="jet/adminhtml_prod_grid" name="jrequest" />
+		</block>
+	</adminhtml_adminhtml_jetrequest_uploadproductgrid>
+
+	<adminhtml_adminhtml_jetorder_return>
+		<reference name="content">
+			<block type="jet/adminhtml_return" name="return" />
+		</reference>
+	</adminhtml_adminhtml_jetorder_return>
+
+	<adminhtml_adminhtml_jetattrlist_jetattribute>
+		<reference name="content">
+			<block type="jet/adminhtml_jetattribute" name="jetattribute" />
+		</reference>
+	</adminhtml_adminhtml_jetattrlist_jetattribute>
+
+	<adminhtml_adminhtml_jetrefundsettlement_refund>
+		<reference name="content">
+			<block type="jet/adminhtml_refund" name="refund" />
+		</reference>
+	</adminhtml_adminhtml_jetrefundsettlement_refund>
+
+	<adminhtml_catalog_product_attribute_edit>
+		<reference name="attribute_edit_tabs">
+			<action method="addTab">
+				<name>jet_attribute_relation</name>
+				<block>jet/adminhtml_attribute_edit_tab_jetattr</block>
+			</action>
+		</reference>
+	</adminhtml_catalog_product_attribute_edit>
+
+	<adminhtml_adminhtml_jetproduct_rejected>
+		<reference name="content">
+			<block type="jet/adminhtml_rejected" name="jetrejected" />
+		</reference>
+	</adminhtml_adminhtml_jetproduct_rejected>
+
+	<adminhtml_adminhtml_jetproduct_jerrordetails>
+		<reference name="content">
+			<block type="jet/adminhtml_rejected_edit" name="jet_errordetail" />
+			<block type="jet/adminhtml_rejected_product_list" name="error_product_grid" template="ced/jet/rejected/productlist.phtml">
+			</block>
+		</reference>
+	</adminhtml_adminhtml_jetproduct_jerrordetails>
+
+	<adminhtml_adminhtml_jetcategory_index>
+		<reference name="content">
+			<block type="jet/adminhtml_jetcategory" name="jetcategory" />
+		</reference>
+	</adminhtml_adminhtml_jetcategory_index>
+
+	<adminhtml_adminhtml_jetorder_failedorders>
+		<reference name="content">
+			<block type="jet/adminhtml_failedorders" name="failedorders" />
+		</reference>
+	</adminhtml_adminhtml_jetorder_failedorders>
+
+	<adminhtml_adminhtml_jetorder_rejectreason>
+		<reference name="content">
+			<block type="jet/adminhtml_rejectorder_form_edit" name="rejectreason" />
+		</reference>
+	</adminhtml_adminhtml_jetorder_rejectreason>
+
+	<adminhtml_adminhtml_jetorder_jetorder>
+		<reference name="content" >
+			<block type="jet/adminhtml_jetorder" name="jetorder"/>
+		</reference>
+	</adminhtml_adminhtml_jetorder_jetorder>
+
+	<adminhtml_adminhtml_jetajax_massimport>
+		<reference name="content">
+			<block type="jet/adminhtml_ajaximport" name="jet_ajaximport"></block>
+		</reference>
+	</adminhtml_adminhtml_jetajax_massimport>
+
+	<adminhtml_adminhtml_jetajax_massarchived>
+		<reference name="content">
+			<block type="jet/adminhtml_ajaxarchieve" name="jet_ajaxarchieve"></block>
+		</reference>
+	</adminhtml_adminhtml_jetajax_massarchived>
+
+	<adminhtml_adminhtml_jetajax_massunarchived>
+		<reference name="content">
+			<block type="jet/adminhtml_ajaxunarchieve" name="jet_ajaxunarchieve"></block>
+		</reference>
+	</adminhtml_adminhtml_jetajax_massunarchived>
+
+	<adminhtml_adminhtml_jetajax_sync>
+		<reference name="content">
+			<block type="jet/adminhtml_ajaxsync" name="jet_ajaxsync"></block>
+		</reference>
+	</adminhtml_adminhtml_jetajax_sync>
+
+	<adminhtml_adminhtml_jetattrlist_categorylist>
+		<reference name="content">
+			<block type="jet/adminhtml_categorylist" name="categorylist"/>
+		</reference>
+	</adminhtml_adminhtml_jetattrlist_categorylist>
+	<adminhtml_adminhtml_jetattrlist_edit>
+		<reference name="content">
+			<block type="jet/adminhtml_attrlist" name="attrlist"  />
+		</reference>
+	</adminhtml_adminhtml_jetattrlist_edit>
+	<adminhtml_adminhtml_jetrequest_help>
+		<reference name="content">
+			<block type="adminhtml/template" name="jrequest_help" template="ced/jet/help.phtml"/>
+		</reference>
+	</adminhtml_adminhtml_jetrequest_help>
+
+	<adminhtml_adminhtml_jetorder_autoship>
+		<reference name="content">
+			<block type="jet/adminhtml_autoship" name="autoship" />
+		</reference>
+	</adminhtml_adminhtml_jetorder_autoship>
+
+</layout>

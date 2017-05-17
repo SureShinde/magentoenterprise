@@ -1,0 +1,818 @@
+<?xml version="1.0"?>
+<!--
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+ -->
+<config>
+    <tabs>
+        <cedcommerce>
+            <label><![CDATA[<div style="position: absolute; margin-left: -8px;"><img src="http://cedcommerce.com/media/cedcore/cedcommerce-extensions.png" alt="CedCommerce Extensions" border="0" /></div>&nbsp;]]></label>
+            <sort_order>400</sort_order>
+        </cedcommerce>
+    </tabs>
+    <sections>
+        <cedcore translate="label" module="jet">
+            <label><![CDATA[General]]></label>
+            <tab>cedcommerce</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <extensions translate="label">
+                    <label>Installed Extensions By CedCommerce</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>jet/extensions</frontend_model>
+                    <sort_order>2</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                </extensions>
+                <feeds_group>
+                    <label>Notifications</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>90</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <feeds translate="label">
+                            <label>I'd like to be informed by CedCommerce about:</label>
+                            <comment></comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <source_model>jet/source_updates_type</source_model>
+                        </feeds>
+                    </fields>
+                </feeds_group>
+                <extensions_groups>
+                    <label>CedCommerce Extensions Store</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>110</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <extensions translate="label">
+                            <label></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_model>jet/cedcommerce_store</frontend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </extensions>
+                    </fields>
+                </extensions_groups>
+            </groups>
+        </cedcore>
+        <payment>
+            <groups>
+                <payjetcom translate="label" module="payment">
+                    <label>Jet.com</label>
+                    <sort_order>670</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                    </fields>
+                </payjetcom>
+            </groups>
+        </payment>
+        <carriers>
+            <groups>
+                <shipjetcom translate="label" module="shipping">
+                    <label>Jet.com</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                    </fields>
+                </shipjetcom>
+            </groups>
+        </carriers>
+        <jet_options translate="label" module="jet">
+            <label>Jet Configuration</label>
+            <tab>cedcommerce</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <ced_jet translate="label" module="jet">
+                    <label>Jet  Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <active translate="label comment">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                        <jet_apiurl>
+                            <label>Api Url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_apiurl>
+                        <jet_user>
+                            <label>API User</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_user>
+                        <jet_userpwd>
+                            <label>API Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_userpwd>
+                        <jet_fullfillmentnode>
+                            <label>Fulfillment Node Id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_fullfillmentnode>
+                        <jet_storeid>
+                            <label>Select Store</label>
+                            <comment>Select only single store.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>jet/system_config_source_store</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_storeid>
+                        <jet_default_payment>
+                            <label>Choose Default Payment Method for Jet Orders</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>jet/defaultpayment</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_default_payment>
+                        <auto translate="label comment">
+                            <label>Enable Automated Shipment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Automated Shipment is supported for shipstation and shipworks only . </comment>
+                        </auto>
+                    </fields>
+                </ced_jet>
+            </groups>
+            <groups>
+                <ced_jetaddress translate="label" module="jet">
+                    <label>Return Location</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1002</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <jet_address1>
+                            <label>First Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_address1>
+                        <jet_address2>
+                            <label>Second Address</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_address2>
+                        <jet_city>
+                            <label>City</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_city>
+                        <jet_state>
+                            <label>State</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </jet_state>
+                        <jet_zip>
+                            <label>Zip Code</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>give 5 digit zip code</comment>
+                        </jet_zip>
+                    </fields>
+                </ced_jetaddress>
+            </groups>
+            <!--            <groups>
+                            <acknowledge_options translate="label" module="jet">
+                                <label>Order Auto Acknowledge and Reject Settings</label>
+                                <frontend_type>text</frontend_type>
+                                <sort_order>1003</sort_order>
+                                <show_in_default>1</show_in_default>
+                                <show_in_website>1</show_in_website>
+                                <show_in_store>1</show_in_store>
+                                <fields>
+                                    <jet_order_acknowledge translate="label">
+                                        <label>Jet Order Auto Acknowledge</label>
+                                        <frontend_type>select</frontend_type>
+                                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                                        <sort_order>1</sort_order>
+                                        <show_in_default>1</show_in_default>
+                                        <show_in_website>0</show_in_website>
+                                        <show_in_store>0</show_in_store>
+                                        <comment>If "Yes" Jet orders "Acknowledged" automatically when jet order's fetching or import into the site. </comment>
+                                    </jet_order_acknowledge>
+                                    <exist translate="label">
+                                        <label>Autoreject Order When Product doesn't Exist</label>
+                                        <frontend_type>select</frontend_type>
+                                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                                        <sort_order>2</sort_order>
+                                        <show_in_default>1</show_in_default>
+                                        <show_in_website>1</show_in_website>
+                                        <show_in_store>0</show_in_store>
+                                    </exist>
+                                    <outofstock translate="label">
+                                        <label>Autoreject Order When Product is Out of Stock</label>
+                                        <frontend_type>select</frontend_type>
+                                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                                        <sort_order>4</sort_order>
+                                        <show_in_default>1</show_in_default>
+                                        <show_in_website>1</show_in_website>
+                                        <show_in_store>0</show_in_store>
+                                    </outofstock>
+                                    <pdisabled translate="label">
+                                        <label>Autoreject Order When Product is disabled</label>
+                                        <frontend_type>select</frontend_type>
+                                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                                        <sort_order>5</sort_order>
+                                        <show_in_default>1</show_in_default>
+                                        <show_in_website>1</show_in_website>
+                                        <show_in_store>0</show_in_store>
+                                    </pdisabled>
+                                </fields>
+                            </acknowledge_options>
+                        </groups>-->
+            <groups>
+                <ced_jetproductedit translate="label" module="jet">
+                    <label>Product Edit Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1004</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <jet_product_auto_sync>
+                            <label>Auto Sync With Jet</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Auto Update product information on jet While Product Edit.</comment>
+                        </jet_product_auto_sync>
+                        <jet_product_price>
+                            <label>Update Price</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Update price on each product updation.</comment>
+                        </jet_product_price>
+                        <jet_product_inventory>
+                            <label>Update Inventory</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Update inventory on each product updation.</comment>
+                        </jet_product_inventory>
+                        <jet_product_images>
+                            <label>Update Images</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Update images on each product updation.</comment>
+                        </jet_product_images>
+                        <jet_product_details>
+                            <label>Update Other Details</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Update all product details (other than price and inventory) on each product updation.</comment>
+                        </jet_product_details>
+                        <jet_config_product_option>
+                            <label>Archieve Child Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Choose whether child product need to be archieved on jet.com once it's parent config product is disabled or deleted</comment>
+                        </jet_config_product_option>
+                    </fields>
+                </ced_jetproductedit>
+            </groups>
+            <groups>
+                <productinfo_map translate="label" module="jet">
+                    <label>Product Minimum Listing Data Mapping</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1005</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>Enter product attribute codes used for sending information on Jet </comment>
+                    <fields>
+                        <jtitle>
+                            <label>Product Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>5 to 500 characters</comment>
+                        </jtitle>
+                        <jdescription translate="label comment">
+                            <label>Product Description</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>1 to 2000 characters</comment>
+                        </jdescription>
+
+                        <!-- <jprice_setting translate="label comment">
+                             <label>Product Selection</label>
+                             <frontend_type>select</frontend_type>
+                             <source_model>jet/source_pricetype</source_model>
+                             <sort_order>2</sort_order>
+                             <show_in_default>1</show_in_default>
+                             <show_in_website>0</show_in_website>
+                             <show_in_store>0</show_in_store>
+                             <comment><![CDATA[A percentage applicable on default magento price.<br/>&nbsp;]]> </comment>
+                         </jprice_setting>
+
+                         <jprice translate="label comment">
+                             <label>Product Price</label>
+                             <frontend_type>text</frontend_type>
+                             <sort_order>2</sort_order>
+                             <show_in_default>1</show_in_default>
+                             <show_in_website>0</show_in_website>
+                             <show_in_store>0</show_in_store>
+                             <comment><![CDATA[Numeric value Required for <b>Add % on Magento price</b><br/>5 for Example: Magento price + 5% of Magento price.<br/><b>Off % on Magento price</b><br/>5 for Example: 5% off on Magento price.<br/><b>Attribute Required in case of <b>Custom Fixed Price</b>]]></comment>
+                         </jprice> -->
+                        <jet_product_price translate="label comment">
+                            <label>Jet Product Price</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>jet/source_selprice</source_model>
+                              <comment><![CDATA[Select to send different product price to <b>jet.com</b>]]></comment>
+                        </jet_product_price>
+                        <jprice translate="label comment">
+                            <label>Enter Amount</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><jet_product_price>plus_fixed</jet_product_price></depends>
+                        </jprice>
+                        <jpriceper translate="label comment">
+                            <label>Enter Percentage</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><jet_product_price>plus_per</jet_product_price></depends>
+                            <comment><![CDATA[Numeric value Required for <b>Add % on Magento price</b><br/>5 for Example: Magento price + 5% of Magento price.<br/><b>Off % on Magento price</b><br/>5 for Example: 5% off on Magento price.<br/>]]></comment>
+                        </jpriceper>
+                        <jpricedec translate="label comment">
+                            <label>Enter Amount</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><jet_product_price>min_fixed</jet_product_price></depends>
+                        </jpricedec>
+                        <jpriceperdec translate="label comment">
+                            <label>Enter Percentage</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><jet_product_price>min_per</jet_product_price></depends>
+                            <comment><![CDATA[Numeric value Required for <b>Add % on Magento price</b><br/>5 for Example: Magento price + 5% of Magento price.<br/><b>Off % on Magento price</b><br/>5 for Example: 5% off on Magento price.<br/>]]></comment>
+                        </jpriceperdec>
+                        <j_diff_pricep translate="label comment">
+                            <label>Map Attribute</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><jet_product_price>differ</jet_product_price></depends>
+                            <comment><![CDATA[<b>Attribute Code Required in case of <b>Custom Fixed Price</b>]]></comment>
+                        </j_diff_pricep>
+                        <jbrand translate="label comment">
+                            <label>Brand</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Text or &nbsp;</b><br/>]]>1 to 100 characters</comment>
+                        </jbrand>
+                        <jmultipack_quantity translate="label comment">
+                            <label>Multipack Quantity</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric value: 1 to 128 (For Simple &amp; Configural Products default value is 1) &nbsp;</b><br/>]]>Number of items with the given Standard Product Code that makes up your merchant SKU (product offer).</comment>
+                        </jmultipack_quantity>
+                        <jupc translate="label comment">
+                            <label>UPC</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>The type of standard product code - 12 digits </comment>
+                        </jupc>
+                        <jean translate="label comment">
+                            <label>EAN</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>The type of standard product code - 13 digits </comment>
+                        </jean>
+                        <jisbn_13 translate="label comment">
+                            <label>ISBN-13</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>The type of standard product code - 13 digits </comment>
+                        </jisbn_13>
+                        <jisbn_10 translate="label comment">
+                            <label>ISBN-10</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>The type of standard product code - 10 digits </comment>
+                        </jisbn_10>
+                        <jgtin_14 translate="label comment">
+                            <label>GTIN-14</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>The type of standard product code - 14 digits</comment>
+                        </jgtin_14>
+                        <jasin translate="label comment">
+                            <label>ASIN</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type -Text&nbsp;</b><br/>]]>Amazon standard identification number - 14 digits</comment>
+                        </jasin>
+                        <jmanufacturer_part_number translate="label comment">
+                            <label>Manufacturer part number</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Select or Text&nbsp;</b><br/>]]>Part number provided by the original manufacturer of the merchant SKU - 50 characters</comment>
+                        </jmanufacturer_part_number>
+                        <jmanufacture translate="label comment">
+                            <label>Manufacture</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Select or Text&nbsp;</b><br/>]]>Manufacturer of the merchant SKU - 100 characters</comment>
+                        </jmanufacture>
+                        <jbullets translate="label comment">
+                            <label>Bullets</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Text&nbsp;</b><br/>]]>Merchant SKU feature description. Jet currently allows for up to 5 bullets points up to 100 characters</comment>
+                        </jbullets>
+                        <jshipping_weight_pounds translate="label comment">
+                            <label>Shipping Weight Pounds</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Weight of the merchant SKU when in its shippable configuration. Must be >= 0.01</comment>
+                        </jshipping_weight_pounds>
+                        <jmap_price translate="label comment">
+                            <label>Map Price</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Minimum Advertised Price (MAP) for the product. This price is used as the display or reference price when price policy value 102 is used via the map_implementation field. Must be >= 0.01 </comment>
+                        </jmap_price>
+                    </fields>
+                </productinfo_map>
+            </groups>
+            <groups>
+                <productextra_infomap translate="label" module="jet">
+                    <label>Product Additional Fields Data Mapping</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1006</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>Enter product attribute codes used for sending information on Jet.</comment>
+                    <fields>
+
+                        <amazon_item_type_keyword translate="label comment">
+                            <label>Amazon Item Type Keyword</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Text&nbsp;</b><br/>]]>ItemType allows customers to find your products as they browse to the most specific item types.</comment>
+                        </amazon_item_type_keyword>
+                        <number_units_for_ppu translate="label comment">
+                            <label>Number Units For Price Per Unit</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric &nbsp;</b><br/>]]>For Price Per Unit calculations, the number of units included in the merchant SKU. The unit of measure must be specified in order to indicate what is being measured by the unit-count.</comment>
+                        </number_units_for_ppu>
+                        <type_of_unit_for_ppu translate="label comment">
+                            <label>Type of unit for price per unit</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Text&nbsp;</b><br/>]]>The type_of_unit_for_price_per_unit attribute is a label for the number_units_for_price_per_unit. The price per unit can then be constructed by dividing the selling price by the number of units and appending the text "per unit value." For example, for a six-pack of soda, number_units_for_price_per_unit= 6, type_of_unit_for_price_per_unit= can, price per unit = price per can.</comment>
+                        </type_of_unit_for_ppu>
+
+                        <package_length_inches translate="label comment">
+                            <label>Package Length Inches</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Length of the merchant SKU when in its shippable configuration.  Number >= 0.01</comment>
+                        </package_length_inches>
+
+                        <package_width_inches translate="label comment">
+                            <label>Package Width Inches</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Width of the merchant SKU when in its shippable configuration.  Number >= 0.01</comment>
+                        </package_width_inches>
+
+                        <package_height_inches translate="label comment">
+                            <label>Package height inches</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Height of the merchant SKU when in its shippable configuration. Number >= 0.01</comment>
+                        </package_height_inches>
+
+                        <display_length_inches translate="label comment">
+                            <label>Display Length Inches</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Length of the merchant SKU when in its fully assembled/usable condition. Number >= 0.01</comment>
+                        </display_length_inches>
+
+                        <display_width_inches translate="label comment">
+                            <label>Display width Inches</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Width of the merchant SKU when in its fully assembled/usable condition. Number >= 0.01</comment>
+                        </display_width_inches>
+
+                        <display_height_inches translate="label comment">
+                            <label>Display Height Inches</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Height of the merchant SKU when in its fully assembled/usable condition- number >= 0.01</comment>
+                        </display_height_inches>
+                        <legal_disclaimer_description translate="label comment">
+                            <label>Legal Disclaimer Description</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Text&nbsp;</b><br/>]]>Any legal language required to be displayed with the product.</comment>
+                        </legal_disclaimer_description>
+
+                        <safety_warning translate="label comment">
+                            <label>Safety Warning</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Text&nbsp;</b><br/>]]>If applicable, use to supply any associated warnings for your product - 2000 characters</comment>
+                        </safety_warning>
+
+                        <country_of_origin translate="label comment">
+                            <label>Country Of Origin</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Text or Select&nbsp;</b><br/>]]>The country that the item was manufactured in - 50 characters</comment>
+                        </country_of_origin>
+
+                        <msrp translate="label comment">
+                            <label>Manufacturer's Suggested Retail Price</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>The manufacturer's suggested retail price or list price for the product. Value must be >= 0.01</comment>
+                        </msrp>
+
+                        <fullfillment_time translate="label comment">
+                            <label>Fulfillment Time</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]>Number of business days from receipt of an order for the given merchant SKU until it will be shipped (only populate if it is different than your account default).
+                                0 = ships the day the OrderMessage is received
+                                1 = ships one business day after the 'merchant_order' is received
+                                2= ships two business days after the 'merchant_order' is received
+                                N = ships N business days after the 'merchant_order' is received</comment>
+                        </fullfillment_time>
+                        <noreturnfee_adjustment translate="label comment">
+                            <label>No return fee adjustment</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment><![CDATA[<b>Attribute type - Numeric&nbsp;</b><br/>]]></comment>
+                        </noreturnfee_adjustment>
+
+                    </fields>
+                </productextra_infomap>
+            </groups>
+        </jet_options>
+    </sections>
+</config>

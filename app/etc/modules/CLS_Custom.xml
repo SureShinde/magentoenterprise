@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <CLS_Custom>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <AW_Followupemail />
+                <CLS_UniversalAnalyticsEnterprise />
+            </depends>
+        </CLS_Custom>
+    </modules>
+</config>

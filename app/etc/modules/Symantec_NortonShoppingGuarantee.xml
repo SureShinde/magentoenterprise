@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+
+/**
+ * Norton Shopping Guarantee module.
+ * 
+ * PHP Version 5
+ * 
+ * @category  Configuration
+ * @package   Symantec_NortonShoppingGuarantee
+ * @author    Symantec Corporation
+ * @copyright 2016 Symantec Corporation, All Rights Reserved.
+ */
+
+-->
+<config>
+    <modules>
+        <Symantec_NortonShoppingGuarantee>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Symantec_NortonShoppingGuarantee>
+    </modules>
+</config>

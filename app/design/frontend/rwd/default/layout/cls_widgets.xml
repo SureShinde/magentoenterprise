@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/cls/cls_widgets/owl.carousel.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/cls/cls_widgets/owl.transitions.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/cls/cls_widgets.css</stylesheet></action>
+        </reference>
+        <reference name="before_body_end">
+            <!-- These JS blocks won't output their contents if the JS has already been added to head, or if a widget of the "setRegisterCheckType" doesn't exist -->
+            <block type="cls_widgets/page_html_footer_js" name="widget_js" template="cls/widgets/page/html/footer-js.phtml">
+                <action method="setRegisterCheckType"><type>widget</type></action>
+                <action method="addJs"><script>jquery/owl-carousel/owl.carousel.min.js</script></action>
+            </block>
+            <block type="cls_widgets/page_html_footer_js" name="widget_slideshow_js" template="cls/widgets/page/html/footer-js.phtml">
+                <action method="setRegisterCheckType"><type>slideshow</type></action>
+                <!-- Add slideshow-specific JS here -->
+            </block>
+            <block type="cls_widgets/page_html_footer_js" name="widget_carousel_js" template="cls/widgets/page/html/footer-js.phtml">
+                <action method="setRegisterCheckType"><type>product_carousel</type></action>
+                <!-- Add carousel-specific JS here -->
+            </block>
+        </reference>
+    </default>
+</layout>

@@ -1,0 +1,32 @@
+<?php $_posts = $this->getRecent(); ?>
+
+<?php if(count($_posts) > 0) : ?>
+<div class="related-content">
+    <h3><?php echo $this->__('Related Content'); ?></h3>
+    <div id="related-carousel" class="owl-carousel">
+    <?php foreach($_posts as $p) : ?>
+        <div>
+            <?php if($image = $this->getPostImage($p)) : ?>
+                <?php echo $image; ?>
+            <?php endif; ?>
+            <a href="<?php echo $p->getPermalink(); ?>">
+                <?php echo $p->getPostTitle(); ?>
+            </a>
+        <p><?php echo mb_strimwidth($this->stripTags($p->getPostContent()), 0, Mage::helper('cls_custom')->getCharacterLimit(), "..."); ?></p>
+        </div>
+    <?php endforeach; ?>
+    </div>
+
+    <script type="text/javascript">
+        $j(document).ready(function() {
+            $j("#related-carousel").owlCarousel({
+                theme: 'lcp-theme',
+                singleItem: true,
+                navigation: true,
+                navigationText: ['<span class="slide-arrow"></span>', '<span class="slide-arrow"></span>'],
+                pagination: false
+            });
+        });
+    </script>
+</div>
+<?php endif; ?>

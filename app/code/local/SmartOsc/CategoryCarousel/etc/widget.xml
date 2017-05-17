@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<widgets>
+    <smartosc_categorycarousel type="smartosc_categorycarousel/widget_catalog_product_carousel" translate="name description" module="smartosc_categorycarousel">
+        <name>Subcategory showed in Homepage</name>
+        <description>Show four subcategory in Homepage</description>
+        <parameters>
+            <display_title translate="label">
+                <visible>1</visible>
+                <label>Category Display Title</label>
+                <type>text</type>
+            </display_title>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>cls/widgets/catalog/category/carousel/default.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>cls/widgets/catalog/category/carousel/default.phtml</value>
+                        <label>Category Carousel Default Template</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </smartosc_categorycarousel>
+</widgets>

@@ -1,0 +1,57 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Promo Strap
+// ==============================================
+
+.promo-strap {
+    display:block;
+    padding:10px 0;
+    background:$c-module-background;
+    text-align:center;
+}
+
+// ----------------------------------------------
+
+@include bp(min-width, $bp-small+1) {
+
+    .promo-strap {
+        font-size:18px;
+        font-weight:300;
+    }
+
+}
+
+
+
+// ==============================================
+// Variation: Link
+// ==============================================
+
+.promo-strap--link:hover {
+    background:$c-action;
+    color:#FFF;
+    text-decoration:none;
+}

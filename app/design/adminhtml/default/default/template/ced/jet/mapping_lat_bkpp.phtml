@@ -1,0 +1,96 @@
+<?php
+$category_level_0 = Mage::getModel('jet/catlist')->getCollection()->addFieldToFilter('level' , 0);
+$category_level_1 = Mage::getModel('jet/catlist')->getCollection()->addFieldToFilter('level' , 1);
+$category_level_2 = Mage::getModel('jet/catlist')->getCollection()->addFieldToFilter('level' , 2);
+
+$level_0 = array();
+foreach ($category_level_0->getData() as $arr) {
+     $level_0[$arr['csv_cat_id']] = $arr['name'];
+}
+$json_parent_arr = json_encode($level_0);
+
+$level_1 = array();
+foreach ($category_level_1 as $arr) {
+      $level_1[$arr['csv_parent_id']][$arr['csv_cat_id']] = $arr['name'];
+}
+$json_child_arr = json_encode($level_1);
+
+$level_2 = array();
+foreach ($category_level_2 as $arr) {
+      $level_2[$arr['csv_parent_id']][$arr['csv_cat_id']] = $arr['name'];
+}
+$json_subchild_arr = json_encode($level_2);
+
+?>
+
+<div style="" id="category_info_tabs_jet_categorymapping_content">
+  <div class="entry-edit">
+    <div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Jet Category Mapping</h4>
+    <div class="form-buttons"></div>
+</div>
+    <div id="custom_category_tab_form" class="fieldset ">
+      <p>Select Preferred Jet Category to be Mapped </p>
+      <div class="hor-scroll" id="pro">
+        <input type="hidden" name="custom_tab_text" id="custom_tab_text" value="">
+        <!-- <input type="hidden" class=" input-text" value="" name="custom_tab_text" id="custom_tab_text"> -->
+      </div>
+    </div>
+   </div>
+</div>
+
+<script type="text/javascript">
+  var content = new Element('select' , {'class' : 'p_class_map' , 'id' : 'p_id_map' , 'onchange' : 'childCategory("p_id_map","parent")' });
+  content.insert(new Element('option' , {'value' : 'na' } ).update('Please Choose Category ..'));
+  var js_level_0 = <?php echo $json_parent_arr ?>;
+  var js_level_1 = <?php echo $json_child_arr ?>;
+  var js_level_2 = <?php echo $json_subchild_arr ?>;
+
+  for (var key in js_level_0) {
+      content.insert(new Element('option' , {'value' : key } ).update(js_level_0[key]));
+    }
+  document.getElementById('pro').insert(content);
+
+
+  function childCategory(id,check){
+    var e = document.getElementById(id);
+    var strUser = e.options[e.selectedIndex].value;
+    //console.log(strUser);
+    // if(strUser == 'na'){alert('test')}
+
+    if(check == 'parent'){
+        if($('c_id_map') || (strUser == 'na') ){$('c_id_map').remove();if($('sc_id_map')){$('sc_id_map').remove();}}
+        if(strUser != 'na'){
+          var content = new Element('select' , {'class' : 'c_class_map' , 'id' : 'c_id_map' , 'onchange' : 'childCategory("c_id_map","child")' });
+          content.insert(new Element('option' , {'value' : 'na' } ).update('Please Choose Child Category ..'));
+          for (var key in js_level_1) {
+            if(key == strUser){
+                for (var subkey in js_level_1[key]){
+                  content.insert(new Element('option' , {'value' : subkey } ).update(js_level_1[key][subkey]));
+                }
+              }
+            }
+          document.getElementById('pro').insert(content);
+        }
+      }
+
+      if(check == 'child'){
+        if($('sc_id_map') || (strUser == 'na') ){$('sc_id_map').remove();}
+        if(strUser != 'na'){
+          var content = new Element('select' , {'class' : 'sc_class_map' , 'id' : 'sc_id_map' , 'onchange' : 'childCategory("sc_id_map","na")' });
+          content.insert(new Element('option' , {'value' : 'na' } ).update('Please Choose Child Category ..'));
+          var show = false ;
+          for (var key in js_level_2) {
+            if(key == strUser){
+                for (var subkey in js_level_2[key]){
+                  show = true;
+                  content.insert(new Element('option' , {'value' : subkey } ).update(js_level_2[key][subkey]));
+                }
+              }
+            }
+            if(show == true){document.getElementById('pro').insert(content);}
+        }
+      }
+  }
+
+</script>

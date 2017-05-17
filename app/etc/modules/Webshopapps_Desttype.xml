@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Webshopapps_Desttype>
+			<active>true</active>
+			<codePool>community</codePool>
+			<depends>
+				<OnePica_AvaTax />
+			</depends>
+		</Webshopapps_Desttype>
+	</modules>
+</config>

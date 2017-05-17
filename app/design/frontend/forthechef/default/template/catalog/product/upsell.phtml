@@ -1,0 +1,88 @@
+<?php
+$cart = Mage::getModel('checkout/cart')->getQuote();
+$upsell_check = false;
+foreach ($cart->getAllItems() as $item) {
+    $item_products = $item->getProduct()->getUpSellProductCollection();
+    if(count($item_products) > 0)
+    {
+        $upsell_check = true;
+    }
+    $products[] = $item_products;
+    $product_ids[] = $item->getProduct()->getId();
+}
+    if ($upsell_check)
+    {
+        ?>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                $j('.responsive').slick({
+                    infinite: false,
+                    speed: 300,
+                    slidesToShow: 5,
+                    slidesToScroll: 5,
+                    responsive: [
+                        {
+                            breakpoint: 1024,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                                infinite: true,
+                            }
+                        },
+                        {
+                            breakpoint: 600,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        },
+                        {
+                            breakpoint: 480,
+                            settings: {
+                                slidesToShow: 3,
+                                slidesToScroll: 3
+                            }
+                        }
+                        // You can unslick at a given breakpoint now by adding:
+                        // settings: "unslick"
+                        // instead of a settings object
+                    ]
+                });
+            });
+        </script>
+        <div class="block-also-bought box-up-sell" style="border-top: 0px">
+            <h3 style="border-top: 0px; text-align: center">You may also be interested in the following products(s)</h3>
+            <div class="responsive">
+                <?php
+                foreach ($products as $upsell_products) {
+                    foreach ($upsell_products as $u_product) {
+                        $object = Mage::getModel('catalog/product');
+                        $_u_product = $object->load($u_product->getId());
+                        if (!in_array($_u_product->getId(), $product_ids)) {
+                            ?>
+                            <div>
+                                <div class="product-img-outer">
+                                    <a class="product-image" href="<?php echo $_u_product->getProductUrl() ?>"
+                                       title="<?php echo $this->htmlEscape($this->getImageLabel($_u_product, 'small_image')) ?>">
+                                        <img
+                                            src="<?php echo $this->helper('catalog/image')->init($_u_product, 'small_image') ?>"         
+                                            alt="<?php echo $this->htmlEscape($this->getImageLabel($_u_product, 'small_image')) ?>"
+                                            title="<?php echo $this->htmlEscape($this->getImageLabel($_u_product, 'small_image')) ?>"/>
+                                    </a>
+                                </div>
+                                <h4 class="product-name"><a href="<?php echo $_u_product->getProductUrl() ?>"
+                                                            title="<?php echo $this->htmlEscape($_u_product->getName()) ?>"><?php echo $this->htmlEscape($_u_product->getName()) ?></a>
+                                </h4>
+                                <div class="price-box"><span class="price"><?php echo $this->__(Mage::helper('core')->formatCurrency($_u_product->getPrice(), false)); ?></span></div>
+                            </div>
+                            <?php
+                        }
+                    }
+                }
+                ?>
+            </div>
+        </div>
+        <?php
+    }
+?>

@@ -1,0 +1,54 @@
+<?php
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+?>
+<?php
+/**
+ * @see CLS_Widgets_Block_Widget_Cms_Slideshow
+ */
+
+$_index = $this->helper('cls_widgets')->getWidgetIndex();
+?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function (jQ) {
+        jQ('#widget_slideshow_<?php echo $_index ?> .owl-carousel').owlCarousel({
+            theme: 'lcp-theme',
+            singleItem: true,
+            autoPlay: <?php echo ($this->getAutostart()) ? $this->getTimeout() : 'false' ?>,
+            stopOnHover: <?php echo ($this->getHoverPause()) ? 'true' : 'false' ?>,
+            navigation: <?php echo ($this->getIncludePrevNext()) ? 'true' : 'false' ?>,
+            navigationText: <?php echo ($this->getPrevText() && $this->getNextText()) ? "['" . $this->getPrevText() . "', '" . $this->getNextText() . "']" : 'false' ?>,
+            // Slide is the default Owl Carousel style, so pass false if that is selected
+            transitionStyle: <?php echo ($this->getTransitionType() == 'slide') ? 'false' : '"' . $this->getTransitionType() . '"' ?>,
+            pagination: <?php echo ($this->getIncludePager()) ? 'true' : 'false' ?>,
+            paginationNumbers: <?php echo ($this->getNumbersInPager()) ? 'true' : 'false' ?>,
+            // Move controls into slideshow area so that navigation can be centered on content
+            afterInit : function(){
+                var that = this
+
+                <?php // Move entire control element to show over slides ?>
+                <?php if ($this->getPagerOverSlides()): ?>
+                that.owlControls.prependTo(jQ('#widget_slideshow_<?php echo $_index ?> .owl-wrapper-outer'))
+                <?php else: ?>
+                <?php // Move only next/previous to show over slides ?>
+                that.owlControls.find('.owl-buttons').prependTo(jQ('#widget_slideshow_<?php echo $_index ?> .owl-wrapper-outer'))
+                <?php endif; ?>
+            }
+
+        });
+    });
+</script>
+
+<div class="widget widget-slideshow<?php if ($this->getHidePrevNext()): ?> hide-prev-next<?php endif; ?>" id="widget_slideshow_<?php echo $_index ?>">
+    <?php $bannersContent =  $this->getSlidesContent() ?>
+    <div class="owl-carousel">
+        <?php foreach ($bannersContent as $bannerId => $content): ?>
+            <div><?php echo $content?></div>
+        <?php endforeach; ?>
+    </div>
+</div>

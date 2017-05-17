@@ -1,0 +1,64 @@
+diff --git a/htdocs/.htaccess b/htdocs/.htaccess
+index 60e1795..0659301 100644
+--- a/htdocs/.htaccess
++++ b/htdocs/.htaccess
+@@ -1,4 +1,17 @@
+ ############################################
++## Default rewrite rules
++##
++
++    ## Sets an env var on secure page loads for www redirects ##
++    RewriteCond %{HTTPS} on
++    RewriteRule ^(.*)$ - [E=SECURE:s]
++ 
++    ## redirect a naked index.php to hostname ##
++    ## -- THE_REQUEST is used to avoid conflict with the pretty URL rewrites ##
++    RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/|^[A-Z]{3,9}\ /index\.php/\ HTTP/
++    RewriteRule ^(.*)$ http%{ENV:SECURE}://%{HTTP_HOST}/ [R=301,L]
++
++############################################
+ ## uncomment these lines for CGI mode
+ ## make sure to specify the correct cgi php binary file name
+ ## it might be /cgi-bin/php-cgi
+@@ -61,6 +61,11 @@
+ 
+     php_flag zend.ze1_compatibility_mode Off
+ 
++###########################################
++# CLS: bump the pcre setting up
++
++	php_value pcre.backtrack_limit 1000000
++
+ </IfModule>
+ 
+ <IfModule mod_security.c>
+diff --git a/htdocs/app/Mage.php b/htdocs/app/Mage.php
+index d211285..20bdb67 100644
+--- a/htdocs/app/Mage.php
++++ b/htdocs/app/Mage.php
+@@ -690,6 +690,10 @@ final class Mage
+             require_once(self::getBaseDir() . DS . 'errors' . DS . '404.php');
+             die();
+         } catch (Exception $e) {
++            if (self::getIsDeveloperMode()) {
++                throw $e;
++            }
++            
+             if (self::isInstalled() || self::$_isDownloader) {
+                 self::printException($e);
+                 exit();
+diff --git a/htdocs/app/code/core/Mage/Core/Model/App.php b/htdocs/app/code/core/Mage/Core/Model/App.php
+index f27f4ff..26fe537 100644
+--- a/htdocs/app/code/core/Mage/Core/Model/App.php
++++ b/htdocs/app/code/core/Mage/Core/Model/App.php
+@@ -759,7 +759,9 @@ class Mage_Core_Model_App
+      */
+     public function setErrorHandler($handler)
+     {
+-        set_error_handler($handler);
++        if (!Mage::getIsDeveloperMode()) {
++            set_error_handler($handler);
++        }
+         return $this;
+     }
+

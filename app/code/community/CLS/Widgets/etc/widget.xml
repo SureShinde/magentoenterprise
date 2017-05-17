@@ -1,0 +1,421 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<widgets>
+    <cls_content_slideshow type="cls_widgets/widget_cms_slideshow" translate="name description" module="cls_widgets">
+        <name>Content Slideshow</name>
+        <description>Dynamic slideshow of content with animated transitions</description>
+        <parameters>
+            <transition_type translate="label">
+                <visible>1</visible>
+                <label>Transition Animation (for non-IE browsers)</label>
+                <type>select</type>
+                <value>slide</value>
+                <values>
+                    <slide translate="label">
+                        <value>slide</value>
+                        <label>Slide</label>
+                    </slide>
+                    <fade translate="label">
+                        <value>fade</value>
+                        <label>Fade</label>
+                    </fade>
+                    <back_slide translate="label">
+                        <value>backSlide</value>
+                        <label>Back Slide</label>
+                    </back_slide>
+                    <go_down translate="label">
+                        <value>goDown</value>
+                        <label>Slide Down</label>
+                    </go_down>
+                    <fade_up translate="label">
+                        <value>fadeUp</value>
+                        <label>Fade and Zoom</label>
+                    </fade_up>
+                </values>
+            </transition_type>
+            <autostart translate="label">
+                <visible>1</visible>
+                <label>Auto-Start Slideshow</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </autostart>
+            <timeout translate="label">
+                <visible>1</visible>
+                <label>Timeout Between Slides (in milliseconds)</label>
+                <type>text</type>
+                <value>2000</value>
+            </timeout>
+            <include_pager translate="label">
+                <visible>1</visible>
+                <label>Include Pager</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </include_pager>
+            <numbers_in_pager translate="label">
+                <visible>1</visible>
+                <label>Display Numbers in Pagers</label>
+                <type>select</type>
+                <value>0</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </numbers_in_pager>
+            <pager_over_slides translate="label">
+                <visible>1</visible>
+                <label>Display Pager Over Slides</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </pager_over_slides>
+            <include_prev_next translate="label">
+                <visible>1</visible>
+                <label>Include Prev/Next Controls</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </include_prev_next>
+            <hide_prev_next translate="label">
+                <visible>1</visible>
+                <label>Hide Prev/Next Controls when Not Hovering (will always show on touch devices)</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </hide_prev_next>
+            <prev_text translate="label">
+                <visible>1</visible>
+                <label>Custom Prev Link Text</label>
+                <type>text</type>
+            </prev_text>
+            <next_text translate="label">
+                <visible>1</visible>
+                <label>Custom Next Link Text</label>
+                <type>text</type>
+            </next_text>
+            <hover_pause translate="label">
+                <visible>1</visible>
+                <label>Pause on Hover</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </hover_pause>
+            <block_ids translate="label">
+                <visible>1</visible>
+                <label>Specify Static Blocks</label>
+                <type>label</type>
+                <helper_block>
+                    <type>cls_widgets/adminhtml_cms_block_widget_multichooser</type>
+                </helper_block>
+            </block_ids>
+            <template>
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>cls/widgets/cms/slideshow/default.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>cls/widgets/cms/slideshow/default.phtml</value>
+                        <label>Content Slideshow Default Template</label>
+                    </default>
+                </values>
+            </template>
+            <unique_id>
+                <required>1</required>
+            </unique_id>
+        </parameters>
+    </cls_content_slideshow>
+
+    <cls_content_slideshow_ee type="cls_widgets/widget_cms_slideshow_banners" translate="name description" module="cls_widgets" enterprise_only="1">
+        <name>Content Slideshow (Banners)</name>
+        <description>Dynamic slideshow of content with animated transitions</description>
+        <parameters>
+            <display_mode translate="label">
+                <required>1</required>
+                <visible>1</visible>
+                <value>fixed</value>
+                <label>Banners to Display</label>
+                <type>select</type>
+                <values>
+                    <fixed translate="label">
+                        <value>fixed</value>
+                        <label>Specified Banners</label>
+                    </fixed>
+                    <salesrule translate="label">
+                        <value>salesrule</value>
+                        <label>Shopping Cart Promotions Related</label>
+                    </salesrule>
+                    <catalogrule translate="label">
+                        <value>catalogrule</value>
+                        <label>Catalog Promotions Related</label>
+                    </catalogrule>
+                </values>
+            </display_mode>
+            <types translate="label">
+                <visible>1</visible>
+                <label>Restrict by Banner Types</label>
+                <type>multiselect</type>
+                <source_model>enterprise_banner/config</source_model>
+            </types>
+            <transition_type translate="label">
+                <visible>1</visible>
+                <label>Transition Animation (for non-IE browsers)</label>
+                <type>select</type>
+                <value>slide</value>
+                <values>
+                    <slide translate="label">
+                        <value>slide</value>
+                        <label>Slide</label>
+                    </slide>
+                    <fade translate="label">
+                        <value>fade</value>
+                        <label>Fade</label>
+                    </fade>
+                    <back_slide translate="label">
+                        <value>backSlide</value>
+                        <label>Back Slide</label>
+                    </back_slide>
+                    <go_down translate="label">
+                        <value>goDown</value>
+                        <label>Slide Down</label>
+                    </go_down>
+                    <fade_up translate="label">
+                        <value>fadeUp</value>
+                        <label>Fade and Zoom</label>
+                    </fade_up>
+                </values>
+            </transition_type>
+            <autostart translate="label">
+                <visible>1</visible>
+                <label>Auto-Start Slideshow</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </autostart>
+            <timeout translate="label">
+                <visible>1</visible>
+                <label>Timeout Between Slides (in milliseconds)</label>
+                <type>text</type>
+                <value>2000</value>
+            </timeout>
+            <include_pager translate="label">
+                <visible>1</visible>
+                <label>Include Pager</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </include_pager>
+            <numbers_in_pager translate="label">
+                <visible>1</visible>
+                <label>Display Numbers in Pagers</label>
+                <type>select</type>
+                <value>0</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </numbers_in_pager>
+            <pager_over_slides translate="label">
+                <visible>1</visible>
+                <label>Display Pager Over Slides</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </pager_over_slides>
+            <include_prev_next translate="label">
+                <visible>1</visible>
+                <label>Include Prev/Next Controls</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </include_prev_next>
+            <hide_prev_next translate="label">
+                <visible>1</visible>
+                <label>Hide Prev/Next Controls when Not Hovering (will always show on touch devices)</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </hide_prev_next>
+            <prev_text translate="label">
+                <visible>1</visible>
+                <label>Custom Prev Link Text</label>
+                <type>text</type>
+            </prev_text>
+            <next_text translate="label">
+                <visible>1</visible>
+                <label>Custom Next Link Text</label>
+                <type>text</type>
+            </next_text>
+            <hover_pause translate="label">
+                <visible>1</visible>
+                <label>Pause on Hover</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </hover_pause>
+            <banner_ids translate="label">
+                <visible>1</visible>
+                <label>Specify Banners</label>
+                <type>label</type>
+                <helper_block>
+                    <type>enterprise_banner/adminhtml_widget_chooser</type>
+                </helper_block>
+                <depends>
+                    <display_mode>
+                        <value>fixed</value>
+                    </display_mode>
+                </depends>
+            </banner_ids>
+            <template>
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>cls/widgets/cms/slideshow/default.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>cls/widgets/cms/slideshow/default.phtml</value>
+                        <label>Content Slideshow Default Template</label>
+                    </default>
+                </values>
+            </template>
+            <unique_id>
+                <required>1</required>
+            </unique_id>
+        </parameters>
+    </cls_content_slideshow_ee>
+
+    <cls_product_carousel type="cls_widgets/widget_catalog_product_carousel" translate="name description" module="cls_widgets">
+        <name>Catalog Product Carousel</name>
+        <description>Scrolling carousel of products</description>
+        <parameters>
+            <id_path translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Parent Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+            </id_path>
+            <display_title translate="label">
+                <visible>1</visible>
+                <label>Carousel Display Title</label>
+                <type>text</type>
+            </display_title>
+            <sort_order translate="label">
+                <visible>1</visible>
+                <label>Sort Order</label>
+                <type>select</type>
+                <value>position</value>
+                <values>
+                    <position translate="label">
+                        <value>position</value>
+                        <label>Position in category</label>
+                    </position>
+                    <random translate="label">
+                        <value>random</value>
+                        <label>Random</label>
+                    </random>
+                </values>
+            </sort_order>
+            <autostart translate="label">
+                <visible>1</visible>
+                <label>Auto-Start Carousel</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </autostart>
+            <timeout translate="label">
+                <visible>1</visible>
+                <label>Timeout Between Scrolling (in milliseconds)</label>
+                <type>text</type>
+                <value>4000</value>
+            </timeout>
+            <scroll_per_page>
+                <visible>1</visible>
+                <label>Scroll one page at a time (as opposed to per product)</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </scroll_per_page>
+            <item_limit translate="label">
+                <visible>1</visible>
+                <label>Max Number of Products</label>
+                <type>text</type>
+                <value>20</value>
+            </item_limit>
+            <items_per_slide translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Products to Show at a Time (default)</label>
+                <type>text</type>
+                <value>5</value>
+            </items_per_slide>
+            <items_per_slide_large translate="label">
+                <visible>1</visible>
+                <label>Products to Show at a Time (on Large/Small-Desktop Screens)</label>
+                <type>text</type>
+                <value>4</value>
+            </items_per_slide_large>
+            <items_per_slide_medium translate="label">
+                <visible>1</visible>
+                <label>Products to Show at a Time (on Medium/Tablet Screens)</label>
+                <type>text</type>
+                <value>3</value>
+            </items_per_slide_medium>
+            <items_per_slide_small translate="label">
+                <visible>1</visible>
+                <label>Products to Show at a Time (on Small/Mobile Screens)</label>
+                <type>text</type>
+                <value>2</value>
+            </items_per_slide_small>
+            <include_pager translate="label">
+                <visible>1</visible>
+                <label>Include Pager</label>
+                <type>select</type>
+                <value>0</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </include_pager>
+            <numbers_in_pager translate="label">
+                <visible>1</visible>
+                <label>Display Numbers in Pagers</label>
+                <type>select</type>
+                <value>0</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </numbers_in_pager>
+            <include_prev_next translate="label">
+                <visible>1</visible>
+                <label>Include Prev/Next Controls (always included when Auto-scroll is No and Include Pager is No)</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </include_prev_next>
+            <hover_pause translate="label">
+                <visible>1</visible>
+                <label>Pause on Hover</label>
+                <type>select</type>
+                <value>1</value>
+                <source_model>adminhtml/system_config_source_yesno</source_model>
+            </hover_pause>
+            <template translate="label">
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>cls/widgets/catalog/product/carousel/default.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>cls/widgets/catalog/product/carousel/default.phtml</value>
+                        <label>Product Carousel Default Template</label>
+                    </default>
+                </values>
+            </template>
+        </parameters>
+    </cls_product_carousel>
+</widgets>

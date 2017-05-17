@@ -1,0 +1,91 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+/* ============================================ *
+ * Subcategories
+ * ============================================ */
+
+.category-subcategories {
+    margin: $gap 0 0;
+}
+// Extend the products-grid classes which elegantly handle 3, 4, 5, and 6 column layouts.
+.subcategories-grid {
+    @extend .products-grid;
+}
+.subcategories-grid--max-4-col {
+    @extend .products-grid--max-4-col;
+}
+.subcategories-grid--max-5-col {
+    @extend .products-grid--max-5-col;
+}
+.subcategories-grid--max-6-col {
+    @extend .products-grid--max-6-col;
+}
+.subcategories-grid {
+    margin: 0 0 $gap 0;
+
+    .item {
+        position: relative;
+        padding: 0;
+
+        &:hover {
+            @include box-shadow (none);
+            border-radius: 0;
+            background: none;
+        }
+    }
+
+    .subcat-image {
+        display: block;
+        text-decoration: none !important;
+        position: relative;
+        margin-bottom: $element-spacing;
+
+        img {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+.subcategories-grid .subcat-name {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    padding: 10px;
+    background: black(0.5);
+    color: #FFF;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.subcategories-grid .item:hover .subcat-name {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.subcat-name {
+    font-size: $f-size;
+}

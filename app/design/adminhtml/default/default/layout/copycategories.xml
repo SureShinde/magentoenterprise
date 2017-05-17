@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	   <default>
+        <reference name="head">
+             <action method="addItem"><type>js</type><name>extjs/ext-tree.js</name><params/></action>   
+            <action method="addItem"><type>js</type><name>extjs/ext-tree-checkbox.js</name><params/></action>
+            <action method="addItem"><type>js_css</type><name>extjs/resources/css/ext-all.css</name><params/></action>
+            <action method="addItem"><type>js_css</type><name>extjs/resources/css/ytheme-magento.css</name><params/></action>
+            </reference>
+    </default>
+    <adminhtml_copycategories_index>
+        <reference name="content">
+            <block type="copycategories/adminhtml_copycategories" name="copycategories" />
+        </reference>
+    </adminhtml_copycategories_index>
+</layout>

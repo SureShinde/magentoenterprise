@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Theme
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <sections>
+        <dev>
+            <groups>
+                <js>
+                    <fields>
+                        <enable_js_minification translate="label">
+                            <depends>
+                                <merge_files>1</merge_files>
+                            </depends>
+                            <label>Minify Javascript</label>
+                            <config_path>dev/js/enable_js_minification</config_path>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable minification of javascript in addition to merging.</comment>
+                        </enable_js_minification>
+                    </fields>
+                </js>
+                <css>
+                    <fields>
+                        <enable_css_minification translate="label">
+                            <depends>
+                                <merge_css_files>1</merge_css_files>
+                            </depends>
+                            <label>Minify CSS</label>
+                            <config_path>dev/js/enable_css_minification</config_path>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Enable minification of CSS in addition to merging.</comment>
+                        </enable_css_minification>
+                    </fields>
+                </css>
+            </groups>
+        </dev>
+    </sections>
+</config>

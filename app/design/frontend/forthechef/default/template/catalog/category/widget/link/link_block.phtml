@@ -1,0 +1,19 @@
+<?php
+    $_imgHtml   = '';
+    if ($_imgUrl = $this->getImageUrl()) {
+    $_imgHtml = '<p class="category-image"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" title="'.$this->escapeHtml($_category->getName()).'" /></p>';
+    $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+    }
+//var_dump($_imgHtml);
+echo get_class($this);
+?>
+<span class="widget widget-category-link">
+    <?php if($_imgUrl): ?>
+        <?php echo $_imgHtml ?>
+    <?php endif; ?>
+    <a <?php echo $this->getLinkAttributes() ?>>
+        <span>
+            <?php echo $this->escapeHtml($this->getAnchorText()) ?>
+        </span>
+    </a>
+</span>

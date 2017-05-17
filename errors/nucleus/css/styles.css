@@ -1,0 +1,288 @@
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+/* Reset ================================================================================= */
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+* { margin:0; padding:0; }
+
+body          { background:#FFF; font-size: 14px; font-family: 'Ubuntu', sans-serif; color:#000000; text-align:center; }
+
+img           { border:0; vertical-align:top; }
+
+a             { color:#1e7ec8; text-decoration:underline; }
+a:hover       { text-decoration:none; }
+:focus        { outline: 0; }
+
+/* Headings */
+h1,h2,h3,
+h4,h5,h6      { margin:0 0 5px; line-height:1.35; color:#0a263c; }
+h1            { font-size:32px; font-weight:normal; }
+h2            { font-size:18px; font-weight:normal; }
+h3            { font-size:16px; font-weight:bold; }
+h4            { font-size:14px; font-weight:bold; }
+h5            { font-size:12px; font-weight:bold; }
+h6            { font-size:11px; font-weight:bold; }
+
+/* Forms */
+form          { display:inline; }
+fieldset      { border:0; }
+legend        { display:none; }
+
+/* Table */
+table         { border:0; /*border-collapse:collapse;*/ border-spacing:0; empty-cells:show; font-size:100%; }
+caption,th,td { vertical-align:top; text-align:left; font-weight:normal; }
+
+/* Content */
+p             { margin:0 0 10px; }
+strong        { font-weight:bold; }
+address       { font-style:normal; line-height:1.35; }
+cite          { font-style:normal; }
+q,
+blockquote    { quotes:none; }
+q:before,
+q:after       { content:''; }
+small,big     { font-size:1em; }
+sup           { font-size:1em; vertical-align:top; }
+
+/* Lists */
+ul,ol         { list-style:none; }
+
+/* Tools */
+.hidden       { display:block !important; border:0 !important; margin:0 !important; padding:0 !important; font-size:0 !important; line-height:0 !important; width:0 !important; height:0 !important; overflow:hidden !important; }
+.nobr         { white-space:nowrap !important; }
+.wrap         { white-space:normal !important; }
+.a-left       { text-align:left !important; }
+.a-center     { text-align:center !important; }
+.a-right      { text-align:right !important; }
+.v-top        { vertical-align:top; }
+.v-middle     { vertical-align:middle; }
+.f-left,
+.left         { float:left !important; }
+.f-right,
+.right        { float:right !important; }
+.f-none       { float:none !important; }
+.f-fix        { float:left; width:100%; }
+.no-display   { display:none; }
+.no-margin    { margin:0 !important; }
+.no-padding   { padding:0 !important; }
+.no-bg        { background:none !important; }
+/* ======================================================================================= */
+
+
+/* Layout ================================================================================ */
+.wrapper { min-width:954px; }
+.page {}
+.page-print { background:#fff; padding:25px 30px; text-align:left; }
+.page-empty { background:#fff; padding:20px; text-align:left; }
+.page-popup { background:#fff; padding:25px 30px; text-align:left; }
+.main-container { background:#FFF; }
+.main { width:900px; margin:0 auto; min-height:400px; padding:25px 25px 80px; text-align:center; }
+/* ======================================================================================= */
+
+
+/* Global Styles ========================================================================= */
+/* Form Elements */
+input,select,textarea,button { font:12px/15px Arial, Helvetica, sans-serif; vertical-align:middle; color:#2f2f2f; }
+input.input-text,select,textarea { background:#fff; border:1px solid #b6b6b6; }
+input.input-text,textarea { padding:2px; }
+select { padding:1px; }
+select option { padding-right:10px; }
+select.multiselect option { border-bottom:1px solid #b6b6b6; padding:2px 5px; }
+select.multiselect option:last-child { border-bottom:0; }
+textarea { overflow:auto; }
+input.radio { margin-right:3px; }
+input.checkbox { margin-right:3px; }
+input.qty { width:2.5em !important; }
+
+button.button {
+    background: #7a9aac;
+    display: inline-block;
+    height: 36px;
+    padding: 0 15px;
+    border: 0;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: "Ubuntu", "Helvetica Neue", Verdana, Arial, sans-serif;
+    line-height: 36px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+}
+
+p.control input.checkbox,
+p.control input.radio { margin-right:6px; }
+/* Form Highlight */
+input.input-text:focus,select:focus,textarea:focus { background-color:#edf7fd; }
+/*.highlight { background:#efefef; }*/
+
+/* Form lists */
+/* Grouped fields */
+.form-list li { margin:0 0 8px; }
+.form-list label { float:left; color:#667; font-weight:bold; position:relative; z-index:0; }
+.form-list label.required {}
+.form-list label.required em { float:right; font-style:normal; color:#eb340a; position:absolute; top:0; right:-8px; }
+.form-list li.control label { float:none; }
+.form-list li.control input.radio,
+.form-list li.control input.checkbox { margin-right:6px; }
+.form-list .input-box { display:block; clear:both; width:260px; }
+.form-list .field { float:left; width:275px; }
+.form-list input.input-text { width:254px; }
+.form-list textarea { width:254px; height:10em; }
+.form-list select { width:260px; }
+.form-list li.wide .input-box { width:535px; }
+.form-list li.wide input.input-text { width:529px; }
+.form-list li.wide textarea { width:529px; }
+.form-list li.wide select { width:535px; }
+.form-list .input-range input.input-text { width:74px; }
+
+.buttons-set { clear:both; margin:0; padding:8px 0 0; border-top:1px solid #e4e4e4; text-align:right; }
+.buttons-set p.required { margin:0 0 10px; }
+.buttons-set .back-link { float:left; margin:0; }
+.buttons-set button.button { float:right; margin-right:5px; }
+
+.fieldset { border:1px solid #bbafa0; padding:22px 25px 12px 33px; margin:28px 0; }
+.fieldset .legend { float:left; font-weight:bold; font-size:13px; border:1px solid #f19900; background:#f9f3e3; color:#e76200; margin:-33px 0 0 -10px; padding:0 8px; position:relative; }
+
+/* Form Validation */
+.validation-advice { clear:both; min-height:13px; margin:3px 0 0; padding-left:17px; font-size:11px; font-weight:bold; line-height:13px; background:url(../images/validation_advice_bg.gif) 2px 0 no-repeat; color:#eb340a; }
+.validation-failed { border:1px dashed #eb340a !important; background:#faebe7 !important; }
+.validation-passed {}
+p.required { font-size:11px; text-align:right; color:#EB340A; }
+/* Expiration date and CVV number validation fix */
+.v-fix { float:left; }
+.v-fix .validation-advice { display:block; width:12em; margin-right:-12em; position:relative; }
+
+/* Global Messages  */
+.success { color:#3d6611; font-weight:bold; }
+.error { color:#df280a; font-weight:bold; }
+.notice { color:#e26703; }
+.trace { width:100%; overflow:auto; min-height:250px; }
+
+.messages,
+.messages ul { list-style:none !important; margin:0 !important; padding:0 !important; }
+.messages { width:100%; overflow:hidden; }
+.messages li { margin:0 0 10px !important; }
+.messages li li { margin:0 0 3px !important; }
+.error-msg { border-color:#f16048; background-color:#faebe7; background-image:url(../images/i_msg-error.gif); color:#df280a; }
+.success-msg { border-color:#446423; background-color:#eff5ea; background-image:url(../images/i_msg-success.gif); color:#3d6611; }
+
+/* Page Heading */
+.page-title { width:100%; overflow:hidden; border-bottom:1px solid #ccc; margin:0 0 25px; }
+
+h1 {
+    color: #3399CC;
+    font-size: 100px;
+    font-weight: bold;
+    line-height: 180px;
+}
+
+.error-msg {
+    position: relative;
+    margin: 40px auto;
+    width: 350px;
+    height: 200px;
+    padding: 0px !important;
+    background: #FFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 0px 18px #E0E0E0;
+    -moz-box-shadow: 0px 0px 0px 18px #E0E0E0;
+    box-shadow: 0px 0px 0px 18px #E0E0E0;
+}
+
+.error-msg:after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 45%;
+    border-style: solid;
+    border-width: 15px 15px 0;
+    border-color: #FFF transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+/* ======================================================================================= */
+
+
+/* Header ================================================================================ */
+.header-container { border-top:5px solid #7a9aac; }
+.header { width:930px; margin:0 auto; padding:10px; text-align:right; position:relative; z-index:10; }
+.header .logo { float:left; margin:3px 0 10px 12px; text-decoration:none !important; }
+.header .logo strong { position:absolute; top:-999em; left:-999em; w
+    idth:0; height:0; font-size:0; line-height:0; text-indent:-999em; overflow:hidden; }
+.header h1.logo { margin:0; }
+/* ======================================================================================= */
+
+
+/* Footer ================================================================================ */
+.footer-container { background: #E0E0E0; }
+.footer { width:930px; margin:0 auto; padding:15px 10px 50px; }
+.footer a { color:#fff; text-decoration:none; }
+.footer a:hover { text-decoration:underline; }
+.footer address { margin:0 0 20px; color:#636363;text-transform: uppercase;font-size:11px; }
+.footer address a { color:#ecf3f6; text-decoration:underline; }
+.footer address a:hover { text-decoration:none; }
+/* ======================================================================================= */
+
+/* 404 =================================================================================== */
+.no-route h1 { font-size:120px; }
+
+.no-route h2,
+.no-route .h2,
+.no-route h3,
+.no-route .h3 {
+    color: #636363;
+    text-transform:uppercase;
+}
+
+.no-route h2,
+.no-route .h2 {
+    font-size: 24px;
+}
+
+.no-route h3,
+.no-route .h3 {
+    font-size: 32px;
+}
+/* ======================================================================================= */
+
+.unavailable h1 { font-size:50px; }
+
+
+/* Clears ================================================================================ */
+.clearer:after,
+.header-container:after,
+.header-container .top-container:after,
+.header:after,
+.header .quick-access:after,
+.main:after,
+.footer:after,
+.footer-container .bottom-container:after,
+.col-main:after,
+.buttons-set:after { display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }
+/* ======================================================================================= */

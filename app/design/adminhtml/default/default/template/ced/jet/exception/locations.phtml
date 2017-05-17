@@ -1,0 +1,70 @@
+<?php
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+?>
+
+<?php 
+$_htmlId      = $this->getElement()->getHtmlId();
+$_htmlClass   = $this->getElement()->getClass();
+$_htmlName    = $this->getElement()->getName();
+$_readonly    = $this->getElement()->getReadonly();
+//$collection = Mage::registry('rkstorelocator_data')
+               // ->getOpeningHours()
+               // ->setOrder('sortorder', 'ASC');
+
+$_counter = 0;
+$return='';
+$locations_ids=array();
+
+if(Mage::registry('return_data')){
+    $return=Mage::registry('return_data');
+    $locations_ids=$return['return_location_ids'];
+}
+?>
+<tr>
+    <td class="label"><?php echo $this->getElement()->getLabel() ?></td>
+    <td colspan="10" class="grid hours tier">
+        <table id="attribute-options-table" class="dynamic-grid rkstorelocator-officehours data border" cellspacing="0" cellpadding="0">
+        <tbody id="attribute-options-table-body">
+            <tr class="headings">
+                <th><?php echo $this->__('Location Id') ?></th>
+                <th class="last a-center"><button id="add_new_option_button" title="Add Option" type="button" class="scalable add"><span><span><span><?php echo $this->__('Add Option') ?></span></span></span></button></th>
+            </tr>
+            <?php if(count($locations_ids)>0){?>
+                    <?php for($i=0;$i<count($locations_ids);$i++){?>
+                    <tr class="option-row rkstorelocator-officehours-dayrow" id="hour-row-<?php echo $_counter;?>"><td><input name="<?php echo $_htmlName; ?>[value][<?php echo $_counter;?>]" value="<?php echo $locations_ids[$i];?>" class="input-text" type="text"></td><td class="a-center last" id="delete_button_container_option_<?php echo $_counter;?>"><input id="delete-row-<?php echo $_counter;?>" type="hidden" class="delete-flag" name="<?php echo $_htmlName; ?>[delete][<?php echo $_counter;?>]" value=""/><button onclick="$('hour-row-<?php echo $_counter;?>').style.display='none'; $('delete-row-<?php echo $_counter;?>').setValue(1);" title="Delete" type="button" class="scalable delete delete-option"><span><span><span>Delete</span></span></span></button></td></tr>
+                    <?php $_counter ++;?>
+                    <?php }?>
+            <?php }?>
+        </tbody>
+</table>
+
+<script type="text/javascript">//<![CDATA[
+
+var _form_html_row = '<tr class="option-row rkstorelocator-officehours-dayrow" id="hour-row-{{id}}"><td><input name="<?php echo $_htmlName; ?>[value][{{id}}]" value="" class="input-text" type="text"></td><td class="a-center last" id="delete_button_container_option_{{id}}"><input id="delete-row-{{id}}" type="hidden" class="delete-flag" name="<?php echo $_htmlName; ?>[delete][{{id}}]" value=""/><button onclick="$(\'hour-row-{{id}}\').style.display=\'none\'; $(\'delete-row-{{id}}\').setValue(1);" title="Delete" type="button" class="scalable delete delete-option"><span><span><span>Delete</span></span></span></button></td></tr>';
+
+var _rkstorelocator_counter = <?php echo $_counter?>;
+
+$('add_new_option_button').observe('click', function(){
+    $('attribute-options-table-body').insert(_form_html_row.replace(/\{\{id\}\}/ig, _rkstorelocator_counter));
+    _rkstorelocator_counter++;
+});
+
+//]]></script>
+    </td>
+</tr>
+

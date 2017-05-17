@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <wordpress>
+            <groups>
+            	<extend translate="label" module="wordpress">
+            		<fields>
+            			<recaptcha>
+							<label>ReCaptcha</label>
+            				<sort_order>170</sort_order>
+            				<frontend_type>select</frontend_type>
+            				<source_model>adminhtml/system_config_source_yesno</source_model>
+							<show_in_default>1</show_in_default>
+            			</recaptcha>
+            		</fields>
+            	</extend>
+            </groups>
+        </wordpress>
+    </sections>
+</config>

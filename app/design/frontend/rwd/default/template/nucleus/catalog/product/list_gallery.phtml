@@ -1,0 +1,105 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Catalog
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+    <?php $_collectionSize = $_productCollection->count() ?>
+    <?php $_columnCount = 100 ?>
+    <div class="products-grid products-gallery products-grid--max-<?php echo $_columnCount; ?>-col">
+        <div class="carousel">
+        <?php foreach ($_productCollection as $_product): ?>
+            <div class="item">
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                    <?php $_imgSize = 210; ?>
+                    <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                         src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                         alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                </a>
+                <div class="product-info">
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                    
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <div class="actions">
+                        <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                            <a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+        </div>
+    </div>
+    <script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+    <?php endif; ?>
+</div>
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        //set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>
+
+<script>
+    jQuery(".products-gallery .carousel").owlCarousel({
+        items : 5, 
+        itemsDesktop : [1000,5], 
+        itemsDesktopSmall : [900,3],
+        itemsTablet: [600,2], 
+        itemsMobile : false, 
+        stopOnHover : true,
+        navigation:true,
+        paginationSpeed : 1000,
+        goToFirstSpeed : 2000,
+        singleItem : false,
+        autoHeight : false,
+        transitionStyle:"fade",
+        scrollPerPage : true
+    });
+</script>
+    

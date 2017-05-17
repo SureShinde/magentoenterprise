@@ -1,0 +1,30 @@
+2017-03-18T10:11:57+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > /!\ Invalid license /!\
+2017-03-18T10:11:57+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > /!\ Invalid license /!\
+2017-03-18T10:13:09+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > automatic activation -> error:All domains for this license have been registered.<br/><b><a href='https://www.wyomind.com/?buynow' target='_blank' style='color:#3399ff'>Buy a new license now</a></b> or <b><a href='#' style='color:#3399ff' onClick='document.getElementById("license_form_IY6EG86GCQ728DG46").submit();'>Add this domain to my license </a></b>(<a style='color:#3399ff' href='https://www.wyomind.com/terms-and-conditions.html#licenses' target='_blank'>see conditions</a>)<form id="license_form_IY6EG86GCQ728DG46" method="post" action="//www.wyomind.com/services/licenses/askdev.php" target="_blank">
+                            <input type="hidden" value="http://dev.forthechef.com/" name="domain">
+                            <input type="hidden" value="IY6EG86GCQ728DG46" name="activation_key">
+                            <input type="hidden" value="1.8.1" name="rv">
+                            <input type="hidden" value="1.8.1" name="cv">
+                            <input type="hidden" value="45.56.150.51" name="ip">
+                            <input type="hidden" value="336" name="product_version_id">
+                            <input type="hidden" value="gts" name="ext_license_code">
+                            <input type="hidden" value="All domains for this license have been registered.<br/>" name="cause">
+                            <input type="hidden" value="askdevlic" name="mode">
+                        </form>
+2017-03-18T10:14:22+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > automatic activation -> error:All domains for this license have been registered.<br/><b><a href='https://www.wyomind.com/?buynow' target='_blank' style='color:#3399ff'>Buy a new license now</a></b> or <b><a href='#' style='color:#3399ff' onClick='document.getElementById("license_form_IY6EG86GCQ728DG46").submit();'>Add this domain to my license </a></b>(<a style='color:#3399ff' href='https://www.wyomind.com/terms-and-conditions.html#licenses' target='_blank'>see conditions</a>)<form id="license_form_IY6EG86GCQ728DG46" method="post" action="//www.wyomind.com/services/licenses/askdev.php" target="_blank">
+                            <input type="hidden" value="http://dev.forthechef.com/" name="domain">
+                            <input type="hidden" value="IY6EG86GCQ728DG46" name="activation_key">
+                            <input type="hidden" value="1.8.1" name="rv">
+                            <input type="hidden" value="1.8.1" name="cv">
+                            <input type="hidden" value="45.56.150.51" name="ip">
+                            <input type="hidden" value="336" name="product_version_id">
+                            <input type="hidden" value="gts" name="ext_license_code">
+                            <input type="hidden" value="All domains for this license have been registered.<br/>" name="cause">
+                            <input type="hidden" value="askdevlic" name="mode">
+                        </form>
+2017-03-18T10:15:31+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > automatic activation -> Failed Sending HTTP SOAP request
+2017-03-18T10:19:35+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > manual activation -> pending
+2017-03-18T10:23:39+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > manual activation -> pending
+2017-03-18T10:23:55+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > manual activation -> pending
+2017-03-18T10:24:16+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > manual activation -> pending
+2017-03-18T10:24:25+00:00 DEBUG (7): Googletrustedstores v1.8.1 http://dev.forthechef.com/ IY6EG86GCQ728DG46 > manual activation -> pending

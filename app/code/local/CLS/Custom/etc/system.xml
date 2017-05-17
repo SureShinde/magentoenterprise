@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Custom
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC
+ */
+ -->
+<config>
+    <sections>
+        <catalog>
+            <groups>
+                <product_view_display>
+                    <label>Product Detail Page Display</label>
+                    <sort_order>1500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <blog_post_count translate="label comment">
+                            <label>Blog Post Count</label>
+                            <comment>Number of blog posts to include under "Related Content" on the product detail page.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </blog_post_count>
+                        <character_count translate="label comment">
+                            <label>Character Count</label>
+                            <comment>Number of characters to show on product detail page before truncating.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </character_count>
+                    </fields>
+                </product_view_display>
+                <badges>
+                    <fields>
+                        <badge_url_mapping translate="label comment">
+                            <label>Badge Url Mapping</label>
+                            <comment>Maps a badge name to an associated url.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>150</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </badge_url_mapping>
+                    </fields>
+                </badges>
+            </groups>
+        </catalog>
+        <shipping>
+            <groups>
+                <option>
+                    <fields>
+                        <free_shipping_message translate="label comment">
+                            <label>Free Shipping Message</label>
+                            <comment>Free shipping message displayed on checkout.</comment>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_message>
+                        <free_shipping_message_additional translate="label">
+                            <label>Additional message if there is one or more large items in shopping cart</label>                             
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>53</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_message_additional>
+                        <free_shipping_limit translate="label comment">
+                            <label>Free Shipping Limit</label>
+                            <comment>After this amount, receive free shipping. Used for free shipping message.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </free_shipping_limit>
+                    </fields>
+                </option>
+            </groups>
+        </shipping>
+        <google>
+            <groups>
+                <adwords>
+                    <fields>
+                        <account_create_conversion_label translate="label">
+                            <label>Account Creation Conversion Label</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </account_create_conversion_label>
+                        <newsletter_signup_conversion_label translate="label">
+                            <label>Newsletter Signup Conversion Label</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </newsletter_signup_conversion_label>
+                        <contact_submit_conversion_label translate="label">
+                            <label>Contact Form Submission Conversion Label</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </contact_submit_conversion_label>
+                    </fields>
+                </adwords>
+            </groups>
+        </google>
+    </sections>
+</config>

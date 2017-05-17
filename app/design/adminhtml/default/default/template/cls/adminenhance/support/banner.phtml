@@ -1,0 +1,72 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    AdminEnhance
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+$_banner = $this->getBanner();
+$_locationId = $this->getLocationId();
+$_locationHtmlId = $this->getLocationHtmlId();
+$_helpUrlHelper = Mage::helper('cls_nucleuscore/url');
+?>
+
+<?php if ($_banner && $_locationId): ?>
+    <?php
+    $_isFormatted = ($_banner->getFormatted() || $_banner->getHelpLinks());
+    $_bannerWrapperClass = 'support-banner-wrapper';
+    $_bannerContentHidden = '';
+    if ($_isFormatted):
+        $_bannerWrapperClass .= ' support-banner-formatted';
+    endif;
+    if ($this->bannerIsCollapsed()):
+        $_bannerWrapperClass .= ' collapsed';
+        $_bannerContentHidden = ' style="display:none;"';
+    endif;
+    ?>
+<div class="<?php echo $_bannerWrapperClass ?>">
+<div class="support-banner" id="<?php echo $_locationHtmlId ?>" data-location-id="<?php echo $_locationId ?>">
+    <?php if ($_isFormatted): ?>
+    <div class="support-banner-header">
+        <h4<?php echo $_bannerContentHidden ?>><?php echo $_banner->getTitle() ?></h4>
+        <?php if ($_banner->getHelpLinks()): ?>
+        <div class="help-links"<?php echo $_bannerContentHidden ?>>
+            <a href="#" class="help-links-trigger"><?php echo $this->__('More Help') ?></a>
+            <ul>
+                <li><a href="<?php echo $_helpUrlHelper->getMagentoGuideUrl() ?>"><?php echo $this->__('Magento User Guide') ?></a></li>
+                <li><a href="<?php echo $_helpUrlHelper->getNucleusGuideUrl() ?>"><?php echo $this->__('Nucleus User Guide') ?></a></li>
+            </ul>
+        </div>
+        <?php endif; ?>
+        <a href="#" class="collapse-trigger"><span><?php echo $this->__('Toggle collapsed') ?></span></a>
+    </div>
+    <?php endif; ?>
+    <div class="support-banner-content"<?php echo $_bannerContentHidden ?>>
+        <?php echo $_banner->getContent() ?>
+        <?php
+        if ($_isFormatted):
+            echo $this->getChildHtml('banner_videos');
+        endif;
+        ?>
+    </div>
+</div>
+</div>
+<?php endif; ?>

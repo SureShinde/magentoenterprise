@@ -1,0 +1,180 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Accordion
+// ==============================================
+
+.accordion {
+    position:relative;
+    margin-bottom:$gap-tall;
+    border:1px solid $c-module-border;
+}
+
+.accordion-section {
+    overflow:hidden;
+}
+
+.accordion-header {
+    @include h2;
+    position:relative;
+    margin:0;
+    padding:12px 0;
+}
+
+.accordion-content {
+    margin-bottom:12px;
+}
+
+.accordion-content p:last-child,
+.accordion-content ol:last-child,
+.accordion-content ul:last-child {
+    margin-bottom:0;
+}
+
+// ----------------------------------------------
+
+@include bp(max-width, $bp-medium) {
+
+    .accordion {
+        border-bottom:0;
+    }
+
+    .accordion-active {
+        border-top:1px solid $c-module-border;
+    }
+
+    // Nav
+
+    .accordion-nav {
+        display:none;
+    }
+
+    // Header
+
+    .accordion-active .accordion-header {
+        @include not-selectable;
+        margin:0;
+        padding-right:20px;
+        padding-left:(10px + 7px + 13px);
+        border-bottom:1px solid $c-module-border;
+        background:$c-module-background;
+        font-size:$f-size;
+    }
+
+    .accordion-active .accordion-header:hover {
+        background:darken($c-module-background, 5%);
+        cursor:pointer;
+    }
+
+    // Header Icon
+
+    .accordion-active .accordion-header:after {
+        @include transition (transform 150ms linear);
+        @include triangle (right, 7px, $c-text);
+        content:'';
+        position:absolute;
+        top:50%;
+        left:10px;
+        margin-top:-7px;
+    }
+
+    .accordion-active .toggle-active .accordion-header:after {
+        @include transform (rotate(90deg));
+    }
+
+    // Content
+
+    .accordion-active .accordion-content {
+        display:none;
+    }
+
+    .accordion-active .toggle-active .accordion-content {
+        display:block;
+        margin-bottom:0;
+        padding:$b-margin-bottom 20px;
+        border-bottom:1px solid $c-module-border;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp(min-width, $bp-medium+1) {
+
+    .accordion {
+        // border-top:8px solid $c-divider-subtle;
+        // border-bottom:8px solid $c-divider-subtle;
+    }
+
+    .accordion-nav {
+        position:absolute;
+        top:0;
+        right:0;
+        width:20%; // Fallback.
+        width:165px; // With calc().
+        margin:0 !important;
+        padding:15px;
+        font-size:$f-size-s;
+    }
+
+    .accordion-nav h3 {
+        color:$c-text;
+        font-size:$f-size-s;
+    }
+
+    .accordion-nav li {
+        list-style:none !important;
+        margin:0 !important;
+    }
+
+    //.accordion-sections { }
+
+    .accordion-section {
+        padding:$b-margin-bottom 20px 0;
+        border-bottom:1px solid $c-module-border;
+    }
+
+    .accordion-section:last-child {
+        border-bottom:0;
+    }
+
+    .accordion-header {
+        margin-bottom:15px;
+        padding:0;
+    }
+
+    .accordion-content {
+        margin-bottom:$b-margin-bottom;
+    }
+
+    // Accordion is enabled.
+
+    .accordion-active .accordion-sections {
+        width:80%; // Fallback
+        @include calc (width, '100% - 165px');
+        border-right:1px solid $c-module-border;
+    }
+
+}

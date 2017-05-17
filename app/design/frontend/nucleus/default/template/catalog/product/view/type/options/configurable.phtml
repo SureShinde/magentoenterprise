@@ -1,0 +1,66 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+?>
+
+<?php
+$_product    = $this->getProduct();
+$_attributes = Mage::helper('core')->decorateArray($this->getAllowAttributes());
+$_jsonConfig = $this->getJsonConfig();
+$_renderers = $this->getChild('attr_renderers')->getSortedChildren();
+?>
+<?php if ($_product->isSaleable() && count($_attributes)):?>
+    <dl>
+        <?php foreach($_attributes as $_attribute): ?>
+            <?php
+            $_rendered = false;
+            foreach ($_renderers as $_rendererName):
+                $_renderer = $this->getChild('attr_renderers')->getChild($_rendererName);
+                if (method_exists($_renderer, 'shouldRender') && $_renderer->shouldRender($_attribute, $_jsonConfig)):
+                    $_renderer->setProduct($_product);
+                    $_renderer->setAttributeObj($_attribute);
+                    echo $_renderer->toHtml();
+                    $_rendered = true;
+                    break;
+                endif;
+            endforeach;
+
+            if (!$_rendered):
+                ?>
+                <dt><label class="required"><em>*</em><?php echo $_attribute->getLabel() ?></label></dt>
+                <dd<?php if ($_attribute->decoratedIsLast){?> class="last"<?php }?>>
+                    <div class="input-box">
+                        <select name="super_attribute[<?php echo $_attribute->getAttributeId() ?>]" id="attribute<?php echo $_attribute->getAttributeId() ?>" class="required-entry super-attribute-select">
+                            <option value=""><?php echo $this->__('Choose an Option...') ?></option>
+                        </select>
+                    </div>
+                </dd>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </dl>
+    <script type="text/javascript">
+        var spConfig = new Product.Config(<?php echo $_jsonConfig ?>);
+    </script>
+    <?php echo $this->getChildHtml('after') ?>
+<?php endif;?>

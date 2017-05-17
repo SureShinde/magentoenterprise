@@ -1,0 +1,22 @@
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
+AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
+AddOutputFilterByType DEFLATE image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
+SetOutputFilter DEFLATE
+</ifmodule>
+<ifmodule mod_headers.c>
+<FilesMatch '\.(css|js|jpe?g|png|gif)$'>
+Header set Cache-Control 'max-age=2592000, public'
+</FilesMatch>
+</ifmodule>
+<ifmodule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css 'access plus 30 days'
+ExpiresByType text/javascript 'access plus 30 days'
+ExpiresByType application/x-javascript 'access plus 30 days'
+ExpiresByType image/jpeg 'access plus 30 days'
+ExpiresByType image/png 'access plus 30 days'
+ExpiresByType image/gif 'access plus 30 days'
+</ifmodule>

@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    /* <![CDATA[ */
+    if (typeof Cookies.get('google_conversion_label') != 'undefined') {
+        var google_conversion_id = <?php echo Mage::helper('cls_universalanalytics/config')->getConversionId(); ?>;
+        var google_conversion_language = "en";
+        var google_conversion_format = "3";
+        var google_conversion_color = "ffffff";
+        var google_conversion_label = Cookies.get('google_conversion_label');
+        var google_remarketing_only = false;
+        Cookies.remove('google_conversion_label', {domain: '<?php echo Mage::getSingleton('core/cookie')->getDomain(); ?>'});
+    }
+    /* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>

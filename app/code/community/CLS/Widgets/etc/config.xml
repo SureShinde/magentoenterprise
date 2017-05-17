@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_Widgets>
+            <version>1.3.4</version>
+        </CLS_Widgets>
+    </modules>
+    <global>
+        <blocks>
+            <cls_widgets>
+                <class>CLS_Widgets_Block</class>
+            </cls_widgets>
+        </blocks>
+        <models>
+            <cls_widgets>
+                <class>CLS_Widgets_Model</class>
+                <resourceModel>cls_widgets_resource</resourceModel>
+            </cls_widgets>
+            <cls_widgets_resource>
+                <class>CLS_Widgets_Model_Resource</class>
+            </cls_widgets_resource>
+            <widget>
+                <rewrite>
+                    <widget>CLS_Widgets_Model_Widget_Widget</widget>
+                </rewrite>
+            </widget>
+        </models>
+        <helpers>
+            <cls_widgets>
+                <class>CLS_Widgets_Helper</class>
+            </cls_widgets>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <cls_widgets>
+                    <file>cls_widgets.xml</file>
+                </cls_widgets>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <CLS_Widgets>
+                    <files>
+                        <default>CLS_Widgets.csv</default>
+                    </files>
+                </CLS_Widgets>
+            </modules>
+        </translate>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <cls_widgets before="Mage_Adminhtml">CLS_Widgets_Adminhtml</cls_widgets>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <CLS_Widgets>
+                    <files>
+                        <default>CLS_Widgets.csv</default>
+                    </files>
+                </CLS_Widgets>
+            </modules>
+        </translate>
+    </adminhtml>
+</config>

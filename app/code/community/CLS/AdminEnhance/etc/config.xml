@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    AdminEnhance
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<config>
+    <modules>
+        <CLS_AdminEnhance>
+            <version>1.0.3</version>
+        </CLS_AdminEnhance>
+    </modules>
+
+    <global>
+        <blocks>
+            <cls_adminenhance>
+                <class>CLS_AdminEnhance_Block</class>
+            </cls_adminenhance>
+        </blocks>
+        <models>
+            <cls_adminenhance>
+                <class>CLS_AdminEnhance_Model</class>
+                <resourceModel>cls_adminenhance_resource</resourceModel>
+            </cls_adminenhance>
+            <cls_adminenhance_resource>
+                <class>CLS_AdminEnhance_Model_Resource</class>
+                <entities>
+                    <banner>
+                        <table>cls_admin_banner</table>
+                    </banner>
+                    <location>
+                        <table>cls_admin_banner_location</table>
+                    </location>
+                    <location_collapsed>
+                        <table>cls_admin_banner_location_collapsed</table>
+                    </location_collapsed>
+                    <video>
+                        <table>cls_admin_video</table>
+                    </video>
+                    <banner_video_link>
+                        <table>cls_admin_banner_video_link</table>
+                    </banner_video_link>
+                </entities>
+            </cls_adminenhance_resource>
+        </models>
+        <helpers>
+            <cls_adminenhance>
+                <class>CLS_AdminEnhance_Helper</class>
+            </cls_adminenhance>
+        </helpers>
+        <resources>
+            <cls_adminenhance_setup>
+                <setup>
+                    <module>CLS_AdminEnhance</module>
+                </setup>
+            </cls_adminenhance_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <cls_adminenhance before="Mage_Adminhtml">CLS_AdminEnhance_Adminhtml</cls_adminenhance>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <cls_adminenhance>
+                    <file>cls_adminenhance.xml</file>
+                </cls_adminenhance>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <CLS_AdminEnhance>
+                    <files>
+                        <default>CLS_AdminEnhance.csv</default>
+                    </files>
+                </CLS_AdminEnhance>
+            </modules>
+        </translate>
+        <events>
+            <admin_session_user_login_success>
+                <observers>
+                    <cls_adminenhance>
+                        <class>cls_adminenhance/observer</class>
+                        <method>initAdminUserCollapsedBanners</method>
+                    </cls_adminenhance>
+                </observers>
+            </admin_session_user_login_success>
+            <cls_nucleus_system_info_block_created>
+                <observers>
+                    <cls_adminenhance>
+                        <class>cls_adminenhance/observer</class>
+                        <method>addVideosToSystemInfoBlock</method>
+                    </cls_adminenhance>
+                </observers>
+            </cls_nucleus_system_info_block_created>
+        </events>
+    </adminhtml>
+
+    <frontend>
+        <translate>
+            <modules>
+                <CLS_AdminEnhance>
+                    <files>
+                        <default>CLS_AdminEnhance.csv</default>
+                    </files>
+                </CLS_AdminEnhance>
+            </modules>
+        </translate>
+    </frontend>
+</config>

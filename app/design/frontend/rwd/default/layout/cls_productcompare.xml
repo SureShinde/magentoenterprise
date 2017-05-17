@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    ProductCompare
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<layout version="0.1.0">
+    <!-- Files added for all pages that feature ajax compare -->
+    <cls_productcompare_common>
+        <reference name="head">
+            <action method="addJs"><file>jquery/jquery.cookie.js</file></action>
+            <action method="addItem"><type>skin_js</type><file>js/cls/cls_productcompare.js</file></action>
+            <action method="addItem"><type>skin_css</type><file>css/cls/cls_productcompare.css</file></action>
+        </reference>
+        <reference name="before_product_list">
+            <block type="page/html_wrapper" name="product.list.compare.topbar.wrapper" after="search_recommendations">
+                <action method="setElementId"><id>product_compare_load</id></action>
+                <action method="setElementClass"><class>product-list-compare clearfix</class></action>
+                <block type="catalog/product_compare_sidebar" name="product.list.compare.topbar" as="compare_topbar" template="cls/productcompare/topbar.phtml" />
+            </block>
+        </reference>
+        <remove name="catalog.compare.sidebar" />
+    </cls_productcompare_common>
+
+    <catalog_category_default>
+        <update handle="cls_productcompare_common" />
+    </catalog_category_default>
+    <catalog_category_layered>
+        <update handle="cls_productcompare_common" />
+    </catalog_category_layered>
+    <catalogsearch_advanced_result>
+        <update handle="cls_productcompare_common" />
+    </catalogsearch_advanced_result>
+    <catalogsearch_result_index>
+        <update handle="cls_productcompare_common" />
+    </catalogsearch_result_index>
+</layout>

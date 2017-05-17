@@ -1,0 +1,38 @@
+<?php
+/**
+ * @category   CLS
+ * @package    UniversalAnalytics
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+?>
+
+<?php $baseUrl = Mage::helper('cls_universalanalytics')->getCurrentPageName(); ?>
+
+if(Ajax.Responders){
+    Ajax.Responders.register({
+        onComplete: function(response){
+            if(response.url.include("save")){
+                if(!response.url.include("saveOrder")){
+                    try{
+                        var responseObj = eval('(' + response.transport.responseText + ')');
+                    }
+                    catch (e) {
+                        var responseObj = {};
+                    }
+
+                    var newSection = responseObj.goto_section;
+                    if (typeof(newSection) == 'undefined' && accordion && accordion.currentSection) {
+                        newSection = accordion.currentSection.replace(/^opc-/, '');
+                    }
+
+                    if (!newSection) {
+                        return;
+                    }
+
+                    ga("send", "pageview", "<?php echo $baseUrl ?>/" + newSection + "/");
+                }
+            }
+        }
+    });
+}

@@ -1,0 +1,161 @@
+<?php if ($this->isEnabled()): ?>
+
+<div class="box-collateral">
+        <h2> <?php echo $this->getEstimateLabel() ?></h2>
+        <?php if($this->getEstimateDescription()): ?>
+            <div class="box-collateral box-tags form-add">
+                <label for="shipEstimateForm"><?php echo $this->getEstimateDescription() ?></label>
+            </div>
+        <?php endif; ?>
+
+        <div class="shipping-estimation-form" id="shipping-estimation-form">
+            <?php if ($this->showField('country')): ?>
+                    <label for="ship_country" class="required"><em>*</em><?php echo Mage::helper('shipestimate')->__('Country') ?></label>
+                    <div class="input-box">
+                        <?php echo Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect(
+                            ($this->getField('country') ? $this->getField('country') : Mage::getStoreConfig('shipping/origin/country_id')),
+                            'estimate[country_id]',
+                            'ship_country'
+                        );
+                        ?>
+                    </div>
+            <?php else: ?>
+                <input type="hidden" id="ship_country" name="estimate[country_id]" value="<?php echo $this->htmlEscape($this->getDefaultCountry())?>" />
+            <?php endif; ?>
+            <input type="hidden" id="ship_sku" name="estimate[sku]" value="<?php echo $this->htmlEscape($this->getProductSku())?>" />
+            <input type="hidden" id="ship_estimate_action" name="estimate[action]" value="" />
+            <?php if ($this->showField('region')): ?>
+                <div>
+                    <label for="ship_region_id"<?php if ($this->isFieldRequired('region')):?> class="required" <?php endif;?>><?php if ($this->isFieldRequired('region')):?><em>*</em><?php endif;?><?php echo $this->__('State/Province') ?></label>
+                    <div class="input-box">
+                        <select id="ship_region_id" name="estimate[region_id]" title="<?php echo Mage::helper('shipestimate')->__('State/Province') ?>" style="display:none;"<?php if ($this->isFieldRequired('region')):?> class="webshopapps-estimate-shipping-select-one" <?php endif;?>>
+                            <option value=""><?php echo  Mage::helper('shipestimate')->__('Please select an option') ?></option>
+                        </select>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            $('ship_region_id').setAttribute('defaultValue',  '<?php echo $this->jsQuoteEscape($this->getField('region_id')); ?>');
+                            //]]>
+                        </script>
+                           <input type="text" id="ship_region" name="estimate[region]" value="<?php echo $this->htmlEscape($this->getField('region')) ?>"  title="<?php echo  Mage::helper('shipestimate')->__('State/Province') ?>" class="input-text" style="display:none;" />
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    //<![CDATA[
+
+                    //]]>
+                </script>
+            <?php endif; ?>
+            <?php if($this->showField('city')): ?>
+                <div>
+                    <label for="ship_city"<?php if ($this->isFieldRequired('city')):?> class="required" <?php endif;?>><?php if ($this->isFieldRequired('city')):?><em>*</em><?php endif;?><?php echo $this->__('City') ?></label>
+                    <div class="input-box">
+                        <input class="input-text<?php if ($this->isFieldRequired('city')):?> webshopapps-estimate-shipping-required<?php endif;?>" id="ship_city" type="text" name="estimate[city]" value="<?php echo $this->htmlEscape($this->getField('city')) ?>" />
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if ($this->showField('postcode')): ?>
+                <div>
+                    <label for="ship_postcode"<?php if ($this->isFieldRequired('postcode')):?> class="required" <?php endif;?>><?php if ($this->isFieldRequired('postcode')):?><em>*</em><?php endif;?><?php echo Mage::helper('shipestimate')->__('Zip/Postal Code') ?></label>
+                    <div class="input-box">
+                        <input class="input-text validate-postcode<?php if ($this->isFieldRequired('postcode')):?> webshopapps-estimate-shipping-required<?php endif;?>" type="text" id="ship_postcode" name="estimate[postcode]" value="<?php echo $this->htmlEscape($this->getField('postcode')) ?>" />
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if ($this->showField('desttype')): ?>
+                <div>
+                    <label for="ship_dest_type"><?php echo Mage::helper('desttype')->__('Address Type') ?></label>
+                    <div class="input-box">
+                        <?php echo $this->helper('desttype')->getHtmlSelectProductView($this->getLayout(), $this->getDestType()) ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if ($this->showField('qty')): ?>
+                <div class="input-box">
+                    <label for="ship_qty"<?php if ($this->isFieldRequired('qty')):?> class="required" <?php endif;?>><?php if ($this->isFieldRequired('qty')):?><em>*</em><?php endif;?><?php echo Mage::helper('shipestimate')->__('Quantity') ?></label>
+                    <div class="input-box">
+                        <input class="input-text <?php if ($this->isFieldRequired('qty')):?> webshopapps-estimate-shipping-required<?php endif;?>" style="float:left" type="text" id="ship_qty" name="estimate[qty]" value="<?php echo $this->htmlEscape($this->getField('qty')) ?>" />
+                    </div>
+
+                </div>
+                <br />
+                <button type="button" id="estimate_shipping" style="float:left; margin-left:10px; margin-right:10px;" title="<?php echo $this->__('Get a Quote') ?>" class="button" onclick="getEstimateShipping()">
+                    <span><?php echo $this->__('Get a Quote') ?></span>
+                </button>
+                <br />
+            <?php endif; ?>
+        </div>
+        <br />
+        <script type="text/javascript">decorateList('shipping-estimation-form');</script>
+        <div class="actions">
+        <span class="please-wait f-left" id="shipping-estimate-loading-message" style="display:none;">
+            <?php echo Mage::helper('shipestimate')->__('Calculating rates...') ?>
+        </span>
+
+        </div>
+    </div>
+    <div id="shipping-estimate-results" style="display:none">
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        function getEstimateShipping()
+        {
+            var quoteUrl = '<?php echo $this->jsQuoteEscape($this->getEstimateUrl());?>';
+            var items = $$(['.shipping-estimation-form input',
+                '.shipping-estimation-form select']);
+            $('ship_estimate_action').setValue(true);
+            if (!items.map(Validation.validate).all()) {
+                $('ship_estimate_action').setValue("");
+                return;
+            }
+            $('ship_estimate_action').setValue("");
+            var parameters = Form.serializeElements(items, true);
+            $('shipping-estimate-loading-message').show();
+            $('shipping-estimate-results').hide();
+            new Ajax.Updater('shipping-estimate-results', quoteUrl, {
+                parameters: parameters,
+                evalScripts: true,
+                onComplete: function() {
+                    $('shipping-estimate-loading-message').hide();
+                    $('shipping-estimate-results').show();
+                }
+            });
+
+        }
+        Validation.add('webshopapps-estimate-shipping-required', '<?php echo $this->__('This is a required field.') ?>', function(v, el) {
+            var estimate = $('ship_estimate_action').getValue();
+            var result = true;
+            if(estimate == "true") {
+                result = !Validation.get('IsEmpty').test(v);
+            }
+            return result;
+        });
+        Validation.add('webshopapps-estimate-shipping-select-one', '<?php echo $this->__('Please select an option.') ?>', function(v, el) {
+            var estimate = $('ship_estimate_action').getValue();
+            var result = true;
+            if(estimate == "true") {
+                result = ((v != "none") && (v != null) && (v.length != 0));
+            }
+            return result;
+        });
+        RegionUpdater.prototype._checkRegionRequired = RegionUpdater.prototype._checkRegionRequired.wrap(function (parentMethod) {
+            parentMethod();
+            var elements = [this.regionTextEl, this.regionSelectEl];
+
+            elements.each(function(currentElement) {
+                if (currentElement.hasClassName('required-entry')) {
+                    currentElement.removeClassName('required-entry');
+                    currentElement.addClassName('webshopapps-estimate-shipping-required');
+
+                }
+                if (currentElement.hasClassName('validate-select')) {
+                    currentElement.removeClassName('validate-select');
+                    currentElement.addClassName('webshopapps-estimate-shipping-select-one');
+                }
+
+            });
+        });
+        new RegionUpdater('ship_country', 'ship_region', 'ship_region_id', <?php echo $this->helper('directory')->getRegionJson() ?>);
+    //]]>
+    </script>
+
+<?php endif ?>

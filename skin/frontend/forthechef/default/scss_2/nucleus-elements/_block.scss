@@ -1,0 +1,104 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Block
+// ==============================================
+
+.block {
+    margin-bottom:$gap;
+}
+
+.block_title {
+    position:relative;
+    padding:10px 15px;
+    border-radius:3px 3px 0 0;
+    background:$c-module-background;
+}
+
+.block_title h2,
+.block_title h3 {
+    @include h3;
+    margin-bottom:0;
+    font-size:$f-size-s;
+    color:$c-action;
+}
+
+.block_content {
+    padding:(15px - 1px); // Spacing for border
+    border-width:0 1px 1px;
+    border-style:solid;
+    border-color:$c-module-background;
+    border-radius:0 0 3px 3px;
+    background:lighten($c-module-background, 5%);
+}
+
+.block_content--unlined {
+    padding:0;
+}
+
+
+
+// ==============================================
+// Block - With Toggle
+// ==============================================
+
+.block[data-toggle] .block_title {
+    @include not-selectable;
+    padding-right:(10px + 11px + 15px);
+    border-radius:3px;
+    background:$c-module-background;
+
+    // Arrow
+    &:before {
+        @include transition (transform 250ms linear);
+        @include triangle (down, 8px, #000);
+        content:'';
+        position:absolute;
+        right:15px;
+        top:50%;
+        margin-top:(8px / -2);
+    }
+
+    &:hover {
+        background:darken($c-module-background, 5%);
+        cursor:pointer;
+    }
+}
+
+
+// ----------------------------------------------
+// Toggle - Show
+
+.block[data-toggle='show'] .block_title {
+    border-radius:3px 3px 0 0;
+
+    &:before {
+        @include transform (rotate(180deg));
+    }
+}
+
+.block[data-toggle='hide'] .block_content {
+    display:none;
+}

@@ -1,0 +1,148 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+/**
+ * @var $this Mage_Checkout_Block_Onepage_Success
+ */
+?>
+
+<?php // Display "Promo Area" block ?>
+<?php echo $this->getChildHtml('checkout_success.promo') ?>
+
+<div class="page-title">
+    <h1><?php echo $this->__('Your order has been received.') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+<?php if ($this->getOrderId()):?>
+    <?php if ($this->getCanViewOrder()) :?>
+        <p><?php echo $this->__('Your order # is: <strong>%s</strong>.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+    <?php  else :?>
+        <p><?php echo $this->__('Your order # is: <strong>%s</strong>.', $this->escapeHtml($this->getOrderId())) ?></p>
+    <?php endif;?>
+
+    <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+
+    <?php $_leadTimeNotice = $this->getChildHtml('checkout_success.lead_time_notice'); ?>
+    <?php if (!empty($_leadTimeNotice)): ?>
+        <p><?php echo $_leadTimeNotice ?></p>
+    <?php endif; ?>
+
+    <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+        <p>
+            <?php echo $this->__('Click <a href="%s" onclick="this.target=\'_blank\'">here to print</a> a copy of your order confirmation.', $this->getPrintUrl()) ?>
+            <?php // Output children by names  ?>
+            <?php echo $this->getChildHtml('downloadable.checkout.success') ?>
+        </p>
+    <?php endif;?>
+
+    <?php
+    // "Shipping and Returns Policy" block
+    $_policyBlockContent = $this->getChildHtml('checkout_success.policy');
+    ?>
+    <?php if (!empty($_policyBlockContent)): ?>
+        <p>
+            <?php echo $this->__('Review our <a id="policy-link" href="%s">shipping and returns policy</a>', '#policy-text') ?>
+
+            <div style="display: none;">
+                <div id="policy-text">
+                    <?php echo $_policyBlockContent ?>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    jQuery('a#policy-link').colorbox({
+                        transition: 'none',
+                        fadeOut: 0, // Prep for instant hide
+                        close: '&#x2297;',
+                        inline: true,
+                        maxWidth: '800px'
+                    });
+                });
+            </script>
+        </p>
+    <?php endif; ?>
+
+    <h1><?php echo $this->__('Order Summary') ?></h1>
+    <?php echo $this->getChildHtml('checkout_success.review') ?>
+<?php endif;?>
+
+<?php if ($this->getAgreementRefId()): ?>
+    <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+<?php endif;?>
+
+<?php if ($profiles = $this->getRecurringProfiles()):?>
+    <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+    <ul class="disc">
+        <?php foreach($profiles as $profile):?>
+            <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+            <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+        <?php endforeach;?>
+    </ul>
+<?php endif;?>
+
+<div class="buttons-set">
+    <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+</div>
+
+<?php echo $this->getChildHtml('crosssell') ?>
+
+<!-- START Google Trusted Stores Order -->
+<?php
+$orderId = $this->getOrderId();
+$order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+$customer = Mage::getModel('customer/customer')->load($order->getCustomerId());
+$address = $order->getShippingAddress();
+?>
+<div id="gts-order" style="display:none;" translate=”no”>
+    <!-- start order and merchant information -->
+    <span id="gts-o-id"><?php echo $orderId; ?></span>
+    <span id="gts-o-domain">www.forthechef.com</span>
+    <span id="gts-o-email"><?php echo htmlentities($order->getBillingAddress()->getEmail()); ?></span>
+    <span id="gts-o-country"><?php echo htmlentities($address->getCountryId()); ?></span>
+    <span id="gts-o-currency">USD</span>
+    <span id="gts-o-total"><?php echo round($order->getGrandTotal(),2); ?></span>
+    <span id="gts-o-discounts"><?php echo round($order->getDiscountAmount(),2); ?></span>
+    <span id="gts-o-shipping-total"><?php echo round($order->getShippingAmount(),2); ?></span>
+    <span id="gts-o-tax-total"><?php echo round($order->getTaxAmount(),2); ?></span>
+
+    <span id="gts-o-est-ship-date"><?php echo $shippingDate=Date('Y-m-d', strtotime("+1 days")); ?></span>
+    <span id="gts-o-est-delivery-date"><?php echo $deliveryDate=Date('Y-m-d', strtotime("+8 days")); ?></span>
+    <span id="gts-o-has-preorder">N</span>
+    <span id="gts-o-has-digital">N</span>
+    <!-- end order and merchant information -->
+    <!-- start repeated item specific information -->
+    <?php foreach ($order->getAllItems() as $item): ?>
+        <span class="gts-item">
+			<span class="gts-i-name"><?php echo htmlentities($item->getName()); ?></span>
+			<span class="gts-i-price"><?php echo round($item->getBasePrice(),2); ?></span>
+			<span class="gts-i-quantity"><?php echo (int)$item->getQtyOrdered(); ?></span>
+			<span class="gts-i-prodsearch-id"><?php echo $item->getProductId(); ?></span>
+			<span class="gts-i-prodsearch-store-id">112249088</span>
+		</span>
+    <?php endforeach; ?>
+    <!-- end repeated item specific information -->
+</div>
+<!-- END Google Trusted Stores Order  -->

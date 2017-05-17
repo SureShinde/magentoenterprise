@@ -1,0 +1,74 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<div class="header-container">
+    <div class="header">
+        <?php if ($this->getIsHomePage()):?>
+            <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+                <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+                    <amp-img height="90" width="272" layout="responsive" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" ></amp-img>
+                </a>
+            </h1>
+        <?php else:?>
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+                <amp-img height="90" width="272" layout="responsive" src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>"></amp-img>
+            </a>
+        <?php endif?>
+    </div>
+
+    <div class="acc-cwrap">
+        <a href="<?php echo $this->getUrl('customer/account'); ?>" class="skip-link skip-account">
+            <span class="icon"></span>
+            <span class="label"><?php echo $this->__('Account') ?></span>
+        </a>
+
+        <!-- Cart -->
+        <a href="<?php echo $this->getUrl('checkout/cart'); ?>" data-target-element="#header-cart" class="skip-link skip-cart  no-count">
+            <span class="icon"></span>
+            <span class="label"><?php echo $this->__('Cart') ?></span>
+        </a>
+    </div>
+
+    <div class="desktop">
+        <?php echo $this->getChildHtml('topMenu') ?>
+    </div>
+
+    <div class="skip-links">
+        <span class="skip-link">
+            <span class="skip-nav">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Menu') ?></span>
+            </span>
+            <?php echo $this->getChildHtml('topMenu') ?>
+        </span>
+
+        <span class="skip-link">
+            <a href="<?php echo $this->getUrl('customer/account'); ?>" class="skip-account">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Account') ?></span>
+            </a>
+        </span>
+
+        <span class="skip-link">
+            <a href="<?php echo $this->getUrl('checkout/cart'); ?>" data-target-element="#header-cart" class="skip-cart">
+                <span class="icon"></span>
+                <span class="label"><?php echo $this->__('Cart') ?></span>
+            </a>
+        </span>
+    </div>
+</div>

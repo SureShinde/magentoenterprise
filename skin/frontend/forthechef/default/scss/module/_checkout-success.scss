@@ -1,0 +1,109 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+/* ============================================ *
+ * Checkout - Success
+ * ============================================ */
+
+.checkout-onepage-success {
+    .col-main {
+        padding: 0;
+        text-align: left;
+    }
+
+    .page-title {
+
+        h1 {
+            font-weight: 300;
+            border-bottom: none;
+        }
+
+    }
+
+    .sub-title {
+        font-size: $f-size-xxl;
+    }
+
+    .buttons-set {
+        margin: $gap 0;
+        padding: $gap 0;
+        text-align: left;
+        border: none;
+
+        button {
+            float: none;
+        }
+    }
+
+    .col-main p {
+        margin: 20px 0;
+    }
+
+    .crosssell {
+        float: left;
+        width: 100%;
+        padding: 20px 0 0 0;
+        @include product-grid(3, 960);
+
+
+        h2 {
+            font-size: 14px;
+            color: $c-text;
+        }
+
+        .product-info {
+            min-height: auto !important;
+        }
+
+        .products-grid > li, .subcategories-grid > li {
+            width: 15%;
+            text-align: left;
+            padding-bottom: 20px;
+
+            &:last-child {
+                border-right: none;
+            }
+
+            &:nth-child(even) {
+                margin-right: 0px !important;
+            }
+
+            &:nth-child(3n+1) {
+                clear: none !important;
+                margin-right: 0px !important;
+            }
+
+            &:nth-child(5n+1) {
+                clear: left !important;
+                margin-right: 0 !important;
+            }
+        }
+    }
+}
+
+@include bp(max-width, $bp-medium) {
+    .checkout-onepage-success .crosssell .products-grid .item {
+        width:32%;
+    }
+}

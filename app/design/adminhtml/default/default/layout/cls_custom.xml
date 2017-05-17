@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>js</type><name>mage/adminhtml/wysiwyg/tiny_mce/custom_settings.js</name><params/><if/><condition>can_load_tiny_mce</condition></action>
+        </reference>
+    </default>
+</layout>

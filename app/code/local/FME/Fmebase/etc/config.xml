@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * PHP version 5
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category  FME
+ * @package   FME_Fmebase
+ * @author    Altaf Ahmed <support@fmeextension.com>
+ * @copyright 2016 XFME Extensions (https://www.fmeextensions.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  
+ * Open Software License (OSL 3.0)
+ * @link      https://www.fmeextensions.com
+ */
+  -->
+<config>
+	<modules>
+		<FME_Fmebase>
+			<version>1.0.0</version>
+		</FME_Fmebase>
+	</modules>
+	<global>
+		<blocks>
+			<fmebase>
+				<class>FME_Fmebase_Block</class>
+			</fmebase>
+		</blocks>
+		<helpers>
+			<fmebase>
+				<class>FME_Fmebase_Helper</class>
+			</fmebase>
+		</helpers>
+		<template>
+	        <email>
+	            <fme_Support_email module="fmebase">
+	                <label>FME Support Email</label>
+	                <file>fme_Support_email.html</file>
+	                <type>html</type>
+	            </fme_Support_email>
+	        </email>
+	    </template>
+	</global>
+	<adminhtml>
+		<menu>
+			<fmebase module="fmebase">
+				<title>FME Extensions</title>
+				<sort_order>71</sort_order>               
+				<children>
+					
+					<fmebaseconfig translate="title">
+						<title>Extensions and Support</title>
+						<sort_order>0</sort_order>
+						<action>adminhtml/system_config/edit/section/basesec</action>
+					</fmebaseconfig>
+				</children>
+			</fmebase>
+		</menu>
+		<acl>
+            <resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+                <admin>
+                    <children>
+						<fmebase module="fmebase">
+							<title>FME Extensions</title>
+							<sort_order>71</sort_order>               
+							<children>
+								
+								<fmebaseconfig translate="title">
+									<title>Extensions and Support</title>
+									<sort_order>100</sort_order>
+									
+								</fmebaseconfig>
+							</children>
+						</fmebase>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <basesec translate="title" module="fmebase">
+                                            <title>Extension's Info and Support</title>
+                                            <sort_order>1000</sort_order>
+                                        </basesec>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+		<layout>
+			<updates>
+				<fmebase>
+					<file>fmebase.xml</file>
+				</fmebase>
+			</updates>
+		</layout>
+		<translate>
+            <modules>
+                <FME_Fmebase>
+                    <files>
+                        <default>FME_Fmebase.csv</default>
+                    </files>
+                </FME_Fmebase>
+            </modules>
+        </translate>
+		
+    </adminhtml> 
+    <admin>
+        <routers>
+            <adminhtml>
+                
+                <args>
+                    <modules><fme_fmebase after="Mage_Adminhtml">FME_Fmebase_Adminhtml</fme_fmebase></modules>
+                    
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+	<frontend>
+	</frontend>
+	</config>

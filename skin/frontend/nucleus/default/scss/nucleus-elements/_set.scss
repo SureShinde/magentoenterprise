@@ -1,0 +1,124 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Set
+// ==============================================
+
+.set {
+    overflow:hidden;
+}
+
+.set-item {
+    position:relative;
+    float:left;
+    padding:0 0 $gap-tall;
+    text-align:center;
+}
+
+.set img {
+    max-width:100%;
+    margin:0 auto;
+}
+
+.set-title {
+    @include h2;
+    margin-bottom:10px;
+}
+
+.set-description {
+    margin-bottom:15px;
+}
+
+
+
+// ==============================================
+// Set - Three
+// ==============================================
+
+@include bp (max-width, $bp-medium) {
+
+    .set--three .set-item {
+        clear:both;
+        width:100%;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-medium+1) {
+
+    .set--three .set-item {
+        width:33.3333%;
+        padding-right:20px;
+        padding-left:20px;
+    }
+
+}
+
+
+
+// ==============================================
+// Set - Four
+// ==============================================
+
+@include bp (max-width, $bp-small) {
+
+    .set--four .set-item {
+        clear:both;
+        width:100%;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-small+1) {
+
+    .set--four .set-item {
+        width:50%;
+        padding-right:20px;
+        padding-left:20px;
+    }
+
+    .set--four .set-item:nth-child(3) {
+        clear:left;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-large+1) {
+
+    .set--four .set-item {
+        width:25%;
+    }
+
+    .set--four .set-item:nth-child(3) {
+        clear:none;
+    }
+
+}

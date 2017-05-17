@@ -1,0 +1,1170 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<nucleus_elements>
+    <version>1.0.0</version>
+    <create>
+        <blocks>
+            <block>
+                <title><![CDATA[Nucleus Elements Navigation]]></title>
+                <identifier><![CDATA[nucleus-elements-navigation]]></identifier>
+                <content><![CDATA[
+<ul class="pattern-navigation">
+    <li><a href="{{store direct_url="nucleus-elements-interactive"}}">Interactive Elements</a></li>
+    <li><a href="{{store direct_url="nucleus-elements-presentational"}}">Presentational Elements</a></li>
+    <li><a href="{{store direct_url="nucleus-elements-hero"}}">Hero Banners</a></li>
+    <li><a href="{{store direct_url="nucleus-elements-mini"}}">Mini Elements</a></li>
+</ul>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Accordion]]></title>
+                <identifier><![CDATA[nucleus-accordion]]></identifier>
+                <content><![CDATA[
+<div class="accordion">
+    <div class="accordion-sections">
+        <section id="accordion-section-one" class="accordion-section">
+            <h3 class="accordion-header">Section 1</h3>
+
+            <article class="accordion-content">
+                <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+
+                <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+            </article>
+        </section>
+
+        <section id="accordion-section-two" class="accordion-section">
+            <h3 class="accordion-header">Section 2</h3>
+
+            <article class="accordion-content">
+                <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+
+                <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+            </article>
+        </section>
+
+        <section id="accordion-section-three" class="accordion-section">
+            <h3 class="accordion-header">Section 3</h3>
+
+            <article class="accordion-content">
+                <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+
+                <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+            </article>
+        </section>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Ad]]></title>
+                <identifier><![CDATA[nucleus-ad]]></identifier>
+                <content><![CDATA[
+<ul class="ad">
+    <li class="ad-item">
+        <a href="#" class="ad-link">
+            <div class="ad-details">
+                <h4 class="ad-tagline">Short Intro Line</h4>
+                <h3 class="ad-title">Primary Headline</h3>
+                <span class="button button-small">Action Label</span>
+            </div>
+
+            <img class="ad-image" src="http://placehold.it/590x299" alt="#" />
+        </a>
+    </li>
+
+    <li class="ad-item">
+        <a href="#" class="ad-link">
+            <div class="ad-details">
+                <h4 class="ad-tagline">Short Intro Line</h4>
+                <h3 class="ad-title">Primary Headline</h3>
+                <span class="button button-small">Action Label</span>
+            </div>
+
+            <img class="ad-image" src="http://placehold.it/590x299" alt="#" />
+        </a>
+    </li>
+</ul>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Ad - Image Only]]></title>
+                <identifier><![CDATA[nucleus-ad-image-only]]></identifier>
+                <content><![CDATA[
+<ul class="ad">
+    <li class="ad-item">
+        <a href="#" class="ad-link">
+            <img class="ad-image" src="http://placehold.it/590x299" alt="#" />
+        </a>
+    </li>
+
+    <li class="ad-item">
+        <a href="#" class="ad-link">
+            <img class="ad-image" src="http://placehold.it/590x299" alt="#" />
+        </a>
+    </li>
+</ul>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Block]]></title>
+                <identifier><![CDATA[nucleus-block]]></identifier>
+                <content><![CDATA[
+<div class="block">
+    <div class="block_title">
+        <h3>Lorem ipsum dolor sit amet?</h3>
+    </div>
+
+    <div class="block_content">
+        <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+
+        <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Block Toggle]]></title>
+                <identifier><![CDATA[nucleus-block-toggle]]></identifier>
+                <content><![CDATA[
+<div class="block" data-toggle="hide">
+    <div class="block_title" data-toggle-trigger>
+        <h3>Lorem ipsum dolor sit amet?</h3>
+    </div>
+
+    <div class="block_content" data-toggle-target>
+        <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+
+        <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Expand]]></title>
+                <identifier><![CDATA[nucleus-expand]]></identifier>
+                <content><![CDATA[
+<div class="expand">
+    <div class="expand-button">
+        <button class="button">Expand Content</button>
+    </div>
+
+    <div class="expand-target">
+        <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+
+        <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Grid Box - Half Left]]></title>
+                <identifier><![CDATA[nucleus-grid-box-half-left]]></identifier>
+                <content><![CDATA[
+<div class="grid-box grid-box--left">
+    <div class="grid-box-1-2">
+        <img class="grid-box-image" src="http://placehold.it/576x294" alt="#" />
+    </div>
+
+    <div class="grid-box-1-2 grid-box-content">
+        <h3 class="grid-box-title">Heading One</h3>
+
+        <div class="grid-box-description std">
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        </div>
+
+        <a href="#" class="button">Primary Action</a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Grid Box - Half Right]]></title>
+                <identifier><![CDATA[nucleus-grid-box-half-right]]></identifier>
+                <content><![CDATA[
+<div class="grid-box grid-box--right">
+    <div class="grid-box-1-2">
+        <img class="grid-box-image" src="http://placehold.it/576x294" alt="#" />
+    </div>
+
+    <div class="grid-box-1-2 grid-box-content">
+        <h3 class="grid-box-title">Heading One</h3>
+
+        <div class="grid-box-description std">
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        </div>
+
+        <a href="#" class="button">Primary Action</a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Grid Box - Third Left]]></title>
+                <identifier><![CDATA[nucleus-grid-box-third-left]]></identifier>
+                <content><![CDATA[
+<div class="grid-box grid-box--left">
+    <div class="grid-box-1-3">
+        <img class="grid-box-image" src="http://placehold.it/376x192" alt="#" />
+    </div>
+
+    <div class="grid-box-2-3 grid-box-content">
+        <h3 class="grid-box-title">Heading One</h3>
+
+        <div class="grid-box-description std">
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        </div>
+
+        <a href="#" class="button">Primary Action</a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Grid Box - Third Right]]></title>
+                <identifier><![CDATA[nucleus-grid-box-third-right]]></identifier>
+                <content><![CDATA[
+<div class="grid-box grid-box--right">
+    <div class="grid-box-1-3">
+        <img class="grid-box-image" src="http://placehold.it/376x192" alt="#" />
+    </div>
+
+    <div class="grid-box-2-3 grid-box-content">
+        <h3 class="grid-box-title">Heading One</h3>
+
+        <div class="grid-box-description std">
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        </div>
+
+        <a href="#" class="button">Primary Action</a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Center]]></title>
+                <identifier><![CDATA[nucleus-hero-center]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content">
+            <h1 class="hero-title">Hero Center Center Center Center</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Center 33%]]></title>
+                <identifier><![CDATA[nucleus-hero-center-33]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-33">
+            <h1 class="hero-title">Hero Center 33 33 33 33</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Center 50%]]></title>
+                <identifier><![CDATA[nucleus-hero-center-50]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-50">
+            <h1 class="hero-title">Hero Center 50 50 50 50</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Center 66%]]></title>
+                <identifier><![CDATA[nucleus-hero-center-66]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-66">
+            <h1 class="hero-title">Hero Center 66 66 66 66</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Call to Action]]></title>
+                <identifier><![CDATA[nucleus-hero-cta]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center hero--cta">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content">
+            <div class="hero-title-pre">Write A Subtitle</div>
+            <h1 class="hero-title">And Primary Title</h1>
+            <div class="button button-large" href="#">Call To Action</div>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Call to Action Light]]></title>
+                <identifier><![CDATA[nucleus-hero-cta-light]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center hero--cta hero--contrast-light">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content">
+            <div class="hero-title-pre">Write A Subtitle</div>
+            <h1 class="hero-title">And Primary Title</h1>
+            <div class="button button-large">Call To Action</div>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Dark]]></title>
+                <identifier><![CDATA[nucleus-hero-dark]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center hero--contrast-dark">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content">
+            <h1 class="hero-title">Hero Dark On Light</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Left]]></title>
+                <identifier><![CDATA[nucleus-hero-left]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--left">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content">
+            <h1 class="hero-title">Hero Left Left Left Left</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Left 33%]]></title>
+                <identifier><![CDATA[nucleus-hero-left-33]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--left">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-33">
+            <h1 class="hero-title">Hero Left 33 33 33 33</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Left 50%]]></title>
+                <identifier><![CDATA[nucleus-hero-left-50]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--left">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-50">
+            <h1 class="hero-title">Hero Left 50 50 50 50</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Left 66%]]></title>
+                <identifier><![CDATA[nucleus-hero-left-66]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--left">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-66">
+            <h1 class="hero-title">Hero Left 66 66 66 66</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Light]]></title>
+                <identifier><![CDATA[nucleus-hero-light]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--center hero--contrast-light">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/404040/303030" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content">
+            <h1 class="hero-title">Hero Light On Dark</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Right]]></title>
+                <identifier><![CDATA[nucleus-hero-right]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--right">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content">
+            <h1 class="hero-title">Hero Right Right Right</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Right 33%]]></title>
+                <identifier><![CDATA[nucleus-hero-right-33]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--right">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-33">
+            <h1 class="hero-title">Hero Right 33 33 33 33</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Right 50%]]></title>
+                <identifier><![CDATA[nucleus-hero-right-50]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--right">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-50">
+            <h1 class="hero-title">Hero Right 50 50 50 50</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Hero - Right 66%]]></title>
+                <identifier><![CDATA[nucleus-hero-right-66]]></identifier>
+                <content><![CDATA[
+<a href="#" class="hero hero--right">
+    <div class="hero-image">
+        <img src="http://placehold.it/1200x500/d0d0d0/c0c0c0" alt="#" />
+    </div>
+
+    <div class="hero-content-wrapper">
+        <div class="hero-content hero-content--width-66">
+            <h1 class="hero-title">Hero Right 66 66 66 66</h1>
+        </div>
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Lead]]></title>
+                <identifier><![CDATA[nucleus-lead]]></identifier>
+                <content><![CDATA[
+<p class="lead">
+    Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate,
+    ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est
+    urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia
+    nostra, per inceptos himenaeos. Sed molestie augue sit amet leo consequat
+    posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
+</p>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Masthead]]></title>
+                <identifier><![CDATA[nucleus-masthead]]></identifier>
+                <content><![CDATA[
+<div class="masthead">
+    <h1 class="masthead-title">Masthead Title</h1>
+
+    <p class="lead">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Modal]]></title>
+                <identifier><![CDATA[nucleus-modal]]></identifier>
+                <content><![CDATA[
+<a href="#" class="button" data-modal="modal-content">Modal</a>
+
+<section id="modal-content" class="no-display">
+    <h2>Modal Title</h2>
+    <p>Nulla facilisi. Duis aliquet egestas purus in blandit.
+        Curabitur vulputate, ligula lacinia scelerisque tempor,
+        lacus lacus ornare ante, ac egestas est urna sit amet arcu.</p>
+</section>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Promo Strap - Link]]></title>
+                <identifier><![CDATA[nucleus-promo-strap-link]]></identifier>
+                <content><![CDATA[
+<a class="promo-strap promo-strap--link" href="#">
+    <div class="container">
+        How do you like them apples? Take <strong>20% off</strong> at checkout.
+    </div>
+</a>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Promo Strap - Text]]></title>
+                <identifier><![CDATA[nucleus-promo-strap-text]]></identifier>
+                <content><![CDATA[
+<div class="promo-strap promo-strap--text">
+    <div class="container">
+        How do you like them apples? Take <strong>20% off</strong> at checkout.
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Set 3 - Images]]></title>
+                <identifier><![CDATA[nucleus-set-3-images]]></identifier>
+                <content><![CDATA[
+<div class="set set--three">
+    <div class="set-item">
+        <a href="#">
+            <img src="http://placehold.it/360x180" alt="#" />
+        </a>
+    </div>
+
+    <div class="set-item">
+        <a href="#">
+            <img src="http://placehold.it/360x180" alt="#" />
+        </a>
+    </div>
+
+    <div class="set-item">
+        <a href="#">
+            <img src="http://placehold.it/360x180" alt="#" />
+        </a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Set 3 - Text]]></title>
+                <identifier><![CDATA[nucleus-set-3-text]]></identifier>
+                <content><![CDATA[
+<div class="set set--three">
+    <div class="set-item">
+        <h3 class="set-title">First Title</h3>
+        <p class="set-description">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        <a class="button" href="#">Action</a>
+    </div>
+
+    <div class="set-item">
+        <h3 class="set-title">Second Title</h3>
+        <p class="set-description">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        <a class="button" href="#">Action</a>
+    </div>
+
+    <div class="set-item">
+        <h3 class="set-title">Third Title</h3>
+        <p class="set-description">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        <a class="button" href="#">Action</a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Set 4 - Images]]></title>
+                <identifier><![CDATA[nucleus-set-4-images]]></identifier>
+                <content><![CDATA[
+<div class="set set--four">
+    <div class="set-item">
+        <a href="#">
+            <img src="http://placehold.it/260x130" alt="#" />
+        </a>
+    </div>
+
+    <div class="set-item">
+        <a href="#">
+            <img src="http://placehold.it/260x130" alt="#" />
+        </a>
+    </div>
+
+    <div class="set-item">
+        <a href="#">
+            <img src="http://placehold.it/260x130" alt="#" />
+        </a>
+    </div>
+
+    <div class="set-item">
+        <a href="#">
+            <img src="http://placehold.it/260x130" alt="#" />
+        </a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Set 4 - Text]]></title>
+                <identifier><![CDATA[nucleus-set-4-text]]></identifier>
+                <content><![CDATA[
+<div class="set set--four">
+    <div class="set-item">
+        <h3 class="set-title">First Title</h3>
+        <p class="set-description">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        <a class="button" href="#">Action</a>
+    </div>
+
+    <div class="set-item">
+        <h3 class="set-title">Second Title</h3>
+        <p class="set-description">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        <a class="button" href="#">Action</a>
+    </div>
+
+    <div class="set-item">
+        <h3 class="set-title">Third Title</h3>
+        <p class="set-description">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        <a class="button" href="#">Action</a>
+    </div>
+
+    <div class="set-item">
+        <h3 class="set-title">Fourth Title</h3>
+        <p class="set-description">Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</p>
+        <a class="button" href="#">Action</a>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Stat List Horizontal]]></title>
+                <identifier><![CDATA[nucleus-stat-list-horizontal]]></identifier>
+                <content><![CDATA[
+<ul class="stat-list stat-list--horizontal">
+    <li class="stat">
+        <div class="stat-label">Founded</div>
+        <div class="stat-value">1776</div>
+    </li>
+
+    <li class="stat">
+        <div class="stat-label">States</div>
+        <div class="stat-value">50</div>
+    </li>
+
+    <li class="stat">
+        <div class="stat-label">Population</div>
+        <div class="stat-value">320M</div>
+    </li>
+</ul>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Stat List Vertical]]></title>
+                <identifier><![CDATA[nucleus-stat-list-vertical]]></identifier>
+                <content><![CDATA[
+<ul class="stat-list stat-list--vertical">
+    <li class="stat">
+        <div class="stat-label">Founded</div>
+        <div class="stat-value">1776</div>
+    </li>
+
+    <li class="stat">
+        <div class="stat-label">States</div>
+        <div class="stat-value">50</div>
+    </li>
+
+    <li class="stat">
+        <div class="stat-label">Population</div>
+        <div class="stat-value">320M</div>
+    </li>
+</ul>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Stat]]></title>
+                <identifier><![CDATA[nucleus-stat-single]]></identifier>
+                <content><![CDATA[
+<div class="stat">
+    <div class="stat-label">Founded</div>
+    <div class="stat-value">1776</div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Story]]></title>
+                <identifier><![CDATA[nucleus-story]]></identifier>
+                <content><![CDATA[
+<div class="story std">
+    <h2>Heading</h2>
+
+    <p>
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+    </p>
+
+    <p>
+        <img src="http://placehold.it/400x250" alt="" />
+    </p>
+
+    <p>
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+    </p>
+
+    <h3>Sub-Heading</h3>
+
+    <p>
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+    </p>
+
+    <p>
+        <img src="http://placehold.it/400x250" alt="" />
+    </p>
+
+    <p>
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+        Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.
+    </p>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Tabs]]></title>
+                <identifier><![CDATA[nucleus-tabs]]></identifier>
+                <content><![CDATA[
+<div class="tabs">
+    <ul class="tabs-nav">
+        <li><a href="#tab-1">Tab One</a></li>
+        <li><a href="#tab-2">Tab Two</a></li>
+        <li><a href="#tab-3">Tab Three</a></li>
+    </ul>
+
+    <div class="tabs-content">
+        <div id="tab-1">
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate,
+                ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est
+                urna sit amet arcu.</p>
+        </div>
+
+        <div id="tab-2">
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate,
+                ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est
+                urna sit amet arcu.</p>
+
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate,
+                ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est
+                urna sit amet arcu.</p>
+        </div>
+
+        <div id="tab-3">
+            <p>Nulla facilisi. Duis aliquet egestas purus in blandit.</p>
+        </div>
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Tooltip - Bottom Left]]></title>
+                <identifier><![CDATA[nucleus-tooltip-bottom-left]]></identifier>
+                <content><![CDATA[
+<div class="tooltip-wrapper">
+    Bottom Left
+
+    <div class="tooltip tooltip--bottom tooltip--left">
+        Some nice tooltip text to show.
+    </div>
+</div>
+                ]]></content>
+            </block>
+            <block>
+                <title><![CDATA[Nucleus Elements: Tooltip - Top Left]]></title>
+                <identifier><![CDATA[nucleus-tooltip-top-left]]></identifier>
+                <content><![CDATA[
+<div class="tooltip-wrapper">
+    Top Left
+
+    <div class="tooltip tooltip--top tooltip--left">
+        Some nice tooltip text to show.
+    </div>
+</div>
+                ]]></content>
+            </block>
+        </blocks>
+        <pages>
+            <page>
+                <title><![CDATA[Nucleus Elements]]></title>
+                <identifier><![CDATA[nucleus-elements]]></identifier>
+                <content_heading><![CDATA[Nucleus Elements]]></content_heading>
+                <content><![CDATA[
+<p>Nucleus Elements provides a library of content patterns, supported by the Nucleus theme, that give you a quick way to format your static content in appealing ways, including custom pages. Choose a category of Elements to see them in action.</p>
+{{block type="cms/block" block_id="nucleus-elements-navigation"}}
+                ]]></content>
+            </page>
+            <page>
+                <title><![CDATA[Nucleus Elements: Hero Banners]]></title>
+                <identifier><![CDATA[nucleus-elements-hero]]></identifier>
+                <content_heading><![CDATA[Nucleus Elements: Hero Banners]]></content_heading>
+                <content><![CDATA[
+{{block type="cms/block" block_id="nucleus-elements-navigation"}}
+
+<ul class="pattern-nav-secondary">
+    <li>Elements: </li>
+    <li><a href="#hero-center">Hero - Center</a></li>
+    <li><a href="#hero-center-33">Hero - Center 33%</a></li>
+    <li><a href="#hero-center-50">Hero - Center 50%</a></li>
+    <li><a href="#hero-center-66">Hero - Center 66%</a></li>
+    <li><a href="#hero-cta">Hero - Call to Action</a></li>
+    <li><a href="#hero-cta-light">Hero - Call to Action Light</a></li>
+    <li><a href="#hero-dark">Hero - Dark</a></li>
+    <li><a href="#hero-left">Hero - Left</a></li>
+    <li><a href="#hero-left-50">Hero - Left 50%</a></li>
+    <li><a href="#hero-left-66">Hero - Left 66%</a></li>
+    <li><a href="#hero-right">Hero - Right</a></li>
+    <li><a href="#hero-right-33">Hero - Right 33%</a></li>
+    <li><a href="#hero-right-50">Hero - Right 50%</a></li>
+    <li><a href="#hero-right-66">Hero - Right 66%</a></li>
+    <li><a href="#hero-light">Hero - Light</a></li>
+
+</ul>
+
+
+<h2 id="hero-center" class="pattern-title">Hero - Center</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-center</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-center"}}
+
+<h2 id="hero-center-33" class="pattern-title">Hero - Center 33%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-center-33</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-center-33"}}
+
+<h2 id="hero-center-50" class="pattern-title">Hero - Center 50%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-center-50</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-center-50"}}
+
+<h2 id="hero-center-66" class="pattern-title">Hero - Center 66%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-center-66</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-center-66"}}
+
+<h2 id="hero-cta" class="pattern-title">Hero - Call to Action</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-cta</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-cta"}}
+
+<h2 id="hero-cta-light" class="pattern-title">Hero - Call to Action Light</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-cta-light</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-cta-light"}}
+
+<h2 id="hero-dark" class="pattern-title">Hero - Dark</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-dark</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-dark"}}
+
+<h2 id="hero-left" class="pattern-title">Hero - Left</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-left</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-left"}}
+
+<h2 id="hero-left-33" class="pattern-title">Hero - Left 33%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-left-33</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-left-33"}}
+
+<h2 id="hero-left-50" class="pattern-title">Hero - Left 50%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-left-50</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-left-50"}}
+
+<h2 id="hero-left-66" class="pattern-title">Hero - Left 66%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-left-66</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-left-66"}}
+
+<h2 id="hero-right" class="pattern-title">Hero - Right</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-right</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-right"}}
+
+<h2 id="hero-right-33" class="pattern-title">Hero - Right 33%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-right-33</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-right-33"}}
+
+<h2 id="hero-right-50" class="pattern-title">Hero - Right 50%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-right-50</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-right-50"}}
+
+<h2 id="hero-right-66" class="pattern-title">Hero - Right 66%</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-right-66</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-right-66"}}
+
+<h2 id="hero-light" class="pattern-title">Hero - Light</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-hero-light</strong></p>
+{{block type="cms/block" block_id="nucleus-hero-light"}}
+                ]]></content>
+            </page>
+            <page>
+                <title><![CDATA[Nucleus Elements: Interactive]]></title>
+                <identifier><![CDATA[nucleus-elements-interactive]]></identifier>
+                <content_heading><![CDATA[Nucleus Elements: Interactive]]></content_heading>
+                <content><![CDATA[
+{{block type="cms/block" block_id="nucleus-elements-navigation"}}
+
+<ul class="pattern-nav-secondary">
+    <li>Elements: </li>
+    <li><a href="#accordion">Accordion</a></li>
+    <li><a href="#tabs">Tabs</a></li>
+    <li><a href="#modal">Modal</a></li>
+    <li><a href="#block-toggle">Block Toggle</a></li>
+</ul>
+
+
+<h2 id="accordion" class="pattern-title">Accordion</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-accordion</strong></p>
+<p>The Accordion element scales down to a collapsible/expandable interface at smaller screen sizes.</p>
+{{block type="cms/block" block_id="nucleus-accordion"}}
+
+<h2 id="tabs" class="pattern-title">Tabs</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-tabs</strong></p>
+{{block type="cms/block" block_id="nucleus-tabs"}}
+
+<h2 id="modal" class="pattern-title">Modal</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-modal</strong></p>
+<p>The Modal element defines content that will open in a modal window when the trigger button is activated.</p>
+{{block type="cms/block" block_id="nucleus-modal"}}
+
+<h2 id="block-toggle" class="pattern-title">Block Toggle</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-block-toggle</strong></p>
+{{block type="cms/block" block_id="nucleus-block-toggle"}}
+                ]]></content>
+            </page>
+            <page>
+                <title><![CDATA[Nucleus Elements: Mini]]></title>
+                <identifier><![CDATA[nucleus-elements-mini]]></identifier>
+                <content_heading><![CDATA[Nucleus Elements: Mini]]></content_heading>
+                <content><![CDATA[
+{{block type="cms/block" block_id="nucleus-elements-navigation"}}
+
+<ul class="pattern-nav-secondary">
+    <li>Elements: </li>
+    <li><a href="#masthead">Masthead</a></li>
+    <li><a href="#lead">Lead</a></li>
+    <li><a href="#expand">Expand</a></li>
+    <li><a href="#stats">Stats</a></li>
+    <li><a href="#stats-horizontal">Stat List Horizontal</a></li>
+    <li><a href="#stats-vertical">Stat List Vertical</a></li>
+    <li><a href="#tooltip-top-left">Tooltip - Top Left</a></li>
+    <li><a href="#tooltip-bottom-left">Tooltip - Bottom Left</a></li>
+    <li><a href="#promo-strap-text">Promo Strap - Text</a></li>
+    <li><a href="#promo-strap-link">Promo Strap - Link</a></li>
+</ul>
+
+
+<h2 id="masthead" class="pattern-title">Masthead</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-masthead</strong></p>
+{{block type="cms/block" block_id="nucleus-masthead"}}
+
+<h2 id="lead" class="pattern-title">Lead</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-lead</strong></p>
+{{block type="cms/block" block_id="nucleus-lead"}}
+
+<h2 id="expand" class="pattern-title">Expand</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-expand</strong></p>
+<p>The Expand element defines a block of content that is hidden initially, until the trigger button is activated.</p>
+{{block type="cms/block" block_id="nucleus-expand"}}
+
+<h2 id="stats" class="pattern-title">Stat</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-stat-single</strong></p>
+{{block type="cms/block" block_id="nucleus-stat-single"}}
+
+<h2 id="stats-horizontal" class="pattern-title">Stat List Horizontal</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-stat-list-horizontal</strong></p>
+{{block type="cms/block" block_id="nucleus-stat-list-horizontal"}}
+
+<h2 id="stats-vertical" class="pattern-title">Stat List Vertical</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-stat-list-vertical</strong></p>
+{{block type="cms/block" block_id="nucleus-stat-list-vertical"}}
+
+<h2 id="tooltip-bottom-left" class="pattern-title">Tooltip - Bottom Left</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-tooltip-bottom-left</strong></p>
+<p>Hover your cursor over the trigger text to display the tooltip.</p>
+{{block type="cms/block" block_id="nucleus-tooltip-bottom-left"}}
+
+<h2 id="tooltip-top-left" class="pattern-title">Tooltip - Top Left</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-tooltip-top-left</strong></p>
+<p>Hover your cursor over the trigger text to display the tooltip.</p>
+{{block type="cms/block" block_id="nucleus-tooltip-top-left"}}
+
+<h2 id="promo-strap-text" class="pattern-title">Promo Strap - Text</h2>
+<p class=“pattern-info”>Use this element by copying the static block titled <strong>nucleus-promo-strap-text</strong></p>
+{{block type="cms/block" block_id="nucleus-promo-strap-text"}}
+
+<h2 id="promo-strap-link" class="pattern-title">Promo Strap - Link</h2>
+<p class=“pattern-info”>Use this element by copying the static block titled <strong>nucleus-promo-strap-link</strong></p>
+{{block type="cms/block" block_id="nucleus-promo-strap-link"}}
+                ]]></content>
+            </page>
+            <page>
+                <title><![CDATA[Nucleus Elements: Presentational]]></title>
+                <identifier><![CDATA[nucleus-elements-presentational]]></identifier>
+                <content_heading><![CDATA[Nucleus Elements: Presentational]]></content_heading>
+                <content><![CDATA[
+{{block type="cms/block" block_id="nucleus-elements-navigation"}}
+
+<ul class="pattern-nav-secondary">
+    <li>Elements: </li>
+    <li><a href="#grid-box-half-left">Grid Box - Half Left</a></li>
+    <li><a href="#grid-box-half-right">Grid Box - Half Right</a></li>
+    <li><a href="#grid-box-third-left">Grid Box - Third Left</a></li>
+    <li><a href="#grid-box-third-right">Grid Box - Third Right</a></li>
+    <li><a href="#ad">Ad</a></li>
+    <li><a href="#ad-image">Ad - Image Only</a></li>
+    <li><a href="#set-3-text">Set 3 Text</a></li>
+    <li><a href="#set-3-images">Set 3 Images</a></li>
+    <li><a href="#set-4-text">Set 4 Text</a></li>
+    <li><a href="#set-4-images">Set 4 Images</a></li>
+    <li><a href="#block">Block</a></li>
+    <li><a href="#block-toggle">Block Toggle</a></li>
+    <li><a href="#story">Story</a></li>
+</ul>
+
+
+<h2 id="gridbox-half-left" class="pattern-title">Grid Box - Half Left</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-grid-box-half-left</strong></p>
+{{block type="cms/block" block_id="nucleus-grid-box-half-left"}}
+
+<h2 id="grid-box-half-right" class="pattern-title">Grid Box - Half Right</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-grid-box-half-right</strong></p>
+{{block type="cms/block" block_id="nucleus-grid-box-half-right"}}
+
+<h2 id="grid-box-third-left" class="pattern-title">Grid Box - Third Left</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-grid-box-third-left</strong></p>
+{{block type="cms/block" block_id="nucleus-grid-box-third-left"}}
+
+<h2 id="grid-box-third-right" class="pattern-title">Grid Box - Third Right</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-grid-box-third-right</strong></p>
+{{block type="cms/block" block_id="nucleus-grid-box-third-right"}}
+
+<h2 id="ad" class="pattern-title">Ad</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-ad</strong></p>
+{{block type="cms/block" block_id="nucleus-ad"}}
+
+<h2 id="ad-image" class="pattern-title">Ad - Image Only</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-ad-image-only</strong></p>
+{{block type="cms/block" block_id="nucleus-ad-image-only"}}
+
+<h2 id="set-3-text" class="pattern-title">Set 3 - Text</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-set-3-text</strong></p>
+{{block type="cms/block" block_id="nucleus-set-3-text"}}
+
+<h2 id="set-3-images" class="pattern-title">Set 3 - Images</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-set-3-images</strong></p>
+{{block type="cms/block" block_id="nucleus-set-3-images"}}
+
+<h2 id="set-4-text" class="pattern-title">Set 4 - Text</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-set-4-text</strong></p>
+{{block type="cms/block" block_id="nucleus-set-4-text"}}
+
+<h2 id="set-4-images" class="pattern-title">Set 4 - Images</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-set-4-images</strong></p>
+{{block type="cms/block" block_id="nucleus-set-4-images"}}
+
+<h2 id="block" class="pattern-title">Block</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-block</strong></p>
+{{block type="cms/block" block_id="nucleus-block"}}
+
+<h2 id="block-toggle" class="pattern-title">Block Toggle</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-block-toggle</strong></p>
+{{block type="cms/block" block_id="nucleus-block-toggle"}}
+
+<h2 id="story" class="pattern-title">Story</h2>
+<p class="pattern-info">Use this element by copying the static block titled <strong>nucleus-story</strong></p>
+{{block type="cms/block" block_id="nucleus-story"}}
+                ]]></content>
+            </page>
+        </pages>
+    </create>
+</nucleus_elements>

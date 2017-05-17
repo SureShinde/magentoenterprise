@@ -1,0 +1,149 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+/** @var Mage_Page_Block_Html_Topmenu_Renderer $this */
+/** @var Varien_Data_Tree_Node $menuTree */
+/** @var string $childrenWrapClass */
+
+$html = '';
+
+$children = $menuTree->getChildren();
+$parentLevel = $menuTree->getLevel();
+$childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+$counter = 1;
+$childrenCount = $children->count();
+
+$parentPositionClass = $menuTree->getPositionClass();
+$itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+if ($childLevel == 0) {
+    // Render top-level categories
+    foreach ($children as $child) {
+        $child->setLevel($childLevel);
+        $child->setIsFirst($counter == 1);
+        $child->setIsLast($counter == $childrenCount);
+        $child->setPositionClass($itemPositionClassPrefix . $counter);
+
+        $outermostClassCode = 'level'. $childLevel;
+        $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
+
+        $html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .'>';
+
+        $html .= '<a href="'. $child->getUrl() .'" class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
+
+        if (!empty($childrenWrapClass)) {
+            $html .= '<div class="'. $childrenWrapClass .'">';
+        }
+
+        $nextChildLevel = $childLevel + 1;
+
+        if (!empty($_hasChildren)) {
+            $html .= '<ul class="level'. $childLevel .'">';
+            $html .=     '<li class="level'. $nextChildLevel .' view-all">';
+            $html .=         '<a class="level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
+            $html .=             $this->__('View All') . ' ' . $this->escapeHtml($this->__($child->getName()));
+            $html .=         '</a>';
+            $html .=     '</li>';
+            $html .=     $this->render($child, '');
+            $html .= '</ul>';
+        }
+
+        if (!empty($childrenWrapClass)) {
+            $html .= '</div>';
+        }
+
+        $html .= '</li>';
+
+        $counter++;
+    }
+}
+
+elseif ( in_array($childLevel, array(1, 2)) ) {
+    // Second- and third-level subcategories
+    foreach ($children as $child) {
+        $child->setLevel($childLevel);
+        $child->setIsFirst($counter == 1);
+        $child->setIsLast($counter == $childrenCount);
+        $child->setPositionClass($itemPositionClassPrefix . $counter);
+
+        if (
+            ( ($childLevel == 1) && ($counter == CLS_NucleusCore_Helper_Menu::CATEGORY_LEVEL1_CHILDREN_LIMIT) )
+            || ( ($childLevel == 2) && ($counter == CLS_NucleusCore_Helper_Menu::CATEGORY_LEVEL2_CHILDREN_LIMIT) )
+        ) {
+            // Mark this child as last
+            $child->setIsLast(true);
+        }
+
+        $outermostClassCode = 'level'. $childLevel;
+        $_hasChildren = ($child->hasChildren() && $childLevel == 1) ? 'has-children' : '';
+
+        $html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .'>';
+
+        $html .= '<a href="'. $child->getUrl() .'" class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
+
+        $nextChildLevel = $childLevel + 1;
+
+        if ( ($childLevel == 1) && !empty($_hasChildren) ) {
+            // Show children for second-level categories only
+            if (!empty($childrenWrapClass)) {
+                $html .= '<div class="'. $childrenWrapClass .'">';
+            }
+            $html .= '<ul class="level'. $childLevel .'">';
+            $html .=     '<li class="level'. $nextChildLevel .' view-all">';
+            $html .=         '<a class="level'. $nextChildLevel .'" href="'. $child->getUrl() .'">';
+            $html .=             $this->__('View All') . ' ' . $this->escapeHtml($this->__($child->getName()));
+            $html .=         '</a>';
+            $html .=     '</li>';
+            $html .=     $this->render($child, $childrenWrapClass);
+            $html .= '</ul>';
+            if (!empty($childrenWrapClass)) {
+                $html .= '</div>';
+            }
+        }
+
+        $html .= '</li>';
+
+        if ($child->getIsLast()) {
+            // Do not show more categories
+            break;
+        }
+
+        $counter++;
+    }
+
+    if ( $counter && ($counter < $childrenCount) ) {
+        // There are more categories of this level to show
+        $html .= '<li class="level'. $childLevel .' view-all-bottom">';
+
+        $html .= '<a href="'. $menuTree->getUrl() .'" class="'. $outermostClassCode . '">';
+        $html .=    $this->__('More') . ' ' . $this->escapeHtml($this->__($menuTree->getName()));
+        $html .= '</a>';
+
+        $html .= '</li>';
+    }
+}
+
+return $html;

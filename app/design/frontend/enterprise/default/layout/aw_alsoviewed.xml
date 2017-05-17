@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/LICENSE-M1.txt
+ *
+ * @category   AW
+ * @package    AW_AlsoViewed
+ * @copyright  Copyright (c) 2009-2010 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/LICENSE-M1.txt
+ */
+ -->
+<layout version="1.0.0">
+    <default>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>aw_alsoviewed/css/styles.css</name>
+            </action>
+        </reference>
+    </default>
+    <catalog_product_view>
+        <reference name="product.info">
+            <block type="aw_alsoviewed/products" name="awav.instead.native" as="related_products" before="-" ></block>
+            <block type="aw_alsoviewed/products" name="awav.inside.product.info.tabs" as="awav.inside.product.info" after="-" >
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle" translate="value"><value>also viewed products</value></action>
+            </block>
+            <block type="aw_alsoviewed/products" name="awav.custom" as="alsoviewed_products"></block>
+        </reference>
+        <reference name="right">
+            <block type="aw_alsoviewed/products" name="awav.right.column" as="awav.right.column" before="-"></block>
+        </reference>
+    </catalog_product_view>
+</layout>

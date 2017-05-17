@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <!-- Pinterest verification -->
+            <block type="core/text" name="head.pinterest.verification">
+                <action method="setText"><text><![CDATA[<meta name="p:domain_verify" content="e2d75cdaf799da7ea35fd543f3108397"/>]]>&#10;</text></action>
+            </block>
+        </reference>
+    </default>
+</layout>

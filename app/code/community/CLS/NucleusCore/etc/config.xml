@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<config>
+    <modules>
+        <CLS_NucleusCore>
+            <version>1.5.3</version>
+        </CLS_NucleusCore>
+    </modules>
+    <global>
+        <blocks>
+            <cls_nucleuscore>
+                <class>CLS_NucleusCore_Block</class>
+            </cls_nucleuscore>
+            <customer>
+                <rewrite>
+                    <account_navigation>CLS_NucleusCore_Block_Customer_Account_Navigation</account_navigation>
+                </rewrite>
+            </customer>
+        </blocks>
+        <models>
+            <cls_nucleuscore>
+                <class>CLS_NucleusCore_Model</class>
+            </cls_nucleuscore>
+            <catalog>
+                <rewrite>
+                    <category_attribute_source_mode>CLS_NucleusCore_Model_Catalog_Category_Attribute_Source_Mode</category_attribute_source_mode>
+                </rewrite>
+            </catalog>
+            <core>
+                <rewrite>
+                    <design_fallback>CLS_NucleusCore_Model_Core_Design_Fallback</design_fallback>
+                </rewrite>
+            </core>
+        </models>
+        <helpers>
+            <cls_nucleuscore>
+                <class>CLS_NucleusCore_Helper</class>
+            </cls_nucleuscore>
+        </helpers>
+        <resources>
+            <cls_nucleuscore_setup>
+                <setup>
+                    <module>CLS_NucleusCore</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </cls_nucleuscore_setup>
+            <cls_nucleuscore_eav_setup>
+                <setup>
+                    <module>CLS_NucleusCore</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </cls_nucleuscore_eav_setup>
+            <cls_nucleuscore_catalog_setup>
+                <setup>
+                    <module>CLS_NucleusCore</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </cls_nucleuscore_catalog_setup>
+        </resources>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <cls_nucleuscore>
+                        <class>cls_nucleuscore/observer</class>
+                        <method>useConfigAdminTheme</method>
+                    </cls_nucleuscore>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+            <controller_action_predispatch>
+                <observers>
+                    <cls_nucleuscore>
+                        <class>cls_nucleuscore/observer</class>
+                        <method>checkMageVersion</method>
+                    </cls_nucleuscore>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <cls_nucleuscore>
+                    <file>cls_nucleuscore.xml</file>
+                </cls_nucleuscore>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <CLS_NucleusCore>
+                    <files>
+                        <default>CLS_NucleusCore.csv</default>
+                    </files>
+                </CLS_NucleusCore>
+            </modules>
+        </translate>
+        <events>
+            <catalog_category_load_after>
+                <observers>
+                    <cls_nucleuscore>
+                        <class>cls_nucleuscore/observer</class>
+                        <method>setCategoryDefaultLayout</method>
+                    </cls_nucleuscore>
+                </observers>
+            </catalog_category_load_after>
+            <catalog_category_collection_load_after>
+                <observers>
+                    <cls_nucleuscore>
+                        <class>cls_nucleuscore/observer</class>
+                        <method>setCategoryCollectionDefaultLayout</method>
+                    </cls_nucleuscore>
+                </observers>
+            </catalog_category_collection_load_after>
+            <controller_action_layout_load_before>
+                <observers>
+                    <cls_nucleuscore>
+                        <class>cls_nucleuscore/observer</class>
+                        <method>onBeforeControllerLayoutLoad</method>
+                    </cls_nucleuscore>
+                </observers>
+            </controller_action_layout_load_before>
+            <core_layout_update_updates_get_after>
+                <observers>
+                    <cls_nucleuscore>
+                        <class>cls_nucleuscore/observer</class>
+                        <method>addFallbackThemesLayoutUpdates</method>
+                    </cls_nucleuscore>
+                </observers>
+            </core_layout_update_updates_get_after>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <cls_nucleuscore before="Mage_Adminhtml">CLS_NucleusCore_Adminhtml</cls_nucleuscore>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <cls_nucleuscore>
+                    <file>cls_nucleuscore.xml</file>
+                </cls_nucleuscore>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <CLS_NucleusCore>
+                    <files>
+                        <default>CLS_NucleusCore.csv</default>
+                    </files>
+                </CLS_NucleusCore>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+        <catalog>
+            <frontend>
+                <!-- Currently has no matching configurable setting -->
+                <category_default_layout>two_columns_left</category_default_layout>
+
+                <list_mode>grid</list_mode>
+                <grid_per_page_values>8,16,32</grid_per_page_values>
+                <grid_per_page>8</grid_per_page>
+            </frontend>
+            <cls_nucleus_mega_menu>
+                <enable>0</enable>
+            </cls_nucleus_mega_menu>
+        </catalog>
+        <cls_paypal>
+            <general>
+                <info_code>Q0xfU1BfTnVjbGV1cw==</info_code>
+            </general>
+        </cls_paypal>
+        <cms>
+            <wysiwyg>
+                <enabled>hidden</enabled>
+            </wysiwyg>
+        </cms>
+        <currency>
+            <options>
+                <allow>USD</allow>
+            </options>
+        </currency>
+        <customer>
+            <startup>
+                <redirect_dashboard>0</redirect_dashboard>
+            </startup>
+        </customer>
+        <design>
+            <header translate="welcome" module="page">
+                <welcome></welcome>
+            </header>
+        </design>
+        <payment>
+            <paypal_express>
+                <visible_on_product>0</visible_on_product>
+            </paypal_express>
+        </payment>
+    </default>
+</config>

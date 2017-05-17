@@ -1,0 +1,86 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Masthead
+// ==============================================
+
+.masthead {
+    margin-bottom:$gap-tall;
+    text-align:center;
+}
+
+.masthead-title {
+    margin-bottom:0.4em;
+    color:$c-text;
+    font-family:$f-stack-special;
+    font-size:36px;
+    font-weight:bold;
+}
+
+.masthead .lead {
+    max-width:35em;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+// ----------------------------------------------
+
+@include bp(max-width, $bp-small) {
+
+    .masthead-title {
+        font-size:28px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp(min-width, $bp-small+1) {
+
+    .masthead-title {
+        font-size:34px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp(min-width, $bp-large+1) {
+
+    .masthead-title {
+        font-size:42px;
+    }
+
+}
+
+// ----------------------------------------------
+
+@include bp(min-width, $bp-xlarge+1) {
+
+    .masthead-title {
+        font-size:48px;
+    }
+
+}

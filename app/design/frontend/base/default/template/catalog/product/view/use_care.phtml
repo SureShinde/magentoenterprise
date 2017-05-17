@@ -1,0 +1,7 @@
+<?php $_useCare = $this->getProduct()->getUseCare(); ?>
+<?php if ($_useCare): ?>
+    <h2><?php echo $this->__('Use & Care') ?></h2>
+    <div class="std">
+        <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_useCare, 'use_care') ?>
+    </div>
+<?php endif; ?>

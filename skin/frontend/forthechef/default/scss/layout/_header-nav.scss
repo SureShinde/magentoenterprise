@@ -1,0 +1,1111 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Nav - Skip Link
+// ==============================================
+
+.skip-nav {
+    width: 40%;
+
+    &:not(.skip-active):hover {
+        text-decoration: none;
+
+        .icon {
+            background-position: -50px 0;
+        }
+    }
+}
+
+.skip-nav .label {
+    display: inline;
+}
+
+.skip-nav .icon {
+    @extend .icon-sprite;
+    background-position: 0 0;
+    width: 26px;
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, 500px) {
+
+    .skip-nav {
+        width: 25%;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .skip-nav {
+        display: none;
+    }
+
+}
+
+
+
+// ==============================================
+// Nav - Skip Content
+// ==============================================
+
+@include bp(max-width, $bp-medium) {
+
+    #header-nav {
+        padding: 5px 0;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    #header-nav {
+        display: block; // Force visibility
+    }
+
+}
+
+
+
+// ==============================================
+// Nav Primary
+// ==============================================
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .nav-primary {
+        display: block;
+        position: relative;
+        background:$c-nav-primary-background;
+        // padding: 0 5px;
+        border-radius: 5px;
+    }
+
+}
+
+
+
+// ==============================================
+// Sub-Nav
+// ==============================================
+//All beag
+.product-badges.all-badges{
+    .badge{
+        float: left !important;
+        &.badge-culinary-artist{
+            background-color: #46647e;
+            background-position: -50px -400px
+        }
+        &.badge-professional-chef{
+            background-color: #996633;
+            background-position: -50px -350px;
+        }
+
+    }        
+    .children{
+        background:#fff;
+        border: 1px solid #DFDFDF;
+        color: #717171;
+        font-size: 13px;
+        height: auto;
+        width:274px;
+        top: 32px;
+        position: absolute;
+        left:-81px;
+        display:none;
+        padding:16px 30px;
+        z-index: 999;
+        border-radius: 5px;
+        .badge-child{
+            width: 100%;;
+            display: block;
+            margin-bottom: 4px;
+            vertical-align: middle;
+            position: relative;
+            .badge{
+                position: absolute; 
+                top: 50%;
+                -moz-transform: translate(0px, -50%);
+                -webkit-transform: translate(0px, -50%);
+                -o-transform: translate(0px, -50%);
+                -ms-transform: translate(0px, -50%);
+                -webkit-transform: translate(0px, -50%);
+                transform: translate(0px, -50%);
+                left: 0;
+                width: 20px;
+                height: 20px; 
+            }
+            .badge-child-text{
+                padding-left: 30px;
+                line-height: 20px;
+            }
+            .badge-kitchen-newcomer{
+                background-position: -42px -353px;
+                background-size: 78px auto;
+            }
+            .badge-culinary-artist{
+                background-color: #46647e;
+                background-position: -38px -294px;
+                background-size: 73px auto;
+            }
+            .badge-professional-chef{
+                background-color: #996633;
+                background-position: -38px -257px;
+                background-size: 73px auto;
+            }
+        }
+    }
+    &:hover{
+        .children{
+            display:block;
+            z-index:9999;
+        }
+    }        
+}
+.sub-nav {
+    position: absolute;
+    right: $trim;
+    top: 52px;
+    font-size: $f-size-l;
+
+    li {
+        float: left;
+        position: relative;
+        margin-right: 38px;
+        line-height: 40px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 9px;
+            width: 1px;
+            height: 21px;
+            background: $c-med-gray;
+        }
+
+        &:last-child {
+            margin-right: 0;
+            &:after {
+                display: none;
+            }
+        }
+        &.crave-item{
+            width: 74px;
+            img{ max-width: 100%}
+        }
+        .icon {
+            display: inline-block;
+            position: relative;
+            bottom: 2px;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 2px;
+            @extend .icon-sprite;
+        }
+
+        .gifts {
+            background-position: 0 -800px;
+        }
+        .video {
+            background-position: 0 -850px;
+        }
+
+        a {
+            color: $c-gray;
+            &:hover {
+                text-decoration: none;
+                color: $c-action;
+                opacity: 0.9;
+
+                .gifts {
+                    background-position: -50px -800px;
+                }
+                .video {
+                    background-position: -50px -850px;
+                }
+            }
+        }
+    }
+
+    .crave {
+        font-family: $f-stack-crave;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 23px;
+        span {
+            display: block;
+            &:last-child {
+                font-size: 12px;
+                @include bp (min-width, $bp-medium) {
+                    float: right;
+                }
+            }
+        }
+    }
+    .gift-cards{
+        img{
+            width: 30px;
+            max-width: 100%;
+            display: inline-block;
+            vertical-align: middle
+        }
+        span{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+        }
+    }
+
+    @include bp (max-width, $bp-medium) {
+        position: static;
+        margin: 0;
+        padding: 15px $trim 0;
+        text-align: center;
+        ul {
+            display: inline-block;
+        }
+    }
+
+    @include bp (max-width, $bp-xsmall) {
+        padding: 10px $trim-small 0;
+    }
+
+    @include bp (max-width, 440px) {
+        li {
+            margin-right: 30px;
+            &:after {
+                right: -17px;
+            }
+        }
+    }
+    .product-badges.all-badges{        
+        @include bp (max-width, 770px) { display: none}
+        width: 105px; margin-top: 5px;
+        > .badge{
+            float: left;
+        }               
+    }
+}
+
+
+
+// ---------------------------------------------
+
+@include bp (min-width, 851px) {
+
+    .sub-nav {
+        top: 96px;
+        right: 340px;
+    }
+}
+
+
+
+// ==============================================
+// General Navigation Styles
+// ==============================================
+
+.nav-primary {
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    display: -moz-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    width: 100%;
+    a {
+        text-decoration: none;
+        position: relative;
+        display: block;
+        color: $c-text;
+    }
+
+    li {
+        position: relative;
+    }
+
+    a.level0 {
+        font-family: $f-stack-special;
+    }
+
+    li.level1 a {
+        border-bottom: 1px solid $c-module-border;
+    }
+    li.level0{
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -box-flex: 1;
+        padding: 0;
+    }
+    a.level0{
+        padding: 15px;
+        line-height: 100%;
+    }
+}
+
+// Show sub-menus when JS adds the appropriate classes
+.nav-primary .menu-active > ul.level0,
+.nav-primary li.level0 li.sub-menu-active > ul {
+    display: block;
+}
+
+
+
+// ==============================================
+// Small Viewports - Accordion Style Menu
+// ==============================================
+
+@include bp(max-width, $bp-medium) {
+
+    // Hide all sub-menus
+    .nav-primary {
+        li.level0 ul {
+            display: none;
+        }
+
+        // Indent sub-menus
+        li.level0 li {
+            padding-left: 25px;
+        }
+
+        li.level1 a {
+            padding: 10px 15px 10px 25px;
+        }
+
+        li.parent > a:after {
+            @include triangle(right, 5px, #ccc);
+            top: 50%;
+            left: 10px;
+            right: auto;
+            margin-top: -5px;
+        }
+
+        // Menu active states
+        li.parent.sub-menu-active > a:after,
+        li.parent.menu-active > a:after {
+            @include triangle(down, 5px, #ccc);
+            top: 50%;
+            left: 10px;
+            right: auto;
+            margin-top: -5px;
+        }
+
+        li.menu-active > a,
+        li.sub-menu-active > a {
+            color: $c-action;
+        }
+    }
+}
+
+
+
+// ==============================================
+// Large Viewports - Dropdown Menu
+// ==============================================
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .nav-primary {
+        a:hover {
+            color: $c-action;
+        }
+
+        a.level0 {
+            padding: 0 7px;
+            color: #FFF;
+            line-height: 40px;
+            font-size: 13px;
+            font-weight: 300;
+            @include bp (min-width, 778px) {
+                padding: 0 8px;
+            }
+            @include bp (min-width, 820px) {
+                font-size: 14px;
+                line-height: 44px;
+            }
+            @include bp (min-width, 838px) {
+                padding: 0 9px;
+            }
+            @include bp (min-width, 881px) {
+                font-size: 15px;
+                line-height: 46px;
+            }
+            @include bp (min-width, 899px) {
+                padding: 0 10px;
+            }
+            @include bp (min-width, 940px) {
+                font-size: 16px;
+                line-height: 48px;
+            }
+            @include bp (min-width, 1018px) {
+                font-size: 17px;
+                line-height: 50px;
+                padding: 0 12px;
+            }
+            @include bp (min-width, 1072px) {
+                padding: 0 15px;
+            }
+        }
+
+        li.level0:hover a.level0 {
+            color: #FFF;
+            background: $c-light-blue;
+        }
+
+        li.level0,
+        a.level0 {
+            display: inline-block;
+        }
+
+        li:last-child > a {
+            border-bottom: none;
+        }
+
+        .menu-active {
+            z-index: 200;
+        }
+
+        li.level0 ul.level0 {
+            border-top: 0;
+        }
+
+        // Default styles for 1+ drop-down menus
+        li.level0 ul {
+            @include menu;
+            display: none; // Hide until displayed.
+            position: absolute;
+            top: $nav-primary-height; // Height of ".nav-primary a.level0"
+            left: 0;
+            z-index: 999;
+            width: 250px;
+            padding-left: $box-spacing;
+            padding-right: $box-spacing;
+        }
+        li.level0.secondRow ul {
+            top: $nav-primary-height * 2;
+        }
+
+        li.level1 a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        // Level 2+
+        li.level1 ul {
+            top: -1px;
+            left: 190px;
+        }
+
+        // Class for js to add briefly to evaluate element positioning.
+        li.level0 ul.level0.position-test {
+            display: block;
+        }
+
+        // Correct menus that will hang off the page (class added by js)
+        &:not(.mega-menu-primary) li.level0 ul.level0.spill {
+            right: 0;
+            left: auto;
+
+            // Sub-menu drop down to the left
+            li.level1 ul {
+                left: auto;
+                right: 50px;
+                top: 20px;
+            }
+        }
+
+        // Level 1+
+        li.level0 li.parent > a {
+            position: relative;
+
+            &:after {
+                @include triangle(right, 4px, #ccc);
+                right: 5px;
+                top: 50%;
+                margin-top: -3px;
+            }
+        }
+    }
+}
+
+header.page-header{
+    .promo-mobile{ display: none}
+    #search{
+        font-style: normal;
+        height: auto;
+        padding-top: 5px;
+        padding-bottom: 5px;        
+    }
+    input#search::-moz-placeholder{ font-style: normal;}
+    input#search::-webkit-input-placeholder{ font-style: normal;}
+}
+@media only screen and (max-width: 1024px){
+    #header-search{
+        width: 247px !important;
+    }
+    .sub-nav{ right: 297px}
+}
+@media only screen and (max-width: 770px){
+    
+    header.page-header{
+        position: relative;
+        .logo{
+            max-width: 100%;
+            width: 35%;
+            img{ max-width: 100%;}            
+        }
+        .tagline{ font-size: 12px; margin-bottom: 6px;}
+        .sub-nav{
+            position: absolute;
+            top:19px;
+            left: 10px;
+            padding:0;
+            text-align: left;
+            width: 31%;
+            ul{
+                display: block;
+               li{
+                    a{display: none;}
+                    a.crave, a.gift-cards{ display: inline-block}
+                    &:after{
+                        width: 0;
+                        height: 0;
+                    }
+                    display: inline-block;
+                    &.gift-card-item{
+                        float: none;
+                        margin-left: 15px;
+                        margin-right: 0;
+                        .gift-cards{
+                            &:hover{ color: inherit; opacity: 1;}
+                            img{ display: block; margin: 0 auto;}
+                            span{
+                                display: block;
+                                font-size: 11px;
+                            }
+                        }
+                    }
+                    &:last-child{
+                        width: 30%;
+                        .crave img{ max-width: 100%}
+                    }
+                } 
+            }
+            
+        }
+        .skip-link, .skip-cart{
+            .icon{
+                height: 22px;
+            }
+        }
+
+        
+        .account-cart-wrapper{
+            position: absolute;
+            top:19px;
+            right: 10px;
+        }
+        .skip-links{
+            border: none;
+            .skip-search, .skip-nav{ display: none}
+            .account-cart-wrapper{
+                .skip-link{
+                    width: auto;
+                    border: none;
+                    height: auto;
+                    line-height: inherit;
+                    opacity: 1;
+                    display: inline-block;                    
+                    .label{
+                        display: block;
+                        font-size: 11px;
+                        line-height: normal;
+                        margin-top: -5px;
+                    }
+                    &.skip-active{ background: transparent;}
+                }
+                .header-minicart{
+                    display: inline-block;
+                    padding: 0 0 0 15px;
+                    .label{ display: block; font-size: 11px; color: #3a3a3c; line-height: normal; margin-top: -5px;}
+                    #header-cart.skip-active{
+                        background: #FBFBFB;
+                        border: solid 1px #CCCCCC;
+                        display: block;
+                        position: absolute;
+                        z-index: 200;
+                        top: 40px;
+                        right: 0;
+                        width: 300px;
+                        background: white;
+                    }
+                    .container{
+                        position: relative;
+                        a.skip-cart{  
+                            &:hover{ text-decoration: none}                      
+                            .count{
+                                position: absolute;
+                                top: -16px;
+                                left: 4px;
+                                width: 20px;
+                                height: 20px;
+                                font-size: 11px;
+                                line-height: 20px;
+                                margin-left: 0 !important;
+                            }
+                            span.icon{
+                                background-position:  0 0;
+                                background-size: 91% auto;
+                                margin: 0;
+                            }
+                        }
+                    }
+                    #header-cart{
+                        .minicart-wrapper .subtotal{ padding: 10px 0 0 0}
+                    }
+                    
+                }
+                .skip-account span.icon{
+                    background-size: 95% auto !important;
+                    background-position: 0 0 !important;
+                }
+            }
+        }
+        #header-search.skip-content{
+            display: block;
+            background-color: #46647e;
+            padding: 7px 0;
+            margin: 0 0 15px ;
+            width: 100% !important;
+            form{
+                width: 80%;
+                margin: 0 auto;
+            }
+            .search-autocomplete{
+                &:before{
+                    content:"";
+                }
+            }
+            #search{
+                border: none;
+            }
+        }
+        .promo-desk{ display: none}
+        .promo-mobile{ 
+            display: block;
+            background: #a92418;
+            .header-promo{
+                margin: 0;
+                font-size: 14px;
+                font-weight: normal;
+                color: #fff;
+            }
+        }
+        #header-nav{
+            &.skip-content{ display: block}            
+            .nav-primary{
+                li.level0{
+                    -webkit-box-flex: inherit;
+                    -moz-box-flex: inherit;
+                    -box-flex: inherit;
+                    display: inline-block;
+                    width: 33.33%;
+                    // margin: 15px 0;
+                    border-bottom: 1px solid #f2f2f2;
+                    border-right: 1px solid #f2f2f2;
+                    &:nth-child(3n+3){
+                        border-right: none;
+                    }
+                    a.level0{
+                        &:after{
+                            content:"";
+                            border: none;
+                        }
+                        text-align: center;
+                    }
+                    ul.level0{ display: none;}
+                    a.level0, &:hover a.level0, &.menu-active a.level0, &.active a.level0{
+                        padding-top: 58px;
+                        position: relative;
+                        border: none;
+                        font-size: 10px;
+                        &:after{
+                            content:"";
+                            background-image: url("../images/nav-spriter.png");
+                            background-repeat: no-repeat;
+                            position: absolute;
+                            top: 0;
+                            left: 50%;
+                            -moz-transform: translate(-50%, 0);
+                            -webkit-transform: translate(-50%, 0);
+                            -o-transform: translate(-50%, 0);
+                            -ms-transform: translate(-50%, 0);
+                            -webkit-transform: translate(-50%, 0);
+                            transform: translate(-50%, 0);
+                            height: 50px;
+                            width: 50px;
+                            margin-top: 0;
+                        }
+                                                 
+                    }
+                    &:hover a.level0, &.menu-active a.level0, &.active a.level0{
+                        background-color: #343434;
+                        color: #fff;
+                    }
+                    // &.nav-11{
+                    //     a.level0{
+                    //         &:after{
+                    //             background-position: 7px -1033px;
+                    //             background-size: 85px auto;
+                    //         }
+                                                     
+                    //     }
+                    //     &:hover, &.menu-active, &.active{
+                    //         a.level0{
+                    //             &:after{
+                    //                 background-position: -43px -1033px;
+                    //             }                               
+                    //         }
+                    //     }
+                    // }
+                    &.nav-1{
+                        a.level0{
+                            &:after{
+                                background-position: 4px -75px;
+                                background-size: 97px auto; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -52px -72px;
+                                }                               
+                            }
+                        }
+                    }
+                    &.nav-2{
+                        a.level0{
+                            &:after{
+                                background-position: 11px -508px; 
+                                background-size: 72px auto;
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -31px -508px;
+                                }                               
+                            }
+                        }
+                    }
+                    &.nav-3{
+                        a.level0{
+                            &:after{
+                                background-position: 7px -151px; 
+                                background-size: 90px auto;
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -46px -151px;
+                                }                               
+                            }
+                        }
+                    }
+                    &.nav-4{
+                        a.level0{
+                            &:after{
+                                background-position: 8px -190px;
+                                width: 37px;
+                                background-size: 70px auto; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -38px -190px;
+                                }                               
+                            }
+                        }
+                    }
+                    &.nav-5{
+                        a.level0{
+                            &:after{
+                                background-position: 5px 15px;
+                                background-size: 76px auto;
+                                width: 40px; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -39px 15px;
+                                }                               
+                            }
+                        }
+                    }
+                    &.nav-6{
+                        a.level0{
+                            &:after{
+                                background-position: 0 -965px;
+                                background-size: 88px auto;
+                                width: 40px; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -50px -965px;
+                                }                               
+                            }
+                        }
+                    }
+                     &.nav-7{
+                        a.level0{
+                            &:after{
+                                background-position: 0 -354px;
+                                background-size: 90px auto;
+                                width: 40px; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -51px -354px;
+                                }                               
+                            }
+                        }
+                    }
+                     &.nav-8{
+                        a.level0{
+                            &:after{
+                                background-position: 0px -422px;
+                                background-size: 82px auto;
+                                width: 34px; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -48px -422px;
+                                }                               
+                            }
+                        }
+                    }
+                     &.nav-9{
+                        a.level0{
+                            &:after{
+                                background-position: 6px -728px;
+                                background-size: 90px auto; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -45px -728px;
+                                }                               
+                            }
+                        }
+                    }
+                    &.nav-11{
+                        a.level0{
+                            &:after{
+                                background-position: 0 -763px;
+                                background-size: 80px auto;
+                                width: 35px; 
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -47px -763px;
+                                }                               
+                            }
+                        }
+                    }
+                    
+                    &.nav-10{
+                        a.level0{
+                            &:after{
+                                background-position: 7px -1093px;
+                                background-size: 82px auto;
+                            }
+                                                     
+                        }
+                        &:hover, &.menu-active, &.active{
+                            a.level0{
+                                &:after{
+                                    background-position: -40px -1093px;
+                                }                               
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (max-width: 480px){
+    header.page-header{
+        .tagline{ font-size: 9px;}
+        .sub-nav{
+            top: 11px;
+            ul li{
+                &.gift-card-item{
+                    margin-left: 10px;
+                    .gift-cards img{
+                        width: 24px;
+                    }
+                }
+                
+            }
+        } 
+        
+        .skip-links .account-cart-wrapper{
+            top: 7px;
+            .skip-account{
+                span.icon{ background-size: 80px auto; background-position: 0 -37px}
+            }
+            .header-minicart{
+                padding-left: 5px;
+                // .skip-cart span.icon{
+                //     background-size: 80px auto;
+                //     background-position: 0 -77px;
+                // }
+            }
+        }
+    }
+}
+// ==============================================
+// Other
+// ==============================================
+
+.nav-primary li.menu-active > ul {
+    display: block;
+}
+@media only screen and (min-width: 771px){
+     .nav-primary a.level0{ line-height: 100%; padding: 15px 15px;}
+     // .header-minicart{ float: right}
+     .skip-account, .header-minicart{ float: left;}
+    .header-minicart .button{ margin-right: -1px;}
+    #header-account{
+        background: #FBFBFB;
+        border: solid 1px #CCCCCC;
+        display: none;
+        position: absolute;
+        z-index: 200;
+        top: 40px;
+        right: 210px;
+        width: 200px;
+    } 
+}
+@media only screen and (max-width: 770px){
+    #header-account{ background: #EDEDED;}
+}
+@media only screen and (min-width: 771px) and (max-width: 1050px) {
+    .sub-nav{
+        top: 53px;
+        right: 30px;
+    }
+}
+@media only screen and (min-width: 1159px) and (max-width: 1230px) {
+    .nav-primary a.level0{ font-size: 16px; padding: 15px 14px;}
+}
+@media only screen and (min-width: 1068px) and (max-width: 1158px) {
+    .nav-primary a.level0{ font-size: 15px; padding: 15px 11px;}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1067px) {
+    .nav-primary a.level0{ font-size: 15px; padding: 15px 9px;}
+}
+@media only screen and (max-width: 1023px) {
+    .nav-primary a.level0{ font-size: 14px; padding: 15px 7px;}
+}
+@media only screen and (max-width: 927px) {
+    .nav-primary a.level0{padding: 15px 8px}    
+}
+@media only screen and (max-width: 898px) {
+    .nav-primary a.level0{padding: 15px 7px}
+}
+@media only screen and (max-width: 876px) {
+    .nav-primary a.level0{padding: 15px 6px}
+}
+@media only screen and (max-width: 854px) {
+    .nav-primary a.level0{padding: 15px 5px}
+}
+@media only screen and (min-width: 771px) and (max-width: 832px) {
+    .nav-primary a.level0{ font-size: 13px; padding: 15px 4px}
+    
+}
+@media only screen and (min-width: 771px) and (max-width: 927px) {
+    .page-header-container, .footer-container{ padding: 0 15px;}
+    .account-cart-wrapper{ right: 15px;}
+    .page-header-container #header-search{ right: 15px;}
+    .cms-home .main-container, .cms-home .top-container, .cms-home .bottom-container{
+        padding: 19px 15px 15px;
+    }
+    .sub-nav{ right: 15px;}
+}
+@media only screen and (min-width: 771px) and (max-width: 1000px) {
+    header.page-header{
+        .top-left{
+            p, a{ font-size: 12px !important}
+        }
+        .header-minicart .button, .skip-cart, .skip-account{ padding: 0 10px;}
+        .skip-cart .count{ margin-left: 0}
+    }
+}
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min-device-pixel-ratio: 1.5) {
+    header.page-header #header-nav .nav-primary li.level0 a.level0:after, 
+    header.page-header #header-nav .nav-primary li.level0:hover a.level0:after, 
+    header.page-header #header-nav .nav-primary li.level0.menu-active a.level0:after, 
+    header.page-header #header-nav .nav-primary li.level0.active a.level0:after{
+        background-image: url("../images/nav-spriter-3x.png");
+    }
+}

@@ -1,0 +1,284 @@
+/**
+ * @category   CLS
+ * @package    Widgets
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+
+@import "../framework";
+
+/* ============================================ *
+ * Carousel and Slideshow
+ * ============================================ */
+
+.widget-carousel,
+.widget-slideshow {
+    margin-bottom: $box-spacing;
+}
+
+.owl-item.loading {
+    min-height: 150px;
+    background: url(../../images/ajax-loader.gif) no-repeat center center
+}
+
+.owl-item img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.grabbing {
+    // Overwrite style in owl.carousel.css
+    cursor: pointer;
+}
+
+/* -------------------------------------------- *
+ * Pagination
+ */
+
+// Styling for controls when shown outside slides
+.lcp-theme .owl-wrapper-outer + .owl-controls {
+    margin-top: 10px;
+    text-align: center;
+}
+
+// Styling for controls when shown over slides
+.lcp-theme .owl-wrapper-outer .owl-controls {
+    text-align: center;
+
+    .owl-pagination {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        z-index: 70;
+    }
+}
+
+.lcp-theme .owl-controls {
+    .owl-page {
+        display: inline-block;
+        zoom: 1;
+
+        span {
+            display: block;
+            width: 12px;
+            height: 12px;
+            margin: 5px 7px;
+            @include border-radius(20px);
+            background: #A0A0A0;
+        }
+
+        /* If PaginationNumbers is true */
+        span.owl-numbers {
+            height: auto;
+            width: auto;
+            color: #FFF;
+            padding: 2px 10px;
+            font-size: 12px;
+            @include border-radius(30px);
+        }
+    }
+
+}
+
+.lcp-theme .owl-controls .owl-page.active span,
+.lcp-theme .owl-controls.clickable .owl-page:hover span {
+    @include opacity(1);
+    background: $c-action;
+}
+
+/* -------------------------------------------- *
+ * Prev / Next Buttons
+ */
+
+// Only hide prev/next buttons if not on a touch device
+html.no-touch .hide-prev-next .owl-carousel {
+    .owl-prev,
+    .owl-next {
+        @include opacity(0);
+        @include single-transition(opacity, 300ms);
+    }
+    
+    &:hover .owl-prev,
+    &:hover .owl-next {
+        @include opacity(1);
+    }
+}
+
+.owl-carousel:hover .owl-prev,
+.owl-carousel:hover .owl-next {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.owl-buttons {
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        min-width: 60px;
+        cursor: pointer;
+        z-index: 60;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+
+            span:not(.slide-arrow) {
+                background: $c-stimulus;
+            }
+        }
+    }
+
+    .owl-prev {
+        left: 0;
+    }
+
+    .owl-next {
+        right: 0;
+    }
+
+    .owl-prev span:not(.slide-arrow),
+    .owl-next span:not(.slide-arrow) {
+        color: #FFF;
+        display: inline-block;
+        zoom: 1;
+        padding: 3px 10px;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        left:0;
+        margin-top: -8px;
+        margin-right: 10%;
+        margin-left: 10%;
+        text-align: center;
+        background: $c-button;
+    }
+
+    .owl-next span:not(.slide-arrow) {
+        left:auto;
+        right:0;
+    }
+
+    .owl-prev span.slide-arrow:after,
+    .owl-next span.slide-arrow:after {
+        top: 50%;
+        margin-top: -5px;
+        left: 50%;
+        margin-left: -5px;
+    }
+
+    .owl-prev span.slide-arrow:after {
+        @include triangle('left', 10px, $c-action);
+    }
+
+    .owl-next span.slide-arrow:after {
+        @include triangle('right', 10px, $c-action);
+    }
+}
+
+/* ============================================ *
+ * Carousel-only Styles
+ * ============================================ */
+.widget-carousel {
+
+    .owl-item {
+      padding: 0 10px;
+    }
+
+    .product-image {
+      border: none;
+    }
+
+    h4 {
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .price-box {
+      margin-top: 5px;
+    }
+
+    .owl-carousel {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .owl-buttons .owl-prev,
+    .owl-buttons .owl-next {
+        width: 30px;
+        min-width: initial;
+        background: transparent;
+
+        &:hover {
+          background-color: none;
+        }
+    }
+
+    .owl-prev span.slide-arrow,
+    .owl-next span.slide-arrow {
+        position: absolute;
+        display: block;
+        top: 50%;
+        margin-top: -12px;
+        height: 26px;
+        width: 26px;
+        border: 1px solid #d2d2d2;
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .owl-prev span.slide-arrow:after,
+    .owl-next span.slide-arrow:after {
+        margin-top: -5px;
+        margin-left: -3px;
+    }
+
+    .owl-prev span.slide-arrow:after {
+        @include triangle('left', 5px, $c-action);
+    }
+
+    .owl-next span.slide-arrow:after {
+        @include triangle('right', 5px, $c-action);
+    }
+
+    .owl-prev,
+    .owl-prev {
+        cursor: default;
+    }
+
+    .owl-prev span.slide-arrow:hover,
+    .owl-next span.slide-arrow:hover {
+        cursor: pointer;
+        background-color: $c-action;
+        border-color: $c-action;
+    }
+
+    .owl-prev span.slide-arrow:hover:after {
+        @include triangle('left', 5px, #fff);
+    }
+
+    .owl-next span.slide-arrow:hover:after {
+        @include triangle('right', 5px, #fff);
+    }
+}
+
+/* ============================================ *
+ * Slideshow-only Styles
+ * ============================================ */
+
+.widget-slideshow .copy {
+    width: 35%;
+    padding: 10px;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    text-align: left;
+    background-color: #999;
+    background-color: rgba(153, 153, 153, 0.5);
+    font-size: 13px;
+    color: #fff;
+}
+.widget-slideshow .copy h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}

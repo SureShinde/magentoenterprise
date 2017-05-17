@@ -1,0 +1,125 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+/* ============================================ *
+ * Subcategories
+ * ============================================ */
+
+.category-subcategories {
+    margin: $gap 0 0;
+}
+// Extend the products-grid classes which elegantly handle 3, 4, 5, and 6 column layouts.
+.subcategories-grid {
+    @extend .products-grid;
+}
+.subcategories-grid--max-4-col {
+    @extend .products-grid--max-4-col;
+}
+.subcategories-grid--max-5-col {
+    @extend .products-grid--max-5-col;
+}
+.subcategories-grid--max-6-col {
+    @extend .products-grid--max-6-col;
+}
+.subcategories-grid {
+    margin: 0 0 $gap 0;
+    background: #fff;
+    padding: 0;
+
+    .item {
+        width: 47%;
+        margin: 12px 6% 15px 0;
+        padding: 0;
+        border: none;
+        &:nth-child(even) {
+            margin-right: 0;
+        }
+
+        @include bp (min-width, 636px) {
+            width: 31%;
+            &:nth-child(odd) {
+                clear: none;
+            }
+            &:nth-child(3n + 1) {
+                clear: left;
+            }
+
+            margin-right: 3.5%;
+            &:nth-child(even) {
+                margin-right: 3.5%;
+            }
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+        }
+
+        @include bp (min-width, 933px) {
+            width: 22.3%;
+            &:nth-child(3n + 1) {
+                clear: none;
+            }
+            &:nth-child(4n + 1) {
+                clear: left;
+            }
+
+            margin-right: 3.6%;
+            &:nth-child(even), &:nth-child(3n) {
+                margin-right: 3.6%;
+            }
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .subcat-image {
+        display: block;
+        text-decoration: none !important;
+        position: relative;
+        margin-bottom: $element-spacing;
+
+        img {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+}
+
+.subcategories-grid .subcat-name {
+    display: block;
+    padding: 6px 0 0;
+    color: #3a3a3c;
+    text-align: left;
+    border-top: 2px solid $c-module-border;
+    font-size: $f-size-xl;
+}
+
+.subcategories-grid .item:hover .subcat-name {
+    color: $c-action;
+    text-decoration: underline;
+}
+
+.subcat-name {
+    font-size: $f-size;
+}

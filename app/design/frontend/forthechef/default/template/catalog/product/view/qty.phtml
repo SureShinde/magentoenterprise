@@ -1,0 +1,16 @@
+<?php $_product = Mage::registry('current_product') ?>
+<?php //$_helper = $this->helper('catalog/output'); ?>
+<?php //$_product = $this->getProduct(); ?>
+<?php
+// inventory scarity
+$stocklevel = (int)Mage::getModel('cataloginventory/stock_item')
+    ->loadByProduct($_product)->getQty();
+$stockStatus = $_product->getStockItem()->getIsInStock();
+if ($stocklevel <20 && $stocklevel >0 )
+{
+    if ($stockStatus == 1)
+    {
+        echo '<h4 style="clear:both;color:red;">Only '.$stocklevel.' left in stock – order soon</h4>';
+    }
+}
+?>

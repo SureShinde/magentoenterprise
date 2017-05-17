@@ -1,0 +1,113 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+
+// ==============================================
+// Mega Menu
+// ==============================================
+
+@include bp(max-width, $bp-medium) {
+    .mega-menu-primary li.view-all-bottom {
+        display:none;
+    }
+}
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .mega-menu-primary li.level0:first-child ul.level0 {
+        //display: block !important; // Testing
+    }
+
+    .mega-menu-primary li {
+        position: static;
+    }
+
+    .mega-menu-primary li.level0 ul.level0 {
+        //width: $bp-large;
+        width: 100%;
+    }
+
+    .mega-menu-primary a.level1 {
+        font-weight: bold;
+    }
+
+    // Four-columns layout for second-level categories
+    .mega-menu-primary li.level1 {
+        float: left;
+        width: 25%;
+        padding: 8px 20px 8px 0;
+    }
+
+    .mega-menu-primary li.level1 a {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border-bottom: 0;
+        line-height: 1.5;
+    }
+
+    .mega-menu-primary li.level0 li.parent > a:after {
+        display: none;
+    }
+
+    .mega-menu-primary li.level0 ul.level1 {
+        width: auto;
+        margin-right: 0;
+        padding-right: 0;
+        padding-left: 0;
+        border: 0;
+    }
+
+    // Four-columns layout for second-level categories
+    // "+2" on the nth-child is to account for the first "View All" link that's hidden
+    .mega-menu-primary ul.level0 > li:nth-child(4n+2) {
+        clear: left;
+    }
+
+    // Third-level categories container
+    .mega-menu-primary ul.level0 ul {
+        display: block;
+        position: static;
+    }
+
+    // Do not show "View All {{CATEGORY_NAME}}" links
+    .mega-menu-primary li.view-all {
+        display: none;
+    }
+
+    .mega-menu-primary li.view-all-bottom {
+        font-style:italic;
+        font-size:$f-size-s;
+    }
+}
+
+// ----------------------------------------------
+
+@include bp(min-width, $bp-large + 1) {
+
+    .mega-menu-primary li.level0 ul.level0 {
+        //width: $bp-xlarge;
+        width: 100%;
+    }
+
+}

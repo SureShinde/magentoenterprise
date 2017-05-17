@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Catalog
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<layout version="0.1.0">
+    <catalog_category_all>
+        <reference name="category.products">
+            <block type="cls_nucleuscore/catalog_category_displaymode" name="category.display.gallery" template="nucleus/catalog/displaymode/gallery.phtml">
+                <action method="setDisplayMode"><mode>GALLERY</mode></action>
+                <action method="setIgnoreWhenFiltered"><ignore>1</ignore></action>
+            </block>  
+        </reference>
+        <reference name="category.content.before"> 
+            <block type="nucleus_catalog/changer_wrapper" name="catalog_category_changer" >
+                <action method="setSwitcherModel"><model>nucleus_catalog/switcher_category</model></action>
+                <block type="nucleus_catalog/changer_button" name="catalog_category_changer_prev" as="prev.arrow" >
+                    <action method="setDirection"><direction>prev</direction></action>
+                    <action method="setArrowText"><text>Prev</text></action>
+                </block>
+                <block type="nucleus_catalog/changer_button" name="catalog_category_changer_next" as="next.arrow" >
+                    <action method="setDirection"><direction>next</direction></action>
+                    <action method="setArrowText"><text>Next</text></action>
+                </block>
+            </block>
+        </reference>
+        <reference name="product_list.image.after">
+            <block type="nucleus_catalog/badges" name="nucleus_catalog.badges" template="nucleus/catalog/badges/badges.phtml" />
+        </reference>
+    </catalog_category_all>
+
+    <catalogsearch_result_index>
+        <reference name="product_list.image.after">
+            <block type="nucleus_catalog/badges" name="nucleus_catalog.badges" template="nucleus/catalog/badges/badges.phtml" />
+        </reference>
+    </catalogsearch_result_index>
+    <catalogsearch_advanced_result>
+        <reference name="product_list.image.after">
+            <block type="nucleus_catalog/badges" name="nucleus_catalog.badges" template="nucleus/catalog/badges/badges.phtml" />
+        </reference>
+    </catalogsearch_advanced_result>
+    
+    <catalog_product_view>
+        <reference name="product.content.before">
+            <block type="nucleus_catalog/changer_wrapper" name="catalog_product_changer" >
+                <action method="setSwitcherModel"><model>nucleus_catalog/switcher_product</model></action>
+                <block type="nucleus_catalog/changer_button" name="catalog_product_changer_prev" as="prev.arrow" >
+                    <action method="setDirection"><direction>prev</direction></action>
+                    <action method="setArrowText"><text>Prev</text></action>
+                </block>
+                <block type="nucleus_catalog/changer_button" name="catalog_product_changer_next" as="next.arrow" >
+                    <action method="setDirection"><direction>next</direction></action>
+                    <action method="setArrowText"><text>Next</text></action>
+                </block>
+            </block>
+        </reference>
+        <reference name="product.name.after">
+            <block type="nucleus_catalog/badges" name="nucleus_catalog.badges" template="nucleus/catalog/badges/badges.phtml" />
+        </reference>
+    </catalog_product_view>
+
+    <catalog_category_displaymode__GALLERY>
+        <reference name="head">
+            <action method="addItem">
+                <type>js</type>
+                <name>jquery/owl-carousel/owl.carousel.min.js</name>
+            </action>
+        </reference>
+        <reference name="category.products">
+            <action method="setDisableCategoryTitle"><disable>1</disable></action>
+        </reference>
+        <reference name="product_list">
+            <action method="setTemplate">
+                <template>nucleus/catalog/product/list_gallery.phtml</template>
+            </action>
+            <action method="setToolbarBlockName">
+                <name>product_gallery_toolbar</name>
+            </action>
+            <block type="nucleus_catalog/product_list_toolbar" name="product_gallery_toolbar" >
+                <action method="setLimit"><value>0</value></action>
+                <action method="setCurrentPage"><value>0</value></action>
+                <action method="setCurrentOrder"><value>0</value></action>
+                <action method="setRenderEnabled"><value>0</value></action>
+            </block>
+        </reference>
+    </catalog_category_displaymode__GALLERY>
+</layout>

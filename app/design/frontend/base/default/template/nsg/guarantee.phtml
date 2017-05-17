@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Norton Shopping Guarantee, Guarantee Template
+ * 
+ * PHP Version 5
+ * 
+ * @category  Template
+ * @package   Symantec_NortonShoppingGuarantee
+ * @author    Symantec Corporation
+ * @copyright 2016 Symantec Corporation, All Rights Reserved.
+ */
+
+?>
+<?php /* @var $this Symantec_NortonShoppingGuarantee_Block_Seals */ ?>
+<?php if ($this->isEnabled() && $this->isCheckoutSuccess()) : ?>
+<?php $_order = $this->getOrder(); ?>
+<!-- BEGIN: NSG_GUARANTEE -->
+<span id="_GUARANTEE_GuaranteeSpan"></span>
+<script type="text/javascript">
+    if (window._GUARANTEE && _GUARANTEE.Loaded) {
+        _GUARANTEE.Hash               = '<?php echo $this->getHash(); ?>';
+        _GUARANTEE.Guarantee.order    = '<?php echo $_order->getIncrementId(); ?>';
+        _GUARANTEE.Guarantee.subtotal = '<?php echo round($_order->getSubtotal(), 2); ?>';
+        _GUARANTEE.Guarantee.currency = '<?php echo $_order->getOrderCurrencyCode() ?>';
+        _GUARANTEE.Guarantee.email    = '<?php echo $_order->getCustomerEmail() ?>';
+        _GUARANTEE.WriteGuarantee("JavaScript", "_GUARANTEE_GuaranteeSpan");
+    }
+</script>
+<!-- END: NSG_GUARANTEE -->
+<?php endif; ?>

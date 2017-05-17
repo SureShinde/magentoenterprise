@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+ 
+<layout>
+    <adminhtml_categorycarousel_banner_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>smartosc_categorycarousel/banner</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="smartosc_categorycarousel/adminhtml_banner" name="banner" />
+
+        </reference>
+    </adminhtml_categorycarousel_banner_index>
+    <adminhtml_categorycarousel_banner_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="smartosc_categorycarousel/adminhtml_banner_grid" name="banner_grid"/>
+        </block>
+    </adminhtml_categorycarousel_banner_grid>
+    <!-- Banner add/edit action -->
+    <adminhtml_categorycarousel_banner_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>smartosc_categorycarousel/banner</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="smartosc_categorycarousel/adminhtml_banner_edit" name="banner_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="smartosc_categorycarousel/adminhtml_banner_edit_tabs" name="banner_tabs"></block>
+        </reference>
+    </adminhtml_categorycarousel_banner_edit>
+
+</layout>

@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Catalog
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<config>
+    <modules>
+        <Nucleus_Catalog>
+            <version>1.0.1</version>
+        </Nucleus_Catalog>
+    </modules> 
+
+    <global>
+        <models>
+            <nucleus_catalog>
+                <class>Nucleus_Catalog_Model</class>
+            </nucleus_catalog>
+        </models>
+        <blocks>
+            <nucleus_catalog>
+                <class>Nucleus_Catalog_Block</class>
+            </nucleus_catalog>
+        </blocks>
+        <helpers>
+            <nucleus_catalog>
+                <class>Nucleus_Catalog_Helper</class>
+            </nucleus_catalog>
+        </helpers>
+        <blocks>
+            <nucleus_catalog>
+                <class>Nucleus_Catalog_Block</class>
+            </nucleus_catalog>
+        </blocks>
+        <models>
+            <nucleus_catalog>
+                <class>Nucleus_Catalog_Model</class>
+            </nucleus_catalog>
+        </models>
+        <resources>
+            <nucleus_catalog_catalog_setup>
+                <setup>
+                    <module>Nucleus_Catalog</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </nucleus_catalog_catalog_setup>
+        </resources>
+        <events>
+            <nucleus_get_category_display_modes>
+                <observers>
+                    <nucleus_catalog>
+                        <class>nucleus_catalog/observer</class>
+                        <method>addGalleryDisplayMode</method>
+                    </nucleus_catalog>
+                </observers>
+            </nucleus_get_category_display_modes>
+        </events>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <nucleus_catalog>
+                    <file>nucleus_catalog.xml</file>
+                </nucleus_catalog>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Nucleus_Catalog>
+                    <files>
+                        <default>Nucleus_Catalog.csv</default>
+                    </files>
+                </Nucleus_Catalog>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Nucleus_Catalog>
+                    <files>
+                        <default>Nucleus_Catalog.csv</default>
+                    </files>
+                </Nucleus_Catalog>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <catalog>
+            <badges>
+                <enable_badge_new>1</enable_badge_new>
+                <enable_badge_sale>1</enable_badge_sale>
+                <enable_badge_attribute_based>1</enable_badge_attribute_based>
+            </badges>
+        </catalog>
+    </default>
+</config>

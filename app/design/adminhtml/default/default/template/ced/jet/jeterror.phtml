@@ -1,0 +1,70 @@
+<?php
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+?>
+
+<?php 
+$helper=Mage::helper('jet');
+$error="";
+$error_img = $this->getSkinUrl('images/ced/jet/error_msg_icon.gif');
+if($this->getRequest()->getParam('id')){
+	$product_id="";
+	$product_id=$this->getRequest()->getParam('id');
+	$batch_id="";
+	$date1="";
+	$date="";
+	$batch_id=Mage::helper('jet')->getBatchIdFromProductId($product_id);
+	if($batch_id){
+			$batchmod="";
+			$batchmod=Mage::getModel('jet/batcherror')->load($batch_id);
+			$error="";
+			$error=$batchmod->getData('error');
+			$date=$batchmod->getData('date_added');
+			$date1=Mage::app()->getLocale()->date($date,
+				              Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+				              null, false
+				           );
+	}
+}
+if(strlen($error)>0){?>
+<style type="text/css" >
+   .shopify-api ul { list-style-type:none; padding:0; margin:0; }
+   .shopify-api ul li { margin-left:0; border:1px solid #ccc; margin:2px; padding:2px 2px 2px 2px; font:normal 12px sans-serif; }
+   .shopify-api img { margin-right:5px; }
+</style>
+<div class="row">
+	<div class="col-md-12" style="margin-top: 10px;">
+		<div class="panel panel-default">
+			<div class="content-header panel-heading col-md-12 uptransform">
+				<div class="col-md-6" style="font-size:17px;line-height:31px; margin-top:0px; float: left;">
+					<?php echo $helper->__('Last Batch Upload Error : '.$date1); ?>						
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<div class="block-content panel-body shopify-api">			
+				<ul>
+					<li style="background-color:#FDD;">
+						<img class="v-middle" src="<?php echo $error_img ?>"><span class="text"><?php echo $this->__($error);?></span>
+						
+					</li>
+				</ul>
+			</div>
+		</div>     
+	</div>
+</div>
+
+<?php }?>

@@ -1,0 +1,107 @@
+<?php
+/**
+  * CedCommerce
+  *
+  * NOTICE OF LICENSE
+  *
+  * This source file is subject to the Academic Free License (AFL 3.0)
+  * You can check the licence at this URL: http://cedcommerce.com/license-agreement.txt
+  * It is also available through the world-wide-web at this URL:
+  * http://opensource.org/licenses/afl-3.0.php
+  *
+  * @category    Ced
+  * @package     Ced_Jet
+  * @author      CedCommerce Core Team <connect@cedcommerce.com>
+  * @copyright   Copyright CEDCOMMERCE (http://cedcommerce.com/)
+  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  */
+
+ 
+$jetAttId = "";
+$show_note = false; 
+
+if($attr = $this->getJetAttr()){
+	$jetAttId = $attr->getJetAttrId();	
+}
+$mattrid =$this->getRequest()->getParam('attribute_id');
+	if(isset($mattrid)){ 
+		$resource = Mage::getSingleton('core/resource');
+		$table = $resource->getTableName('jet/jetattribute');
+		$readconnection = $resource->getConnection('core_read');
+		$query = 'SELECT * FROM ' . $table . ' WHERE `magento_attr_id`='.$mattrid.'';
+		$row = $readconnection->fetchRow($query);	
+		
+		$options_array = array();
+		if(count($row)>0){
+			$show_note = true;
+			if($row['freetext'] ==2){
+				if($row['unit']!=null){
+					$options_array = explode(",",$row['unit']);
+				}
+			}else if($row['freetext'] ==0){ 
+				if($row['list_option']!=null){
+					$options_array = explode(",",$row['list_option']);
+				}
+			}
+		}
+}
+?>
+<div class="entry-edit">
+   <div class="entry-edit-head">
+      <h4 class="icon-head head-edit-form fieldset-legend">Jet Attribute Relation</h4>
+      <div class="form-buttons"></div>
+   </div>
+   <div id="base_fieldset" class="fieldset ">
+   	 <p>Pick up <strong>Jet Attribute id</strong> From the <b>Id</b> column of <strong>Jet_Taxonomy_attribute.csv which you tink it should be mapped from your magneto Attribute & then select "Yes" for Map to Jet Attibute dropdown.</strong></p>
+      <div class="hor-scroll">
+         <table cellspacing="0" class="form-list">
+            <tbody>
+               <tr>
+                  <td class="label"><label for="jet_attribute_code">Jet Attribute Id</label></td>
+                  <td class="value">
+                     <input type="text" class="validate-not-negative-number input-text" title="Attribute Code" value="<?php echo $jetAttId; ?>" name="jet_attribute_id" id="jet_attribute_id">                    
+                     <p>Please go to Jet Category List page & find out the jet attribute by which you want to map this magento attribute  <a target="_blank" href="<?php echo $this->getUrl('adminhtml/adminhtml_jetattrlist/categorylist') ?>">Click here</a></p>
+					 
+					 
+                  </td>
+			   </tr>  
+			   <tr>
+            </tbody>
+         </table>
+	  </div>
+	  
+	  <?php if($show_note) { ?>
+	  <div class="hor-scroll">
+		<?php if($row['freetext']== 2){ ?> 
+			<?php if(count($options_array)>0){ ?>
+				<label"><strong>Note:</strong></label>
+				<p>Jet Atrribute id: <?php echo $jetAttId ?> which you trying to map is a <b>UNIT</b> type attribute in jet.com. You need to Add or Create new options based on these values in your Drop down options </p>
+				<p>Options: <b><?php echo $row['unit'] ?></b></p>
+				<label>Example: <strong>"Your value"{space}"UNIT"</strong></label>
+				<p>We have taken <b>10</b> as Value for example.</p> 
+					<select>
+						<?php foreach ($options_array as $data) { ?>
+							<option value="<?php echo '10 '.$data; ?>"><?php echo '10 '.$data; ?></option>
+						<?php } ?> 
+					</select>
+				</p>
+		  <?php } ?>
+		<?php }else if($row['freetext']== 0) {  ?>
+			<?php if(count($options_array)>0){ ?>
+				<label"><strong>Note:</strong></label>
+				<p>Jet Atrribute id: <?php echo $jetAttId ?> which you trying to map is a <b>Dropdown</b> type attribute  & the options of this attribute is fixed on jet.com You need to Add or Create new options based on these values </p>
+				<p>Options: <b><?php echo $row['list_option'] ?></b></p>
+				<label>Example: 
+					<select>
+						<option value="">Please select Options</option>
+						<?php foreach ($options_array as $data) { ?>
+							<option value="<?php echo $data; ?>"><?php echo $data; ?></option>
+						<?php } ?> 
+					</select>
+				</p>
+			<?php }?>
+		<?php } ?>
+	  </div>
+	  <?php } ?>	
+   </div>
+</div>

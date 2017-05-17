@@ -1,0 +1,998 @@
+
+<?php
+/**
+ * @category   FME
+ * @package    FME_CopyCategories
+ * @author     Mahmood Rehman<mahmood.rehman@unitedsol.net>
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+
+?>
+ <?php   
+ $id     = $this->getRequest()->getParam('id');
+
+if(Mage::getStoreConfig('copycategories/setting/settings')){
+ ?>
+ <script type="text/javascript" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_JS);?>copycategories/mext-tree.js" ></script>
+ <div id="category-edit-container" class="category-content">
+    <?php echo $this->getChildHtml('form') ?>
+</div>
+
+
+
+            <div id="page:main-container">
+    
+<div class="content-header">
+   <h3 class="icon-head"><?php echo $this->__('Copy Category') ?></h3>
+   <div class="content-buttons-placeholder" style="width: 0px; height: 14px;"><p class="content-buttons form-buttons" style="">
+       <button style="" onclick="$('copy_form').submit();" class="scalable save" type="button" id="save"><span><?php echo $this->__('Copy') ?></span></button>  
+   </p></div>
+</div>
+
+<form id="copy_form" method="post" action="<?php echo $this->getFormAction(); ?>">
+
+     <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+       <input type="hidden" name="cate_id" value="<?php echo $this->getRequest()->getParam('id'); ?>" />
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend">
+            <?php echo $this->__('Copy Options') ?></h4>
+            <div class="form-buttons"></div>
+        </div>
+        <div class="fieldset">
+            <table cellspacing="0" class="form-list">
+                <tbody>
+                    <tr>
+                        <td class="label">
+                            <label for="copy_categories">
+                            <?php echo $this->__('Select Categories') ?>        
+                            </label>
+                        </td>
+                        <td class="value">
+                            <div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend">
+            <?php echo Mage::helper('catalog')->__('Categories') ?></h4>
+    </div>
+  
+<div class="categories-side-col">
+    <br />
+    <?php echo $this->getStoreSwitcherHtml();?>
+
+    <?php if ($this->getRoot()): ?>
+    <div class="tree-holder">
+        <div id="tree-div" style="width:100%; overflow:auto;"></div>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+
+    function categoryReset(url,useAjax){
+        if(useAjax){
+            var params = {active_tab_id:false};
+            updateContent(url, params);
+        }else{
+            location.href = url;
+        }
+    }
+
+    /**
+    * Delete some category
+    * This routine get categoryId explicitly, so even if currently selected tree node is out of sync
+    * with this form, we surely delete same category in the tree and at backend
+    */
+    function categoryDelete(url, useAjax, categoryId) {
+        if (confirm('<?php echo Mage::helper('catalog')->__('Are you sure you want to delete this category?') ?>')){
+            if (useAjax){
+                tree.nodeForDelete = categoryId;
+                updateContent(url, {}, true);
+            } else {
+                location.href = url;
+            }
+        }
+    }
+
+    /**
+     * Update category content area
+     */
+    function updateContent(url, params, refreshTree) {
+        if (!params) {
+            params = {};
+        }
+        if (!params.form_key) {
+            params.form_key = FORM_KEY;
+        }
+
+        toolbarToggle.stop();
+
+       /*if(params.node_name)
+       {
+           var currentNode = tree.getNodeById(tree.currentNodeId);
+           currentNode.setText(params.node_name);
+       }*/
+       
+        var categoryContainer = $('category-edit-container');
+        var messagesContainer = $('messages');
+        var thisObj = this;
+        new Ajax.Request(url + (url.match(new RegExp('\\?')) ? '&isAjax=true' : '?isAjax=true' ), {
+            parameters:  params,
+            evalScripts: true,
+            onComplete: function () {
+                /**
+                 * This func depends on variables, that came in response, and were eval'ed in onSuccess() callback.
+                 * Since prototype's Element.update() evals javascripts in 10 msec, we should exec our func after it.
+                 */
+                setTimeout(function() {
+                    try {
+                                              
+
+                        if (refreshTree) {
+                            thisObj.refreshTreeArea();
+                        }
+                        toolbarToggle.start();
+                    } catch (e) {
+                        alert(e.message);
+                    };
+                }, 25);
+            },
+            onSuccess: function(transport) {
+                try {
+
+                    if (transport.responseText.isJSON()) {
+
+                        var response = transport.responseText.evalJSON();
+                        var needUpdate = true;
+                        if (response.error) {
+                            alert(response.message);
+                            needUpdate = false;
+                        }
+                        if(response.ajaxExpired && response.ajaxRedirect) {
+                            setLocation(response.ajaxRedirect);
+                            needUpdate = false;
+                        }
+                        if (needUpdate){
+                            if (response.content){
+                                $(categoryContainer).update(response.content);
+                            }
+                            if (response.messages){
+                                $(messagesContainer).update(response.messages);
+                            }
+                        }
+                    } else {
+                        $(categoryContainer).update(transport.responseText);
+
+                    }
+                }
+                catch (e) {
+                    $(categoryContainer).update(transport.responseText);
+                }
+            }
+        });
+    }
+
+    /**
+     * Refresh tree nodes after saving or deleting a category
+     */
+    function refreshTreeArea(transport)
+    {
+        if (tree && window.editingCategoryBreadcrumbs) {
+            // category deleted - delete its node
+            if (tree.nodeForDelete) {
+                var node = tree.getNodeById(tree.nodeForDelete);
+                tree.nodeForDelete = false;
+
+                if (node) { // Check maybe tree became somehow not synced with ajax and we're trying to delete unknown node
+                    node.parentNode.removeChild(node);
+                    tree.currentNodeId = false;
+                }
+            }
+            // category created - add its node
+            else if (tree.addNodeTo) {
+                var parent = tree.getNodeById(tree.addNodeTo);
+                tree.addNodeTo = false;
+
+                if (parent) { // Check maybe tree became somehow not synced with ajax and we're trying to add to unknown node
+                    var node = new Ext.tree.AsyncTreeNode(editingCategoryBreadcrumbs[editingCategoryBreadcrumbs.length - 1]);
+                    node.loaded = true;
+                    tree.currentNodeId = node.id;
+                    parent.appendChild(node);
+
+                    if (parent.expanded) {
+                        tree.selectCurrentNode();
+                    } else {
+                        var timer;
+                        parent.expand();
+                        var f = function(){
+                            if(parent.expanded){ // done expanding
+                                clearInterval(timer);
+                                tree.selectCurrentNode();
+                            }
+                        };
+                        timer = setInterval(f, 200);
+                    }
+                }
+            }
+
+            // update all affected categories nodes names
+            for (var i = 0; i < editingCategoryBreadcrumbs.length; i++) {
+                var node = tree.getNodeById(editingCategoryBreadcrumbs[i].id);
+                if (node) {
+
+                    node.setText(editingCategoryBreadcrumbs[i].text);
+                }
+            }
+        }
+    }
+
+    function displayLoadingMask()
+    {
+       var loaderArea = $$('#html-body .wrapper')[0]; // Blocks all page
+        Position.clone($(loaderArea), $('loading-mask'), {offsetLeft:-2});
+        toggleSelectsUnderBlock($('loading-mask'), false);
+        Element.show('loading-mask');
+
+    }
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var tree;
+
+/**
+ * Fix ext compatibility with prototype 1.6
+ */
+Ext.lib.Event.getTarget = function(e) {
+    var ee = e.browserEvent || e;
+    return ee.target ? Event.element(ee) : null;
+};
+
+Ext.tree.TreePanel.Enhanced = function(el, config)
+{
+    Ext.tree.TreePanel.Enhanced.superclass.constructor.call(this, el, config);
+};
+
+Ext.extend(Ext.tree.TreePanel.Enhanced, Ext.tree.TreePanel, {
+
+    loadTree : function(config, firstLoad)
+    {
+
+        var parameters = config['parameters'];
+        var data = config['data'];
+
+        this.storeId = parameters['store_id'];
+
+        if ( this.storeId != 0 && $('add_root_category_button')) {
+            $('add_root_category_button').hide();
+        }
+
+        if ((typeof parameters['root_visible']) != 'undefined') {
+            this.rootVisible = parameters['root_visible']*1;
+        }
+
+        var root = new Ext.tree.TreeNode(parameters);
+
+        this.nodeHash = {};
+        this.setRootNode(root);
+
+        if (firstLoad) {
+            this.addListener('click', this.categoryClick);
+            this.addListener('beforenodedrop', categoryMove.createDelegate(this));
+        }
+
+        this.loader.buildCategoryTree(root, data);
+        this.el.dom.innerHTML = '';
+        // render the tree
+        this.render();
+        if (parameters['expanded']) {
+            this.expandAll();
+        } else {
+            root.expand();
+        }
+
+        var selectedNode = this.getNodeById(parameters['category_id']);
+        if (selectedNode) {
+            this.currentNodeId = parameters['category_id'];
+        }
+        this.selectCurrentNode();
+    },
+
+    request : function(url, params)
+    {
+        if (!params) {
+	
+            if (category_info_tabsJsTabs.activeTab) {
+                var params = {active_tab_id:category_info_tabsJsTabs.activeTab.id};
+            }
+            else {
+                var params = {};
+            }
+        }
+        if (!params.form_key) {
+            params.form_key = FORM_KEY;
+        }
+        var result = new Ajax.Request(
+            url + (url.match(new RegExp('\\?')) ? '&isAjax=true' : '?isAjax=true' ),
+            {
+               parameters:  params,
+               method:      'post'
+            }
+        );
+
+        return result;
+    },
+
+    selectCurrentNode : function()
+    {
+        if (this.currentNodeId) {
+            var selectedNode = this.getNodeById(this.currentNodeId);
+            if ((typeof selectedNode.attributes.path)!='undefined') {
+                var path = selectedNode.attributes.path;
+                if (!this.storeId) {
+                    path = '0/'+path;
+                }
+                this.selectPath(path);
+            } else {
+                this.getSelectionModel().select(selectedNode);
+            }
+        }
+    },
+
+    collapseTree : function()
+    {
+        this.collapseAll();
+
+        this.selectCurrentNode();
+
+        if (!this.collapsed) {
+            this.collapsed = true;
+            this.loader.dataUrl = '<?php echo $this->getLoadTreeUrl(false) ?>';
+            this.request(this.loader.dataUrl, false);
+        }
+    },
+
+    expandTree : function()
+    {
+        this.expandAll();
+        if (this.collapsed) {
+            this.collapsed = false;
+            this.loader.dataUrl = '<?php echo $this->getLoadTreeUrl(true) ?>';
+            this.request(this.loader.dataUrl, false);
+        }
+    },
+
+    categoryClick : function(node, e)
+    {
+        var baseUrl = '<?php echo Mage::helper("copycategories")->setEditUrl() ?>';
+        var urlExt = (this.storeId?'store/'+this.storeId+'/':'')+'id/'+node.id+'/';
+        var url = parseSidUrl(baseUrl, urlExt);
+
+        this.currentNodeId = node.id;
+        if (!this.useAjax) {
+            setLocation(url);
+            return;
+        }
+			
+			
+     
+    }
+});
+
+function reRenderTree(event, switcher)
+{
+    // re-render tree by store switcher
+    if (tree && event) {
+        var obj = event.target;
+        var newStoreId = obj.value * 1;
+        var storeParam = newStoreId ? 'store/'+newStoreId + '/' : '';
+
+        if (obj.switchParams) {
+            storeParam += obj.switchParams;
+        }
+        if (switcher.useConfirm) {
+            if (!confirm("<?php echo $this->__('Please confirm site switching. All data that hasn\'t been saved will be lost.') ?>")){
+                obj.value = '<?php echo (int) $this->getStoreId() ?>';
+                return false;
+            }
+        }
+
+        if ($('add_root_category_button')) {
+            if (newStoreId == 0) {
+                $('add_root_category_button').show();
+            }
+            else {
+                $('add_root_category_button').hide();
+            }
+        }
+
+        // retain current selected category id
+        storeParam = storeParam + 'id/' + tree.currentNodeId + '/';
+        var url = tree.switchTreeUrl + storeParam;
+
+        // load from cache
+        // load from ajax
+        new Ajax.Request(url + (url.match(new RegExp('\\?')) ? '&isAjax=true' : '?isAjax=true' ), {
+            parameters : {store: newStoreId, form_key: FORM_KEY},
+            method     : 'post',
+            onComplete : function(transport) {
+                var response = eval('(' + transport.responseText + ')');
+                if (!response['parameters']) {
+                    return false;
+                }
+
+                _renderNewTree(response, storeParam);
+            }
+        });
+    }
+    // render default tree
+    else {
+        _renderNewTree();
+    }
+}
+ 
+function _renderNewTree(config, storeParam)
+{
+    if (!config) {
+
+        var config = defaultLoadTreeParams;
+    }
+    if (tree) {
+        tree.purgeListeners();
+        tree.el.dom.innerHTML = '';
+    }
+    tree = new Ext.tree.TreePanel.Enhanced('tree-div', newTreeParams);
+    tree.loadTree(config, true);
+
+    // try to select current category
+    var selectedNode = tree.getNodeById(config.parameters.category_id);
+    if (selectedNode) {
+        tree.currentNodeId = config.parameters.category_id;
+    }
+    tree.selectCurrentNode();
+
+    // update content area
+    var url = tree.editUrl;
+    if (storeParam) {
+        url = url + storeParam;
+    }
+    <?php if ($this->isClearEdit()):?>
+    if (selectedNode) {
+        url = url + 'id/' + config.parameters.category_id;
+    }
+    <?php endif;?>
+
+    updateContent(url);
+
+
+}
+
+Ext.onReady(function()
+{
+
+    categoryLoader = new Ext.tree.TreeLoader({
+       dataUrl: '<?php echo $this->getLoadTreeUrl() ?>'
+    });
+
+    categoryLoader.createNode = function(config) {
+        var node;
+        var _node = Object.clone(config);
+        if (config.children && !config.children.length) {
+            delete(config.children);
+            node = new Ext.tree.AsyncTreeNode(config);
+        } else {
+            node = new Ext.tree.TreeNode(config);
+        }
+
+        return node;
+    };
+
+    categoryLoader.buildCategoryTree = function(parent, config)
+    {
+        if (!config) return null;
+
+        if (parent && config && config.length){
+            for (var i = 0; i < config.length; i++) {
+                var node;
+                var _node = Object.clone(config[i]);
+                if (_node.children && !_node.children.length) {
+                    delete(_node.children);
+                    node = new Ext.tree.AsyncTreeNode(_node);
+                } else {
+                    node = new Ext.tree.TreeNode(config[i]);
+                }
+                parent.appendChild(node);
+                node.loader = node.getOwnerTree().loader;
+                if (_node.children) {
+                    this.buildCategoryTree(node, _node.children);
+                }
+            }
+        }
+    };
+
+    categoryLoader.buildHash = function(node)
+    {
+        var hash = {};
+
+        hash = this.toArray(node.attributes);
+
+        if (node.childNodes.length>0 || (node.loaded==false && node.loading==false)) {
+            hash['children'] = new Array;
+
+            for (var i = 0, len = node.childNodes.length; i < len; i++) {
+                if (!hash['children']) {
+                    hash['children'] = new Array;
+                }
+                hash['children'].push(this.buildHash(node.childNodes[i]));
+            }
+        }
+
+        return hash;
+    };
+
+    categoryLoader.toArray = function(attributes) {
+        var data = {form_key: FORM_KEY};
+        for (var key in attributes) {
+            var value = attributes[key];
+            data[key] = value;
+        }
+
+        return data;
+    };
+
+    categoryLoader.on("beforeload", function(treeLoader, node) {
+        treeLoader.baseParams.id = node.attributes.id;
+        treeLoader.baseParams.store = node.attributes.store;
+        treeLoader.baseParams.form_key = FORM_KEY;
+    });
+
+    categoryLoader.on("load", function(treeLoader, node, config) {
+        varienWindowOnload();
+    });
+
+    if ((typeof varienStoreSwitcher)!='undefined') {
+        varienStoreSwitcher.storeSelectorClickCallback = reRenderTree;
+    }
+
+    newTreeParams = {
+        animate         : false,
+        loader          : categoryLoader,
+        enableDD        : true,
+        containerScroll : true,
+        selModel        : new Ext.tree.CheckNodeMultiSelectionModel(),
+        rootVisible     : '<?php echo $this->getRoot()->getIsVisible() ?>',
+        useAjax         : <?php echo $this->getUseAjax() ?>,
+        switchTreeUrl   : '<?php echo $this->getSwitchTreeUrl() ?>',
+        editUrl         : '<?php  echo Mage::helper("copycategories")->setEditUrl() ?>',
+        currentNodeId   : <?php echo (int) $this->getCategoryId() ?>
+    };
+
+    defaultLoadTreeParams = {
+        parameters : {
+            text        : '<?php echo htmlentities($this->getRoot()->getName()) ?>',
+            draggable   : false,
+            allowDrop   : <?php if ($this->getRoot()->getIsVisible()): ?>true<?php else : ?>false<?php endif; ?>,
+            id          : <?php echo (int) $this->getRoot()->getId() ?>,
+            expanded    : <?php echo (int) $this->getIsWasExpanded() ?>,
+            store_id    : <?php echo (int) $this->getStore()->getId() ?>,
+            category_id : <?php echo (int) $this->getCategoryId() ?>
+        },
+        data : <?php echo $this->getTreeJson() ?>
+    };
+
+    reRenderTree();
+});
+
+function addNew(url, isRoot)
+{
+    if (isRoot) {
+        tree.currentNodeId = tree.root.id;
+    }
+
+    if (/store\/\d+/.test(url)) {
+        url = url.replace(/store\/\d+/, "store/" + tree.storeId);
+    }
+    else    {
+        url+= "store/" + tree.storeId + "/";
+    }
+
+    url+= 'parent/'+tree.currentNodeId;
+    updateContent(url);
+}
+
+function categoryMove(obj)
+{
+    var data = {id: obj.dropNode.id, form_key: FORM_KEY};
+
+    data.point = obj.point;
+    switch (obj.point) {
+        case 'above' :
+            data.pid = obj.target.parentNode.id;
+            data.paid = obj.dropNode.parentNode.id;
+            if (obj.target.previousSibling) {
+                data.aid = obj.target.previousSibling.id;
+            } else {
+                data.aid = 0;
+            }
+            break;
+        case 'below' :
+            data.pid = obj.target.parentNode.id;
+            data.aid = obj.target.id;
+        break;
+        case 'append' :
+            data.pid = obj.target.id;
+            data.paid = obj.dropNode.parentNode.id;
+            if (obj.target.lastChild) {
+                data.aid = obj.target.lastChild.id;
+            } else {
+                data.aid = 0;
+            }
+        break;
+        default :
+            obj.cancel = true;
+            return obj;
+    }
+
+    var success = function(o) {
+        try {
+            if(o.responseText){
+                if(o.responseText==='SUCCESS'){
+                    categoryForm.refreshPath();
+                } else {
+                    alert(o.responseText);
+                    location.reload();
+                }
+            }
+        }
+        catch(e) {
+        }
+    };
+
+    var failure = function(o) {
+        try {
+            console.log(o.statusText);
+        } catch (e2) {
+            alert(o.statusText);
+        }
+        location.reload();
+    };
+
+    var pd = [];
+    for(var key in data) {
+        pd.push(encodeURIComponent(key), "=", encodeURIComponent(data[key]), "&");
+    }
+    pd.splice(pd.length-1,1);
+    new Ajax.Request(
+        '<?php echo $this->getMoveUrl() ?>',
+        {
+            method:     'POST',
+            parameters: pd.join(""),
+            onSuccess : success,
+            onFailure : failure
+        }
+    );
+}
+//]]>
+</script>
+<?php endif; ?>
+
+
+  
+                            </div>
+
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="label">  
+                            <label for="copy_products">
+                                <?php echo $this->__('Select Parent Category For Copied Category');  ?>   
+                            </label>
+                        </td>
+                        <td class="value">
+                            <select id="cuser_selected_parent" name="user_selected_parent" size="20">
+                            <option value=""><?php echo $this->__('--Select Category--'); ?></option>
+                            <?php
+                                $_CategoryHelper = Mage::helper("copycategories")->getCategoriesDropdown(); 
+                                    foreach($_CategoryHelper as $value)
+                                        {  
+                                            foreach($value as $key => $val){
+                                                if($key=='label'){
+                                                    $catNameIs = $val;
+                                                }
+                                                if($key=='value'){
+                                                    $catIdIs = $val;
+                                                }
+                                                if($key=='level'){
+                                                    $catLevelIs = $val;
+                                                    $b ='';
+                                                    for($i=1;$i<$catLevelIs;$i++)
+                                                    {
+                                                        if($catLevelIs!=2)
+                                                        {
+                                                        $b = $b."-";
+                                                        }
+                                                    }
+                                                }
+                                            }
+                            ?>
+                        <option value="<?php echo $catIdIs; ?>"><?php echo $b.$catNameIs ?></option>
+                        <?php
+                                } 
+                        ?>
+                        </select>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label for="copy_products">
+                            <?php echo $this->__('Copy Product Relations'); ?>     
+                             </label>
+                        </td>
+                        <td class="value">
+                            <select class="select required-entry" name="copy_products" id="copy_products" onchange="prodRel(this.value);">
+                                <option value="0"><?php echo $this->__('No'); ?></option>
+                                <option value="1"><?php echo $this->__('Yes'); ?></option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label for="copy_only_products">
+                            <?php echo $this->__('Copy Only Products'); ?>     
+                             </label>
+                        </td>
+                        <td class="value">
+                            <select class="select required-entry" name="copy_only_products" id="copy_only_products" onchange="onlyProd(this.value);">
+                                <option value="0"><?php echo $this->__('No'); ?></option>
+                                <option value="1"><?php echo $this->__('Yes'); ?></option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label for="copy_categories">
+                            <?php echo $this->__('Copy SubCategories'); ?>     
+                             </label>
+                        </td>
+                        <td class="value">
+                            <select class="select required-entry" name="copy_categories" id="copy_categories" onchange="copySub(this.value);">
+                                <option value="0"><?php echo $this->__('No'); ?></option>
+                                <option value="1"><?php echo $this->__('Yes'); ?></option>
+                                <option value="2"><?php echo $this->__('Only Selected'); ?></option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+
+            
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+    function prodRel(value){
+        if (value==0) {
+            document.getElementById('copy_only_products').value=0;
+        }
+    }
+    function onlyProd(value)
+    {
+        if (value==1) {
+            document.getElementById('copy_categories').value=0;
+            document.getElementById('copy_products').value=1;
+        }
+    }
+    function copySub(value)
+    {
+        if (value==1) {
+            document.getElementById('copy_only_products').value=0;        }
+    }
+        
+    </script>
+    
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4 class="icon-head head-edit-form fieldset-legend">
+            Search and Replace            </h4>
+            <div class="form-buttons"></div>
+        </div>
+        <div class="fieldset">
+            <ul class="messages">
+                <li class="notice-msg">
+                    <ul>
+                        <li><?php echo $this->__('Leave empty if you do not need to search and replace text.'); ?> </li>
+                    </ul>
+                </li>
+            </ul>
+            <table cellspacing="0" class="form-list">
+                <tbody>
+                    <tr>
+                        <td class="label"><?php echo $this->__('Search text:'); ?></td>
+                        <td class="value"><?php echo $this->__('Replace With:'); ?></td>
+                    </tr>
+                       <tr>
+                        <td class="label"><input type="text" style="width: 190px;" class="input-text" value="" name="cate_search[option_001]"></td>
+                        <td class="value"><input type="text" style="width: 190px;" class="input-text" value="" name="cate_replace[option_002]"></td>
+                          <td style="padding-left:20px; padding-top:5px;"> <button style="" onclick="" class="scalable" type="button" title="Add Option" id="add_new_option_button"><span><span><span><?php echo $this->__('Add New:'); ?></span></span></span></button></td>
+                    </tr>
+                    <!--  start code from here -->
+
+                     <tr class="no-display template" id="row-template">
+                        <?php foreach ($this->getStores() as $_store): ?>
+                        <td><input name="option[value][{{id}}][<?php echo $_store->getId() ?>]" value="{{store<?php echo $_store->getId() ?>}}" class="input-text<?php if($_store->getId()==0): ?> required-option<?php endif; ?>" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/></td>
+                        <?php endforeach; ?>
+                       
+                        <td class="a-left">
+                            <input type="hidden" class="delete-flag" name="option[delete][{{id}}]" value="" />
+                            <?php if (!$this->getReadOnly()):?>
+                                <?php echo $this->getDeleteButtonHtml() ?>
+                            <?php endif;?>
+                        </td>
+                    </tr>
+                    <tr>
+
+
+
+
+                <tr id="attribute-options-table">
+                    <th>
+                   </th>
+                   
+                    </tr>
+                   
+        
+        <input type="hidden" id="option-count-check" value="" />
+
+</div>
+
+                    </tr
+        ><!--  end code from here  -->
+                        
+                                    </tbody>
+            </table>
+        </div>
+    </div>
+    
+</form>                        </div>
+    
+ 
+
+<script type="text/javascript">
+//<![CDATA[
+var optionDefaultInputType = 'radio';
+
+// IE removes quotes from element.innerHTML whenever it thinks they're not needed, which breaks html.
+var templateText =
+        '<tr class="option-row" style="margin:10px;">'+
+<?php foreach ($this->getStores() as $_store): ?>
+            '<td><input name="cate[{{id}}][<?php echo $_store->getId() ?>]" value="{{store<?php echo $_store->getId() ?>}}" class="input-text<?php if($_store->getId()==0): ?> required-option<?php endif; ?>" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>'+
+<?php endforeach; ?>
+            '<td><input class="input-text" type="text" style=" width:190px; margin: 5px; " name="cate_search[{{id}}]" value="{{sort_order}}" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>'+
+            '<td><input class="input-text" type="text" style=" width:190px; margin: 5px;" name="cate_replace[{{id}}1]" value="{{sort_order}}" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>'+
+            '<td class="a-left" id="delete_button_container_{{id}}">'+
+                '<input type="hidden" class="delete-flag" name="option[delete][{{id}}]" style=" margin: 5px; " value="" />'+
+                '<button style=" margin: 4px 5px 5px 18px;" onclick="" class="scalable delete-option" type="button" title="Delete" id="id_45a"><span><span><span>Delete</span></span></span></button>'+
+                <?php if (!$this->getReadOnly()):?>
+                    '<?php echo $this->getDeleteButtonHtml() ?>'+
+                <?php endif;?>
+            '<\/td>'+
+        '<\/tr>';
+
+var attributeOption = {
+    table : $('attribute-options-table'),
+    templateSyntax : /(^|.|\r|\n)({{(\w+)}})/,
+    templateText : templateText,
+    itemCount : 0,
+    totalItems : 0,
+    isReadOnly: <?php echo (int)$this->getReadOnly(); ?>,
+    add : function(data) {
+        this.template = new Template(this.templateText, this.templateSyntax);
+        var isNewOption = false;
+        if(!data.id){
+            data = {};
+            data.id  = 'option_'+this.itemCount;
+            isNewOption = true;
+        }
+        if (!data.intype)
+            data.intype = optionDefaultInputType;
+        Element.insert(this.table, {after: this.template.evaluate(data)});
+        if (isNewOption && !this.isReadOnly) {
+            this.enableNewOptionDeleteButton(data.id);
+        }
+        this.bindRemoveButtons();
+        this.itemCount++;
+        this.totalItems++;
+        this.updateItemsCountField();
+    },
+    remove : function(event){
+        var element = $(Event.findElement(event, 'tr')); // !!! Button already
+                                                               // have table parent in safari
+        // Safari workaround
+        element.ancestors().each(function(parentItem){
+           if (parentItem.hasClassName('option-row')) {
+               element = parentItem;
+               throw $break;
+           } else if (parentItem.hasClassName('box')) {
+               throw $break;
+           }
+        });
+
+
+        if(element){
+            var elementFlags = element.getElementsByClassName('delete-flag');
+            if(elementFlags[0]){
+                elementFlags[0].value=1;
+            }
+
+            element.addClassName('no-display');
+            element.addClassName('template');
+            element.hide();
+            this.totalItems--;
+            this.updateItemsCountField();
+        }
+    },
+    updateItemsCountField: function() {
+        if (this.totalItems > 0) {
+            $('option-count-check').value = '1';
+        } else {
+            $('option-count-check').value = '';
+        }
+    },
+    enableNewOptionDeleteButton: function(id) {
+        $$('#delete_button_container_' + id + ' button').each(function(button) {
+            button.enable();
+            button.removeClassName('disabled');
+        });
+    },
+    bindRemoveButtons : function(){
+        var buttons = $$('.delete-option');
+        for(var i=0;i<buttons.length;i++){
+            if(!$(buttons[i]).binded){
+                $(buttons[i]).binded = true;
+                Event.observe(buttons[i], 'click', this.remove.bind(this));
+            }
+        }
+    }
+
+}
+if($('row-template')){
+    $('row-template').remove();
+}
+attributeOption.bindRemoveButtons();
+
+if($('add_new_option_button')){
+    Event.observe('add_new_option_button', 'click', attributeOption.add.bind(attributeOption));
+}
+Validation.addAllThese([
+    ['required-option', '<?php echo Mage::helper('catalog')->__('Failed') ?>', function(v) {
+        return !Validation.get('IsEmpty').test(v);
+}]]);
+Validation.addAllThese([
+    ['required-options-count', '<?php echo Mage::helper('catalog')->__('Options is required') ?>', function(v) {
+        return !Validation.get('IsEmpty').test(v);
+}]]);
+<?php foreach ($this->getOptionValues() as $_value): ?>
+    attributeOption.add(<?php echo $_value->toJson() ?>);
+<?php endforeach; ?>
+
+//]]>
+</script>
+<?php }else{?>
+<div class="content-header">
+   <h3 class="icon-head"><?php echo $this->__('Copy Category');?></h3>
+   <div class="content-buttons-placeholder" style="width: 0px; height: 14px;">
+
+    <p class="content-buttons form-buttons" style="">
+    
+   </p></div>
+</div>
+  <p><h3><?php echo $this->__('Please enable the extension first');?></h3></p>
+ <?php }?>
+
+
+
+

@@ -1,0 +1,278 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+/* ============================================ *
+ * CMS Pages
+ * ============================================ */
+
+// ----------------------------------------------
+// Content for static pages
+
+.cms-page-view,
+.cms-no-route {
+    .page-title,
+    .page-head {
+        h1,
+        h3 {
+            border: none;
+        }
+    }
+
+    .std {
+
+        img {
+            max-width: 100%;
+        }
+
+        p {
+            color: $c-text;
+            font-size: $f-size-xl;
+            line-height: 1.5;
+        }
+
+        li {
+            color: $c-text;
+            font-size: $f-size-l;
+            line-height: 24px;
+        }
+    }
+
+    .col-left {
+        &:after {
+            @include clearfix;
+        }
+    }
+}
+
+.cms-no-route {
+
+    .std {
+
+        text-align: center;
+
+        h2, .h2, h3, .h3 {
+            color: $c-text;
+        }
+
+        h2, .h2 {
+            font-size: 24px;
+        }
+
+        h3, .h3 {
+            font-size: 32px;
+        }
+
+        h1 {
+            color: $c-text-primary;
+            font-size: 120px;
+            font-weight: bold;
+            line-height: 180px;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .error-msg {
+           position: relative;
+            margin: 40px auto;
+            width: 70%;
+            max-width: 350px;
+            height: 200px;
+            padding: 0px;
+            background: #FFF;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0px 0px 0px 18px #E0E0E0;
+            -moz-box-shadow: 0px 0px 0px 18px #E0E0E0;
+            box-shadow: 0px 0px 0px 18px #E0E0E0;
+
+            &:after {
+                content: "";
+                position: absolute;
+                bottom: -15px;
+                left: 45%;
+                border-style: solid;
+                border-width: 15px 15px 0;
+                border-color: #FFF transparent;
+                display: block;
+                width: 0;
+                z-index: 1;
+            }
+
+        }
+    }
+
+    #noroute_search_form {
+
+        .input-box {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+
+            label {
+                display: none;
+            }
+
+            .input-text {
+                width: 100%;
+                height: 40px;
+                padding-right: 40px;
+                border: 0;
+                outline: 0;
+                background: #76797D;
+                color: #FFF;
+            }
+
+            .search-button {
+                @include image-replacement;
+                @include border-radius (0);
+                position: absolute;
+                top: 2px;
+                right: 0;
+                width: 40px;
+                height: 40px;
+                border: 0;
+                background: #EB4800;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 30px;
+                    height: 30px;
+                    margin-top: (30px / -2);
+                    margin-left: (30px / -2);
+                    @extend .icon-sprite;
+                    background-position: 0+4px (-205px + ($toolbar-icon-padding-offset/2));
+                }
+
+                &:hover:before {
+                    opacity: 0.8;
+                }
+            }
+
+        }
+    }
+}
+
+.cms-page-view .std,
+.cms-home .std,
+.cms-no-route .std {
+    .messages {
+        margin-bottom: $box-spacing;
+
+        ul {
+            margin-bottom: 0;
+        }
+
+        li {
+            list-style: none;
+            margin-left: 0;
+            font-style: normal;
+            font-family: $f-stack-sans;
+        }
+    }
+}
+
+// ----------------------------------------------
+// Accordition
+
+#accordion {
+    @include accordion;
+
+    li {
+        position: relative;
+        overflow: hidden;
+
+        .plusimage h2 {
+            margin-right: $gap;
+        }
+    }
+}
+
+// ----------------------------------------------
+// Sitemap
+
+.page-sitemap {
+    .links {
+        display: block;
+        text-align: right;
+        margin: 0 20px 0 0;
+
+        a { position: relative; }
+    }
+
+    .sitemap {
+        padding: 0 20px;
+        margin: 15px 0;
+        font-size: $f-size-xs;
+
+        li {
+            margin: 3px 0;
+        }
+    }
+}
+
+// ----------------------------------------------
+// Contact page
+
+.contacts-index-index {
+    h1 {
+        border: none;
+    }
+}
+
+#contactForm {
+    padding-left: 40px;
+
+    h2 {
+        display: none;
+    }
+
+    &:after {
+        @include clearfix;
+    }
+
+    .fieldset .legend + .required {
+        margin: 0;
+    }
+}
+
+@include bp(max-width, $bp-medium) {
+
+    #contactForm {
+        padding-left: 0;
+    }
+}
+
+.is-blog {
+    .page-title h1,
+    .post-list-item h2 {
+        font-family: $f-stack-crave;
+        font-size: 28px;
+    }
+}

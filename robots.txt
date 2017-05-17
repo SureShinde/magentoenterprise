@@ -1,0 +1,80 @@
+User-agent: *
+
+# Directories
+Disallow: /no-route/
+Disallow: /app/
+Disallow: /cgi-bin/
+Disallow: /downloader/
+Disallow: /errors/
+Disallow: /includes/
+
+Disallow: /lib/
+Disallow: /magento/
+Disallow: /pkginfo/
+Disallow: /report/
+Disallow: /scripts/
+Disallow: /stats/
+Disallow: /var/
+
+# Paths (clean URLs)
+Disallow: /index.php/
+Disallow: /catalog/product_compare/
+Disallow: /catalog/category/view/
+Disallow: /catalog/product/view/
+Disallow: /catalogsearch/
+Disallow: /checkout/
+Disallow: /control/
+Disallow: /contacts/
+Disallow: /customer/
+Disallow: /customize/
+Disallow: /newsletter/
+Disallow: /poll/
+Disallow: /review/
+Disallow: /sendfriend/
+Disallow: /tag/
+Disallow: /wishlist/
+Disallow: /catalog/product/gallery/
+Disallow: /catalogsearch/ajax/suggest/
+Disallow: /downloadable/
+Disallow: /productalert/
+Disallow: /sales/
+Disallow: /catalog/seo_sitemap/
+Disallow: /productquestion/
+Disallow: /-review-
+Disallow: /crave/tag/
+Disallow: /crave/category/
+
+# Files
+Disallow: /cron.php
+Disallow: /cron.sh
+Disallow: /error_log
+Disallow: /install.php
+Disallow: /LICENSE.html
+Disallow: /LICENSE.txt
+Disallow: /LICENSE_AFL.txt
+Disallow: /STATUS.txt
+
+# Parameters
+Disallow: *?limit=
+Disallow: *?badges=
+Disallow: *?price=
+Disallow: *?p=
+Disallow: *?dir=
+Disallow: *?order=
+Disallow: *?manufacturer=
+Disallow: *?cat=
+Disallow: *?material=
+Disallow: *?___SID=
+Disallow: *?q=
+Disallow: *?size=
+Disallow: *?product_type=
+Disallow: *?replytocom=
+Disallow: *?pattern=
+Disallow: *?capacity=
+Disallow: *?color=
+
+
+# Paths (no clean URLs)
+Disallow: /*.php$
+
+Sitemap: https://www.forthechef.com/sitemap.xml

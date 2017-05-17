@@ -1,0 +1,108 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Support
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+?>
+<div class="nucleus-support-ticket-button">
+    <div class="nucleus-support-icon"></div>
+    <div class="nucleus-support-text">
+        <div>
+            <?php echo $this->__('Enter a Nucleus Support Ticket'); ?>
+        </div>
+    </div>
+</div>
+
+<div id="nucleus-support-ticket-form" class="nucleus-support-ticket-form" style="display:none;">
+    <form method="post" id="ticket-submit-form" action="<?php echo $this->getFormAction(); ?>">
+        <div id="nucleus-support-text" class="nucleus-support-text">
+            <div class="nucleus-support-ticket-form-message">
+                <div class="nucleus-left-float">
+
+                </div>
+               <?php echo $this->__('Nucleus Support'); ?>
+                <div class="nucleus-dash-sign">
+                    &ndash;
+                </div>
+            </div>
+        </div>
+        <div class="nucleus-support-details">
+            <label><?php echo $this->__('Subject'); ?> *</label>           
+            <input type="text" class="nucleus-subject input-text" name="subject">
+            <div style="position:relative">
+                <div class="complete-field-hint-subject" style="display:none"><?php echo $this->__('Complete this field'); ?></div>
+            </div>
+            
+            <label><?php echo $this->__('Details of request'); ?> *</label>
+            <span class="reuqest-details-active" style="position:relative;">?
+                <span class="request-details" style="display:none;">
+                    <?php echo $this->__('Time spent on any ticket you submit to Nucleus Support will be deducted from your prepaid support balance. Please let us know if you would like an estimate before work-start.'); ?>
+                </span>
+            </span>
+            <label class="nucleus-note"><?php echo $this->__('Note: this ticket will use your support hours'); ?></label>
+            <textarea class="nucleus-message" name="message"></textarea>
+            <div style="position:relative">
+                <div class="complete-field-hint" style="display:none"><?php echo $this->__('Complete this field'); ?></div>
+            </div>
+            <input value="Send Message" class="request-submit" type="submit">
+            <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey(); ?>" />
+        </div>
+    </form>
+</div>
+
+<script>
+
+
+    document.observe("dom:loaded", function () {
+
+        new NucleusSupportTicket({
+            form: $$('.nucleus-support-ticket-form')[0],
+            formHtml: $('ticket-submit-form'),
+            button: $$('.nucleus-support-ticket-button')[0],
+            details: $$('.request-details')[0],
+            close: $$('.nucleus-dash-sign')[0],
+            detailSign: $$('.reuqest-details-active')[0],
+            hint: $$('.complete-field-hint')[0],
+            message: $$('.nucleus-message')[0],
+            hintSubject: $$('.complete-field-hint-subject')[0],
+            subject: $$('.nucleus-subject')[0]
+        }); 
+        
+       new Draggable($('nucleus-support-ticket-form'));
+        
+       Draggables.addObserver({
+          onStart:function( eventName, draggable, event )
+          {
+            document.getElementById('nucleus-support-text').style.cursor = 'grabbing';
+          },
+          onEnd:function( eventName, draggable, event )
+          {
+            document.getElementById('nucleus-support-text').style.cursor = 'grab';
+          }
+       });
+        
+        
+        
+    });
+
+
+</script>

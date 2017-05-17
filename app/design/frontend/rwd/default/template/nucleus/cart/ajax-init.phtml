@@ -1,0 +1,62 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Cart
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+?>
+
+<?php if (Mage::helper('nucleus_cart')->ajaxCartEnabled()): ?>
+<script type="text/javascript">
+    // Init the Ajax Add info on the minicart, now or when loaded
+    if (typeof(ActiveMinicart) != 'undefined') {
+        ActiveMinicart.ajaxAddInit('<?php echo $this->helper('nucleus_cart')->getAjaxAddUrl() ?>');
+    }
+    MinicartInit.registerListener(function(cart) {
+        cart.ajaxAddInit('<?php echo $this->helper('nucleus_cart')->getAjaxAddUrl() ?>');
+    });
+
+    // Minicart won't exist already on a page with no items in the cart, so this makes sure it does
+    $j('document').ready(function() {
+        if (typeof(ActiveMinicart) == 'undefined') {
+            var minicartOptions  = {
+                formKey: "<?php echo Mage::getSingleton('core/session')->getFormKey() ?>"
+            };
+            var Mini = new Minicart(minicartOptions);
+            Mini.init();
+        }
+    });
+
+    // Set up Ajax Add handler on any straight-up links to the Add to Cart action
+    $j('.category-products .item .add-button, .ajax-add-to-cart')
+        .on('click', function() {
+            var id = $j(this).data('product-id');
+
+            if (id && typeof(ActiveMinicart) != 'undefined') {
+                var submitData = "product=" + id + "&qty=1" + "&form_key=" + ActiveMinicart.formKey;
+
+                if (ActiveMinicart.addToCart(submitData, id)) {
+                    return false;
+                }
+            }
+        });
+</script>
+<?php endif; ?>

@@ -1,0 +1,250 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Header
+// ==============================================
+
+.page-header {
+    background: url(../images/crosshatch.png) repeat #FFF;
+}
+
+.page-header-container {
+    position: relative;
+    max-width: $max-container-width;
+    margin: 0 auto;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-medium + 1) {
+
+    .page-header-container {
+        padding: 0 $trim;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Links
+// ==============================================
+
+.skip-links {
+    clear: both;
+    overflow: hidden;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-medium + 1) {
+
+    .skip-links {
+        border: 0;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip - Link
+// ==============================================
+
+.skip-link {
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 44px;
+    background: #FFF;
+    color: $c-text;
+    line-height: 42px;
+    text-align: center;
+}
+
+a.skip-link {
+    text-decoration: none;
+}
+
+.skip-link:not(.skip-active):hover {
+    opacity: 0.8;
+}
+
+// ---------------------------------------------
+
+@include bp (max-width, $bp-medium) {
+
+    .skip-link {
+        border-right: 1px solid #CCC;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .skip-link {
+        width: 25%;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Link - Active
+// ==============================================
+
+@include bp (max-width, $bp-medium) {
+
+    .skip-link.skip-active {
+        background: #EDEDED;
+        color: inherit;
+    }
+
+    .skip-link.skip-active span {
+        color: inherit;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Link - Icon
+// ==============================================
+
+.skip-link .icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.skip-link.skip-nav .icon,
+.skip-link.skip-cart:not(.no-count) .icon {
+    margin-right: 3px;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .skip-link .icon {
+        margin-right: 3px;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Link - Label
+// ==============================================
+
+.skip-link .label {
+    display: none;
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .skip-link .label {
+        display: inline;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Content
+// ==============================================
+
+.skip-content {
+    display: none;
+    margin-bottom: 0 !important;
+}
+
+.skip-content.skip-active {
+    display: block;
+    background: #EDEDED;
+}
+
+
+
+// ==============================================
+// Global Header Navigation
+// ==============================================
+
+@include bp (max-width, $bp-medium) {
+
+    #header-account li a,
+    .nav-primary a.level0 {
+        padding: 10px 15px 10px 25px;
+        border-bottom: 1px solid $c-module-border;
+        color: $c-text;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    #header-account li:last-child a,
+    .nav-primary li.level0:last-child a.level0 {
+        border-bottom: 0;
+    }
+
+    .no-touch #header-account a:hover,
+    .no-touch .nav-primary a:hover {
+        background-color: $c-module-background;
+        text-decoration: none;
+    }
+
+}
+
+
+
+// ==============================================
+// Account Cart Wrapper
+// ==============================================
+
+.account-cart-wrapper {
+    position: absolute;
+    top: 12px;
+    right: $trim;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-medium) {
+
+    .account-cart-wrapper {
+        position: static;
+    }
+
+}

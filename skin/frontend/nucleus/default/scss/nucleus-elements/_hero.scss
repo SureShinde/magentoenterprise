@@ -1,0 +1,304 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Hero
+// ==============================================
+
+.hero {
+    display:block;
+    position:relative;
+    margin-bottom:$gap-tall;
+
+    &:hover {
+        text-decoration:none;
+    }
+}
+
+
+// ----------------------------------------------
+// Image
+
+.hero-image img {
+    max-width:100%;
+    margin:0 auto;
+}
+
+
+// ----------------------------------------------
+// Content
+
+.hero-content-wrapper:before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.hero-content-wrapper {
+    @include flexbox;
+    @include align-items (center);
+    @include justify-content (center);
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.hero-content {
+    width:auto;
+    display:inline-block;
+}
+
+.hero-content--width-33 { width:33.3333%; }
+.hero-content--width-50 { width:50%; }
+.hero-content--width-66 { width:66.6666%; }
+
+
+// ----------------------------------------------
+// Title
+
+.hero-title {
+    margin-bottom:0;
+    color:$c-text;
+    font-family:$f-stack-special;
+    font-weight:bold;
+    line-height:1.1;
+}
+
+.hero-title-pre,
+.hero-title-post {
+    font-size:16px;
+    font-weight:normal;
+}
+
+.hero-title-pre {
+    margin-bottom:5px;
+}
+
+.hero-title-post {
+    margin-top:5px;
+}
+
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-small+1) {
+
+    .hero-title {
+        font-size:42px;
+    }
+
+    .hero-title-pre,
+    .hero-title-post {
+        font-size:20px;
+        font-weight:300;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-large+1) {
+
+    .hero-title {
+        font-size:64px;
+    }
+
+    .hero-title-pre,
+    .hero-title-post {
+        font-size:32px;
+    }
+
+    .hero-title-pre {
+        margin-bottom:10px;
+    }
+
+    .hero-title-post {
+        margin-top:10px;
+    }
+
+}
+
+
+
+// ==============================================
+// Hero - Modifiers
+// ==============================================
+
+
+// ----------------------------------------------
+// Contrast - Dark
+
+.hero--contrast-dark .hero-title,
+.hero--contrast-dark .hero-title-pre,
+.hero--contrast-dark .hero-title-post,
+.std .hero--contrast-dark h1.hero-title,
+.std .hero--contrast-dark h2.hero-title,
+.std .hero--contrast-dark h1.hero-title-pre,
+.std .hero--contrast-dark h2.hero-title-pre,
+.std .hero--contrast-dark h1.hero-title-post,
+.std .hero--contrast-dark h2.hero-title-post {
+    color:$c-text;
+    text-shadow:0 2px 2px white(0.25);
+}
+
+
+// ----------------------------------------------
+// Contrast - Light
+
+.hero--contrast-light .hero-title,
+.hero--contrast-light .hero-title-pre,
+.hero--contrast-light .hero-title-post,
+.std .hero--contrast-light h1.hero-title,
+.std .hero--contrast-light h2.hero-title,
+.std .hero--contrast-light h1.hero-title-pre,
+.std .hero--contrast-light h2.hero-title-pre,
+.std .hero--contrast-light h1.hero-title-post,
+.std .hero--contrast-light h2.hero-title-post {
+    color:#FFF;
+    text-shadow:0 2px 2px black(0.25);
+}
+
+
+// ----------------------------------------------
+// CTA (Call To Action)
+
+.hero--cta {
+    color:$c-text;
+
+    &:hover {
+        color:$c-text;
+    }
+}
+
+.hero--cta .hero-title {
+    margin-bottom:0.6em;
+}
+
+
+// ----------------------------------------------
+// Downshift
+
+@include bp(max-width, $bp-small) {
+
+    .hero {
+        margin-bottom:(50px - 20px); // Reduce margin for extra padding on ".hero-content-wrapper"
+    }
+
+    .hero .hero-content-wrapper {
+        @include transform (translate(0, 0));
+        position:static;
+        width:100%;
+        padding:20px 0;
+    }
+
+    // Downshift + Light
+    .hero--contrast-light .hero-content-wrapper {
+        background:#808088; // Tint +8 blue channel
+    }
+
+    .hero-content {
+        width:100% !important;
+        margin-right:0 !important;
+        margin-left:0 !important;
+        text-align:center !important;
+    }
+
+}
+
+
+// ----------------------------------------------
+// No Margin
+
+.hero--no-margin {
+    margin:0;
+}
+
+
+// ----------------------------------------------
+// Position - Center
+
+.hero--center .hero-content-wrapper {
+    text-align:center;
+}
+
+.no-flexbox.no-flexboxlegacy .hero--center .hero-content {
+    @include transform (translate(-50%, -50%));
+    position:absolute;
+    top:50%;
+    left:50%;
+}
+
+
+// ----------------------------------------------
+// Position - Left
+
+.hero--left .hero-content-wrapper {
+    @include justify-content (flex-start);
+    text-align:left;
+}
+
+.hero--left .hero-content {
+    margin-left:5%;
+}
+
+.no-flexbox.no-flexboxlegacy .hero--left .hero-content {
+    @include transform (translate(0, -50%));
+    position:absolute;
+    top:50%;
+    left:0;
+}
+
+
+// ----------------------------------------------
+// Position - Right
+
+.hero--right .hero-content-wrapper {
+    @include justify-content (flex-end);
+    text-align:right;
+}
+
+.hero--right .hero-content {
+    margin-right:5%;
+}
+
+.no-flexbox.no-flexboxlegacy .hero--right .hero-content {
+    @include transform (translate(0, -50%));
+    position:absolute;
+    top:50%;
+    right:0;
+}
+
+
+
+// ==============================================
+// Browser Fallback
+// ==============================================
+
+.no-csstransforms .hero-content-wrapper,
+.no-csstransforms .hero-content {
+    position:static !important;
+}

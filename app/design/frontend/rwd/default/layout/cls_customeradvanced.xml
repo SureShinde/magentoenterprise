@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    CustomerAdvanced
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><script>js/cls/customeradvanced/quick-customer-access.js</script></action>
+            <action method="addCss"><stylesheet>css/cls/cls_customeradvanced.css</stylesheet></action>
+            <action method="addJs"><file>mage/captcha.js</file></action>
+            <action method="addJs"><file>jquery/colorbox/jquery.colorbox.js</file></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="core/template" name="quick_customer_access" template="cls/customeradvanced/customer/quick-access.phtml">
+                <block type="cls_customeradvanced/customer_quickform_login" name="quick_customer_form_login" template="cls/customeradvanced/customer/quick-form/login.phtml">
+                    <block type="core/text_list" name="login.additional.info">
+                        <block type="captcha/captcha" name="login_captcha">
+                            <action method="setFormId"><formId>user_login</formId></action>
+                            <action method="setImgWidth"><width>230</width></action>
+                            <action method="setImgHeight"><width>50</width></action>
+                            <action method="setIdPrefix"><prefix helper="cls_customeradvanced/quickaccess/getHtmlIdPrefix"/></action>
+                        </block>
+                    </block>
+                </block>
+                <block type="cls_customeradvanced/customer_quickform_register" name="quick_customer_form_register" template="cls/customeradvanced/customer/quick-form/register.phtml">
+                    <block type="core/text_list" name="register.additional.info">
+                        <block type="captcha/captcha" name="register_captcha">
+                            <action method="setFormId"><formId>user_create</formId></action>
+                            <action method="setImgWidth"><width>230</width></action>
+                            <action method="setImgHeight"><width>50</width></action>
+                            <action method="setIdPrefix"><prefix helper="cls_customeradvanced/quickaccess/getHtmlIdPrefix"/></action>
+                        </block>
+                    </block>
+                </block>
+            </block>
+        </reference>
+    </default>
+
+    <!--<customer_logged_in>-->
+    <!--<reference name="top.links">-->
+    <!--<action method="removeLinkByUrl"><url helper="customer/getLogoutUrl"/></action>-->
+    <!--<action method="addLink" translate="label title" module="customer"><label>Log Out</label><url helper="customer/getLogoutUrl"/><title>Log Out</title><prepare/><urlParams/><position>100</position><li/><a>class="customer-logout-link"</a></action>-->
+    <!--</reference>-->
+    <!--</customer_logged_in>-->
+
+    <customer_logged_out>
+        <reference name="top.links">
+            <action method="removeLinkByUrl"><url helper="customer/getRegisterUrl"/></action>
+            <action method="removeLinkByUrl"><url helper="customer/getLoginUrl"/></action>
+            <action method="addLink" translate="label title" module="customer"><label>Register</label><url helper="customer/getRegisterUrl" /><title>Register</title><prepare/><urlParams/><position>100</position><li/><a>class="customer-register-link"</a></action>
+            <action method="addLink" translate="label title" module="customer"><label>Log In</label><url helper="customer/getLoginUrl"/><title>Log In</title><prepare/><urlParams/><position>110</position><li/><a>class="customer-login-link"</a></action>
+        </reference>
+    </customer_logged_out>
+</layout>

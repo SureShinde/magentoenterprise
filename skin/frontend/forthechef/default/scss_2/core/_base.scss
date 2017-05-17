@@ -1,0 +1,99 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Base Styles
+// ==============================================
+
+@-ms-viewport {
+    width: device-width;
+}
+
+@-o-viewport {
+    width: device-width;
+}
+
+@viewport {
+    width: device-width;
+}
+
+// Prevent 300ms delay in IE on touch devices
+a,
+button {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+body,
+button,
+input,
+select,
+table,
+textarea {
+    font-family: $f-stack-sans;
+    color: $c-text;
+    font-size: $f-size;
+    line-height: $b-line-height;
+    font-weight: normal;
+}
+
+a {
+    color: $c-link;
+    text-decoration: none;
+
+    &:hover {
+        color: $c-link-hover;
+        text-decoration: underline;
+    }
+
+    &:focus {
+        outline-color: $c-link-active;
+        color: darken($c-action, 30%);
+    }
+}
+
+ol,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+// ==============================================
+// Typography
+// ==============================================
+
+h1, .h1 { @include h1; }
+
+h2, .h2 { @include h2; }
+
+h3, .h3 { @include h3; }
+
+h4, .h4 { @include h4; }
+
+h5, .h5 { @include h5; }
+
+h6, .h6 { @include h6; }

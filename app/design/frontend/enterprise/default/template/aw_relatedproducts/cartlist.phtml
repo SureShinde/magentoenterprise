@@ -1,0 +1,50 @@
+<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This software is designed to work with Magento enterprise edition and
+ * its use on an edition other than specified is prohibited. aheadWorks does not
+ * provide extension support in case of incorrect edition use.
+ * =================================================================
+ *
+ * @category   AW
+ * @package    AW_Relatedproducts
+ * @version    1.4.4
+ * @copyright  Copyright (c) 2010-2012 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/AW-LICENSE.txt
+ */
+?><?php if($this->getEnabled() && count($this->getRelatedProductsCollection())): ?>
+<div class="crosssell">
+    <h2><?php echo $this->__('Customers Who Bought This Also Bought') ?></h2>
+    <ul>
+        <?php foreach($this->getRelatedProductsCollection() as $_item): ?>
+        <li class="item">
+            <a class="product-image" href="<?php echo $_item->getProductUrl() ?>"><img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(75); ?>" width="75" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" title="<?php echo $this->htmlEscape($_item->getName()) ?>" /></a>
+            <div class="product-shop">
+                <h3 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h3>
+                <?php echo $this->getPriceHtml($_item, true) ?>
+                <p><button class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_item) ?>')" type="button"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+                <ul class="add-to-links">
+                    <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                    <li><a href="<?php echo $this->getAddToWishlistUrl($_item) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                    <?php endif; ?>
+                    <?php if($_compareUrl=$this->getAddToCompareUrl($_item)): ?>
+                    <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>"><?php echo $this->__('Add to Compare') ?></a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </li>
+        <?php endforeach ?>
+    </ul>
+</div>
+<?php endif ?>

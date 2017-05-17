@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Theme
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_Theme>
+            <version>1.1.8</version>
+        </CLS_Theme>
+    </modules>
+
+    <global>
+        <blocks>
+            
+        </blocks>
+
+        <models>
+            <cls_theme>
+                <class>CLS_Theme_Model</class>
+                <resourceModel>cls_theme_mysql4</resourceModel>
+            </cls_theme>
+            <cls_theme_mysql4>
+                <class>CLS_Theme_Model_Mysql4</class>
+                <entities>
+                    
+                </entities>
+            </cls_theme_mysql4>
+            <core>
+                <rewrite>
+                    <design_package>CLS_Theme_Model_Core_Design_Package</design_package>
+                </rewrite>
+            </core>
+        </models>
+        
+        <helpers>
+            <cls_theme>
+                <class>CLS_Theme_Helper</class>
+            </cls_theme>
+            
+            <core>
+                <rewrite>
+                    <data>CLS_Theme_Helper_Core_Data</data>
+                </rewrite>
+            </core>
+        </helpers>
+       
+        <events>
+           <clean_media_cache_after>
+                <observers>
+                   <cls_theme_increment_merge_increment>
+                       <class>cls_theme/observer</class>
+                       <method>incrementMergeIncrement</method>
+                   </cls_theme_increment_merge_increment>
+                   <cls_theme_clear_minify_queue>
+                       <class>cls_theme/observer</class>
+                       <method>clearMinifyQueue</method>
+                   </cls_theme_clear_minify_queue>
+               </observers>
+           </clean_media_cache_after>
+           <core_data_merge_after>
+                <observers>
+                   <cls_theme>
+                       <class>cls_theme/observer</class>
+                       <method>doMinification</method>
+                   </cls_theme>
+               </observers>
+           </core_data_merge_after>
+        </events>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <CLS_Theme>
+                    <files>
+                        <default>CLS_Theme.csv</default>
+                    </files>
+                </CLS_Theme>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <CLS_Theme>
+                    <files>
+                        <default>CLS_Theme.csv</default>
+                    </files>
+                </CLS_Theme>
+            </modules>
+        </translate>
+    </adminhtml>
+    
+    <default>
+        <dev>
+            <js>
+                <enable_js_minification>0</enable_js_minification>
+            </js>
+            <css>
+                <enable_css_minification>0</enable_css_minification>
+            </css>
+        </dev>
+    </default>
+    
+    <crontab>
+        <jobs>
+            <cls_theme_flush_queue>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr> <!-- every 5 minutes -->
+                </schedule>
+                <run>
+                    <model>cls_theme/observer::flushMinifyQueue</model>
+                </run>
+            </cls_theme_flush_queue>
+        </jobs>
+    </crontab>
+</config>

@@ -1,0 +1,103 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+/**
+ * Shoping cart sidebar
+ *
+ * @see Mage_Checkout_Block_Cart_Sidebar
+ */
+
+?>
+<style>
+    .icon {
+        margin-right: 6px;
+        background-position: -0 -100px;
+        width: 24px;
+    }
+    @media only screen and (min-width: 500px)
+        .icon {
+            margin-right: 3px;
+        }
+        .icon {
+            display: inline-block;
+            position: relative;
+            bottom: 2px;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+        .icon-sprite, .btn-remove2, .ratings .rating-box, .ratings .rating-box .rating, .sorter > .sort-by .sort-by-switcher, .sorter > .view-mode .grid, .sorter > .view-mode .list, .owl-buttons .owl-prev span.slide-arrow:after, .owl-buttons .owl-next span.slide-arrow:after, .to-top:before, .skip-account .icon, .skip-cart .icon, .skip-nav .icon, .sub-nav li .icon, .skip-search .icon, #search_mini_form .search-button:before, .product-view .sharing-links a, .review-summary-table .rating-box .rating-number:after, .ratings-table .rating-box, .ratings-table .rating-box .rating, .cms-no-route #noroute_search_form .input-box .search-button:before, .product-badges.attributes .badge {
+            background-image: url(<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>skin/frontend/forthechef/default/images/icon_sprite.png);
+            background-repeat: no-repeat;
+            text-indent: -9999px;
+        }
+</style>
+<?php
+$_cartQty = $this->getSummaryCount();
+if(empty($_cartQty)) {
+    $_cartQty = 0;
+}
+?>
+<div class="container">
+    <a href="javascript:void(0)" onclick="actionClick()" class="skip-cart <?php if($_cartQty <= 0): ?> no-count<?php endif; ?>">
+        <span class="icon"></span>
+        <span class="label"><?php echo $this->__('Cart'); ?></span>
+        <span class="count"><?php echo $_cartQty; ?></span>
+    </a>
+    <a class="button" href="<?php echo $this->helper('checkout/url')->getCheckoutUrl(); ?>">
+        <?php echo $this->__('Checkout'); ?>
+    </a>
+    <div id="header-cart" class="block block-cart skip-content">
+        <?php echo $this->getChildHtml('minicart_content');?>
+    </div>
+</div>
+<script type="text/javascript">
+    function actionClick()
+    {
+        if(window.innerWidth > 860)
+        {
+            // redirect to page
+            location.href = '<?php echo Mage::getBaseUrl().'checkout/cart'?>';
+        } else
+        {
+            // show mini cart
+            if(jQuery('.container').children('#header-cart,.skip-cart').hasClass("skip-active"))
+            {
+                jQuery('.container').children('#header-cart,.skip-cart').removeClass("skip-active");
+            } else
+            {
+                jQuery('.container').children('#header-cart,.skip-cart').addClass("skip-active");
+            }
+        }
+    }
+    if(window.innerWidth > 860)
+    {
+        jQuery('.container').hover(function() {
+            jQuery(this).children('#header-cart,.skip-cart').addClass("skip-active");
+        }, function() {
+            jQuery(this).children('#header-cart,.skip-cart').removeClass("skip-active");
+        });
+    }
+</script>

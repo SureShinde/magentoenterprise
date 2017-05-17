@@ -1,0 +1,427 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Header
+// ==============================================
+
+.header-language-background, .store-language-container {
+    display: none;
+}
+
+.page-header {
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        height: 40px;
+        width: 100%;
+        background: $c-light-gray;
+    }
+    @include bp (max-width, $bp-medium) {
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.page-header-container {
+    position: relative;
+    max-width: $max-container-width;
+    margin: 0 auto;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, $bp-medium + 1) {
+
+    .page-header-container {
+        padding: 0 $trim;
+    }
+
+}
+
+
+
+// ==============================================
+// Top left link
+// ==============================================
+
+.top-left {
+    position: absolute;
+    top: 0;
+    height: 40px;
+    a {
+        padding: 10px 5px;
+        line-height: 40px;
+        color: #fff;
+        font-size: 15px;
+        &:hover {
+            color: $c-blue;
+            text-decoration: none;
+        }
+    }
+
+    @include bp (max-width, $bp-medium) {
+        display: none;
+    }
+}
+
+
+
+// ==============================================
+// Skip Links
+// ==============================================
+
+.skip-links {
+    clear: both;
+    overflow: hidden;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-medium + 1) {
+
+    .skip-links {
+        border: 0;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip - Link
+// ==============================================
+
+.skip-link {
+    position: relative;
+    float: left;
+    width: 20%;
+    height: 40px;
+    background: #FFF;
+    color: $c-text;
+    line-height: 42px;
+    text-align: center;
+}
+
+a.skip-link {
+    text-decoration: none;
+}
+
+.skip-link:not(.skip-active):hover {
+    opacity: 0.8;
+}
+
+// ---------------------------------------------
+
+@include bp (max-width, $bp-medium) {
+
+    .skip-link {
+        border-right: 1px solid #CCC;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .skip-link {
+        width: 25%;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Link - Active
+// ==============================================
+
+@include bp (max-width, $bp-medium) {
+
+    .skip-link.skip-active {
+        background: #EDEDED;
+        color: inherit;
+    }
+
+    .skip-link.skip-active span {
+        color: inherit;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Link - Icon
+// ==============================================
+
+.skip-link .icon {
+    display: inline-block;
+    position: relative;
+    bottom: 2px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.skip-link.skip-nav .icon,
+.skip-link.skip-cart:not(.no-count) .icon {
+    margin-right: 3px;
+}
+
+// ----------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .skip-link .icon {
+        margin-right: 3px;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Link - Label
+// ==============================================
+
+.skip-link .label {
+    display: none;
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 500px) {
+
+    .skip-link .label {
+        display: inline;
+    }
+
+}
+
+
+
+// ==============================================
+// Skip Content
+// ==============================================
+
+.skip-content {
+    display: none;
+    margin-bottom: 0 !important;
+}
+
+.skip-content.skip-active {
+    display: block;
+    background: #EDEDED;
+}
+
+
+
+// ==============================================
+// Global Header Navigation
+// ==============================================
+
+@include bp (max-width, $bp-medium) {
+
+    #header-account li a,
+    .nav-primary a.level0 {
+        padding: 10px 15px 10px 25px;
+        border-bottom: 1px solid $c-module-border;
+        color: $c-text;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    #header-account li:last-child a {
+        border-bottom: 0;
+    }
+    .nav-primary li.level0:last-child {
+        a.level0 {
+            border-bottom-width: 0;
+        }
+        &.menu-active a.level0 {
+            border-bottom-width: 1px;
+        }
+    }
+
+    .no-touch #header-account a:hover,
+    .no-touch .nav-primary a:hover {
+        background-color: $c-module-background;
+        text-decoration: none;
+    }
+
+}
+
+
+
+// ==============================================
+// Account Cart Wrapper
+// ==============================================
+
+.account-cart-wrapper {
+    position: absolute;
+    top: 0;
+    right: $trim;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-medium) {
+
+    .account-cart-wrapper {
+        position: static;
+    }
+
+}
+
+
+
+// ==============================================
+// Promo message
+// ==============================================
+
+.header-promo {
+    margin-top: 5px;
+    padding: 5px;
+    background: #a92418;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 300;
+    strong {
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    @include bp (max-width, $bp-medium) {
+        padding: 5px $trim;
+        background: none;
+        color: #a92418;
+        font-weight: 400;
+        strong {
+            font-weight: 600;
+        }
+    }
+
+    @include bp (max-width, $bp-xsmall) {
+        padding: 5px $trim-small;
+    }
+}
+
+
+
+// ==============================================
+// Back-to-top button
+// ==============================================
+.scrolled .to-top {
+    height: 48px;
+}
+.to-top {
+    width: 40px;
+    height: 0px;
+    background-color: #999;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    margin-left: 610px;
+    border: 0;
+    padding: 0;
+    @include border-radius(5px 5px 0 0);
+    @include transition(height .5s, background-color .5s);
+    text-align: center;
+    display: block;
+    z-index: 200;
+
+    span {
+        text-transform: uppercase;
+        font-family: $f-stack-serif;
+        font-size: $f-size-xs;
+        line-height: $f-size-xs;
+        display: block;
+    }
+
+    &:before {
+        @extend .icon-sprite;
+        background-position: -50px -650px;
+        content: '';
+        display: block;
+        width: 26px;
+        height: 16px;
+        margin: 7px;
+    }
+
+    &:hover {
+        background-color: lighten($c-blue, 5%);
+        cursor: pointer;
+    }
+
+    @include bp(max-width, 1360px) {
+        margin-left: 0;
+        left: auto;
+        right: 40px;
+    }
+
+    @include bp(max-width, 770px) {
+        right: 0;
+        bottom: 110px;
+        width: 68px;
+        border-radius: 0;
+        background: #dfdfdf;
+        opacity: 0;
+        span{
+            color: #4a4a4a;
+            text-transform: capitalize;
+            font-family: inherit;
+            float: right;
+            margin-right: 4px;
+            line-height: 42px;
+            font-size: 15px;
+        }
+        &:hover{
+            background: #dfdfdf;
+        }
+        &:before{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -5px !important;
+            background-size: 23px auto !important;
+        }
+    }
+}
+@include bp(max-width, 770px) {
+    .scrolled .to-top{ 
+        height: 42px;
+        opacity: 1;
+    }
+}
+
+

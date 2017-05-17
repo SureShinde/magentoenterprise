@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento Webshopapps Shipping Module
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ @category   Webshopapps
+* @package    Webshopapps_Desttype
+* @copyright   Copyright (c) 2013 Zowta Ltd (http://www.WebShopApps.com)
+ *              Copyright, 2013, Zowta, LLC - US license
+* @license    http://www.webshopapps.com/license/license.txt
+* @author     Karen Baker <sales@webshopapps.com
+*
+*/
+-->
+<config>
+   <modules>
+        <Webshopapps_Desttype>
+          <version>0.0.3</version>
+    	</Webshopapps_Desttype>
+    </modules>
+ <global>
+    <models>
+      <desttype>
+        <class>Webshopapps_Desttype_Model</class>
+      </desttype>
+      <sales>
+	       	<rewrite>
+	       		<quote_address>Webshopapps_Desttype_Model_Sales_Quote_Address</quote_address>
+	       	</rewrite>
+	   </sales>
+      <usa>
+      	<rewrite>
+      		<shipping_carrier_fedex>Webshopapps_Desttype_Model_Usa_Shipping_Carrier_Fedex</shipping_carrier_fedex>
+      	</rewrite>
+      </usa>
+    </models>
+    <blocks>
+       <desttype>
+           <class>Webshopapps_Desttype_Block</class>
+       </desttype>
+   	</blocks>
+    <resources>
+      <desttype_setup>
+        <setup>
+          <module>Webshopapps_Desttype</module>
+        </setup>
+        <connection>
+          <use>core_setup</use>
+        </connection>
+      </desttype_setup>
+    </resources>
+     <helpers>
+         <desttype>
+             <class>Webshopapps_Desttype_Helper</class>
+         </desttype>
+     </helpers>
+     <fieldsets>
+   		<sales_convert_quote_address>
+               <dest_type><to_order_address>*</to_order_address><to_customer_address>*</to_customer_address></dest_type>
+   		</sales_convert_quote_address>
+       	<sales_copy_order_billing_address>
+               <dest_type><to_order>*</to_order></dest_type>
+       	</sales_copy_order_billing_address>
+       	<sales_copy_order_shipping_address>
+               <dest_type><to_order>*</to_order></dest_type>
+       	</sales_copy_order_shipping_address>
+       	<customer_address>
+        	<dest_type><to_quote_address>*</to_quote_address></dest_type>
+       	</customer_address>
+       	<sales_convert_order_address>
+         	<dest_type><to_quote_address>*</to_quote_address></dest_type>
+       	</sales_convert_order_address>
+        <customer_dataflow>
+        	<dest_type><billing>1</billing><shipping>1</shipping><billing_required>1</billing_required><shipping_required>1</shipping_required></dest_type>
+        </customer_dataflow>
+     </fieldsets>
+     <events>
+         <controller_action_predispatch>
+             <observers>
+                 <webshopapps_desttype>
+                     <class>desttype/observer</class>
+                     <method>hookToControllerActionPreDispatch</method>
+                 </webshopapps_desttype>
+             </observers>
+        </controller_action_predispatch>
+    </events>
+ </global>
+  <frontend>
+    	<routers>
+    		<desttype>
+    			<use>standard</use>
+    			<args>
+    				<module>Webshopapps_Desttype</module>
+    				<frontName>desttype</frontName>
+    			</args>
+    		</desttype>
+    	</routers>
+        <translate>
+            <modules>
+                <Webshopapps_Desttype>
+                    <files>
+                        <default>Webshopapps_Desttype.csv</default>
+                    </files>
+                </Webshopapps_Desttype>
+            </modules>
+        </translate>
+        <layout>
+        	<updates>
+        		<desttype>
+        			<file>webshopapps_desttype.xml</file>
+        		</desttype>
+        	</updates>
+        </layout>
+    </frontend>
+      <adminhtml>
+    	<routers>
+    		<desttype>
+    			<use>standard</use>
+    			<args>
+    				<module>Webshopapps_Desttype</module>
+    				<frontName>desttype</frontName>
+    			</args>
+    		</desttype>
+    	</routers>
+            <translate>
+            <modules>
+                <Webshopapps_Desttype>
+                    <files>
+                        <default>Webshopapps_Desttype.csv</default>
+                    </files>
+                </Webshopapps_Desttype>
+            </modules>
+        </translate>
+    </adminhtml>
+    <default>
+    	<shipping>
+    		<desttype>
+    			<active>0</active>
+    			<serial backend_model="adminhtml/system_config_backend_encrypted" />
+				<ship_once>0</ship_once>
+    			<min_order_value>0</min_order_value>
+                <auto_company>0</auto_company>
+                <group>0,1,2,3</group>
+    		</desttype>
+    	</shipping>
+    	 <customer>
+     	<address_templates>
+              <text><![CDATA[{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}
+{{depend company}}{{var company}}{{/depend}}
+{{if street1}}{{var street1}}
+{{/if}}
+{{depend street2}}{{var street2}}{{/depend}}
+{{depend street3}}{{var street3}}{{/depend}}
+{{depend street4}}{{var street4}}{{/depend}}
+{{if city}}{{var city}},  {{/if}}{{if region}}{{var region}}, {{/if}}{{if postcode}}{{var postcode}}{{/if}}
+{{var country}}
+{{depend dest_type}}Address Type: {{var dest_type}}{{/depend}}<br/>
+T: {{var telephone}}
+{{depend fax}}F: {{var fax}}{{/depend}}]]></text>
+              <oneline><![CDATA[{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}, {{var street}}, {{var city}}, {{var region}} {{var postcode}}, {{var country}}]]></oneline>
+              <html><![CDATA[{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}<br/>
+{{depend company}}{{var company}}<br />{{/depend}}
+{{if street1}}{{var street1}}<br />{{/if}}
+{{depend street2}}{{var street2}}<br />{{/depend}}
+{{depend street3}}{{var street3}}<br />{{/depend}}
+{{depend street4}}{{var street4}}<br />{{/depend}}
+{{if city}}{{var city}},  {{/if}}{{if region}}{{var region}}, {{/if}}{{if postcode}}{{var postcode}}{{/if}}<br/>
+{{var country}}<br/>
+{{depend dest_type}}Address Type: {{var dest_type}}{{/depend}}<br/>
+{{depend telephone}}T: {{var telephone}}{{/depend}}
+{{depend fax}}<br/>F: {{var fax}}{{/depend}}]]></html>
+                <pdf><![CDATA[{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}|
+{{depend company}}{{var company}}|{{/depend}}
+{{if street1}}{{var street1}}
+{{/if}}
+{{depend street2}}{{var street2}}|{{/depend}}
+{{depend street3}}{{var street3}}|{{/depend}}
+{{depend street4}}{{var street4}}|{{/depend}}
+{{if city}}{{var city}},  {{/if}}{{if region}}{{var region}}, {{/if}}{{if postcode}}{{var postcode}}{{/if}}|
+{{var country}}|
+{{depend dest_type}}Address Type: {{var dest_type}}{{/depend}}<br/>
+{{depend telephone}}T: {{var telephone}}{{/depend}}|
+{{depend fax}}<br/>F: {{var fax}}{{/depend}}|]]></pdf>
+              <js_template><![CDATA[#{prefix} #{firstname} #{middlename} #{lastname} #{suffix}<br/>#{company}<br/>#{street0}<br/>#{street1}<br/>#{street2}<br/>#{street3}<br/>#{city}, #{region}, #{postcode}<br/>#{country_id}<br/>#{dest_type}<br/>T: #{telephone}<br/>F: #{fax}]]></js_template>
+          </address_templates>
+      </customer>
+    </default>
+</config>

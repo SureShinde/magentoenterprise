@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <smartlab>
+                        <title>SmartOSC</title>
+                        <sort_order>175</sort_order>
+                        <children>
+                            <system>
+                                <children>
+                                    <config>
+                                        <children>
+                                            <smartosc_categorycarousel translate="title"
+                                                                       module="smartosc_categorycarousel">
+                                                <title>CategoryCarousel</title>
+                                            </smartosc_categorycarousel>
+                                        </children>
+                                    </config>
+                                </children>
+                            </system>
+                            <smartosc_categorycarousel translate="title" module="smartosc_categorycarousel">
+                                <title>Category Carousel</title>
+                                <children>
+                                    <banner translate="title" module="smartosc_categorycarousel">
+                                        <title>Banner</title>
+                                        <sort_order>0</sort_order>
+                                    </banner>
+                                </children>
+                            </smartosc_categorycarousel>
+                        </children>
+                    </smartlab>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <smartlab translate="title">
+            <title>SmartOSC</title>
+            <sort_order>175</sort_order>
+            <children>
+                <smartosc_categorycarousel translate="title" module="smartosc_categorycarousel">
+                    <title>Category Carousel</title>
+                    <sort_order>85</sort_order>
+                    <children>
+                        <banner translate="title" module="smartosc_categorycarousel">
+                            <title>Manage</title>
+                            <action>adminhtml/categorycarousel_banner</action>
+                            <sort_order>0</sort_order>
+                        </banner>
+                    </children>
+                </smartosc_categorycarousel>
+            </children>
+        </smartlab>
+    </menu>
+</config>

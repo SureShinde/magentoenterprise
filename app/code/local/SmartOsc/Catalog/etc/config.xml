@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <modules>
+        <SmartOsc_Catalog>
+            <version>1.0.0</version>
+        </SmartOsc_Catalog>
+    </modules>
+    <global>
+        <blocks>
+            <nucleus_catalog>
+                <rewrite>
+                    <badges>SmartOsc_Catalog_Block_Badges</badges>
+                </rewrite>
+            </nucleus_catalog>
+            <smartosc_catalog>
+                <class>SmartOsc_Catalog_Block</class>
+            </smartosc_catalog>
+        </blocks>
+    </global>
+</config>

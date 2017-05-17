@@ -1,0 +1,81 @@
+.email-signup{
+	overflow: hidden;
+	margin-bottom: 100px;
+	.email-image{ float: left; width: 50%;
+		img{ max-width: 100%;}
+		@include bp (max-width, 767px) {
+			width: 100%; float: none;
+		}
+	}
+	.email-form{ float: left; width: 50%; text-align: center;
+		@include bp (max-width, 767px) {
+			width: 100%; float: none;
+		}
+		.form-text{
+			h2{
+				text-transform: uppercase;
+				font-size: 20px;
+				margin-bottom: 10px !important;				
+			}
+			p{
+				font-style: italic;
+				font-size: 18px !important;
+			}
+		}
+		.get-off{
+			background: #414143;
+			display: inline-block;
+			padding: 10px 25px;
+			position: relative;
+			span{
+				display: block;
+				color: #b8b8b8;
+				text-transform: uppercase;
+				font-size: 13px;
+				font-weight: 300;
+				&.text-off{
+					font-weight: 700;
+					font-size: 16px;
+					color: #fff;
+				}
+				&.triangle-down{
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 10px 10px 0 10px;
+					border-color: #414143 transparent transparent transparent;
+					position: absolute;
+					bottom: -10px;
+					left: 50%;
+					display: block;
+					-moz-transform: translate(-50%, 0);
+	                -webkit-transform: translate(-50%, 0);
+	                -o-transform: translate(-50%, 0);
+	                -ms-transform: translate(-50%, 0);
+	                -webkit-transform: translate(-50%, 0);
+	                transform: translate(-50%, 0);
+				}
+			}
+		}
+		.form-subscribe{
+			width: 55%;
+			margin: 20px auto 0;
+			@include bp (max-width, 479px) {
+				width: 100%;
+			}
+			@include bp (max-width, 767px) {
+				form{ padding-right: 0 !important;
+					.mc-field-group{ width: 100% !important}
+				}
+			}
+			.btn-subscribe{
+				text-align: center;
+				.button{
+					background-color: #414143 !important;
+					text-transform: none;
+					font-size: 14px !important;
+				}
+			}			
+		}
+	}
+}

@@ -1,0 +1,453 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Nav - Skip Link
+// ==============================================
+
+.skip-nav {
+    width: 40%;
+
+    &:not(.skip-active):hover {
+        text-decoration: none;
+
+        .icon {
+            background-position: -50px 0;
+        }
+    }
+}
+
+.skip-nav .label {
+    display: inline;
+}
+
+.skip-nav .icon {
+    @extend .icon-sprite;
+    background-position: 0 0;
+    width: 26px;
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, 500px) {
+
+    .skip-nav {
+        width: 25%;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .skip-nav {
+        display: none;
+    }
+
+}
+
+
+
+// ==============================================
+// Nav - Skip Content
+// ==============================================
+
+@include bp(max-width, $bp-medium) {
+
+    #header-nav {
+        padding: 5px 0;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-medium + 1) {
+
+    #header-nav {
+        display: block; // Force visibility
+    }
+
+}
+
+
+
+// ==============================================
+// Nav Primary
+// ==============================================
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .nav-primary {
+        display: block;
+        position: relative;
+        background:$c-nav-primary-background;
+        padding: 0 5px;
+        border-radius: 5px;
+    }
+
+}
+
+
+
+// ==============================================
+// Sub-Nav
+// ==============================================
+
+.sub-nav {
+    position: absolute;
+    right: $trim;
+    top: 52px;
+    font-size: $f-size-l;
+
+    li {
+        float: left;
+        position: relative;
+        margin-right: 38px;
+        line-height: 40px;
+
+        &:after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 9px;
+            width: 1px;
+            height: 21px;
+            background: $c-med-gray;
+        }
+
+        &:last-child {
+            margin-right: 0;
+            &:after {
+                display: none;
+            }
+        }
+
+        .icon {
+            display: inline-block;
+            position: relative;
+            bottom: 2px;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 2px;
+            @extend .icon-sprite;
+        }
+
+        .gifts {
+            background-position: 0 -800px;
+        }
+        .video {
+            background-position: 0 -850px;
+        }
+
+        a {
+            color: $c-gray;
+            &:hover {
+                text-decoration: none;
+                color: $c-action;
+                opacity: 0.9;
+
+                .gifts {
+                    background-position: -50px -800px;
+                }
+                .video {
+                    background-position: -50px -850px;
+                }
+            }
+        }
+    }
+
+    .crave {
+        font-family: $f-stack-crave;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 23px;
+        span {
+            display: block;
+            &:last-child {
+                font-size: 12px;
+                @include bp (min-width, $bp-medium) {
+                    float: right;
+                }
+            }
+        }
+    }
+
+    @include bp (max-width, $bp-medium) {
+        position: static;
+        margin: 0;
+        padding: 15px $trim 0;
+        text-align: center;
+        ul {
+            display: inline-block;
+        }
+    }
+
+    @include bp (max-width, $bp-xsmall) {
+        padding: 10px $trim-small 0;
+    }
+
+    @include bp (max-width, 440px) {
+        li {
+            margin-right: 30px;
+            &:after {
+                right: -17px;
+            }
+        }
+    }
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, 851px) {
+
+    .sub-nav {
+        top: 96px;
+        right: 340px;
+    }
+}
+
+
+
+// ==============================================
+// General Navigation Styles
+// ==============================================
+
+.nav-primary {
+    a {
+        text-decoration: none;
+        position: relative;
+        display: block;
+        color: $c-text;
+    }
+
+    li {
+        position: relative;
+    }
+
+    a.level0 {
+        font-family: $f-stack-special;
+    }
+
+    li.level1 a {
+        border-bottom: 1px solid $c-module-border;
+    }
+}
+
+// Show sub-menus when JS adds the appropriate classes
+.nav-primary .menu-active > ul.level0,
+.nav-primary li.level0 li.sub-menu-active > ul {
+    display: block;
+}
+
+
+
+// ==============================================
+// Small Viewports - Accordion Style Menu
+// ==============================================
+
+@include bp(max-width, $bp-medium) {
+
+    // Hide all sub-menus
+    .nav-primary {
+        li.level0 ul {
+            display: none;
+        }
+
+        // Indent sub-menus
+        li.level0 li {
+            padding-left: 25px;
+        }
+
+        li.level1 a {
+            padding: 10px 15px 10px 25px;
+        }
+
+        li.parent > a:after {
+            @include triangle(right, 5px, #ccc);
+            top: 50%;
+            left: 10px;
+            right: auto;
+            margin-top: -5px;
+        }
+
+        // Menu active states
+        li.parent.sub-menu-active > a:after,
+        li.parent.menu-active > a:after {
+            @include triangle(down, 5px, #ccc);
+            top: 50%;
+            left: 10px;
+            right: auto;
+            margin-top: -5px;
+        }
+
+        li.menu-active > a,
+        li.sub-menu-active > a {
+            color: $c-action;
+        }
+    }
+}
+
+
+
+// ==============================================
+// Large Viewports - Dropdown Menu
+// ==============================================
+
+@include bp(min-width, $bp-medium + 1) {
+
+    .nav-primary {
+        a:hover {
+            color: $c-action;
+        }
+
+        a.level0 {
+            padding: 0 7px;
+            color: #FFF;
+            line-height: 40px;
+            font-size: 13px;
+            font-weight: 300;
+            @include bp (min-width, 778px) {
+                padding: 0 8px;
+            }
+            @include bp (min-width, 820px) {
+                font-size: 14px;
+                line-height: 44px;
+            }
+            @include bp (min-width, 838px) {
+                padding: 0 9px;
+            }
+            @include bp (min-width, 881px) {
+                font-size: 15px;
+                line-height: 46px;
+            }
+            @include bp (min-width, 899px) {
+                padding: 0 10px;
+            }
+            @include bp (min-width, 940px) {
+                font-size: 16px;
+                line-height: 48px;
+            }
+            @include bp (min-width, 1018px) {
+                font-size: 17px;
+                line-height: 50px;
+                padding: 0 12px;
+            }
+            @include bp (min-width, 1072px) {
+                padding: 0 15px;
+            }
+        }
+
+        li.level0:hover a.level0 {
+            color: #FFF;
+            background: $c-light-blue;
+        }
+
+        li.level0,
+        a.level0 {
+            display: inline-block;
+        }
+
+        li:last-child > a {
+            border-bottom: none;
+        }
+
+        .menu-active {
+            z-index: 200;
+        }
+
+        li.level0 ul.level0 {
+            border-top: 0;
+        }
+
+        // Default styles for 1+ drop-down menus
+        li.level0 ul {
+            @include menu;
+            display: none; // Hide until displayed.
+            position: absolute;
+            top: $nav-primary-height; // Height of ".nav-primary a.level0"
+            left: 0;
+            z-index: 70;
+            width: 250px;
+            padding-left: $box-spacing;
+            padding-right: $box-spacing;
+        }
+        li.level0.secondRow ul {
+            top: $nav-primary-height * 2;
+        }
+
+        li.level1 a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        // Level 2+
+        li.level1 ul {
+            top: 5px;
+            left: 190px;
+        }
+
+        // Class for js to add briefly to evaluate element positioning.
+        li.level0 ul.level0.position-test {
+            display: block;
+        }
+
+        // Correct menus that will hang off the page (class added by js)
+        &:not(.mega-menu-primary) li.level0 ul.level0.spill {
+            right: 0;
+            left: auto;
+
+            // Sub-menu drop down to the left
+            li.level1 ul {
+                left: auto;
+                right: 50px;
+                top: 20px;
+            }
+        }
+
+        // Level 1+
+        li.level0 li.parent > a {
+            position: relative;
+
+            &:after {
+                @include triangle(right, 4px, #ccc);
+                right: 5px;
+                top: 50%;
+                margin-top: -3px;
+            }
+        }
+    }
+}
+
+
+
+// ==============================================
+// Other
+// ==============================================
+
+.nav-primary li.menu-active > ul {
+    display: block;
+}

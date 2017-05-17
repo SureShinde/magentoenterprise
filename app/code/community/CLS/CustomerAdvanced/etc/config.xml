@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    CustomerAdvanced
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_CustomerAdvanced>
+            <version>1.2.6</version>
+        </CLS_CustomerAdvanced>
+    </modules>
+
+    <global>
+        <blocks>
+            <cls_customeradvanced>
+                <class>CLS_CustomerAdvanced_Block</class>
+            </cls_customeradvanced>
+            <captcha>
+                <rewrite>
+                    <captcha_zend>CLS_CustomerAdvanced_Block_Captcha_Captcha_Zend</captcha_zend>
+                </rewrite>
+            </captcha>
+        </blocks>
+        <helpers>
+            <cls_customeradvanced>
+                <class>CLS_CustomerAdvanced_Helper</class>
+            </cls_customeradvanced>
+        </helpers>
+        <models>
+            <cls_customeradvanced>
+                <class>CLS_CustomerAdvanced_Model</class>
+            </cls_customeradvanced>
+        </models>
+        <events>
+            <controller_action_predispatch_customer_quickaccount_loginPost>
+                <observers>
+                    <captcha>
+                        <class>cls_customeradvanced/observer</class>
+                        <method>captchaCheckUserLogin</method>
+                    </captcha>
+                </observers>
+            </controller_action_predispatch_customer_quickaccount_loginPost>
+            <controller_action_predispatch_customer_quickaccount_createpost>
+                <observers>
+                    <captcha>
+                        <class>cls_customeradvanced/observer</class>
+                        <method>captchaCheckUserCreate</method>
+                    </captcha>
+                </observers>
+            </controller_action_predispatch_customer_quickaccount_createpost>
+        </events>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <cls_customeradvanced module="CLS_CustomerAdvanced">
+                    <file>cls_customeradvanced.xml</file>
+                </cls_customeradvanced>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <CLS_CustomerAdvanced>
+                    <files>
+                        <default>CLS_CustomerAdvanced.csv</default>
+                    </files>
+                </CLS_CustomerAdvanced>
+            </modules>
+        </translate>
+        <routers>
+            <customer>
+                <args>
+                    <modules><cls_customeradvanced before="Mage_Customer">CLS_CustomerAdvanced_Customer</cls_customeradvanced></modules>
+                </args>
+            </customer>
+            <captcha>
+                <args>
+                    <modules><cls_customeradvanced before="Mage_Captcha">CLS_CustomerAdvanced_Captcha</cls_customeradvanced></modules>
+                </args>
+            </captcha>
+        </routers>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <CLS_CustomerAdvanced>
+                    <files>
+                        <default>CLS_CustomerAdvanced.csv</default>
+                    </files>
+                </CLS_CustomerAdvanced>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <customer>
+            <quick_access>
+                <enable_register>1</enable_register>
+                <enable_login>1</enable_login>
+                <restricted_urls><![CDATA[
+^customer/account/?$
+^customer/(account/edit|address)
+^wishlist(?!(/shared|s))
+^giftregistry(?!/(search|view))
+^(newsletter/manage|giftcard/customer|reward/customer)
+                ]]></restricted_urls>
+            </quick_access>
+        </customer>
+    </default>
+</config>

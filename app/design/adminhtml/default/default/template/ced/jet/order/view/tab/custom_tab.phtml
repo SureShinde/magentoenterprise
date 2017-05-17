@@ -1,0 +1,689 @@
+ <?php
+ /**
+ * CedCommerce
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Cedcommerce.com license and  can be accessed 
+ * through the world-wide-web at this URL:
+ * http://cedcommerce.com/license-agreement.txt
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to the file if you wish to upgrade this extension to newer
+ * version in the future.
+ * @category    Ced
+ * @package     Ced_Jet
+ * @author      CedCommerce Core Team <coreteam@cedcommerce.com>
+ * @copyright   Copyright CedCommerce (http://cedcommerce.com/)
+ */
+
+
+
+ 	$error_msg=false;
+	$show_shipinfo = false;
+	$number_items =0;
+ 	$orderid=$this->getRequest()->getParam('order_id');
+	
+ 	$order_obj = Mage::registry('current_order'); 
+	$Mage_order_status = $order_obj->status; //"complete"
+    //echo $Mage_order_status; die;
+	$Incrementid = $order_obj->getIncrementId(); 
+	$row_id= 0;
+
+	$resultdata = Mage::getModel('jet/jetorder')->getCollection()
+				->addFieldToFilter('magento_order_id',$Incrementid);
+    $prev_shipinfo = Mage::helper('jet/jet')->getShipped_Cancelled_Qty($resultdata);
+    $order_info = Mage::helper('jet/jet')->getOrdered_Cancelled_Qty($resultdata);
+
+    $resultdata=$resultdata->getData();
+	Mage::register('current_jet_order', $resultdata);
+
+	if(count($resultdata)>0 && $resultdata[0]['status']!="ready" ){
+
+		$row_id = $resultdata[0]['id'];
+		$Order_object = $data= unserialize($resultdata[0]['order_data']);
+		$shipmentdata = unserialize($resultdata[0]['shipment_data']);
+		$jet_status = $resultdata[0]['status'];
+	
+		$merchantorderid=$data->merchant_order_id;
+		
+		if($jet_status== "rejected"){
+			$show_shipinfo =false;
+			$error_msg ='This order is <b>Rejected</b> for jet.com';	
+		}else if($jet_status== "cancelled"){
+			$show_shipinfo =false;
+			$error_msg ='This order is <b>Cancelled</b> for jet.com';	
+		}else{ 
+		
+			if($Mage_order_status == 'complete'){
+				if($jet_status=='complete'){
+					if(empty($shipmentdata) && count($shipmentdata)==0){ 
+						$show_shipinfo =false;
+					 }else{
+						$show_shipinfo =true;
+					 }	
+				}else{
+					$show_shipinfo =false;
+				}
+			}
+		}
+		
+	}else{
+		$error_msg ='This order either not <b>Acknowledged</b> or it is not a jet.com order';	
+	}
+	
+?>
+	
+	<?php if($error_msg!=false){ ?>
+		<p><h4><?php echo $error_msg; ?></h4><p>
+	<?php }else if($show_shipinfo){
+            $info_data=array();
+            $info_data["refer_order_id"] = $data->reference_order_id;
+            $info_data["order_place_date"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_placed_date));
+            $info_data["order_transmission_date"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_transmission_date));
+            $info_data["request_ship_by"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_detail->request_ship_by));
+            $info_data["request_deliver_by"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_detail->request_delivery_by));
+            ?>
+      <?php
+            $count = 0 ;
+            foreach($shipmentdata["shipments"] as $shdata){
+
+                    $info_data["carrier"] = $shdata["carrier"];
+                    $info_data["shipment_tracking_number"] = $shdata["shipment_tracking_number"];
+                    $info_data["ship_to_date"] = $shdata["response_shipment_date"];
+                    $info_data["expected_delivery_date"] = $shdata["expected_delivery_date"];
+                    $info_data["carrier_pickup_date"] = $shdata["carrier_pick_up_date"];
+
+        ?>
+        <div class="entry-edit" id="popup" >
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-products">Shipment Info</h4>
+            </div>
+            <div class="fieldset">
+                <table id="_shipbyjetinfo_table" class="form-list" width="100%" cellspacing="0" style="table-layout: fixed">
+                    <tbody>
+                    <tr>
+                        <td class="label"><label>Reference Order Id on Jet.com</label></td>
+                        <td class="value"><strong><?php echo $info_data["refer_order_id"]; ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Order Placed Date on Jet.com</label></td>
+                        <td class="value"><strong><?php echo $info_data["order_place_date"]; ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Order transmission Date on Jet.com</label></td>
+                        <td class="value"><strong><?php echo $info_data["order_transmission_date"]; ?></strong></td>
+
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Request Ship By</label></td>
+                        <td class="value"><strong><?php echo $info_data["request_ship_by"]; ?></strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Request Delivery By</label></td>
+                        <td class="value"><strong><?php echo $info_data["request_deliver_by"]; ?></strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Shipping carrier used</label></td>
+                        <td class="value"><strong><?php echo $info_data["carrier"]?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Tracking Number</label></td>
+                        <td class="value"><strong><?php echo $info_data["shipment_tracking_number"]?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Ship to date</label></td>
+                        <td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($info_data["ship_to_date"])); ?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Expected delivery Date</label></td>
+                        <td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($info_data["expected_delivery_date"]));?></strong></td>
+                    </tr>
+                    <tr>
+                        <td class="label"><label>Carrier Pick Up Date</label></td>
+                        <td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($info_data["carrier_pickup_date"]));?></strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+		<div class="entry-edit">
+			<div class="entry-edit-head">
+				<h4 class="icon-head head-products">Shipment Items</h4>
+			</div>
+		</div>
+		<div class="grid np">
+			<div class="hor-scroll">
+				<table class="data order-tables" cellspacing="0">
+					<colgroup>
+					<col>
+					<col width="1">
+					<col width="1">
+					<col width="1">
+					<col width="1">
+					<col width="1">
+					<col width="1">
+					</colgroup>
+					<thead>
+					<tr class="headings">
+						<th>Product sku</th>
+						<th>Quantity ordered</th>
+						<th>Quantity Shipped</th>
+                        <th>Quantity cancelled</th>
+						<th>Return Address</th>
+						<th>RMA Number</th>
+						<th class="last">Days to Return</th>
+					</tr>
+					</thead>
+			<?php
+                    $k= 0;
+					foreach($shdata["shipment_items"] as $item)
+					{
+				?>
+					<?php if( $item['merchant_sku']){ ?>
+					<tr>
+						<td>
+							<span><?php echo $item['merchant_sku']?></span>
+						</td>
+						<td>
+							<span><?php echo $Order_object->order_items[$k]->request_order_quantity; ?></span>
+						</td>
+						<td>
+							<span><?php echo $item['response_shipment_sku_quantity']?></span>
+						</td>
+                        <td>
+                            <span><?php echo ($item['response_shipment_cancel_qty']); ?></span>
+                        </td>
+						<td>
+							<span><?php echo $item['return_location']['address1'].$item['return_location']['address2'].','.$item['return_location']['city'].','.$item['return_location']['state'].'-'.$item['return_location']['zip_code']?></span>
+						</td>
+						<td>
+							<span><?php echo $item['RMA_number']?></span>
+						</td>
+						<td>
+							<span><?php echo $item['days_to_return']?></span>
+						</td>
+					</tr>
+				 <?php  } ?>
+				<?php $k++; }  ?>
+                </table>
+            </div>
+        </div>
+                <div class="clear"></div><br/>
+
+			<?php $count++; } ?>
+
+		<h3>Order Shipped Successfully</h3>
+	<?php } else { ?>
+		<p>
+			<input type="hidden" id="orderid" value="<?php echo $data->merchant_order_id ?>"readonly>
+			<input type="hidden" id="incrementid" value="<?php echo $Incrementid ?>">
+			<input type="hidden" id="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey();?>">
+			<input type="hidden" id="magento_orderid" value="<?php echo $orderid ?>">
+		</p>
+
+        <!-- coomon -->
+		<div class="entry-edit">
+			<div class="entry-edit-head">
+				<h4 class="icon-head head-products">Shipment Info</h4>
+			</div>
+			<div class="fieldset">
+				<table cols="3" class="form-list" id="_prod_table" width="100%" cellspacing="0" style="table-layout: fixed;">
+					<tbody>
+
+					<tr>
+						<td class="label"><label>Reference Order Id on Jet.com</label></td>
+						<td class="value"><strong><?php echo $data->reference_order_id; ?></strong></td>
+					</tr>
+					<tr>
+						<td class="label"><label>Order Placed on Jet.com</label></td>
+						<td class="value"><strong><?php  echo date('l, F jS Y \a\t g:ia', strtotime($data->order_placed_date)); ?></strong></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label"><label>Order transmission on Jet.com</label></td>
+						<td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($data->order_transmission_date)); ?></strong></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label"><label>Request Ship By</label></td>
+						<td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($data->order_detail->request_ship_by)); ?></strong></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td class="label"><label>Request Delivery By</label></td>
+						<td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($data->order_detail->request_delivery_by)); ?></strong></td>
+						<td></td>
+					</tr>
+
+					<tr>
+						<td class="label"><label>Shipping carrier used</label></td>
+						<?php $flag=true;?>
+						<?php if($data->order_detail->request_shipping_carrier !="" && $flag){?>
+							<td class="value"><input class="input-text" type="text" id="carrier" value="<?php echo  $data->order_detail->request_shipping_carrier?>" style="width:100%"></td>
+						<?php $flag=false;
+							}elseif($data->order_detail->request_shipping_method !="" && $flag){?>
+								<td class="value"><input class="input-text" type="text" id="carrier" value="<?php echo  $data->order_detail->request_shipping_method?>" style="width:100%"></td>
+						<?php }?>
+
+					</tr>
+					<tr>
+						<td class="label"><label>Request Service Level</label></td>
+						<td class="value"><input class="input-text" type="text" id="request_service_level" value="<?php echo  $data->order_detail->request_service_level?>" style="width:100%"></td>
+					</tr>
+					<tr>
+						<td class="label"><label>Tracking Number</label></td>
+						<td class="value"><input class="input-text" type="text" id="tracking" value="" style="width:100%;"></td>
+					</tr>
+
+					<tr>
+						<td class="label"><label>Ship to date</label></td>
+						<td class="value"><input type="text" style="width:100%;" class="input-text" value="" id="ship_date" name="ship_date"/></td>
+						<td><img style="padding-left: 5px;padding-top: 8px;" title="Select Date" id="date_select_ship"  alt="calender" src="<?php echo $this->getSkinUrl("images/grid-cal.gif");?> "/></td>
+
+					</tr>
+
+					<tr>
+						<td class="label"><label>Expected delivery Date</label></td>
+						<td class="value"><input type="text" style="width:100%;" class="input-text" value="" id="ex_deliverydate" name="ex_deliverydate"/></td>
+						<td><img style="padding-left: 5px;padding-top: 8px;" title="Select Date" id="date_select_exd"  alt="calender" src="<?php echo $this->getSkinUrl("images/grid-cal.gif");?> "/></td>
+					</tr>
+
+					<tr>
+						<td class="label"><label>Carrier Pick Up Date </label></td>
+						<td class="value"><input type="text" style="width:100%;" class="input-text" value="" id="car_pickdate" name="car_pickdate"/></td>
+						<td><img style="padding-left: 5px;padding-top: 8px;" title="Select Date" id="date_select_cad" alt="calender" src="<?php echo $this->getSkinUrl("images/grid-cal.gif");?> "/></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="entry-edit">
+			<div class="entry-edit-head">
+				<h4 class="icon-head head-products">Shipment Items</h4>
+			</div>
+		</div>
+		<div class="grid np">
+			<div class="hor-scroll">
+				<table class="data order-tables" cellspacing="0"  id="_prod_table">
+					<thead>
+					<tr class="headings">
+						<th width="100px">Product sku</th>
+						<th>Quantity ordered</th>
+						<th>Quantity to Ship</th>
+                        <th>Quantity to Cancel</th>
+                        <th>Qty Available for ship</th>
+						<th>Return Address</th>
+						<th>RMA Number</th>
+						<th class="last">Days to Return</th>
+						<!--<th class="last">Shipment Id</th>-->
+					</tr>
+					</thead>
+					<?php foreach($data->order_items as $k=>$valdata) { $number_items++; ?>
+					<?php
+							$cancel_qty = 0;
+							/*if((int) $valdata->request_order_cancel_qty>0){
+								$cancel_qty = (int) $valdata->request_order_cancel_qty;
+							}*/
+
+                            if(isset($prev_shipinfo[$valdata->merchant_sku]['response_shipment_cancel_qty'])){$real_cancel_qty = $prev_shipinfo[$valdata->merchant_sku]['response_shipment_cancel_qty'] ; }
+                            else{$real_cancel_qty=0;}
+
+                            $avail_qty = ($valdata->request_order_quantity - ($prev_shipinfo[$valdata->merchant_sku]['response_shipment_sku_quantity'] + $real_cancel_qty) );
+							$ship_qty = (int)($valdata->request_order_quantity);
+                            if($avail_qty > 0){
+						?>
+						<tr>
+							<td><input type="hidden" id="sku_<?php echo $k;?>" value="<?php echo $valdata->merchant_sku?>"> <strong><?php echo $valdata->merchant_sku; ?></strong></td>
+							<td><input type="hidden" id="qty_<?php echo $k;?>" value="<?php echo $valdata->request_order_quantity ?>"><strong><?php echo $valdata->request_order_quantity ?></strong></td>
+
+                            <?php if($avail_qty > 0): ?>
+                            <td><input class="input-text" type="text" maxlength="70" id="ship_<?php echo $k;?>" value="<?php echo $avail_qty;?>" onkeypress="return isNumberKey(event);" ></td>
+                            <td><input  class="input-text" type="text" id="can_<?php echo $k;?>" value="<?php echo $cancel_qty;?>" ></td>
+                            <?php else : ?>
+                                <td><input type="hidden" id="ship_<?php echo $k;?>" value="<?php echo $avail_qty ?>"><strong <?php if($avail_qty <= 0){echo ' style="color: #EE0000" ';} ?>> <?php echo $avail_qty ?></strong></td>
+                                <td><input type="hidden" id="can_<?php echo $k;?>" value="<?php echo $cancel_qty;?>" ><strong <?php if($avail_qty <= 0){echo ' style="color: #EE0000" ';} ?>> <?php echo $cancel_qty ?></strong></td>
+                            <?php endif;?>
+
+                            <td><input type="hidden" id="avail_<?php echo $k;?>" value="<?php echo $avail_qty ?>"><strong <?php if($avail_qty > 0){echo ' style="color: #008800" ';}else{echo ' style="color: #EE0000" ';} ?>> <?php echo $avail_qty ?></strong></td>
+
+							<td><select name="address"id="address_<?php echo $k; ?>" style="border: 0px none; background-color:transparent;" onchange="">
+										<option value="" disabled="disabled" selected="selected">Please select a option</option>
+										<option value="1" selected="selected" >Yes</option>
+										<option value="0">No</option>
+									</select></td>
+							<!-- Rma input -->
+							<td><input class="input-text" type="text" id="rma_<?php echo $k;?>" value=""></td>
+							<td><input class="input-text" type="text" id="days_return_<?php echo $k;?>" value="" placeholder="0" onkeypress="return isNumberKey(event);" ></td>
+							<!--<td></td>-->
+
+						</tr>
+					<?php }
+                            } ?>
+				</table>
+			</div>
+		</div>
+		<div class="clear"></div>	
+		<br/>
+		<p><button id="button1" onclick="CallShipment();">Submit Shipment</button></p>
+
+
+
+
+        <?php
+            if($jet_status == 'inprogress'){
+            $info_data=array();
+            $info_data["refer_order_id"] = $data->reference_order_id;
+            $info_data["order_place_date"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_placed_date));
+            $info_data["order_transmission_date"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_transmission_date));
+            $info_data["request_ship_by"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_detail->request_ship_by));
+            $info_data["request_deliver_by"] = date('l, F jS Y \a\t g:ia', strtotime($data->order_detail->request_delivery_by));
+        ?>
+
+        <strong style="font-size: 16px;color: #68a81e;margin-bottom: 10px;margin-top: 15px;display: inline-block;"> <u>Shipment History</u> </strong>
+        <?php
+        $count = 0 ;
+        foreach($shipmentdata["shipments"] as $shdata){
+
+            $info_data["carrier"] = $shdata["carrier"];
+            $info_data["shipment_tracking_number"] = $shdata["shipment_tracking_number"];
+            $info_data["ship_to_date"] = $shdata["response_shipment_date"];
+            $info_data["expected_delivery_date"] = $shdata["expected_delivery_date"];
+            $info_data["carrier_pickup_date"] = $shdata["carrier_pick_up_date"];
+
+            ?>
+
+            <div class="entry-edit" id="popup" >
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-products">Shipment Info</h4>
+                </div>
+                <div class="fieldset">
+                    <table id="_shipbyjetinfo_table" class="form-list" width="100%" cellspacing="0" style="table-layout: fixed">
+                        <tbody>
+                        <tr>
+                            <td class="label"><label>Reference Order Id on Jet.com</label></td>
+                            <td class="value"><strong><?php echo $info_data["refer_order_id"]; ?></strong></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Order Placed Date on Jet.com</label></td>
+                            <td class="value"><strong><?php echo $info_data["order_place_date"]; ?></strong></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Order transmission Date on Jet.com</label></td>
+                            <td class="value"><strong><?php echo $info_data["order_transmission_date"]; ?></strong></td>
+
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Request Ship By</label></td>
+                            <td class="value"><strong><?php echo $info_data["request_ship_by"]; ?></strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Request Delivery By</label></td>
+                            <td class="value"><strong><?php echo $info_data["request_deliver_by"]; ?></strong></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Shipping carrier used</label></td>
+                            <td class="value"><strong><?php echo $info_data["carrier"]?></strong></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Tracking Number</label></td>
+                            <td class="value"><strong><?php echo $info_data["shipment_tracking_number"]?></strong></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Ship to date</label></td>
+                            <td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($info_data["ship_to_date"])); ?></strong></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Expected delivery Date</label></td>
+                            <td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($info_data["expected_delivery_date"]));?></strong></td>
+                        </tr>
+                        <tr>
+                            <td class="label"><label>Carrier Pick Up Date</label></td>
+                            <td class="value"><strong><?php echo date('l, F jS Y \a\t g:ia', strtotime($info_data["carrier_pickup_date"]));?></strong></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="entry-edit">
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-products">Shipment Items</h4>
+                </div>
+            </div>
+            <div class="grid np">
+                <div class="hor-scroll">
+                    <table class="data order-tables" cellspacing="0">
+                        <colgroup>
+                            <col>
+                            <col width="1">
+                            <col width="1">
+                            <col width="1">
+                            <col width="1">
+                            <col width="1">
+                            <col width="1">
+                        </colgroup>
+                        <thead>
+                        <tr class="headings">
+                            <th>Product sku</th>
+                            <th>Quantity ordered</th>
+                            <th>Quantity Shipped</th>
+                            <th>Quantity cancelled</th>
+                            <th>Return Address</th>
+                            <th>RMA Number</th>
+                            <th class="last">Days to Return</th>
+                        </tr>
+                        </thead>
+                        <?php
+                        $k= 0;
+                        foreach($shdata["shipment_items"] as $item)
+                        {
+                            ?>
+                            <?php if( $item['merchant_sku']){ ?>
+                            <tr>
+                                <td>
+                                    <span><?php echo $item['merchant_sku']?></span>
+                                </td>
+                                <td>
+                                    <span><?php echo $Order_object->order_items[$k]->request_order_quantity; ?></span>
+                                </td>
+                                <td>
+                                    <span><?php echo $item['response_shipment_sku_quantity']?></span>
+                                </td>
+                                <td>
+                                    <span><?php echo $item['response_shipment_cancel_qty']; ?></span>
+                                </td>
+                                <td>
+                                    <span><?php echo $item['return_location']['address1'].$item['return_location']['address2'].','.$item['return_location']['city'].','.$item['return_location']['state'].'-'.$item['return_location']['zip_code']?></span>
+                                </td>
+                                <td>
+                                    <span><?php echo $item['RMA_number']?></span>
+                                </td>
+                                <td>
+                                    <span><?php echo $item['days_to_return']?></span>
+                                </td>
+                            </tr>
+                        <?php  } ?>
+                            <?php $k++; }  ?>
+                    </table>
+                </div>
+            </div>
+            <div class="clear"></div><br/>
+
+            <?php $count++; } ?>
+
+        <h3>Order Shipped Successfully</h3>
+    <?php } ?>
+
+		
+		<p>
+			<strong>NOTE:</strong>
+			<ul>
+				<li><b>*RMA_number: (optional)</b>&nbsp; The RMA # in your system associated with this order item if returned</li>
+				<br/>
+				<li><b>*Days to Return:</b>&nbsp; The number of days the customer has to return the shipment item</li>
+				<br/>
+				<li><b>*Request Ship By Date</b>&nbsp;
+					Expected date that the shipment will be tendered to the given carrier.
+				</li>
+				<br/>
+				<li><b>*Request Ship By Logic</b>
+					This will be calculated based on when the merchant order is sent the Merchant and their given settings for fulfilment time, and order cutoff data set at either the account level or shipping method level.
+				</li>
+				<br/>
+				<li><b>*Request Delivery By Date</b>&nbsp;
+					Date the customer has been promised delivery.
+				</li>
+				<br/>
+				<li><b>Request Delivery By Logic</b>
+					The ShippingMethod selected should provide delivery by this date as long as you meet shipping requirements you communicated during shipping set up. If you use Jet provided labels and ship ontime you should meet this date. If you use your own shipping labels, you can choose to use a carrier other than the one suggested by ShippingMethod as long as the DeliveryByDate is met or exceeded.
+				</li>
+				<br/>
+				<li><b>*Order Transmission Date</b>
+					The date/time the merchant order was sent to the merchant.
+				</li>
+				<br/>
+			</ul>	
+		</p>
+		
+<script type="text/javascript">
+
+//<![CDATA[
+Calendar.setup({ 
+	inputField: "ship_date",
+	ifFormat: "%m/%e/%Y %H:%M:%S",
+	showsTime: true,
+	button: "date_select_ship",
+	align: "Bl",
+	singleClick : true
+});
+Calendar.setup({
+	inputField: "ex_deliverydate",
+	ifFormat: "%m/%e/%Y %H:%M:%S",
+	showsTime: true,
+	button: "date_select_exd",
+	align: "Bl",
+	singleClick : true
+});
+Calendar.setup({
+	inputField: "car_pickdate",
+	ifFormat: "%m/%e/%Y %H:%M:%S",
+	showsTime: true,
+	button: "date_select_cad",
+	align: "Bl",
+	singleClick : true
+});
+//]]>
+</script>
+		
+<script type="text/javascript">	
+	function isNumberKey(evt) {
+		var charCode = (evt.which) ? evt.which : event.keyCode;
+		if (charCode != 46 && charCode > 31
+		&& (charCode < 48 || charCode > 57))
+			return false;
+		
+		return true;
+	}
+
+	function CallShipment(){
+		var key=document.getElementById('form_key').value; 
+		var id=document.getElementById('incrementid').value;
+		var ids=document.getElementById('magento_orderid').value;
+		//var deliver=document.getElementById('deliver').value;
+		var orderid=document.getElementById('orderid').value;
+		var carrier=document.getElementById('carrier').value;
+		var rsl=document.getElementById('request_service_level').value;
+
+		var ship_todate=document.getElementById('ship_date').value;
+		var exp_deliver=document.getElementById('ex_deliverydate').value;
+		var carre_pickdate=document.getElementById('car_pickdate').value;
+		if(ship_todate==""){
+				alert("Please enter Ship to date");
+				return;
+		}
+		if(exp_deliver==""){
+				alert("Please enter expected delivery date");
+				return;
+		}
+		if(carre_pickdate==""){
+				alert("Please enter Carrier Pick Up Date");
+				return;
+		}
+		
+		var tracking=document.getElementById('tracking').value;
+		if(tracking==""){
+				alert("Please Enter Tracking Number");
+				return;
+		}
+		var jet_order_detail_row = <?php echo $row_id; ?>			
+		
+		var outterArray = [];
+		var lengthval = <?php echo $number_items; ?>;					
+		
+							
+		for(var i=0; i<lengthval;  i++) {
+            if(document.getElementById('sku_'+i)){
+            product_sku = document.getElementById('sku_'+i).value;
+			requested_quantity = document.getElementById('qty_'+i).value; 
+			cancel_quantity = document.getElementById('can_'+i).value; 
+			ship_quantity = document.getElementById('ship_'+i).value;
+            avail_check_quantity = document.getElementById('avail_'+i).value;
+			
+			if(ship_quantity > (requested_quantity - cancel_quantity)){
+				alert("Item Sku: "+product_sku+"  . Total quantity available for shipping/cancellation : "+ship_quantity);
+				return;
+			}
+
+            if((parseInt(ship_quantity) + parseInt(cancel_quantity)) > parseInt(avail_check_quantity) ){
+                alert("Error in Item Sku: "+product_sku+"  . Total shipping quantity + cancellation quantity can't be greater than available quantity i.e : "+avail_check_quantity);
+                return;
+            }
+			 
+			var product_data = [product_sku,
+					requested_quantity,
+					cancel_quantity,
+					document.getElementById('address_'+i).value,
+					document.getElementById('rma_'+i).value,
+					document.getElementById('days_return_'+i).value,
+					ship_quantity,
+                    document.getElementById('avail_'+i).value]; // new quantity to ship added
+					//shipment id removed
+			 outterArray.push(product_data);
+            }
+		}
+
+		if(carrier == 'USPS First Class Mail' || carrier == 'UPS Ground'){carrier = 'UPS';}
+		
+		new Ajax.Request("<?php echo $this->getUrl('adminhtml/adminhtml_jetorder/shipp') ?>", {
+		method: 'Post',
+		parameters: {"orderid":orderid,"items":JSON.stringify(outterArray),"request_service_level":rsl,"carrier":carrier,"key1":id,"order":ids,"tracking":tracking,"ship_todate":ship_todate,"exp_deliver":exp_deliver,"carre_pickdate":carre_pickdate,"order_table_row":jet_order_detail_row},
+			
+			onComplete: function(transport) {
+				if(transport.responseText == "Success"){
+					try {
+						window.location.href=window.location.href;
+					}
+					catch(err) {
+						alert(transport.responseText);
+					}
+				}else{
+					alert(transport.responseText);
+				}
+			}
+		});
+		
+	}
+		
+</script>
+<?php } ?>		
+
+ <style>
+     #popup{
+         margin-bottom: -15px;
+     }
+ </style>

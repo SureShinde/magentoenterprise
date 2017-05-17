@@ -1,0 +1,7 @@
+
+<dt class="progress-total complete">
+    <?php echo $this->__('Total') ?>
+</dt>
+<dd class="progress-total complete">
+    <?php echo Mage::helper('checkout')->formatPrice($this->getQuote()->getGrandTotal()); ?>
+</dd>

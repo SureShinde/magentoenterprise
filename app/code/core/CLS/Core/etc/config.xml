@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Core
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_Core>
+            <version>1.3.8</version>
+        </CLS_Core>
+    </modules>
+
+    <global>
+        <blocks>
+            <cls_core>
+                <class>CLS_Core_Block</class>
+            </cls_core>
+        </blocks>
+
+        <models>
+            <cls_core>
+                <class>CLS_Core_Model</class>
+            </cls_core>
+
+            <core>
+                <rewrite>
+                    <layout>CLS_Core_Model_Core_Layout</layout>
+                </rewrite>
+            </core>
+            
+            <paypal>
+                <rewrite>
+                    <config>CLS_Core_Model_Paypal_Config</config>
+                </rewrite>
+            </paypal>
+        </models>
+
+        <helpers>
+            <cls_core>
+                <class>CLS_Core_Helper</class>
+            </cls_core>
+        </helpers>
+
+        <resources>
+            <cls_core_setup>
+                <setup>
+                    <module>CLS_Core</module>
+                </setup>
+            </cls_core_setup>
+        </resources>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <CLS_Core>
+                    <files>
+                        <default>CLS_Core.csv</default>
+                    </files>
+                </CLS_Core>
+            </modules>
+        </translate>
+        <routers>
+            <coretests>
+                <use>standard</use>
+                <args>
+                    <module>CLS_Core_Coretests</module>
+                    <frontName>coretests</frontName>
+                </args>
+            </coretests>
+        </routers>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <CLS_Core>
+                    <files>
+                        <default>CLS_Core.csv</default>
+                    </files>
+                </CLS_Core>
+            </modules>
+        </translate>
+        <events>
+            <core_collection_abstract_load_before>
+                <observers>
+                    <cls_core>
+                        <class>CLS_Core_Model_Observer</class>
+                        <method>removeUserInvisibleFromCollection</method>
+                    </cls_core>
+                </observers>
+            </core_collection_abstract_load_before>
+            <controller_action_predispatch_adminhtml_system_variable_index>
+                <observers>
+                    <cls_core>
+                        <class>CLS_Core_Model_Observer</class>
+                        <method>systemVariablePredispatch</method>
+                    </cls_core>
+                </observers>
+            </controller_action_predispatch_adminhtml_system_variable_index>
+        </events>
+    </adminhtml>
+	
+    <default>
+        <general>
+            <file>
+                <sitemap_generate_valid_paths>
+                    <available>
+                        <any_path>/*/*.xml</any_path>
+                    </available>
+                </sitemap_generate_valid_paths>
+            </file>
+        </general>
+        <dev>
+            <template>
+                <allow_symlink>1</allow_symlink>
+            </template>
+        </dev>
+    </default>
+</config>

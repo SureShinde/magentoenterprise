@@ -1,0 +1,20 @@
+1.3 - 1.4.2-1.5 release pre Ant
+2.0 - Updated to support 1.6
+2.1 - Added support so that the dest type is supported against order addres. updated to use latest serial key logic.
+2.2 - Added required methods for DropShip to function.
+2.3 - changed to be a full implementation instead of overlay
+2.4 - Updated to fix issues seen on 1.7 build where was not idempotent and the attribute creation was not working due to NULL error.
+3.0 - Refactored extension to remove rewrites wherever possible and cut down on code footprint within magento
+
+3.1 - Updated to include latest Common Library files
+3.2 - Added further support for Magento 1.5/EE1.10
+3.3 - Added abililty to select Commercial or Residential as the default.
+3.4 - Added the option to default the address to commercial when the company field is populated.
+3.4.5  - RESIDENTIA-13 - Fixed iss around disabling the extension.
+3.5  - RESIDENTIA-14 Completed implementation of Freight and Res
+3.5  - RESIDENTIA-14 Completed implementation of Freight and Res
+3.5.1  - RESIDENTIA-15 - Amended Address type default within admin
+3.5.2  - RESIDENTIA-16 - Magento 1.9 ready
+3.6  - RESIDENTIA-17 - Integrated with Annata OSC
+3.6.4  - PVR-12 Integration with Product View Rates
+3.6.5  - Latest common code

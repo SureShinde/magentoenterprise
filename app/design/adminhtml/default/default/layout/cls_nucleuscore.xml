@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="before_body_end">
+            <block type="core/template" name="nucleus_footer" template="cls/nucleus/footer.phtml">
+                <action method="setIncludeVersion"><include>1</include></action>
+            </block>
+        </reference>
+    </default>
+
+    <adminhtml_dashboard_index>
+        <reference name="head">
+            <action method="addCss"><name>nucleuscore/nucleus_header.css</name></action>
+        </reference>
+        <reference name="notifications">
+            <block type="adminhtml/template" name="nucleus_header" template="cls/nucleus/header.phtml" before="-" />
+        </reference>
+    </adminhtml_dashboard_index>
+
+    <adminhtml_index_login>
+        <reference name="content">
+            <action method="setTemplate"><template>cls/nucleus/login.phtml</template></action>
+            <block type="adminhtml/template" name="cls_legal" template="cls/nucleus/footer.phtml">
+                <action method="setSmallHeight"><value>1</value></action>
+            </block>
+        </reference>
+    </adminhtml_index_login>
+
+    <adminhtml_index_forgotpassword>
+        <reference name="content">
+            <action method="setTemplate"><template>cls/nucleus/forgotpassword.phtml</template></action>
+            <block type="adminhtml/template" name="cls_legal" template="cls/nucleus/footer.phtml">
+                <action method="setSmallHeight"><value>1</value></action>
+            </block>
+        </reference>
+    </adminhtml_index_forgotpassword>
+
+    <adminhtml_system_config_edit>
+        <reference name="head">
+            <action method="addCss"><name>nucleuscore/nucleus_elements_config.css</name></action>
+        </reference>
+    </adminhtml_system_config_edit>
+</layout>

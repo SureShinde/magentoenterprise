@@ -1,0 +1,113 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Skip Link - Account
+// ==============================================
+
+.skip-account {
+
+    &:hover {
+        .icon {
+            background-position: -50px -50px;
+        }
+    }
+
+    .icon {
+        @extend .icon-sprite;
+        background-position: 0 -50px;
+    }
+
+    @include bp (min-width, $bp-medium + 1) {
+        .icon {
+            background-position: -50px -200px;
+        }
+    }
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-medium + 1) {
+
+    .skip-account {
+        display: inline-block;
+        float: none;
+        width: auto;
+        padding-right: 30px;
+        padding-left: 25px;
+        background: none;
+        vertical-align: top;
+        color: #fff;
+        &:focus {
+            color: #fff;
+        }
+        &:hover {
+            color: $c-action;
+        }
+    }
+
+    #header-account.skip-active {
+        @include menu;
+        display: block;
+        position: absolute;
+        z-index: 200;
+        top: 40px;
+        right: 210px;
+        width: 200px;
+    }
+
+    #header-account a {
+        display: block;
+        padding: 5px 10px;
+        color: $c-text;
+        line-height: 2;
+
+        &:hover {
+            color: $c-action;
+        }
+    }
+
+}
+
+
+
+// ==============================================
+// Account Links
+// ==============================================
+
+#header-account {
+    padding: 5px 0;
+}
+
+#header-account a {
+    position: relative;
+    display: block;
+    padding: 5px 10px;
+    line-height:23px;
+    text-align: center;
+
+    &:hover {
+        color: $c-action;
+    }
+}

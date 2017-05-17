@@ -1,0 +1,176 @@
+.advancedreviews-summary-block {
+    clear: both;
+    margin: 10px;
+}
+
+.advancedreviews-summary-block table {
+    float: left;
+}
+
+.advancedreviews-summary-block table td {
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.advancedreviews-summary-block table th {
+    font-weight: bold;
+    text-align: center;
+}
+
+.advancedreviews-summary-block table td.star-name, .advancedreviews-summary-block table td.star-count {
+    white-space: nowrap;
+    width: 10%
+}
+
+.advancedreviews-summary-block table td.star-count {
+    padding-right: 20px;
+}
+
+.advancedreviews-summary-block table td.star-line .star-bar-container {
+    background: #DEDCC3;
+}
+
+.advancedreviews-summary-block .spacer {
+    clear: both;
+}
+
+.advancedreviews-summary-block .star-bar {
+    background: #F0C808;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+}
+
+.advancedreviews-reviews-count {
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: right;
+}
+
+label.consFilter, label.prosFilter {
+    cursor: pointer;
+}
+
+#product-review-table label {
+    width: auto;
+    float: none;
+}
+
+.col3-layout .advancedreviews-reviews-form ul li label {
+    text-align: left;
+    width: 100%;
+}
+
+.advancedreviews-reviews-form #product-review-table {
+    margin: 7px auto 0;
+}
+
+.advancedreviews-reviews-form .review-summary-table {
+    padding: 10px;
+}
+
+.col2-right-layout .advancedreviews-reviews-form #product-review-table, .col2-left-layout .advancedreviews-reviews-form #product-review-table {
+    margin: 7px 240px 0;
+}
+
+.col3-layout .advancedreviews-reviews-form #product-review-table {
+    margin: 7px 0 0;
+}
+
+.advancedreviews-reviews-form ul li div.form-buttons, .advancedreviews-reviews-form ul li p.required {
+    margin: 0 auto;
+    padding: 5px 0 0;
+}
+
+.col1-layout .advancedreviews-reviews-form p.required, .col1-layout .advancedreviews-reviews-form .form-buttons {
+    width: 450px;
+}
+
+.col3-layout .advancedreviews-reviews-form p.required, .col3-layout .advancedreviews-reviews-form .form-buttons {
+    width: 325px;
+}
+
+table.advancereviews-filters th {
+    width: 50%;
+    color: #E26703;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 0 5px;
+}
+
+ul.hiddenList {
+    display: none;
+}
+
+#product-review-table td a {
+    display: block;
+}
+
+#loading-mask {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    background: #fff;
+    width: 120px;
+    z-index: 1000;
+    position: fixed;
+    top: 45%;
+    left: 46%;
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+
+#loading-mask .loader {
+    text-decoration: none;
+}
+
+#advancereviews-sort-reviews img {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.abuse-link {
+    cursor: pointer;
+}
+
+.helpful-link {
+    cursor: pointer;
+}
+
+#advancereviews-filteredReviews {
+    padding: 0 10px;
+}
+
+.advancereviews-filters {
+    margin: 0 auto 10px;
+}
+
+.customerReviews .product-collateral {
+    float: none;
+    width: 100%;
+    padding: 0;
+}
+
+#advancedreviews-notify {
+    z-index: 1000;
+    position: relative;
+}
+
+.advancedreviews-allmy-list .box-reviews .product-collateral {
+    clear: both;
+    width: 100%;
+    padding: 10px 0;
+    float: none;
+}
+
+.advancedreviews-reviews-form .data-table {
+    border: 1px solid #d9d9d9;
+}
+
+#advancereviews-filteredReviews dd {
+    margin: 0 0 20px;
+}

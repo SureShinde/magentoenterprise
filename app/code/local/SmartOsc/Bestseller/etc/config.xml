@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config>
+
+    <modules>
+        <SmartOsc_Bestseller>
+            <version>1.0.0</version>
+        </SmartOsc_Bestseller>
+    </modules>
+    <global>
+        <blocks>
+            <bestseller>
+                <rewrite>
+                    <bestseller>SmartOsc_Bestseller_Block_Bestseller</bestseller>
+                </rewrite>
+            </bestseller>
+        </blocks>
+    </global>
+</config>

@@ -1,0 +1,95 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+
+<?php echo $this->getChildHtml('billingorig') ?>
+
+<script type="text/javascript">
+//<![CDATA[
+   var destTypeEnabled = '<?php echo Mage::helper('wsacommon')->isModuleEnabled('Webshopapps_Desttype',
+                                                                               'shipping/desttype/active') ?>';
+
+   var freightEnabled = '<?php echo Mage::helper('desttype')->isFreightEnabled() ?>';
+
+   if (freightEnabled) {
+       destTypeEnabled = false;
+   }
+
+   if(destTypeEnabled) {
+        var destStr =
+            '<li class="fields">'+
+                '<div class="field">'+
+                    '<label for="shipping:dest_type"><?php echo $this->__("Address Type") ?> <span class="required">*</span></label>'+
+                        '<div class="input-box">'+
+                            '<?php echo $this->getDestTypeHtmlSelect("billing") ?>'+
+                        '</div>'+
+                '</div>'+
+            '</li>';
+            $("billing:telephone").insert({after:destStr});
+
+        //If the company field is populated then assume the address should be commercial.
+        if('<?php echo $this->autoCommercialAvailable() ?>') {
+            Event.observe($('billing:company'), 'change', function(){
+                if($('billing:company').value != '') {
+                    changeSelectByValue('billing:dest_type', 'COM', false);
+                } else {
+                    changeSelectByValue('billing:dest_type', 'RES', false);
+                }
+            });
+            Event.observe($('billing:company'), 'load', function(){
+                if($('billing:company').value != '') {
+                    changeSelectByValue('billing:dest_type', 'COM', false);
+                } else {
+                    changeSelectByValue('billing:dest_type', 'RES', false);
+                }
+            });
+        }
+    }
+
+    /**
+     * Method to change the selected value of a select dropdown
+     * @param ddlID String - the name of the element
+     * @param value String - value to set it to
+     * @param change Boolean - should we fire onchange
+     */
+    function changeSelectByValue(ddlID, value, change) {
+
+        var ddl = document.getElementById(ddlID);
+
+        for (var i = 0; i < ddl.options.length; i++) {
+            if (ddl.options[i].value == value) {
+                if (ddl.selectedIndex != i) {
+                    ddl.selectedIndex = i;
+                    if (change) {
+                        ddl.onchange();
+                    }
+                }
+                break;
+            }
+        }
+    }
+//]]>
+</script>

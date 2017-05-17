@@ -1,0 +1,68 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    AdminEnhance
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+if (($_videos = $this->getVideos()) && $_videos->count() > 0):
+$_singleVideo = ($_videos->count() == 1);
+?>
+<?php if ($this->getIncludeWrapper()): ?>
+<div class="support-videos-wrapper">
+    <h4><?php echo $this->__('Tutorial Videos') ?></h4>
+<?php endif; ?>
+<ul class="support-videos">
+    <?php foreach ($_videos as $_video): ?>
+        <?php
+        $_thumbnail = $_video->getThumbnail();
+        $_showTitle = (!$this->getRestrictTitles() || !$_thumbnail || !$_singleVideo);
+        ?>
+        <li>
+            <?php if ($_thumbnail): ?>
+                <a class="video-thumbnail" href="<?php echo $this->getVideoUrl($_video) ?>" title="<?php echo $_video->getTitle() ?>"><img src="<?php echo $this->getThumbnailUrl($_thumbnail) ?>" alt="<?php echo $_video->getTitle() ?>" /></a>
+            <?php endif; ?>
+
+            <?php if ($_showTitle): ?>
+                <a href="<?php echo $this->getVideoUrl($_video) ?>" title="<?php echo $_video->getTitle() ?>"><?php echo ($_singleVideo) ? $this->__('Watch video') : $_video->getTitle() ?></a>
+            <?php endif; ?>
+
+            <?php
+            if ($_runTime = $_video->getRunTime()):
+                if (!$_thumbnail || !$_singleVideo):
+                    echo ' | ';
+                endif;
+                echo '<em>' . $_runTime . '</em>';
+            endif;
+            ?>
+
+            <?php
+            if ($_videoDescription = $_video->getDescription()):
+                echo ' - ' . $_videoDescription;
+            endif;
+            ?>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<?php if ($this->getIncludeWrapper()): ?>
+</div>
+<?php endif; ?>
+<?php endif; ?>

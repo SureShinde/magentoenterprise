@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @category   CLS
+ * @package    Core
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <tabs>
+        <cls_core translate="label" module="cls_core">
+            <label>Classy Llama</label>
+            <sort_order>50</sort_order>
+        </cls_core>
+    </tabs>
+</config>

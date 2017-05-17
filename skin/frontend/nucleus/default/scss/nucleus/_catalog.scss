@@ -1,0 +1,232 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+.products-gallery {
+    .carousel {
+        padding-left: $trim;
+        padding-right: $trim;
+    }
+
+    .owl-controls .owl-buttons {
+
+        .owl-prev, .owl-next {
+            min-width: 30px;
+            width: 30px;
+            text-indent: -9999em;
+        }
+    }
+
+    .owl-item {
+        padding: 0 $box-spacing;
+    }
+
+    .owl-controls .owl-buttons {
+
+        .owl-prev:after,
+        .owl-next:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            display: block;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .owl-prev:after {
+            border-right: 10px solid #3399cc;
+            border-left: none;
+            top: 50%;
+            margin-top: -13px;
+            left: 8px;
+        }
+
+        .owl-next:after {
+            border-left: 10px solid #3399cc;
+            border-right: none;
+            top: 50%;
+            margin-top: -13px;
+            right: 10px;
+        }
+    }
+}
+
+.changer-wrapper {
+    $arrowContainerSize: 26px;
+
+    position: relative;
+    text-align: center;
+    margin-bottom: $box-spacing-large;
+
+    h3 {
+        padding: 0 $arrowContainerSize;
+    }
+
+    img {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    .navigation-arrows {
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+        top: 0;
+        padding: 10px 5px;
+
+        a {
+            display: block;
+            height: $arrowContainerSize;
+            width: $arrowContainerSize;
+            position: relative;
+            background: #FFF;
+            border: 1px solid #d2d2d2;
+
+            &:hover {
+                background-color: $c-action;
+                border-color: $c-action;
+            }
+
+            &:before {
+                display: block;
+                content: '';
+                width: 0;
+                height: 0;
+                position: absolute;
+                top: 50%;
+                margin-top: -5px;
+                left: 50%;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+            }
+        }
+    }
+
+    .catalog-switcher-button-prev {
+        float: left;
+        position:relative;
+
+        a:hover:before {
+            border-right: 5px solid white;
+        }
+
+        a:before {
+            border-right: 5px solid $c-action;
+            margin-left: -4px;
+        }
+
+        &:after {
+            content: 'previous';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 26px;
+            text-transform: uppercase;
+            font-size: $f-size-xs;
+            padding: 4px 8px;
+            background:#fff;
+        }
+
+    }
+
+    .catalog-switcher-button-next {
+        float: right;
+        position:relative;
+
+        a:hover:before {
+            border-left: 5px solid white;
+        }
+
+        a:before {
+            border-left: 5px solid $c-action;
+            margin-left: -2px;
+        }
+
+        &:after {
+            content: 'next';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 26px;
+            text-transform: uppercase;
+            font-size: $f-size-xs;
+            padding: 4px 8px;
+            background:#fff;
+        }
+    }
+
+    h3 {
+        padding-left:100px;
+        padding-right:100px;
+    }
+}
+
+
+// ==============================================
+// Badge
+// ==============================================
+
+.product-badges {
+    clear: both;
+    margin-bottom: 10px;
+}
+
+.badge {
+    @include border-radius (5px);
+    display: inline-block;
+    margin: 0 0 5px 0;
+    padding: 3px 10px;
+    background:$c-badge;
+    background: linear-gradient($c-badge, darken($c-badge, 12%));;
+    color: #FFF;
+    font-size: 13px;
+    line-height: 16px;
+    text-transform: uppercase;
+    vertical-align: top;
+}
+
+.badge-low-stock {
+    background:$c-badge-low-stock;
+    background: linear-gradient($c-badge-low-stock, darken($c-badge-low-stock, 12%));
+}
+
+.badge-new {
+    background:$c-badge-new;
+    background: linear-gradient($c-badge-new, darken($c-badge-new, 12%));
+}
+
+.badge-sale {
+    background:$c-badge-sale;
+    background: linear-gradient($c-badge-sale, darken($c-badge-sale, 12%));
+}
+
+
+// ----------------------------------------------
+// Product Badges (in Grid)
+
+.products-grid .product-badges {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}

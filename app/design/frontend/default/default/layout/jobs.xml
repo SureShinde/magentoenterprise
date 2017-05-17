@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+    /////////////////////////////////////////////////////////////////////////////////
+    \\\\\\\\\\\\\\\\\\\\\\\\\   Jobs extension  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    /////////////////////////////////////////////////////////////////////////////////
+    \\\\\\\\\\\\\\\\\\\\\\\\\ NOTICE OF LICENSE\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    ///////                                                                   ///////
+    \\\\\\\ This source file is subject to the Open Software License (OSL 3.0)\\\\\\\
+    ///////   that is bundled with this package in the file LICENSE.txt.      ///////
+    \\\\\\\   It is also available through the world-wide-web at this URL:    \\\\\\\
+    ///////          http://opensource.org/licenses/osl-3.0.php               ///////
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    ///////                      * @category   FME                            ///////
+    \\\\\\\                      * @package    Jobs                    \\\\\\\
+    ///////    * @author     Malik Tahir Mehmood <malik.tahir786@gmail.com>   ///////
+    \\\\\\\                                                                   \\\\\\\
+    /////////////////////////////////////////////////////////////////////////////////
+    \\* @copyright  Copyright 2010 © free-magentoextensions.com All right reserved\\\
+    /////////////////////////////////////////////////////////////////////////////////
+-->
+
+<layout version="0.1.0">
+	<default>
+         <reference name="top.links">
+              <block type="jobs/links" name="jobs"/>
+                   <action method="addLinkBlock"><blockName>jobs</blockName></action>  
+        </reference>
+         <reference name="top.links">
+            <action method="addLink" translate="label title" module="jobs"><label></label><url helper="jobs/bar"/><title>Jobs</title><prepare/><urlParams/><position>10</position></action>
+        </reference>
+               
+                <reference name="footer_links">
+                    <block type="jobs/links" name="jobs"/>
+                   <action method="addLinkBlock"><blockName>jobs</blockName></action>  
+                </reference>
+	</default>
+	<jobs_index_index>
+	    <reference name="head">	
+                <action method="addCss"><stylesheet>css/fmejobs/jobsstyle.css</stylesheet></action>
+
+            </reference>
+                
+            <reference name="root">
+                <action method="setTemplate"><template>page/1column.phtml</template></action>
+            </reference>
+           <reference name="content">
+                <block type="jobs/jobs" name="jobs" template="jobs/jobs.phtml">
+			<block type="jobs/pagination" name="pagination" as="pagination" template="jobs/pagination.phtml" />
+			<block type="jobs/pagination" name="bottom_pagination" as="bottom_pagination" template="jobs/paginationbottom.phtml" />
+		</block>
+            </reference>
+        </jobs_index_index>
+        <jobs_index_view>
+            <reference name="head">
+                <!--<action method="addJs"><script>scriptaculous/scriptaculous.js</script></action>-->
+               <action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params></params></action>
+                <action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+                <action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+                <action method="addCss"><stylesheet>css/fmejobs/boxes.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/fmejobs/jobsstyle.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/fmejobs/jquery.fancybox.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/fmejobs/jquery.fancybox-buttons.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/fmejobs/jquery.fancybox-thumbs.css</stylesheet></action>
+                <action method="addCss"><stylesheet>css/fmejobs/jquery.fancybox-transitions.css</stylesheet></action>
+                <action method="addJs"><script>fmejobs/jquery-1.11.0.min.js</script></action>
+                <action method="addJs"><script>fmejobs/fancybox/jquery.fancybox.js</script></action>
+                <action method="addJs"><script>fmejobs/fancybox/helpers/jquery.fancybox-buttons.js</script></action>
+                <action method="addJs"><script>fmejobs/fancybox/helpers/jquery.fancybox-media.js</script></action>
+                <action method="addJs"><script>fmejobs/fancybox/helpers/jquery.fancybox-thumbs.js</script></action>
+                <action method="addJs"><script>fmejobs/fancybox/jquery.fancybox-transitions.js</script></action>
+                
+            </reference>
+
+            <reference name="root">
+                <action method="setTemplate"><template>page/1column.phtml</template></action>
+            </reference>
+            <reference name="content">
+                <block type="jobs/detail" name="jobs.detail" template="jobs/jobsdetail.phtml" />
+            </reference>
+        </jobs_index_view>
+</layout> 

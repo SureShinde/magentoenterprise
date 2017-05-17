@@ -1,0 +1,98 @@
+/**
+ * @category   CLS
+ * @package    ProductCompare
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+
+@import "../framework";
+
+.product-list-compare {
+    margin: 5px 0 20px;
+    position: relative;
+}
+.product-list-compare .actions {
+    float: left;
+    margin-right: 10px;
+}
+.product-list-compare .actions button {
+    margin-top: 5px;
+}
+.product-list-compare .actions button span span {
+    width: 85px;
+}
+.product-list-compare .compare-item {
+    float: left;
+    margin: 5px 5px 0 0;
+    position: relative;
+
+    a.button {
+        padding-right: 43px;
+        span {
+            white-space: normal;
+        }
+    }
+
+
+}
+.product-list-compare .compare-item .compare-remove {
+    position: absolute;
+    border: 1px solid #c8c8c8;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: darken(#f9f9f9, 10%);
+    width: 32px;
+
+    .btn-remove {
+        position: absolute;
+        top: 50%;
+        margin-top: -9px;
+        right: 5px;
+        border: none;
+    }
+
+    &:hover {
+        background-color: $c-action;
+
+        .btn-remove:after {
+            color: #fff;
+        }
+    }
+}
+.product-list-compare .loading,
+.product-list-compare .error {
+    font-size: 12px;
+    line-height: 12px;
+    position: absolute;
+    left: 26px;
+    top: -11px;
+}
+
+.category-products .compare-checkbox-wrapper {
+    margin-top: 5px;
+
+    .loading {
+        @include not-selectable;
+        cursor: default;
+    }
+
+    .link-compare {
+        color: $c-action;
+        font-size: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+        cursor: pointer;
+
+        &:hover {
+            color: $c-stimulus;
+            text-decoration: underline;
+        }
+    }
+}
+
+.category-products .compare-checkbox {
+    margin-right: 5px;
+    margin-top: 4px;
+    vertical-align: top;
+}

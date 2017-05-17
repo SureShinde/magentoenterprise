@@ -1,0 +1,432 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition End User License Agreement
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magento.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license http://www.magento.com/license/enterprise-edition
+ */
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @see Mage_Catalog_Block_Layer_View
+ */
+?>
+<?php if($this->canShowBlock()): ?>
+<div class="block block-layered-nav<?php if (!$this->getLayer()->getState()->getFilters()): ?> block-layered-nav--no-filters<?php endif; ?>">
+    <div class="block-title">
+        <strong><span><?php echo $this->__('Shop By') ?></span></strong>
+    </div>
+    <div class="block-content toggle-content">
+        <?php echo $this->getStateHtml() ?>
+        <?php if ($this->getLayer()->getState()->getFilters()): ?>
+            <div class="actions"><a href="<?php echo $this->getClearUrl() ?>"><?php echo $this->__('Clear All') ?></a></div>
+        <?php endif; ?>
+        <?php if($this->canShowOptions()): ?>
+            <p class="block-subtitle block-subtitle--filter"><?php echo $this->__('Filter') ?></p>
+            <dl id="narrow-by-list">
+                <?php $_filters = $this->getFilters() ?>
+                <?php foreach ($_filters as $_filter): ?>
+                <?php if($_filter->getItemsCount()): ?>
+                    <dt><?php echo $this->__($_filter->getName()) ?></dt>
+                    <dd><?php echo $_filter->getHtml() ?></dd>
+                <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+            <script type="text/javascript">decorateDataList('narrow-by-list')</script>
+			<style>
+			/*
+				This code is an example of a NeoWize widget that shows related products.
+				You may change or modify it any way you like to fit your style and needs.
+
+				This example code is provided by NeoWize, 2017.
+				**/
+
+				/* the main container div that the widget reside in. */
+				.neowize-widget-container {
+
+					/* default text styling and font */
+					font-family: Verdana, Geneva, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					font-size: 1.0em;
+					overflow-x: hidden;
+					position: relative;
+
+					/* padding */
+					padding: 10px 10px 10px 10px;
+
+					/* disable text selection so we can use drag as scrolling */
+					-webkit-touch-callout: none;
+					-webkit-user-select: none;
+					-khtml-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					user-select: none;
+
+					/* widget outlines */
+					border: solid 1px #ccc;
+				}
+
+				/* the widget div that actually contain the products. */
+				.neowize-widget-container-products {
+
+					/* set widget size (full width with constant height) */
+					display: block;
+					width: 100%;
+
+					/* make overflow hidden. note: on X axis instead of scrollbar we make dragging-based scrolling. */
+					overflow-y: hidden;
+					overflow-x: hidden;
+
+					/* default text styling and font */
+					font-family: Verdana, Geneva, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+					white-space: nowrap;
+					font-size: 1.0em;
+
+					/* disable text selection so we can use drag as scrolling */
+					-webkit-touch-callout: none;
+					-webkit-user-select: none;
+					-khtml-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					user-select: none;
+				}
+
+				/* widget title styling (the "You may also like..." text). */
+				.neowize-widget-title {
+					font-size: 1.3em;
+					margin-bottom: 2em;
+				}
+
+				/* the div that contains a single product in the widget. */
+				.neowize-product-container {
+
+					/* set the size of every product in the widget.  */
+					display: block;
+					width: 100%;
+
+					/* padding between products */
+					margin-bottom: 2em;
+
+					/* to make products height constant regardless of padding and texts */
+					-moz-box-sizing: border-box;
+					-webkit-box-sizing: border-box;
+					 box-sizing: border-box;
+				}
+
+				/* product link, that wrap all the product text and picture. this style affect all the widget products text. */
+				.neowize-product-link {
+
+					/* remove underline and other decorations and set clipping text overflow */
+					text-decoration: none;
+					text-overflow: clip;
+					white-space: normal;
+
+					/* default texts color */
+					color: #111111;
+				}
+
+				/* product preview image in NeoWize widget. */
+				.neowize-product-pic {
+
+					/* product preview image size */
+					display: block;
+					height: auto;
+					width: 100%;
+					max-width: 250px;
+					margin-bottom: 10px;
+
+					/* center product image */
+					margin-left: auto;
+					margin-right: auto;
+					text-align: center;
+				}
+
+				/* product title in NeoWize widget. */
+				.neowize-product-title {
+
+					/* general styling */
+					font-size: 1.0em;
+					font-weight: normal;
+					overflow: hidden;
+					display: block !important;
+					text-align: center;
+					font-weight: bold;
+					margin-bottom: 0.26em;
+				}
+
+				/* if your site have very long item names and you want to limit them to max of two lines (will add ... when cut),
+				 uncomment the section below. this will limit item name length. */
+				/*
+				.neowize-product-title {
+
+					text-overflow: ellipsis;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					line-height: 1.2em;
+					max-height: 2.4em;
+					min-height: 2.4em;
+				}
+				*/
+
+				/* effect when hovering over products div - highlight product name */
+				.neowize-product-container:hover a {
+					color: #336699;
+					-o-transition: 0.25s;
+					-ms-transition: 0.25s;
+					-moz-transition: 0.25s;
+					-webkit-transition: 0.25s;
+					transition: 0.25s;
+				}
+				.neowize-product-container a {
+
+					/* for hover transition */
+					-o-transition: 0.25s;
+					-ms-transition: 0.25s;
+					-moz-transition: 0.25s;
+					-webkit-transition: 0.25s;
+					transition: 0.25s;
+				}
+
+				/* effect when hovering over products image - make it slightly larger */
+				.neowize-product-container:hover img {
+					-ms-transform: scale(1.05, 1.05);
+					-webkit-transform: scale(1.05, 1.05);
+					transform: scale(1.05, 1.05);
+					-o-transition: 0.25s;
+					-ms-transition: 0.25s;
+					-moz-transition: 0.25s;
+					-webkit-transition: 0.25s;
+					transition: 0.25s;
+				}
+				.neowize-product-container img {
+
+					/* for hover transition */
+					-o-transition: 0.25s;
+					-ms-transition: 0.25s;
+					-moz-transition: 0.25s;
+					-webkit-transition: 0.25s;
+					transition: 0.25s;
+				}
+
+				/* product price in NeoWize widget. */
+				.neowize-product-price {
+
+					/* general styling */
+					color: #565656;
+					font-size: 1.0em;
+					text-align: center;
+					margin-top: 0.26em;
+				}
+
+			</style>
+			<script>
+				/*
+				This code is an example of a NeoWize widget that shows related products.
+				You may change or modify it any way you like to fit your style and needs.
+
+				This example code is provided by NeoWize, 2017.
+				**/
+
+				// widget scope
+				(function() {
+
+					// wrap retrying to init neowize until loaded
+					function initNeowizeWidgetStarter() {
+
+						// if neowize is not loaded yet, or we still don't have user id, retry..
+						if (typeof Neowize === "undefined" || !Neowize.User || !Neowize.User.get_id()) {
+							return setTimeout(initNeowizeWidgetStarter, 50);
+						}
+
+						// call init
+						try {
+							initNeowizeWidget();
+						}
+						catch (e) {
+							// TBD: you can add code here to handle what to do if we get unexpected javascript errors
+							// console.log("Unexpected error!", e);
+						}
+					}
+
+					// init widget
+					function initNeowizeWidget() {
+
+						// short alias for jquery (we take Neowize internal jquery object)
+						var $ = Neowize.$;
+
+						// get category from url
+						var category = Neowize.Urls.get_normalized_url().split('.')[0].substr(1);
+
+						// set API params
+						var data = Neowize.$.extend({
+
+							// api and user id
+							api_key: Neowize.api_key,
+							user_id: Neowize.User.get_id(),
+
+							// which feature to use (this widget support 'featured_items_by_categories' and 'related_items')
+							feature: "featured_items_by_category",
+
+							// request items full data and not just ids
+							item_data: true,
+
+							// how many results to return. change this number to show different amount of items.
+							results_count: 5,
+
+							// when using featured items: categories to show. change this value to limit results to specific categories.
+							// note: this param is a list of lists (list of category groups).
+							category: [[]],
+
+							// when using featured_items_by_category: base category to get items for.
+							category: category,
+							category_climb: true,
+							category_sep: '/',
+							category_min_items: 20,
+
+							// when using related items: item id to get related items for. make sure this is the same id as you use
+							// in your feeder files.
+							item_id: null,
+
+							// language code.
+							// note: if this param is omitted NeoWize will use the default language provided in the main feeder file.
+							locale: null,
+
+							// currency code to return prices in
+							// note: if this param is omitted NeoWize will use the default currency provided in the main feeder file
+							currency: null,
+						}, Neowize._widget_data);
+
+						// extract feature type
+						var feature = data.feature;
+						delete data['feature'];
+
+						// call NeoWize API to get items data to show
+						Neowize.Server.api(feature, data, function(response) {
+
+								// got error? print to console and return.
+								if (response.code !== 0) {
+									// TBD: you can add code here to handle what to do if we get error from server.
+									// console.log("NeoWize got error from API:", response.msg);
+									return;
+								}
+
+								// didn't get any results? stop here
+								if (response.data === undefined || response.data.length === 0)
+								{
+									// TBD: you can add code here to handle what to do if we get no results.
+									// console.log("NeoWize got no products to show at this time.");
+									return;
+								}
+
+								// get the template html
+								var template = $("#neowize-product-container-template");
+
+								// get the main container div (eg what contains the entire widget)
+								var container = $("#neowize-widget-container-products");
+
+								// iterate results
+								$.each(response.data, function(i, val) {
+
+									// get current product data
+									var prodUrl = val.url;
+									var prodName = val.name;
+									var prodImage = val.img_url;
+									var prodPrice = val.price;
+									var prodCurrency = val.currency;
+
+									// duplicate template
+									var curr = template.clone();
+
+									// add current product div to container
+									container.append(curr);
+
+									// set product fields
+									curr.find(".neowize-product-link").attr("href", prodUrl);
+									curr.find(".neowize-product-pic").attr("src", prodImage);
+									curr.find(".neowize-product-title").text(prodName);
+									curr.find(".neowize-product-price").find("span").text(prodPrice + " " + (prodCurrency || ""));
+									curr.attr("id", "neowize-widget-prod-" + i);
+
+									// add event on all links to disable them while dragging
+									curr.find('a').click(function() {
+										if (wasDragged) {
+											return false;
+										}
+									});
+
+									// turn product visible
+									curr.show();
+								});
+
+								// only when done, show the widget div
+								container.parent().show();
+							});
+					}
+
+					// call widget init function
+					initNeowizeWidgetStarter();
+				})();
+			</script>
+            <script>
+                $j( "#narrow-by-list .odd" ).first().addClass('current');
+                $j( "#narrow-by-list .odd:nth-child(2)" ).addClass('current');
+            </script>
+        <?php endif; ?>
+			<!-- NeoWize widget container. note: hidden until we get data from NeoWize API. -->
+			<div id="neowize-widget-container" ondragstart="return false;" ondrop="return false;" class="neowize-widget-container" style="display:none">
+
+				<!-- left arrow (shown when there's scrolling) -->
+				<div id="neowize-widget-arrow-right" style="z-index: 1000; display:inline-block; position:absolute; right:10px; top:50%; display:none;">
+					<div class="neowize-arrow-container">
+						<i class="neowize-arrow"></i>
+					</div>
+				</div>
+				<!-- right arrow (shown when there's scrolling) -->
+				<div id="neowize-widget-arrow-left" style="z-index: 1000; display:inline-block; position:absolute; left:10px; top:50%; transform: scale(-1, 1); display:none;">
+					<div class="neowize-arrow-container">
+						<i class="neowize-arrow"></i>
+					</div>
+				</div>
+
+				<!-- widget title -->
+				<h1 class="neowize-widget-title">You may also like..</h1>
+
+				<!-- the div that contain the products themselves. -->
+				<div id="neowize-widget-container-products" class="neowize-widget-container-products">
+					<!-- a single item template. we duplicate this div and change its details per item loaded from NeoWize. -->
+					<div id="neowize-product-container-template" draggable="false" ondragstart="return false;" ondrop="return false;" class="neowize-product-container" style="display:none;">
+						<a class="neowize-product-link">
+							<img class="neowize-product-pic" draggable="false" src="">
+							<h2 class="neowize-product-title"></h2>
+							<p class="neowize-product-price">Price: <span></span></p>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- // NeoWize widget -->
+		
+		
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,111 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Language switcher + welcome message
+// ==============================================
+
+.header-language-background {
+    padding: $gap;
+    background-color: #E0E0E0;
+    text-transform: uppercase;
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+.header-language-container {
+    max-width: $max-content-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-language,
+.currency-switcher {
+    float: left;
+    margin-right: $gap;
+}
+
+.form-language label,
+.currency-switcher label {
+    margin-right: 5px;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-medium) {
+
+    .header-language-background {
+        display: none;
+    }
+
+}
+
+
+
+// ==============================================
+// Store Language Container
+// ==============================================
+
+.store-language-container {
+    float: left;
+    max-width: 300px;
+    padding-right: 10px;
+}
+
+.store-language-container select {
+    max-width: 100%;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-medium - 1px) {
+
+    .store-language-container {
+        float: right;
+        padding-top: 8px;
+        padding-rigth: 0;
+    }
+
+    .store-language-container label {
+        display: none;
+    }
+
+    .store-language-container select {
+        // Setting this font-size will causing zooming on iOs devices, but it keeps header more tidy
+        font-size: $f-size-xs;
+    }
+
+}
+
+
+
+// ==============================================
+// Welcome Message
+// ==============================================
+
+.welcome-msg {
+    float: right;
+}

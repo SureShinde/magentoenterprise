@@ -1,0 +1,16 @@
+order deny,allow
+deny from all
+allow from 96.56.228.118
+allow from 173.251.27.138
+
+<IfModule mod_deflate.c>
+
+    RemoveOutputFilter DEFLATE
+    RemoveOutputFilter GZIP
+
+</IfModule>
+
+<Files ~ "\.(cfg|ini|xml)$">
+    order allow,deny
+    deny from all
+</Files> 

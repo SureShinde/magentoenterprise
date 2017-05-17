@@ -1,0 +1,42 @@
+
+<!-- - Trusted stores script - -->
+<script type="text/javascript">
+    if (typeof GtsValidator != 'undefined')
+        GtsValidator.badge = true;
+</script>
+<script type="text/javascript">
+
+    var gts = gts || [];
+    gts.push(["id", "<?php echo $this->getGoogletrustedstores_gts_gts_id(); ?>"]);
+<?php if ($this->getGoogletrustedstores_gts_badge_position() == "USER_DEFINED") { ?>
+        gts.push(["badge_position", "USER_DEFINED"]);
+        gts.push(["badge_container", "gts_container"]);
+<?php } else { ?>
+        gts.push(["badge_position", "<?php echo $this->getGoogletrustedstores_gts_badge_position(); ?>"]);
+<?php } ?>
+<?php // if ($this->getPid() != "-1") {            ?>
+    gts.push(["google_base_offer_id", "<?php echo $this->getPid(); ?>"]);
+<?php // }            ?>
+    gts.push(["locale", "<?php echo $this->getGoogletrustedstores_gts_language(); ?>"]);
+    gts.push(["google_base_subaccount_id", "<?php echo $this->getGoogletrustedstores_gts_gb_id(); ?>"]);
+    gts.push(["google_base_country", "<?php echo $this->getGoogletrustedstores_gts_country(); ?>"]);
+    gts.push(["google_base_language", "<?php echo substr($this->getGoogletrustedstores_gts_language(), 0, 2); ?>"]);
+
+    (function () {
+        var gts = document.createElement("script");
+        gts.type = "text/javascript";
+        gts.async = true;
+        gts.src = "https://www.googlecommerce.com/trustedstores/api/js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(gts, s);
+    })();
+</script>
+<?php if ($this->getGoogletrustedstores_gts_badge_position() == "USER_DEFINED") { ?>
+    <style>
+        div#gts_container { <?php echo str_replace(array("\r\n", "\r", "\n"), "", $this->getGoogletrustedstores_gts_badge_container_css()); ?> }
+    </style>
+    <div id="gts_container"></div>
+    <?php
+}
+
+Mage::getSingleton('checkout/session')->setData('gts_badge_test', false);

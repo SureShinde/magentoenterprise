@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Integration
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+-->
+<config>
+    <modules>
+        <Nucleus_Integration>
+            <version>1.0.2</version>
+        </Nucleus_Integration>
+    </modules>
+
+    <global>
+        <helpers>
+            <nucleus_integration>
+                <class>Nucleus_Integration_Helper</class>
+            </nucleus_integration>
+        </helpers>
+
+        <models>
+            <nucleus_integration>
+                <class>Nucleus_Integration_Model</class>
+            </nucleus_integration>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_create>Nucleus_Integration_Model_Adminhtml_Sales_Order_Create</sales_order_create>
+                </rewrite>
+            </adminhtml>
+        </models>
+    </global>
+
+    <default>
+        <payment>
+            <amazon_payments>
+                <!-- This prevents secure cart from being forced in dev environments that potentially don't have SSL. With this enabled, secure is forced even if Amazon is not configured -->
+                <secure_cart>0</secure_cart>
+            </amazon_payments>
+        </payment>
+    </default>
+</config>

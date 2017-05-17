@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   FME
+ * @package    FME_Copycategories
+ * @author     Mahmood Rehman mahmood.rehman@unitedsol.net
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <FME_Copycategories>
+            <version>1.5.0</version>
+        </FME_Copycategories>
+    </modules>
+    <frontend>
+        <routers>
+            <copycategories>
+                <use>standard</use>
+                <args>
+                    <module>FME_Copycategories</module>
+                    <frontName>copycategories</frontName>
+                </args>
+            </copycategories>
+        </routers>
+        <layout>
+            <updates>
+                <copycategories>
+                    <file>copycategories.xml</file>
+                </copycategories>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<adminhtml> 
+                <args> 
+                    <modules> 
+                        <copycategories after="Mage_Adminhtml">FME_Copycategories_Adminhtml</copycategories> 
+                        <frontName>copycategories</frontName> 
+                    </modules> 
+                </args> 
+            </adminhtml> 
+        </routers>
+    </admin>
+    <adminhtml>
+      
+		<menu>
+            <fmebase>
+               <children>
+        			<copycategories module="copycategories">
+        				<title>Copycategories</title>
+        				<sort_order>0</sort_order>               
+        				<children>
+        					
+                            <config translate="title">
+                                <title>Configuration</title>
+                                <sort_order>1</sort_order>
+                                <action>adminhtml/system_config/edit/section/copycategories</action>
+                            </config>
+        				</children>
+        			</copycategories>
+                </children>
+            </fmebase>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+                    <children>
+                        <fmebase>
+                           <children>
+                                <copycategories module="copycategories">
+                                    <title>Copycategories</title>
+                                    <sort_order>0</sort_order>               
+                                    <children>
+                                       
+                                        <config translate="title">
+                                            <title>Configuration</title>
+                                            <sort_order>1</sort_order>
+                                           
+                                        </config>
+                                    </children>
+                                </copycategories>
+                            </children>
+                        </fmebase>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                    <copycategories>
+                                        <title>copycategories Module Section</title>
+                                    </copycategories>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<copycategories>
+					<file>copycategories.xml</file>
+				</copycategories>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>
+        
+        <models>
+            <copycategories>
+                <class>FME_Copycategories_Model</class>
+                <resourceModel>copycategories_mysql4</resourceModel>
+            </copycategories>
+            <copycategories_mysql4>
+                <class>FME_Copycategories_Model_Mysql4</class>
+                <entities>
+                    <!-- <copycategories>
+                        <table>fme_copycategories</table>
+                    </copycategories> -->
+                </entities>
+            </copycategories_mysql4>
+        </models>
+        <resources>
+            <copycategories_setup>
+                <setup>
+                    <module>FME_Copycategories</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </copycategories_setup>
+            <copycategories_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </copycategories_write>
+            <copycategories_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </copycategories_read>
+        </resources>
+        <blocks>
+            <adminhtml>           
+        <rewrite>
+     <catalog_category_edit_form>FME_Copycategories_Block_Adminhtml_Catalog_Category_Edit_Form</catalog_category_edit_form>
+            </rewrite>
+          
+            </adminhtml>  
+            <copycategories>
+                <class>FME_Copycategories_Block</class>
+            </copycategories>
+        </blocks>
+        <helpers>
+            <copycategories>
+                <class>FME_Copycategories_Helper</class>
+            </copycategories>
+        </helpers>
+    </global>
+    <default>
+        <copycategories>
+            <setting>
+                <settings>1</settings>
+             </setting>
+        </copycategories>
+    </default>
+
+    
+</config>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    CustomerAdvanced
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_CustomerAdvanced>
+            <active>true</active>
+            <codePool>community</codePool>
+        </CLS_CustomerAdvanced>
+    </modules>
+</config>

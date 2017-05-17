@@ -1,0 +1,54 @@
+<?php
+/**
+ * @category   CLS
+ * @package    CustomerAdvanced
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+?>
+
+<?php if (Mage::helper('cls_customeradvanced/quickaccess')->quickLoginEnabled()): ?>
+
+<div class="quick-account-login quick-user-access" id="quick_account_login" style="display:none">
+    <div class="inner-wrapper">
+    <h2><?php echo $this->__('Login') ?></h2>
+    <div class="quick-access-alert"></div>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="quick-login-form">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <input type="hidden" name="referer" value="<?php echo Mage::helper('core')->urlEncode(Mage::helper('core/url')->getCurrentUrl()) ?>" />
+        <input type="hidden" name="unencoded_referer" />
+        <div class="fieldset">
+            <ul class="form-list">
+                <li>
+                    <label for="quick_login_email" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                    <div class="input-box">
+                        <input name="login[username]" value="<?php echo $this->escapeHtml($this->getUsername()) ?>" id="quick_login_email" type="text" class="input-text required-entry validate-email" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Email Address')) ?>" />
+                    </div>
+                </li>
+                <li>
+                    <label for="quick_login_pass" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                    <div class="input-box">
+                        <input name="login[password]" type="password" class="input-text required-entry validate-password" id="quick_login_pass" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Password')) ?>" />
+                    </div>
+                </li>
+                <?php echo $this->getChildHtml('login.additional.info'); ?>
+                <li class="note">
+                    <a href="<?php echo $this->getForgotPasswordUrl() ?>"><?php echo $this->__('Forgot Your Password?') ?></a>
+                </li>
+            </ul>
+        </div>
+        <div class="buttons-set">
+            <button type="submit" class="button" name="send" id="quick_send2"><span><span><?php echo $this->__('Login') ?></span></span></button>
+        </div>
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+    </form>
+    <a href="javascript:void(0)" class="alt-access-link" data-show-section="register"><?php echo $this->__('Need to register?') ?></a>
+    <script type="text/javascript">
+        //<![CDATA[
+        var quickLoginForm = new VarienForm('quick-login-form', true);
+        //]]>
+    </script>
+    </div>
+</div>
+
+<?php endif; ?>

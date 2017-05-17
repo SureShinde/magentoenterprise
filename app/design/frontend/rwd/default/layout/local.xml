@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout>
+    <!-- Magento 1.2.* controller override fix start -->
+    <checkout_cart_index>
+    	<reference name='checkout.cart'>
+	    	<block type="shipestimate/catalog_shipestimate" name="shipping.estimate.estimate" template="webshopapps_shipestimate/shipestimate.phtml">
+	    	    <action method="addToParentGroup"><group>detailed_info</group></action>
+	    	    <action method="setTitle" translate="value"><value>Estimate Shipping and Handling</value></action>
+	    	</block>
+	    </reference>
+    </checkout_cart_index>
+</layout>

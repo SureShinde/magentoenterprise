@@ -1,0 +1,7 @@
+"Enable ""Quick Register"" Interface","Enable ""Quick Register"" Interface"
+"Enable ""Quick Login"" Interface","Enable ""Quick Login"" Interface"
+"Already have an account?","Already have an account?"
+"Need to register?","Need to register?"
+"Login-restricted URL Patterns","Login-restricted URL Patterns"
+"Regular expressions to match URL paths that are restricted to logged in customers. Links to matching URLs will result in the ""Quick Login"" Slide-Down being triggered.","Regular expressions to match URL paths that are restricted to logged in customers. Links to matching URLs will result in the ""Quick Login"" Slide-Down being triggered."
+"You must be logged in to access this section.","You must be logged in to access this section."

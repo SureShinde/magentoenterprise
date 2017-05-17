@@ -1,0 +1,35 @@
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+.nucleus-header { background:#fff; padding:10px 0; }
+.nucleus-header .main-logo { float:left; background:url(images/nucleus_logo.png) no-repeat; margin:10px 0 0 10px; width:200px; height:49px; }
+.nucleus-header .main-info { float:right; width:400px; padding:0 10px; border:1px solid #7A99AB; border-width:0 1px; margin-right:420px; }
+
+.nucleus-header .main-logo a { display:block; width:100%; height:100%; text-indent:-1000em; }
+.nucleus-header h3 { color:#7A99AB; font-size:1.2em; }
+.nucleus-header .main-info ul { list-style:disc; margin-left:2em; }
+.nucleus-header .main-info a { color:#7A99AB; }
+
+/* Clear */
+.nucleus-header:after { display:block; clear:both; content:"."; font-size:0; line-height:0; height:0; overflow:hidden; }

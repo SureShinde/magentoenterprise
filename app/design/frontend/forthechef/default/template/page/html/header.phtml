@@ -1,0 +1,157 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition End User License Agreement
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magento.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license http://www.magento.com/license/enterprise-edition
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+
+    <div class="header-language-background">
+        <div class="header-language-container">
+            <div class="store-language-container">
+                <?php echo $this->getChildHtml('store_language') ?>
+            </div>
+
+            <?php echo $this->getChildHtml('currency_switcher') ?>
+
+            <p class="welcome-msg"><?php echo $this->getChildHtml('welcome') ?> <?php echo $this->getChildHtml('accountLinks') ?></p>
+        </div>
+    </div>
+
+    <header id="header" class="page-header">
+        <div class="page-header-container">
+            <a class="logo" href="<?php echo $this->getUrl('') ?>">
+                <img src="<?php echo $this->getSkinUrl('images/logo.png'); ?>"
+                     srcset="<?php echo $this->getSkinUrl('images/logo@2x.png') . ' 2x, ' . $this->getSkinUrl('images/logo@3x.png') . ' 3x'; ?>"
+                     alt="<?php echo $this->getLogoAlt(); ?>"
+                     class="large" />
+                <img src="<?php echo $this->getSkinUrl('images/logo.png'); ?>"
+                     srcset="<?php echo $this->getSkinUrl('images/logo@2x.png') . ' 2x, ' . $this->getSkinUrl('images/logo@3x.png') . ' 3x'; ?>"
+                     alt="<?php echo $this->getLogoAlt(); ?>"
+                     class="small" />
+            </a>
+            <p class="tagline"><?php echo $this->__('Sparking your culinary spirit'); ?></p>
+
+            <?php // In order for the language switcher to display next to logo on smaller viewports, it will be moved here.
+            // See app.js for details ?>
+            <div class="store-language-container"></div>
+
+            <div class="top-left">
+                <?php echo $this->getChildHtml('header.top-link'); ?>
+            </div>
+
+            <!-- Skip Links -->
+
+            <div class="skip-links">
+                <a href="#header-nav" class="skip-link skip-nav">
+                    <span class="icon"></span>
+                    <span class="label"><?php echo $this->__('Menu'); ?></span>
+                </a>
+
+                <a href="#header-search" class="skip-link skip-search">
+                    <span class="icon"></span>
+                    <span class="label"><?php echo $this->__('Search'); ?></span>
+                </a>
+
+                <div class="account-cart-wrapper">
+                    <a href="javascript:void(0)" id="header-account-toggle" class="skip-link skip-account">
+                        <span class="icon"></span>
+                        <span class="label"><?php echo $this->__('My Account'); ?></span>
+                    </a>
+                    <script>
+                        $j('#header-account-toggle').click(function(){
+                            $j('#header-account').toggle();
+                            if(window.innerWidth < 770)
+                            {
+                                if ($j('#header-account').hasClass('show'))
+                                {
+                                    $j('#header-account').removeClass('show');
+                                    $j('#header-account').addClass('hide');
+                                } else
+                                {
+                                    $j('#header-account').removeClass('hide');
+                                    $j('#header-account').addClass('show');
+                                    window.location.href = "#account-jump";
+                                }
+                            }
+
+
+                        });
+                    </script>
+
+                    <!-- Cart -->
+
+                    <div class="header-minicart">
+                        <?php echo $this->getChildHtml('minicart_head'); ?>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Search -->
+
+            <div id="header-search" class="skip-content">
+                <?php echo $this->getChildHtml('topSearch') ?>
+            </div>
+
+            <!-- Promo message mobile -->
+            <div class="promo-mobile"><?php echo $this->getChildHtml('header.promo') ?></div>
+
+
+            <!-- Navigation -->
+
+            <div id="header-nav" class="skip-content">
+                <?php echo $this->getChildHtml('topMenu') ?>
+            </div>
+
+            <!-- Account -->
+            <a name="account-jump"></a>
+            <div id="header-account" class="skip-content hide">
+                <?php echo $this->getChildHtml('topLinks') ?>
+            </div>
+
+            <!-- Promo message -->
+            <div class="promo-desk"><?php echo $this->getChildHtml('header.promo') ?></div>
+
+            <!-- Sub-nav -->
+
+            <div class="sub-nav">
+                <!-- Badge-->
+                <ul>
+                    <li>
+                        <?php echo $this->getChildHtml('nucleus_catalog.all_badges'); ?>
+
+                    </li>
+                </ul>
+                <?php echo $this->getChildHtml('header.sub-nav') ?>
+            </div>
+        </div>
+        <span class="to-top"><span>top</span></span>
+    </header>
+
+
+
+<?php echo $this->getChildHtml('topContainer'); ?>

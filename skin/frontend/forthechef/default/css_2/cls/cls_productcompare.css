@@ -1,0 +1,135 @@
+/**
+ * @category   CLS
+ * @package    ProductCompare
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+/*
+// ----------------------------------------------
+// Usage example:
+// For IE set $mq-support to false.
+// Set the fixed value.
+// Then use mixins to test whether styles should be applied.
+// ----------------------------------------------
+
+$mq-support: false;
+$mq-fixed-value: 1024;
+
+// Renders at fixed value
+@include bp (min-width, 300px) { 
+    div { color:#000; }
+}
+
+// Doesn't render without MQ support
+@include bp (min-width, 1200px) { 
+    div { color:#FFF; }
+}
+
+// Doesn't render without MQ support
+@include bp (max-width, 300px) { 
+    div { color:#444; }
+}
+
+// Renders at fixed value
+@include bp (max-width, 1200px) { 
+    div { color:#888; }
+}
+
+// ----------------------------------------------
+*/
+.product-list-compare {
+  margin: 5px 0 20px;
+  position: relative;
+}
+
+.product-list-compare .actions {
+  float: left;
+  margin-right: 10px;
+}
+
+.product-list-compare .actions button {
+  margin-top: 5px;
+}
+
+.product-list-compare .actions button span span {
+  width: 85px;
+}
+
+.product-list-compare .compare-item {
+  float: left;
+  margin: 5px 5px 0 0;
+  position: relative;
+}
+.product-list-compare .compare-item a.button {
+  padding-right: 43px;
+}
+.product-list-compare .compare-item a.button span {
+  white-space: normal;
+}
+
+.product-list-compare .compare-item .compare-remove {
+  position: absolute;
+  border: 1px solid #c8c8c8;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  background-color: #e0e0e0;
+  width: 32px;
+}
+.product-list-compare .compare-item .compare-remove .btn-remove {
+  position: absolute;
+  top: 50%;
+  margin-top: -9px;
+  right: 5px;
+  border: none;
+}
+.product-list-compare .compare-item .compare-remove:hover {
+  background-color: #46647e;
+}
+.product-list-compare .compare-item .compare-remove:hover .btn-remove:after {
+  color: #fff;
+}
+
+.product-list-compare .loading,
+.product-list-compare .error {
+  font-size: 12px;
+  line-height: 12px;
+  position: absolute;
+  left: 26px;
+  top: -11px;
+}
+
+.category-products .compare-checkbox-wrapper {
+  margin-top: 6px;
+}
+@media only screen and (min-width: 1204px) {
+  .category-products .compare-checkbox-wrapper {
+    text-align: left;
+  }
+}
+.category-products .compare-checkbox-wrapper .loading {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+.category-products .compare-checkbox-wrapper .link-compare {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+}
+.category-products .compare-checkbox-wrapper .link-compare:hover {
+  color: #3d576e;
+  text-decoration: underline;
+}
+
+.category-products .compare-checkbox {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  margin-top: 2px;
+  vertical-align: top;
+}

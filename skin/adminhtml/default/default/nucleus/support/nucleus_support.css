@@ -1,0 +1,242 @@
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Support
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+.nucleus-support-ticket-button {
+    width:260px;
+    height:30px;        
+    position:fixed;
+    right:290px;
+    bottom:0;
+}
+
+.nucleus-support-ticket-button div {
+    cursor:pointer;
+    margin:0;
+    padding:0;
+}
+
+.nucleus-support-icon { 
+    width:37px;
+    height:30px;
+    background: #6d8c9f url(images/nucleus-support-env.png) no-repeat center center;
+    background-size:70%;
+    float:left;
+    -webkit-border-top-left-radius: 5px; 
+    -moz-border-radius-topleft: 5px; 
+    border-top-left-radius: 5px;
+}
+
+.nucleus-support-text {
+    background: #7a99ac;
+    float:left;
+    width:222px;
+    height:30px;
+    text-align:center;
+    color:white;
+    font-weight:bold;
+    cursor:grab;
+    font-family: Verdana,Geneva,"sans-serif";
+    font-size:12px;
+    -moz-border-radius-topright: 5px;        
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px; 
+}
+
+.nucleus-support-text div {
+    margin-top:5px;
+}
+
+.nucleus-support-ticket-form {
+    width:320px;
+    height:500px;        
+    position:fixed;
+    right:290px;
+    bottom:0;       
+    -webkit-border-top-left-radius: 5px; 
+    -moz-border-radius-topleft: 5px; 
+    border-top-left-radius: 5px;
+    -moz-border-radius-topright: 5px;        
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px; 
+    box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.1)
+}
+
+.nucleus-support-ticket-form .nucleus-support-text div {
+    margin: 0;
+}
+
+.nucleus-support-ticket-form .nucleus-support-text {
+    -webkit-border-top-left-radius: 5px; 
+    -moz-border-radius-topleft: 5px; 
+    border-top-left-radius: 5px;
+    width:100%;
+    color:#e6ecef;
+    font-size:12px;
+    height:25px;
+    font-family:Verdana,Geneva,sans-serif;
+}
+
+.nucleus-dash-sign {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 24px;
+    font-size: 17px;
+    height:25px;
+    width:40px;
+    float:right;
+    cursor:pointer;
+    margin-top:-3px!important;
+    -moz-border-radius-topright: 5px;        
+    border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px; 
+}
+
+
+.nucleus-support-ticket-form-message {
+    margin-top:3px!important;
+}
+
+.nucleus-support-details {
+    background:white;
+    height:440px;
+    color:#666;
+    font-size:12px;
+    font-family: Verdana,Geneva,"sans-serif";
+    border:1px solid #DDD;        
+    margin-top:5px;
+    padding:40px 20px 20px 20px;
+}
+
+.nucleus-support-details label {
+    display:block;
+    font-weight:bold;
+    margin-bottom:10px;
+    float:left;
+    color:#666;
+}
+
+.nucleus-support-details textarea {
+    display:block;
+    width:100%;
+    height:200px;
+    -moz-border-radius: 5px;        
+    border-radius: 5px;
+    -moz-border-radius: 5px; 
+}
+
+.nucleus-support-details input[type="text"] {
+    display:block;
+    width:100%;
+    -moz-border-radius: 5px;        
+    border-radius: 5px;
+    -moz-border-radius: 5px;  
+}
+
+.nucleus-support-details input[type="text"]:focus {
+    border-color: #6D6D6D;
+}
+
+.nucleus-support-details .nucleus-subject {
+    margin-bottom:20px;
+}
+
+.nucleus-support-details textarea:focus {
+    border-color: #6D6D6D;
+}
+
+.reuqest-details-active {
+    width:10px;
+    height:10px;
+    float:left;
+    margin-left:5px;
+    display:block;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
+    color:#666;
+}
+
+.request-details {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    z-index: 2400;
+    padding: 0 10px 0 10px;
+    width: 250px;
+    font-size: 11px;
+    font-weight: normal;
+    background:white;
+}
+
+.nucleus-note {
+    font-size:10px;
+}
+
+.request-submit {
+    -moz-appearance: none;
+    width: 48%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #FFF;
+    background: none repeat scroll 0% 0% #7a99ac;
+    padding: 6px 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #607f91;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1), 0px 1px 0px rgba(255, 255, 255, 0.25) inset;
+    font-weight: bold;
+    word-wrap: normal;
+    cursor: pointer;
+    width:100%;
+    margin-top:70px;
+    height:30px;
+    font-size:12px;
+    font-family:Verdana,Geneva,sans-serif;
+}
+
+.request-submit:hover {
+    background-color: #8aa9bc;
+}
+
+.complete-field-hint, .complete-field-hint-subject {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #C00;
+    font-weight: bold;
+    font-style: italic;
+    position:absolute;
+}
+
+.complete-field-hint-subject {
+    margin-top:-18px;
+}
+
+.nucleus-left-float {
+    height:25px;
+    float:left;
+    width:35px 
+} 

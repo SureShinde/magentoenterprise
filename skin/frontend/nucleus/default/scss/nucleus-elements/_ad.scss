@@ -1,0 +1,145 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+// ==============================================
+// Ad
+// ==============================================
+
+.ad {
+    list-style:none !important;
+    overflow:hidden;
+}
+
+.ad-item {
+    margin:0 0 $gap-tall !important;
+}
+
+.ad-link {
+    position:relative;
+    display:block;
+    background:#D0D0D0;
+    border-radius:3px;
+    color:$c-action;
+}
+
+.no-touchevents .ad-link:hover:before {
+    content:'';
+    position:absolute;
+    z-index:2;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    border:5px solid lighten($c-action, 50%); // Hex fallback
+    border:5px solid rgba($c-action, 0.5);
+    border-radius:3px;
+}
+
+.ad-details {
+    position:absolute;
+    top:15%;
+    left:5%;
+}
+
+.ad-tagline {
+    font-size:$f-size-xxs;
+    text-transform:uppercase;
+}
+
+.ad-title,
+h2.ad-title,
+h3.ad-title,
+h4.ad-title,
+h5.ad-title,
+h6.ad-title {
+    margin-bottom:15px;
+    font-size:26px;
+    font-weight:300;
+    line-height:1;
+    color:$c-action;
+    text-transform:none;
+}
+
+.ad-image {
+    width:100%;
+    border-radius:3px;
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-small+1) {
+
+    .ad-item {
+        float:left;
+        width:50%;
+    }
+
+    .ad-item:first-child .ad-link {
+        margin-right:10px;
+    }
+
+    .ad-item:last-child .ad-link {
+        margin-left:10px;
+    }
+
+    .ad-title,
+    h2.ad-title,
+    h3.ad-title,
+    h4.ad-title,
+    h5.ad-title,
+    h6.ad-title {
+        font-size:26px;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-large+1) {
+
+    .ad-title,
+    h2.ad-title,
+    h3.ad-title,
+    h4.ad-title,
+    h5.ad-title,
+    h6.ad-title {
+        font-size:32px;
+    }
+
+}
+
+// ---------------------------------------------
+
+@include bp (min-width, $bp-xlarge+1) {
+
+    .ad-title,
+    h2.ad-title,
+    h3.ad-title,
+    h4.ad-title,
+    h5.ad-title,
+    h6.ad-title {
+        font-size:48px;
+    }
+
+}

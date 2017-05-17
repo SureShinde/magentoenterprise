@@ -1,0 +1,59 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+?>
+<?php
+/**
+ * Sub-category list template
+ *
+ * @see CLS_NucleusCore_Block_Catalog_Category_List
+ */
+?>
+<?php
+$_categoryCollection = $this->getCategoryCollection();
+$_helper = $this->helper('catalog/output');
+?>
+<?php if($_categoryCollection->count() > 0): ?>
+    <div class="category-subcategories">
+        <?php
+        $_collectionSize = $_categoryCollection->count();
+        $_columnCount = $this->getColumnCount();
+        ?>
+        <ul class="subcategories-grid subcategories-grid--max-<?php echo $_columnCount; ?>-col">
+            <?php
+            foreach ($_categoryCollection as $_category):
+                $_categoryThumbUrl = Mage::helper('cls_nucleuscore')->resizeCategoryThumbnail($_category, 'list_thumbnail', 270);
+                ?>
+                <li class="item">
+                    <a href="<?php echo $_category->getUrl() ?>" title="<?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?>" class="subcat-image">
+                        <?php if (!empty($_categoryThumbUrl)): ?>
+                            <img src="<?php echo $_categoryThumbUrl ?>" alt="<?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?>" />
+                        <?php endif; ?>
+                        <span class="subcat-name"><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></span>
+                    </a>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,75 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+.pattern-title {
+    margin:40px 0 20px;
+    padding:5px 15px;
+    background:#202020;
+    color:#FFF;
+}
+
+.pattern-navigation {
+    list-style: none;
+    margin:0;
+    background: $c-nav-primary-background;
+    padding: 8px;
+
+    li {
+        display: inline-block;
+        border-right: solid 1px $c-text-white;
+        padding: 5px 12px 5px 8px !important;
+        margin:0 !important;
+
+        a {
+            padding: 5px 3px;
+            color: #FFF;
+        }
+    }
+}
+
+.pattern-nav-secondary {
+    background: #f4f4f4;
+    list-style: none;
+    margin:0;
+    padding: 8px;
+
+    li {
+        display: inline-block;
+        border-right: solid 1px $c-divider-border;
+        padding: 5px 12px 5px 8px !important;
+        margin:0 !important;
+
+        a {
+            padding: 5px 3px;
+        }
+    }
+}
+
+.pattern-info {
+    font-size:$f-size-l;
+    border-style:solid;
+    border-color:$c-divider-border;
+    border-width:1px 0;
+    padding:3px 0;
+}

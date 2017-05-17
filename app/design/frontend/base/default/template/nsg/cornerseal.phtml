@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Norton Shopping Guarantee, Seal Template
+ * 
+ * PHP Version 5
+ * 
+ * @category  Template
+ * @package   Symantec_NortonShoppingGuarantee
+ * @author    Symantec Corporation
+ * @copyright 2016 Symantec Corporation, All Rights Reserved.
+ */
+
+?>
+<?php /* @var $this Symantec_NortonShoppingGuarantee_Block_Seals */ ?>
+<?php if ($this->isEnabled()) : ?>
+<!-- BEGIN: _GUARANTEE Seal -->
+<span id="_GUARANTEE_SealSpan"></span>
+<img style="display:none;" src="//nsg.symantec.com/Web/Seal/AltSealInfo.aspx?S=Large&T=M&Elem=ImgTagSeal&HASH=<?php echo $this->getHash(); ?>&CBF=AB&AB=1&DP=fn=;src=ImgTagSeal;grt=true"/>
+<?php if ($this->hasStoreNumber()) : ?>
+<script type="text/javascript" src="//nsg.symantec.com/Web/Seal/gjs.aspx?sn=<?php echo $this->getStoreNumber(); ?>"></script>
+<?php else : ?>
+<script type="text/javascript" src="//nsg.symantec.com/Web/Seal/gjs.aspx?sn="></script>
+<?php endif;  ?>
+<script type="text/javascript">
+    if (window._GUARANTEE && _GUARANTEE.Loaded) {
+        _GUARANTEE.Hash = '<?php echo $this->getHash(); ?>';
+        _GUARANTEE.WriteSeal("_GUARANTEE_SealSpan", "GuaranteedSeal");
+    }
+</script>
+<!-- END: _GUARANTEE Seal -->
+<?php endif; ?>

@@ -1,0 +1,242 @@
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    AdminEnhance
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+.support-banner-wrapper {
+    margin:0 auto 10px;
+}
+
+.support-banner-formatted {
+    max-width:600px;
+    transition: max-width 0.2s ease;
+}
+
+.support-banner a {
+    color:#428e4c;
+}
+
+.support-banner a:hover {
+    color:#53b360;
+}
+
+.support-banner-formatted .support-banner {
+    border:2px solid #234c29;
+    border-radius:5px;
+    background-color:#f6f6f6;
+    color:#555;
+    float:right;
+    width:100%;
+    transition: width 0.2s ease;
+}
+
+.support-banner-formatted .support-banner-header {
+    background-color:#428e4c;
+    background:linear-gradient(#428e4c,#9fd6a6);
+    padding:0 5px;
+    height:22px;
+    position:relative;
+}
+
+.support-banner-formatted .support-banner-header h4 {
+    height:20px;
+    line-height:20px;
+    color:#fff;
+}
+
+.support-banner-formatted .help-links {
+    position:absolute;
+    top:0;
+    right:50px;
+    width:75px;
+    text-align:center;
+    font-size:11px;
+}
+
+.support-banner-formatted .help-links-trigger {
+    display:block;
+    height:22px;
+    line-height:22px;
+    background-color:#151b16;
+    background:linear-gradient(#151b16,#526855);
+    color:#fefcd1;
+    text-decoration:none;
+    border-style:solid;
+    border-color:#fefcd1;
+    border-width:0 1px;
+    padding-right:8px;
+    position:relative;
+}
+
+.support-banner-formatted .help-links-trigger:hover {
+    color:#fff;
+}
+
+.support-banner-formatted .help-links-trigger:after {
+    content:".";
+    display:block;
+    position:absolute;
+    top:9px;
+    right:3px;
+    height:0;
+    width:0;
+    border-style:solid;
+    border-width:4px 4px 0;
+    border-color:#fefcd1 transparent transparent transparent;
+    overflow:hidden;
+}
+
+.support-banner-formatted .help-links-trigger:hover:after {
+    color:#fff;
+}
+
+.support-banner-formatted .help-links.expanded .help-links-trigger:after {
+    border-width:0 4px 4px;
+    border-color:transparent transparent #fefcd1 transparent;
+}
+
+.support-banner-formatted .help-links ul {
+    width:150px;
+    position:relative;
+    left:50%;
+    margin-left:-76px;
+    margin-top:-2px;
+    background-color:#fff;
+    border:1px solid #555;
+    display:none;
+}
+
+.support-banner-formatted .help-links.expanded ul {
+    display:block;
+}
+
+.support-banner-formatted .help-links li {
+    border-bottom:1px solid #555;
+}
+
+.support-banner-formatted .help-links li:last-child {
+    border-bottom:none;
+}
+
+.support-banner-formatted .help-links ul a {
+    text-decoration:none;
+    color:#444;
+    display:block;
+    padding:2px 4px;
+}
+
+.support-banner-formatted .help-links ul a:hover {
+    background-color:#eee;
+}
+
+.support-banner-formatted .collapse-trigger {
+    display:block;
+    width:15px;
+    height:15px;
+    font-weight:bold;
+    background-color:#fff;
+    color:#000;
+    position:absolute;
+    top:2px;
+    right:5px;
+    text-decoration:none;
+    border:1px solid #151b16;
+    border-radius:3px;
+    overflow:hidden;
+}
+
+.support-banner-formatted .collapse-trigger span {
+    position:absolute;
+    left:-9999em;
+}
+
+.support-banner-formatted .collapse-trigger:after {
+    content:".";
+    text-indent:-1000em;
+    display:block;
+    position:absolute;
+    top:4px;
+    left:4px;
+    height:0;
+    width:0;
+    border-style:solid;
+    border-width:3px 0 3px 8px;
+    border-color:transparent transparent transparent #000;
+}
+
+.support-banner-formatted .collapse-trigger:hover {
+    color:#555;
+}
+
+.support-banner-formatted .support-banner-content {
+    padding:10px;
+    overflow:hidden;
+}
+
+.support-banner-formatted.collapsed {
+    max-width:100%;
+}
+
+.support-banner-formatted.collapsed .support-banner {
+    width:28px;
+}
+
+.support-banner-formatted.collapsed .collapse-trigger:after {
+    border-width:3px 8px 3px 0;
+    border-color:transparent #000 transparent transparent;
+}
+
+
+.support-videos li {
+    padding:5px 0;
+}
+
+.support-videos a {
+    font-weight:bold;
+}
+
+.support-videos .video-thumbnail {
+    float:left;
+    margin-right:5px;
+    margin-top:-5px;
+}
+
+.cls-nucleus-systeminfo .support-videos-wrapper h4 {
+    margin-top:20px;
+    border-top:1px solid #dfdfdf;
+}
+
+.cls-nucleus-systeminfo .support-videos li {
+    width:49%;
+    float:left;
+}
+
+.cls-nucleus-systeminfo .support-videos li:nth-child(odd) {
+    clear:both;
+}
+
+
+.support-banner-wrapper:after,
+.support-banner:after,
+.support-banner-content:after,
+.support-videos li:after,
+.cls-nucleus-systeminfo .support-videos-wrapper:after { display:block; content:"."; clear:both; font-size:0; line-height:0; height:0; overflow:hidden; }

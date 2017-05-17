@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Magento WebShopApps Shipping Module
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the Open Software License (OSL 3.0)
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://opensource.org/licenses/osl-3.0.php
+* If you did not receive a copy of the license and are unable to
+* obtain it through the world-wide-web, please send an email
+* to license@magentocommerce.com so we can send you a copy immediately.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade Magento to newer
+* versions in the future. If you wish to customize Magento for your
+* needs please refer to http://www.magentocommerce.com for more information.
+*
+* @category   Webshopapps
+* @package    Webshopapps_Desttype
+* @copyright   Copyright (c) 2013 Zowta Ltd (http://www.WebShopApps.com)
+ *              Copyright, 2013, Zowta, LLC - US license
+* @license    http://www.webshopapps.com/license/license.txt
+* @author     Karen Baker <sales@webshopapps.com>
+*/
+-->
+<config>
+	<sections>
+		<shipping>
+			<groups>
+				<desttype translate="label">
+					<label>WebShopApps Residential Commercial Selector</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>100</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						<serial translate="label">
+							<label>Serial Key</label>
+							<frontend_type>obscure</frontend_type>
+							<backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</serial>
+						<min_order_value translate="label">
+							<label>Minimum Order Value</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>30</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>Minimum order value for delivery type to be considered</comment>
+						</min_order_value>
+						<group translate="label">
+							<label>Customer Group Applies To</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>desttype/shipping_source_customergroup</source_model>
+							<sort_order>40</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+							<comment>Select all to apply to all customer groups</comment>
+						</group>
+                        <default_address translate="label">
+                            <label>Set Default Address Type to Commercial</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>42</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </default_address>
+						<residential_label translate="label">
+							<label>Residential Label</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>45</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</residential_label>
+						<commercial_label translate="label">
+							<label>Commercial Label</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>50</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</commercial_label>
+                        <auto_company translate="label">
+                            <label>Default Address to Commercial if Company Field is Populated</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_company>
+                    </fields>
+				</desttype>
+			</groups>
+		</shipping>
+	</sections>
+</config>

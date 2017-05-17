@@ -1,0 +1,71 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   Nucleus
+ * @package    Catalog
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+
+/* @var $this Nucleus_Catalog_Block_Badges */
+
+$_badges = $this->getAllBadges();
+$_attributeBadges = array();
+$_calculatedBadges = array();
+$_calculatedValues = array(
+    Mage::helper('nucleus_catalog')->__("New"),
+    Mage::helper('nucleus_catalog')->__("Sale")
+);
+foreach($_badges as $_badge) {
+    if (in_array($_badge, $_calculatedValues)) {
+        $_calculatedBadges[] = $_badge;
+    } else {
+        $_attributeBadges[] = $_badge;
+    }
+}
+?>
+
+<?php if (!empty($_attributeBadges)): ?>
+    <div class="product-badges attributes all-badges ">
+        <?php foreach($_attributeBadges as $_badge): ?>
+            <?php if (Mage::helper('cls_custom')->getBadgeUrlMapping($_badge) != '') : ?>
+                <a href="<?php echo Mage::helper('cls_custom')->getBadgeUrlMapping($_badge); ?>" class="badge badge-<?php echo $this->scrubBadgeLabel($_badge); ?>"> <?php echo $_badge ?></a>
+            <?php else : ?>
+                <span class="badge badge-<?php echo $this->scrubBadgeLabel($_badge); ?>"><?php echo $_badge ?></span>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <div class="children">
+
+            <?php foreach($_attributeBadges as $_badge): ?>
+                <?php if (Mage::helper('cls_custom')->getBadgeUrlMapping($_badge) != '') : ?>
+                    <a href="<?php echo Mage::helper('cls_custom')->getBadgeUrlMapping($_badge); ?>" class="badge badge-<?php echo $this->scrubBadgeLabel($_badge); ?>"> <?php echo $_badge ?></a>
+                <?php else : ?>
+                    <div class="badge-child"><span class="badge badge-<?php echo $this->scrubBadgeLabel($_badge); ?>"></span><div class="badge-child-text"><?php echo $_badge ?></div></div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if (!empty($_calculatedBadges)): ?>
+    <ul class="product-badges default all-badges">
+        <?php foreach($_calculatedBadges as $_badge): ?>
+            <span class="badge badge-<?php echo $this->scrubBadgeLabel($_badge); ?>"><?php echo $_badge ?></span>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

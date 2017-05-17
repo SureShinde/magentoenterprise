@@ -1,0 +1,693 @@
+///**
+// * Nucleus
+// *
+// * NOTICE OF LICENSE
+// *
+// * This source file is subject to the Nucleus License
+// * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+// * It is also available through the World Wide Web at this URL:
+// * http://www.nucleuscommerce.com/license
+// * If you did not receive a copy of the license and are unable to
+// * obtain it through the World Wide Web, please send an email
+// * to support@nucleuscommerce.com so we can send you a copy immediately.
+// *
+// * DISCLAIMER
+// *
+// * Do not edit or add to this file if you wish to upgrade Nucleus
+// * to newer versions in the future.
+// *
+// * @category   CLS
+// * @package    NucleusCore
+// * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+// * @license    http://www.nucleuscommerce.com/license
+// */
+
+/* ================================================= *
+ * General Product List Styles (not module-specific)
+ * ================================================= */
+
+/* -------------------------------------------- *
+ * Product List General
+ */
+
+.category-title h1,
+body.catalogsearch-result-index .page-title h1 {
+    border-bottom: none;
+    font-size: $f-size-xl;
+    margin: 10px 0 8px;
+}
+
+.category-image {
+    margin-bottom: 2.75em;
+}
+
+.category-description {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+// Prevent button overlapping when buttons have long text, such as non-English translations
+.products-list .action .button,
+.products-grid .actions .button {
+    white-space: normal;
+    border-radius: 5px;
+    padding: 0 12px;
+    margin-bottom: 12px;
+}
+
+@include bp (min-width, 1204px) {
+    .products-grid .actions .button {
+        float: left;
+        height: 40px;
+        line-height: 40px;
+    }
+}
+
+/* -------------------------------------------- *
+ * Product Name
+ */
+
+h2.product-name,
+h3.product-name,
+h4.product-name,
+h5.product-name,
+p.product-name {
+    @include h2;
+    font-size: 19px;
+    font-family: $f-stack-sans;
+    font-weight: normal;
+    line-height: 1.4;
+    margin: 9px 0 0;
+
+    a {
+        color: $c-text;
+        &:hover {
+            color: $c-action;
+            text-decoration: none;
+        }
+    }
+}
+
+.products-grid .product-name,
+.products-list .product-name {
+    margin: 3px 0 7px;
+    font-size: $f-size-xl;
+    font-family: $f-stack-special;
+
+    a {
+        font-weight: 500;
+    }
+}
+
+/* ============================================ *
+ * Product Grid
+ * ============================================ */
+
+$product-column-spacing: 20px;
+
+.products-grid {
+    position: relative;
+    background: $c-module-background;
+    padding: 1.8%;
+}
+
+.products-grid:after {
+    @include clearfix;
+}
+
+.products-grid > li {
+    position: relative;
+    padding: 1.5%;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 5px;
+
+    &:hover {
+        border-color: #a8a8a8;
+        background: #fff;
+    }
+}
+
+.products-grid .product-image {
+    width: 100%;
+    margin-bottom: 15px;
+    background: #FFF;
+
+    &:hover {
+        border-color: #EDEDED;
+    }
+}
+
+.products-grid .product-image img {
+    width: 100%;
+    height: auto;
+
+    &:hidden {
+        display: none;
+    }
+}
+
+.widget-new-products {
+    .products-grid .product-image {
+        width: 75%;
+        margin-bottom: 15px;
+        margin-left: 10%;
+    }
+}
+
+// If the height of the .product-info element changes, this value should be adjusted
+$productsGridActionHeight: 85px;
+
+.products-grid .product-info {
+    position: relative;
+    padding-bottom: $productsGridActionHeight + 10px;
+}
+
+.products-grid .actions {
+    padding: 14px 1px 0;
+    margin: 0 5%;
+    border-top: 1px solid #a8a8a8;
+    position: absolute;
+    bottom: 0px;
+    min-height: $productsGridActionHeight;
+    width: 90%;
+}
+
+.products-grid .ratings .rating-box {
+    margin: 0 auto;
+}
+
+.products-grid .ratings .amount {
+    display: none;
+}
+
+.products-grid .price-box {
+    margin: 1px 0 8px;
+    .price {
+        font-size: 25px;
+    }
+}
+
+.products-grid .add-to-links {
+    margin-bottom: 0;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+@include bp (min-width, 1204px) {
+    .products-grid .add-to-links {
+        float: right;
+
+        li:first-child {
+            line-height: 12px;
+        }
+    }
+}
+
+// ---------------------------------------------
+
+/* Config: Two columns + flexible gutter */
+
+// Container: 480 - (2 * 20 trim) = 440
+// Math: (440 - (20 gutter)) / 2 items = 210
+
+.products-grid > li {
+    float: left;
+    width: 50%;
+}
+
+.products-grid > li:nth-child(odd) {
+    clear: left;
+}
+
+.products-grid .product-image {
+    margin-bottom: 5px;
+
+    @include loadingOverlay();
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, $bp-large) {
+    /* Config: Three columns + flexible gutter */
+    // Container: 600 - (2 * 30 trim wide) = 540
+    $column-count: 3;
+    $column-gutters: 2;
+    $container: 600 - (2 * $trim);
+
+    .products-grid {
+        /* Undo two-column config */
+        > li:nth-child(odd) {
+            clear: none;
+        }
+
+        /* Set three-column config */
+        > li {
+            width: 33.33%;
+        }
+        > li:nth-child(#{$column-count}n+1) {
+            clear: left;
+        }
+    }
+}
+
+// This mixin outputs the styles to allow for grids with more than 3 columns
+@mixin product-grid($column-count, $container-width, $class-append:"") {
+
+    // Allow this mixin to be used for more specific purposes, such as grids contained within widgets
+    @if $class-append != "" {
+        $class-append: -#{$class-append};
+    }
+
+    /* Config: Columns + flexible gutter */
+    $column-gutters: ($column-count) - 1;
+    $container: $container-width - (2 * $trim);
+    $column-width: ($container - ($column-gutters * $product-column-spacing)) / $column-count;
+
+    /* Undo three-column config */
+    .products-grid--max-#{$column-count}-col#{$class-append} > li:nth-child(odd) {
+        clear: none;
+    }
+    .products-grid--max-#{$column-count}-col#{$class-append} > li:nth-child(3n+1) {
+        clear: none;
+    }
+
+    /* Set column config */
+    .products-grid--max-#{$column-count}-col#{$class-append} > li {
+        width: percentage($column-width / $container);
+    }
+    .products-grid--max-#{$column-count}-col#{$class-append} > li:nth-child(#{$column-count}n+1) {
+        clear: left;
+    }
+}
+
+// ---------------------------------------------
+
+@include bp(min-width, 960px) {
+    @include product-grid(4, 960);
+    @include product-grid(5, 960);
+    @include product-grid(6, 960);
+}
+
+/* ============================================ *
+ * Product List
+ * ============================================ */
+
+.products-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    & > li {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $c-module-border-light;
+
+        &:after {
+            @include clearfix;
+        }
+        .product-image {
+            float: left;
+            width: percentage(1/3);
+
+            img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+    & > li:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.products-list .product-shop {
+    float: right;
+    width: percentage(2/3);
+    padding-left: ($box-spacing * 2);
+
+    .product-name {
+        margin-bottom: 0;
+    }
+    .ratings {
+        margin: 0;
+
+        .rating-box,
+        .rating-links {
+            float: left;
+            margin-right: $element-spacing;
+        }
+        .rating-links {
+            margin-top: 4px;
+        }
+    }
+    .price-box {
+        margin-top: 0;
+    }
+    .price-box .price {
+        font-size: $f-size-xxl;
+    }
+    .action {
+        margin: $element-spacing 0;
+    }
+    .desc {
+        margin-top: $element-spacing;
+    }
+
+    .product-primary,
+    .desc {
+        float: left;
+        width: 65%;
+        overflow: hidden;
+    }
+    .product-secondary {
+        float: right;
+        width: 35%;
+        text-align: right;
+        clear: right;
+    }
+}
+
+@include bp(min-width, $bp-xsmall + 1) {
+    .products-list .product-name a {
+        font-size: $f-size-xxl;
+    }
+}
+
+@include bp(max-width, 1279px) {
+    .products-list .product-shop {
+        .product-primary,
+        .desc {
+            float: left;
+            width: 60%;
+            padding-right: 20px;
+        }
+        .product-secondary {
+            float: right;
+            width: 40%;
+        }
+    }
+}
+
+@include bp(max-width, 600px) {
+    .products-list .product-shop .price-box .special-price {
+        padding-left: 0;
+    }
+    .products-list .product-shop {
+        .product-primary,
+        .product-secondary,
+        .desc {
+            float: none;
+            width: 100%;
+            padding-right: 0;
+            text-align: left;
+        }
+    }
+}
+
+/* ============================================ *
+ * Mini Product List
+ * ============================================ */
+
+.mini-products-list {
+
+    .product-image {
+        float: left;
+        min-width: 50px;
+        margin-right: 10px;
+    }
+    .product-details {
+        margin-left: 60px;
+    }
+
+    // Vertically center product name
+    .product-details .product-name {
+        padding-top: 10px;
+    }
+
+    li {
+        margin-bottom: $gap;
+        clear: both;
+
+        &:after {
+            @include clearfix();
+        }
+    }
+}
+
+.mini-products-images-list {
+
+    &:after {
+        @include clearfix;
+    }
+
+    li.item {
+        float: left;
+        width: 50%;
+        margin: 0;
+        padding: 0 5px 10px 0;
+
+        &:nth-child(even) {
+            padding-right: 0;
+            padding-left: 5px;
+        }
+
+        .product-image {
+            display: block;
+
+            img {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+
+}
+
+
+
+/* ============================================ *
+ * Catalog - List
+ * ============================================ */
+
+.category-image {
+    img {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 5px;
+
+        &:hidden {
+            display: none;
+        }
+    }
+}
+
+
+
+// ==============================================
+// Layered Navigation
+// ==============================================
+
+.sidebar .block-layered-nav {
+    margin-bottom: $gap-tall !important;
+}
+
+.block-layered-nav .block-title strong {
+    text-transform: none;
+}
+
+.block-layered-nav--no-filters .block-title strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.block-layered-nav .block-subtitle--filter {
+    @include h4;
+    @include not-selectable;
+    display: none; // Will be shown at smaller viewports
+    position: relative;
+    margin-bottom: 0;
+    padding: 10px 10px 10px 30px;
+    background: $c-button;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: normal;
+    cursor: pointer;
+
+    &:hover {
+        background: $c-button-hover;
+        color: #FFFFFF;
+    }
+
+    &:after {
+        @include triangle(right, 6px, #FFFFFF);
+        top: 50%;
+        left: 10px;
+        margin-top: -6px;
+    }
+
+    &.active:after {
+        @include triangle(down, 6px, #FFFFFF);
+        margin-top: -4px;
+    }
+}
+
+.block-layered-nav dt {
+    @include h4;
+    @include not-selectable;
+    display: block;
+    position: relative;
+    margin-bottom: 0;
+    padding: 13px 12px;
+    border-top: 1px solid $c-module-border;
+    color: $c-blue;
+    font-size: $f-size-s;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:after {
+        @include triangle(right, 4px, $c-blue);
+        top: 50%;
+        left: 4px;
+        margin-top: -4px;
+    }
+}
+
+.block-layered-nav dt.current:after {
+    @include triangle(down, 4px, $c-blue);
+    left: 0;
+    margin-top: -2px;
+}
+
+.block-layered-nav dd {
+    display: none;
+    padding-bottom: 10px;
+    font-size: $f-size-s;
+}
+
+.block-layered-nav dd.current {
+    display: block;
+    margin-top: -8px;
+}
+
+.block-layered-nav li > a {
+    display: block;
+    padding: 2px 0;
+    color: $c-text;
+}
+
+// ----------------------------------------------
+
+@include bp (max-width, $bp-medium) {
+
+    // We don't want "Shop By" to show when there are no filters applied, as the "Filter" link will suffice
+    .block-layered-nav--no-filters .block-title {
+        display: none;
+    }
+
+    .block-layered-nav .block-subtitle--filter {
+        display:block;
+    }
+
+    #narrow-by-list,
+    #narrow-by-list2 {
+        padding: 0 $box-spacing;
+        border: 1px solid $c-module-border;
+        border-top: 0;
+    }
+
+    .block-layered-nav dt:first-child {
+        border-top: 0;
+    }
+
+    .block-layered-nav a {
+        padding: 10px 0;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+}
+
+
+
+// ==============================================
+// Layered Nav - Currently
+// ==============================================
+
+.block-layered-nav .currently {
+    float: left;
+    display: block;
+    width: 100%;
+    padding: $box-spacing;
+    border: 1px solid $c-module-border;
+
+    .block-subtitle {
+        display: block;
+        @include h4;
+    }
+
+    li {
+        margin-bottom: 10px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .label {
+        font-weight: bold;
+    }
+
+    .btn-remove {
+        padding: 0;
+    }
+}
+
+.block-layered-nav .actions {
+    text-align: right;
+    margin-bottom: $element-spacing;
+}
+
+.swatch-current {
+
+    &:after {
+        @include clearfix;
+    }
+}
+
+@include bp (max-width, $bp-large) {
+    .toolbar .options-container .limiter {
+        ul {
+            display: none;
+        }
+
+        select {
+            display:inline-block;
+        }
+
+        label {
+            display:inline-block;
+        }
+    }
+}
+
+@include bp (max-width, 680px) {
+    .toolbar {
+        .pager {
+            margin-left: 0;
+        }
+        .options-container {
+            float:left;
+            clear:both;
+        }
+    }
+}

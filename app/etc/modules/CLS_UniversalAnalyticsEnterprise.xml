@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   CLS
+ * @package    UniversalAnalyticsEnterprise
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+-->
+<config>
+    <modules>
+        <CLS_UniversalAnalyticsEnterprise>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Enterprise_GoogleAnalyticsUniversal />
+                <CLS_UniversalAnalytics />
+            </depends>
+        </CLS_UniversalAnalyticsEnterprise>
+    </modules>
+</config>

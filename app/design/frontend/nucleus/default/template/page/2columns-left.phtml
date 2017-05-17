@@ -1,0 +1,72 @@
+<?php
+/**
+ * Nucleus
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Nucleus License
+ * that is bundled with this package in the file LICENSE_NUCLEUS.txt.
+ * It is also available through the World Wide Web at this URL:
+ * http://www.nucleuscommerce.com/license
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the World Wide Web, please send an email
+ * to support@nucleuscommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Nucleus
+ * to newer versions in the future.
+ *
+ * @category   CLS
+ * @package    NucleusCore
+ * @copyright  Copyright (c) 2015 Nucleus Commerce, LLC (http://www.nucleuscommerce.com)
+ * @license    http://www.nucleuscommerce.com/license
+ */
+?>
+<?php
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js"> <!--<![endif]-->
+
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('header') ?>
+        <?php echo $this->getChildHtml('full_width_banner') ?>
+        <div class="main-container col2-left-layout">
+            <div class="main">
+                <?php echo $this->getChildHtml('breadcrumbs') ?>
+                <?php // This left_first block will display above the main content on smaller viewports ?>
+                <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
+                <div class="col-left sidebar col-left-first"><?php echo $_leftContent;   ?></div>
+                <?php endif; ?>
+                <div class="col-main">
+                    <?php echo $this->getChildHtml('global_messages') ?>
+                    <?php echo $this->getChildHtml('content') ?>
+                </div>
+                <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('footer_before') ?>
+        <?php echo $this->getChildHtml('footer') ?>
+        <?php echo $this->getChildHtml('global_cookie_notice') ?>
+        <?php echo $this->getChildHtml('before_body_end') ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</body>
+</html>

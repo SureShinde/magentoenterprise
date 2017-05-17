@@ -1,0 +1,1119 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tran",
+				"transaction_id_2"
+			],
+			[
+				"custom",
+				"custom_value"
+			],
+			[
+				"cus",
+				"cus_id"
+			],
+			[
+				"var",
+				"var_content"
+			],
+			[
+				"product",
+				"product_id"
+			],
+			[
+				"produc",
+				"product_id"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"ft",
+				"ftp"
+			],
+			[
+				"php",
+				"php"
+			],
+			[
+				"input",
+				"input-text"
+			],
+			[
+				"no",
+				"none"
+			],
+			[
+				"lo",
+				"loading-message"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"col",
+				"color"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/design/frontend/forthechef/default/template/cls/nucleus/catalog/product/view.phtml",
+			"settings":
+			{
+				"buffer_size": 14963,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/design/frontend/forthechef/default/template/cls/nucleus/catalog/product/list.phtml",
+			"settings":
+			{
+				"buffer_size": 17234,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/design/frontend/rwd/default/template/checkout/cart.phtml",
+			"settings":
+			{
+				"buffer_size": 10348,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/design/frontend/rwd/default/template/cls/nucleus/checkout/onepage/success/review.phtml",
+			"settings":
+			{
+				"buffer_size": 4133,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/design/frontend/base/default/template/checkout/success.phtml",
+			"settings":
+			{
+				"buffer_size": 3278,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/design/frontend/base/default/template/rac/register.phtml",
+			"settings":
+			{
+				"buffer_size": 2984,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "skin/frontend/forthechef/default/css/styles.css",
+			"settings":
+			{
+				"buffer_size": 359878,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/design/frontend/forthechef/default/layout/forthechef.xml",
+			"settings":
+			{
+				"buffer_size": 12539,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/code/core/Mage/Sales/Model/Order/Shipment.php",
+			"settings":
+			{
+				"buffer_size": 20630,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/code/core/Mage/Adminhtml/controllers/Sales/Order/ShipmentController.php",
+			"settings":
+			{
+				"buffer_size": 27071,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/design/adminhtml/default/default/template/sales/order/shipment/create/items.phtml",
+			"settings":
+			{
+				"buffer_size": 6046,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ssphp",
+				"Set Syntax: PHP"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"ssjavascript",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ssjav",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"install pac",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Install Package Control"
+			],
+			[
+				"pacakge install",
+				"Package Control: Install Package"
+			],
+			[
+				"pacakge instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 512.0
+	},
+	"console":
+	{
+		"height": 174.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/H/Working/Gary/magento",
+		"/H/Working/Gary/magento/app",
+		"/H/Working/Gary/magento/app/code"
+	],
+	"file_history":
+	[
+		"/G/Application/Microsoft Office/Microsoft Office 365/Microsoft Office365 activation key.docx",
+		"/G/Application/Microsoft Office/Microsoft Office 2010/Office_2010_key/Settings.ini",
+		"/C/Users/YunSung/Downloads/Microsoft_Office_365_Product_Key_Free_Download.htm",
+		"/H/Working/Gary/magento/app/design/frontend/nucleus/default/template/checkout/success.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/checkout/success.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/forthechef/default/template/catalog/product/view/addtocart.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/checkout/cart.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/rwd/default/template/checkout/cart.phtml",
+		"/H/Working/Gary/magento/app/code/core/Mage/Checkout/controllers/CartController.php",
+		"/H/Working/Gary/magento/app/design/frontend/forthechef/default/template/catalog/product/list.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/catalog/product/list.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/rwd/default/template/catalog/product/list.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/forthechef/default/template/cls/nucleus/catalog/product/list.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/rwd/default/template/cls/nucleus/catalog/product/list.phtml",
+		"/H/Working/Gary/magento/app/code/core/Mage/Core/Helper/Abstract.php",
+		"/H/Working/Gary/magento/app/design/frontend/forthechef/default/template/checkout/onepage/progress/total.phtml",
+		"/H/Working/Gary/magento/sftp-config.json",
+		"/H/Working/Gary/magento/app/design/frontend/forthechef/default/template/cls/nucleus/catalog/product/view.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/forthechef/default/template/catalog/product/view.phtml",
+		"/C/Users/YunSung/Downloads/Backup/app/etc/local.xml",
+		"/H/Working/Gary/magento/app/design/frontend/rwd/default/template/catalog/product/view.phtml",
+		"/H/Working/Gary/magento/app/code/core/Mage/Adminhtml/Controller/Action.php",
+		"/C/Users/YunSung/AppData/Local/Temp/scp12249/home/customjersey/web/customjersey.com/public_html/app/code/local/Mage/Core/Model/Session.php",
+		"/H/Working/Gary/magento/app/code/core/Mage/Core/Model/Session.php",
+		"/C/Users/YunSung/AppData/Local/Temp/scp08677/home/customjersey/web/customjersey.com/public_html/app/code/local/Mage/Adminhtml/Controller/Action.php",
+		"/H/Working/Gary/magento/app/design/frontend/rwd/default/template/checkout/cart/shipping.phtml",
+		"/C/Users/YunSung/AppData/Local/Temp/scp47470/chroot/home/forthech/forthechef.com/magento/htdocs/skin/frontend/base/default/css/mirasvit/searchautocomplete/amazon.css",
+		"/C/Users/YunSung/AppData/Local/Temp/scp46719/home/customjersey/web/customjersey.com/public_html/app/code/local/Mage/AdminNotification/Model/Feed.php",
+		"/H/Working/Gary/magento/app/code/core/Mage/AdminNotification/Model/Feed.php",
+		"/H/Working/Gary/magento/app/code/community/AW/Blog/etc/config.xml",
+		"/C/Users/YunSung/Downloads/index.php",
+		"/C/Users/YunSung/Downloads/install.log",
+		"/C/Users/YunSung/Downloads/config.php",
+		"/C/Users/YunSung/Documents/env.php",
+		"/C/Users/YunSung/.ssh/id_rsa.pub",
+		"/C/Users/YunSung/.ssh/id_rsa",
+		"/H/Working/Gary/magento/lib/Braintree/SignatureService.php",
+		"/D/Book/소설책/승자와 패자/승자와 패자 1부(1회~10회).docx",
+		"/E/Backup/Host/hosts",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/webshopapps_shipestimate/shipestimate.phtml",
+		"/H/Working/Gary/magento/app/etc/local.xml",
+		"/H/Working/Gary/magento/app/etc/local.xml~",
+		"/H/Working/Jenat/magento/skin/frontend/rwd/default/js/lib/match.php",
+		"/H/Working/Gary/magento/app/design/frontend/rwd/default/layout/checkout.xml",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/layout/webshopapps_shipestimate.xml",
+		"/H/Working/Gary/magento/app/code/community/Webshopapps/Shipestimate/Block/Catalog/Shipestimate.php",
+		"/H/Working/Gary/magento/app/design/frontend/rwd/default/layout/local.xml",
+		"/H/Working/Gary/magento/app/etc/modules/Webshopapps_Shipestimate.xml",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/layout/checkout.xml",
+		"/H/Working/Gary/magento/app/design/frontend/nucleus/enterprise/etc/theme.xml",
+		"/H/Working/Gary/magento/app/design/frontend/nucleus/default/etc/theme.xml",
+		"/H/Working/Gary/magento/app/code/community/CLS/NucleusCore/Helper/Data.php",
+		"/H/Working/Gary/magento/app/code/local/CLS/Custom/Block/Blog/Last.php",
+		"/H/Working/Gary/magento/var/log/system.log",
+		"/H/Working/Gary/magento/var/report/995107299",
+		"/E/Xampp/php/php.ini",
+		"/H/Working/Gary/magento/app/locale/da_DK/Fishpig_Wordpress.csv",
+		"/E/Xampp/apache/conf/extra/httpd-vhosts.conf",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/H/Working/Gary/magento/info.php",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/checkout/onepage.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/checkout/cart/coupon.phtml",
+		"/H/Working/Gary/magento/app/Mage.php",
+		"/H/Working/Bram/magento/app/Mage.php",
+		"/H/Working/Gary/magento/app/code/community/Wfs/DisableEmails/Model/Email/Template/Mailer.php",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/googleanalytics/ga.phtml",
+		"/H/Working/Gary/magento/app/design/frontend/forthechef/default/template/newsletter/subscribe.phtml",
+		"/H/Working/Gary/magento/lib/Zend/Mail/Transport/Smtp.php",
+		"/H/Working/Gary/magento/app/code/community/Wfs/DisableEmails/Helper/Data.php",
+		"/H/Working/Gary/magento/app/code/community/Ebizmarts/MailChimp/Model/Email/Template.php",
+		"/H/Working/Gary/magento/app/code/core/Mage/Core/Model/Email/Queue.php",
+		"/H/Working/Gary/magento/app/code/core/Mage/Sales/Model/Order.php",
+		"/H/Working/Gary/magento/app/code/community/Wfs/DisableEmails/Block/Adminhtml/System/Config/Form/Fieldset/DisableEmails.php",
+		"/H/Working/Gary/magento/app/design/frontend/base/default/template/googleanalyticsuniversal/ga.phtml",
+		"/H/Working/Gary/magento/app/code/local/Mage/Core/Model/Email/Template.php",
+		"/H/Working/Gary/magento/app/code/core/Mage/Core/Model/Email/Template.php",
+		"/H/Working/Gary/magento/app/code/community/Wfs/DisableEmails/Model/Email/Template.php",
+		"/H/Working/Gary/magento/app/code/community/Wfs/DisableEmails/etc/config.xml",
+		"/H/Working/Gary/magento/app/code/local/AW/Pquestion2/Model/Notification.php",
+		"/H/Working/Gary/magento/app/code/community/Ebizmarts/MailChimp/Model/Email/sftp-config.json",
+		"/H/Working/Bram/magento/sftp-config.json",
+		"/H/Working/Bram/magento/app/etc/local.xml",
+		"/H/Working/Bram/magento/app/etc/modules/Ct_AjaxCart.xml",
+		"/H/Working/Bram/magento/app/design/frontend/rwd/outwards/template/page/html/footer.phtml",
+		"/H/Working/Bram/magento/app/design/frontend/rwd/outwards/template/checkout/success.phtml",
+		"/C/Users/Administrator/AppData/Local/Temp/scp58402/home/admin/domains/outwards.nl/public_html/media/js/606fdb3cbf2eec4a6c14d9d2018776fb.js",
+		"/C/Users/Administrator/AppData/Local/Temp/scp16857/home/admin/domains/outwards.nl/public_html/media/css_secure/9ea2e81984620e616583db18115e56f6.css",
+		"/H/Working/Bram/magento/app/code/local/Ct/AjaxCart/etc/config.xml",
+		"/H/Working/Bram/magento/app/design/frontend/base/default/template/ct/ajaxcart/general.phtml",
+		"/C/Users/Administrator/AppData/Local/Temp/scp58956/home/outwardsnl/domains/outwardsnl.codetiburon.com/public_html/app/design/frontend/rwd/outwards/template/catalog/product/view.phtml",
+		"/C/Users/Administrator/AppData/Local/Temp/scp31273/home/outwardsnl/domains/outwardsnl.codetiburon.com/public_html/app/design/frontend/rwd/outwards/template/catalog/product/list.phtml",
+		"/C/Users/Administrator/AppData/Local/Temp/scp49387/home/outwardsnl/domains/outwardsnl.codetiburon.com/public_html/app/design/frontend/rwd/outwards/template/catalog/product/view/addtocart.phtml",
+		"/C/Users/Administrator/AppData/Local/Temp/scp55358/home/outwardsnl/domains/outwardsnl.codetiburon.com/public_html/app/design/frontend/rwd/outwards/template/catalog/category/view.phtml",
+		"/H/Working/Rhyanna/magento/app/code/local/Mage/Directory/Model/Resource/Region/Collection.php",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Paypal/Model/Api/Abstract.php",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Sales/Model/Order.php",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/template/checkout/onepage/shipping_method/available.phtml",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Shipping/Model/Carrier/Freeshipping.php",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/template/persistent/checkout/onepage/billing.phtml",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/layout/local.xml",
+		"/H/Working/Rhyanna/magento/app/design/adminhtml/default/default/template/page/head.phtml",
+		"/H/Working/Rhyanna/magento/test.php",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Directory/Model/Resource/Region/Collection.php",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Directory/Helper/Data.php",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/template/page/html/footer.phtml",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Page/Block/Html/Footer.php",
+		"/H/Working/Rhyanna/magento/app/design/frontend/base/default/template/page/html/footer.phtml",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Directory/data/directory_setup/data-upgrade-1.6.0.0-1.6.0.1.php",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Compiler/etc/compilation.xml",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Directory/Model/Region.php",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Directory/Model/Mysql4/Region/Collection.php",
+		"/H/Working/Rhyanna/magento/app/code/core/Mage/Directory/Model/Resource/Region.php",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/layout/page.xml",
+		"/H/Working/Rhyanna/magento/js/rwd/jquery/plugins/owl-carousel/owl.carousel.css",
+		"/H/Working/Rhyanna/magento/app/etc/modules/Mage_Captcha.xml",
+		"/H/Working/Rhyanna/magento/app/etc/modules/Nwdthemes_Revslider.xml",
+		"/H/Working/Rhyanna/magento/skin/frontend/rwd/default/css/styles.css",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/template/contacts/contact-us-form.phtml",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/layout/contacts.xml",
+		"/H/Working/Rhyanna/magento/app/design/frontend/base/default/template/checkout/onepage/shipping_method/available.phtml",
+		"/H/Working/Rhyanna/magento/app/etc/modules/Nwdthemes_All.xml",
+		"/H/Working/Rhyanna/magento/js/rwd/jquery/plugins/owl-carousel/owl.theme.css",
+		"/H/Working/Rhyanna/magento/js/rwd/jquery/plugins/owl-carousel/owl.carousel.rtl.css",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/template/contacts/form.phtml",
+		"/H/Working/Rhyanna/magento/app/design/frontend/rwd/default/template/contacts/form.phtml~",
+		"/H/Working/Rhyanna/magento/app/design/frontend/base/default/template/contacts/form.phtml",
+		"/H/Working/Rhyanna/magento/app/design/frontend/base/default/layout/contacts.xml",
+		"/H/Working/Rhyanna/magento/app/etc/modules/CueBlocks_Zoom.xml"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+			"H:\\Working\\Gary\\magento\\app\\design",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\rwd",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\base",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\forthechef",
+			"H:\\Working\\Gary\\magento\\app\\design",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\forthechef",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\base",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\default",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\forthechef",
+			"H:\\Working\\Gary\\magento\\app\\code\\core\\Mage\\Adminhtml",
+			"H:\\Working\\Gary\\magento\\app",
+			"H:\\Working\\Gary\\magento\\app\\code\\core",
+			"H:\\Working\\Gary\\magento\\app\\design\\adminhtml\\default\\default\\template\\sales",
+			"H:\\Working\\Gary\\magento\\app\\code\\core",
+			"H:\\Working\\Gary\\magento\\app\\design",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\forthechef",
+			"H:\\Working\\Gary\\magento\\app\\code",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\rwd\\default\\layout",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\forthechef",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\rwd",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\nucleus",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\forthechef",
+			"H:\\Working\\Gary\\magento\\app\\code",
+			"H:\\Working\\Gary\\magento\\app\\design",
+			"H:\\Working\\Gary\\magento",
+			"H:\\Working\\Gary\\magento\\app\\design",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\enterprise",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\base\\default\\template\\checkout",
+			"H:\\Working\\Gary\\magento\\app\\design",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\default",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\base",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend",
+			"H:\\Working\\Gary\\magento\\app\\design\\frontend\\forthechef",
+			"H:\\Working\\Gary\\magento\\app\\code\\community\\Wfs",
+			"H:\\Working\\Gary\\magento\\app",
+			"H:\\Working\\Gary\\magento\\app\\code\\community\\Ebizmarts",
+			"H:\\Working\\Gary\\magento\\app",
+			"H:\\Working\\Gary\\magento",
+			"H:\\Working\\Bram\\magento\\app",
+			"H:\\Working\\Bram\\magento\\app\\design\\frontend\\rwd\\outwards",
+			"H:\\Working\\Bram\\magento\\skin",
+			"H:\\Working\\Bram\\magento\\js",
+			"H:\\Working\\Bram\\magento\\app",
+			"H:\\Working\\Bram\\magento\\app\\design\\frontend\\base\\default\\template",
+			"H:\\Working\\Bram\\magento\\app\\design\\frontend\\rwd\\outwards\\template",
+			"H:\\Working\\Bram\\magento\\app\\design\\frontend\\rwd\\outwards",
+			"H:\\Working\\Bram\\magento\\app\\design\\frontend\\rwd",
+			"H:\\Working\\Bram\\magento\\app\\design\\frontend\\rwd\\outwards",
+			"H:\\Working\\Bram\\magento",
+			"H:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd\\default\\template",
+			"H:\\Working\\Rhyanna\\magento\\app\\code\\core\\Mage\\Paypal",
+			"H:\\Working\\Rhyanna\\magento\\app\\code\\core",
+			"H:\\Working\\Rhyanna\\magento\\app",
+			"H:\\Working\\Rhyanna\\magento",
+			"H:\\Working\\Rhyanna\\magento\\app",
+			"H:\\Working\\Rhyanna\\magento",
+			"H:\\Working\\Rhyanna\\magento\\app",
+			"H:\\Working\\Rhyanna\\magento\\app\\code\\core",
+			"H:\\Working\\Rhyanna\\magento\\app\\design",
+			"H:\\Working\\Rhyanna\\magento\\app\\code",
+			"G:\\Working\\Rhyanna\\magento\\app\\design",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd",
+			"G:\\Working\\Rhyanna\\magento\\js",
+			"G:\\Working\\Rhyanna\\magento\\skin",
+			"G:\\Working\\Rhyanna\\magento\\skin\\frontend\\rwd",
+			"G:\\Working\\Rhyanna\\magento",
+			"G:\\Working\\Rhyanna\\magento\\skin",
+			"G:\\Working\\Rhyanna\\magento\\js",
+			"G:\\Working\\Rhyanna\\magento\\app",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd\\default\\template",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd\\default\\template\\catalog",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd\\default\\template",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend",
+			"G:\\Working\\Rhyanna\\magento\\app\\design",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend",
+			"G:\\Working\\Rhyanna\\magento\\app\\design\\frontend\\rwd",
+			"G:\\Working\\jason\\magento",
+			"G:\\Working\\randy-magento\\app\\design\\frontend\\smartwave\\porto",
+			"G:\\Working\\randy-magento\\app\\design\\frontend\\smartwave\\porto\\template\\page",
+			"G:\\Working\\randy-magento",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento\\app\\code\\local\\Cedcoss",
+			"G:\\Working\\randy-magento",
+			"G:\\Working\\randy-magento\\skin",
+			"G:\\Working\\randy-magento\\app\\design",
+			"G:\\Working\\randy-magento",
+			"G:\\Working\\randy-magento\\app\\design\\adminhtml",
+			"G:\\Working\\randy-magento",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento\\media\\css",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento",
+			"G:\\Working\\randy-magento\\app\\code\\local",
+			"G:\\Working\\randy-magento\\app\\code\\community",
+			"G:\\Working\\randy-magento\\app\\code\\local",
+			"G:\\Working\\randy-magento\\app\\code",
+			"G:\\Working\\randy-magento\\app\\code\\local",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento\\app\\code",
+			"G:\\Working\\randy-magento\\app\\code\\local",
+			"G:\\Working\\randy-magento\\app\\code\\community",
+			"G:\\Working\\randy-magento\\app\\code\\local",
+			"G:\\Working\\randy-magento\\app\\design\\adminhtml\\default\\default\\template",
+			"G:\\Working\\randy-magento\\app\\design\\adminhtml\\default\\default\\template\\sales",
+			"G:\\Working\\randy-magento\\app\\code\\local\\Cedcoss",
+			"G:\\Working\\randy-magento\\app\\design\\adminhtml",
+			"G:\\Working\\randy-magento\\app\\code",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento\\media\\css",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento\\app\\design\\frontend",
+			"G:\\Working\\randy-magento\\app\\design\\frontend\\smartwave",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento",
+			"G:\\Working\\randy-magento\\app",
+			"G:\\Working\\randy-magento",
+			"G:\\Working\\deanna-digital\\app\\design\\frontend\\naples-soap\\default\\layout",
+			"G:\\Working\\deanna-digital\\app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"id",
+			"sku",
+			"());\n",
+			">\n",
+			"checkout-review-table-wrapper",
+			"product_addtocart_form",
+			"add-to-cart",
+			"add-to-cart-button",
+			"checkout_cart_product_add_after",
+			"Qty",
+			"product",
+			"display-single-price",
+			"first",
+			"getquote",
+			"$_productco",
+			"echo",
+			"getCommentsCollection",
+			"category-products",
+			"class=\"products-grid",
+			"product-grid",
+			"category-products",
+			"if ($j('.sort-order').hasClass('hide'",
+			"product_compare_load",
+			"category-description std",
+			"checkout-success-register",
+			"checkout-review-table-wrapper",
+			"display-single-price",
+			"decorateGeneric",
+			"decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])",
+			"decorateGeneric",
+			"showsortby",
+			"category-products",
+			"ask-question",
+			"ask",
+			"end",
+			"extra-features",
+			"media url",
+			"media",
+			"media url",
+			"_validateCurrentPassword",
+			"validatecurrent",
+			"packaging",
+			"submitShipment",
+			"submitShipment(this);",
+			"_redirect",
+			"shipment",
+			"sendemail",
+			"senemail",
+			"sendemail",
+			"loadbyincrementID",
+			"track_save_after",
+			"save_after",
+			"sendemail",
+			"sales_order_shipment_track",
+			"sendemail",
+			"catch",
+			"fault",
+			"Mage_Sales_model",
+			"shipment->sendemail",
+			"->addObject($shipment->getOrder())",
+			"->addObject($shipment->getOrder()) ",
+			"try",
+			"shipment->save",
+			"sendemail",
+			"sendEmail",
+			"sendemail",
+			"$transactionSave",
+			"$transactionSave = Mage::getModel(’core/resource_transaction’)",
+			"$transactionSave = Mage::getModel(’core/resource_transaction’) ",
+			"shipment->save",
+			"try",
+			"add-to-cart-wrapper",
+			"add-to-cart",
+			"add-to-cart-wrapper",
+			"current",
+			"<remove name=\"checkout.cart.shipping\" />",
+			"checkout.cart.shipping",
+			"<remove name=\"checkout.cart.shipping\" />",
+			"getIsVirtual",
+			"getprodu",
+			"product",
+			"coupon",
+			"shopping-cart-table",
+			"cart.phtml",
+			"getRwdFallback",
+			"shipestimate",
+			"title-buttons",
+			"shipping-estimate-results",
+			"cart-totals-wrapper",
+			"title-buttons",
+			"discount-coupon-form",
+			"title-buttons",
+			"message",
+			"openssl",
+			"single-price",
+			"display-single-price",
+			"discount-coupon-form",
+			"cart-forms",
+			"discount-coupon-form",
+			"cart-forms",
+			"giftcard",
+			"noconflict",
+			"noconflict.js",
+			"analytics.js",
+			"analytics.com/analytics.js",
+			"block-subscribe",
+			"getmail",
+			"extends Mage_Core_Model_Email_Template",
+			"Mage_Core_Model_Email_Template",
+			"fbq",
+			"addtocart",
+			"fbq",
+			"button btn-cart",
+			"sticky-wrapper",
+			"toggle-tabs",
+			"dialog-container",
+			"modal-container",
+			"dialog-container",
+			"modal-body",
+			"wrapper",
+			"modal-container",
+			"dialog-container",
+			"dialog-container.",
+			"dialog-container",
+			"add-to",
+			"btn",
+			"header_wrapper",
+			"$mailer->setQueue($emailQueue)->send();"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"home_page",
+			"jpg",
+			"",
+			"rwd",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/design/frontend/forthechef/default/template/cls/nucleus/catalog/product/view.phtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14963,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6883,
+								6883
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 907.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/design/frontend/forthechef/default/template/cls/nucleus/catalog/product/list.phtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17234,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11806,
+								11806
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4336.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/design/frontend/rwd/default/template/checkout/cart.phtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/design/frontend/rwd/default/template/cls/nucleus/checkout/onepage/success/review.phtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4133,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3481,
+								3481
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1655.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/design/frontend/base/default/template/checkout/success.phtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3278,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/design/frontend/base/default/template/rac/register.phtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "skin/frontend/forthechef/default/css/styles.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 359878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/design/frontend/forthechef/default/layout/forthechef.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/code/core/Mage/Sales/Model/Order/Shipment.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/code/core/Mage/Adminhtml/controllers/Sales/Order/ShipmentController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 27071,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/design/adminhtml/default/default/template/sales/order/shipment/create/items.phtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6046,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 205.0
+	},
+	"pinned_build_system": "",
+	"project": "gary.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"sucess.phtml",
+				"app\\design\\frontend\\base\\default\\template\\checkout\\success.phtml"
+			],
+			[
+				"ssphp",
+				"lib\\Braintree\\SignatureService.php"
+			],
+			[
+				"sfpt",
+				"sftp-config.json"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 297.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

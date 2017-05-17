@@ -1,0 +1,59 @@
+<?php
+/**
+ * Plumrocket Inc.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End-user License Agreement
+ * that is available through the world-wide-web at this URL:
+ * http://wiki.plumrocket.net/wiki/EULA
+ * If you are unable to obtain it through the world-wide-web, please
+ * send an email to support@plumrocket.com so we can send you a copy immediately.
+ *
+ * @package     Plumrocket_Amp
+ * @copyright   Copyright (c) 2016 Plumrocket Inc. (http://www.plumrocket.com)
+ * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+ */
+?>
+
+<?php
+    $_helper = $this->helper('catalog/output');
+    $_helperAMP = $this->helper('pramp');
+    $_product = $this->getProduct();
+?>
+
+<div class="product-shop">
+    <!-- Product name -->
+    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+    <!-- Product description -->
+    <?php if ($_product->getShortDescription()):?>
+        <div class="short-description">
+            <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+        </div>
+    <?php endif;?>
+</div>
+
+<!-- Product image -->
+<div class="product-img-box">
+    <?php echo $this->getChildHtml('media'); ?>
+</div>
+
+<div class="product-shop">
+    <!-- Product price -->
+    <?php echo $this->getPriceHtml($_product) ?>
+
+    <?php if(!$_product->getHasOptions() && $_product->isSaleable()): ?>
+        <a class="button btn-cart" href="<?php echo $_helperAMP->getAddToCartUrl($_product) ?>"><?php echo $this->__('Add to Cart'); ?></a>
+    <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+        <a class="button btn-cart" href="<?php echo $_helperAMP->getCanonicalUrl($_product->getUrl()); ?>"><?php echo $this->__('Choose options') ?></a>
+    <?php else: ?>
+        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+    <?php endif; ?>
+
+    <div class="description">
+        <?php echo $this->helper('catalog/output')->productAttribute($this->getProduct(), $_product->getDescription(), 'description') ?>
+    </div>
+    <?php if ($attributeBlock = $this->getLayout()->getBlock('product.attributes')) : ?>
+        <?php echo $attributeBlock->toHtml() ?>
+    <?php endif; ?>
+</div>

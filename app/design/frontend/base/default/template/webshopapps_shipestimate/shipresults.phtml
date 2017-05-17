@@ -1,0 +1,87 @@
+<?php
+/**
+ *
+ */
+
+?>
+<?php $showSavings = $this->helper('shipestimate')->displaySavings(); ?>
+<div class="box-collateral box-additional">
+    <div class="block-title">
+        <strong><span><?php echo Mage::helper('shipestimate')->__('Shipping Rates') ?></span></strong>
+        <?php if($notice = $this->getNotice()): ?>
+            <div><span><?php echo $notice; ?></span></div>
+        <?php endif; ?>
+    </div>
+    <div >
+      <?php if ($this->getResults()):?>
+        <table class="data-table">
+            <col width="33%" />
+            <col />
+            <?php if ($this->helper('tax')->displayShippingBothPrices()): ?>
+                <col />
+            <?php endif; ?>
+            <?php if ($showSavings): ?>
+                <col/>
+            <?php endif; ?>
+            <tbody>
+                <?php foreach ($this->getResults() as $code => $_rates): ?>
+                    <td colspan=3><strong><?php echo $this->getCarrier($code) ?></strong></td>
+                    <?php echo $this->getAdditionalDisplay($_rates, $code); ?>
+                    <?php foreach ($_rates as $_rate): ?>
+                        <tr>
+                            <?php if(isset($_rate['error_message'])): ?>
+                                <td colspan=2 class="data"> <?php echo $this->__('Sorry, no quotes are available for this order at this time.'); ?></td>
+                            <?php else: ?>
+                                <td class="data"><?php echo $_rate['method_title'] ?></td>
+                                <?php $_excl = $this->getShippingPrice($_rate['price'], $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                <?php $_incl = $this->getShippingPrice($_rate['price'], true); ?>
+                                <td class="data"> <?php echo $_excl; ?></td>
+                                <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                    <td class="data"><?php echo Mage::helper('shipestimate')->__('Incl. Tax'); ?> <?php echo $_incl; ?> </td>
+                                <?php endif; ?>
+                                <?php if($showSavings) :?>
+                                     <td class="data"><?php echo $this->getShippingSavings($_rate['savings']); ?></td>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <?php else: ?>
+                <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+        <?php endif;?>
+        <!-- use this part to display the results in list for sidebar-->
+
+        <!--  <?php if ($this->getResults()):?>
+              <dl>
+                  <?php foreach ($this->getResults() as $code => $_rates): ?>
+
+                          <dt><?php echo $this->getCarrier($code) ?></dt>
+                      <?php foreach ($_rates as $_rate): ?>
+                          <dd>
+                              <ul>
+                                  <li<?php if ($_rate->getErrorMessage()) echo ' class="error-msg"';?>>
+                                      <?php if ($_rate->getErrorMessage()): ?>
+                                          <?php echo $_rate->getErrorMessage() ?>
+                                      <?php else: ?>
+                                          <?php echo $_rate['method_title'] ?>
+                                          <?php $_excl = $this->getShippingPrice($_rate['price'], $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                          <?php $_incl = $this->getShippingPrice($_rate['price'], true); ?>
+                                          <?php echo $_excl; ?>
+                                          <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                              (<?php echo Mage::helper('shipestimate')->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                          <?php endif; ?>
+                                      <?php endif ?>
+                                  </li>
+                              <?php endforeach; ?>
+                          </ul>
+                      </dd>
+                  <?php endforeach; ?>
+              </dl>
+          <?php else: ?>
+              <?php echo $this->getMessagesBlock()->toHtml(); ?>
+          <?php endif;?>
+          -->
+    </div>
+</div>

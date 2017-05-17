@@ -1,0 +1,24 @@
+<?php
+/**
+ * @category   CLS
+ * @package    CustomerAdvanced
+ * @copyright  Copyright (c) 2015 Classy Llama Studios, LLC (http://www.classyllama.com)
+ * @license    See LICENSE_CLS.txt for license details
+ */
+?>
+
+<?php echo $this->getChildHtml('quick_customer_form_login') ?>
+<?php echo $this->getChildHtml('quick_customer_form_register') ?>
+
+<?php if (!Mage::helper('cls_customeradvanced')->customerLoggedIn()): ?>
+<script>
+    CLS_QuickLogin.init(
+        [
+            {'id': 'login', $trigger: jQuery('.customer-login-link'), $element: jQuery('#quick_account_login')},
+            {'id': 'register', $trigger: jQuery('.customer-register-link'), $element: jQuery('#quick_account_create')}
+        ],
+        '<?php echo Mage::getBaseUrl() ?>',
+        <?php echo Mage::helper('cls_customeradvanced/quickaccess')->getJsonRestrictedUrlPatterns() ?>
+    );
+</script>
+<?php endif; ?>
